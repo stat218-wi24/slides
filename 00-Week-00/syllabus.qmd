@@ -1,0 +1,368 @@
+---
+title: "Stat 218: Applied Statistics for Life Sciences"
+subtitle: "Winter 2024"
+format:
+  pdf:
+    keep-tex: false
+---
+
+```{r}
+#| echo: false
+#| output: false
+
+library(tidyverse)
+library(lubridate)
+library(stevemisc)
+library(kableExtra)
+
+```
+
+## Course Website
+
+This course has a [website](https://stat218-wi24.github.io/website/) where you can access essential resources throughout the duration of the course.
+
+## Meet Your Instructor and Grader
+
+__Instructor__ 
+
+Dr. Sinem Demirci (Sy-nem Deh-meer-jee) (she/they)  
+`r fontawesome::fa("github")` [sinemdemirci](http://github.com/sinemdemirci)   
+`r fontawesome::fa("envelope")` [sdemirci@calpoly.edu](mailto:sdemirci@calpoly.edu)     
+`r fontawesome::fa("building")` [025-213](https://maps.app.goo.gl/7dTPXc1jELP4gs297)
+ 
+
+__Instructor's office hours:__  
+__Tue:__ 08:30 – 09:20 am _(In-Office)_  
+__Wed:__ 10:40 – 11:30 pm _(Zoom)_ <a href = "https://calpoly.zoom.us/j/89392427908" target = blank>{{< fa link >}}</a>  
+__Thu:__ 09:30 – 11:10 am _(In-Office)_ 
+
+ 
+__Grader__   
+Kristina Mee Benbrooks  
+`r fontawesome::fa("envelope")` [kbenbroo@calpoly.edu](mailto:kbenbroo@calpoly.edu)     
+`r fontawesome::fa("github")`
+
+
+## Course Information
+
+Your learning journey begins at <a href="https://maps.app.goo.gl/Dh85yYRbjKFcNfTv9" target = blank>Building 186 - Construction Innovations Center</a>. Follow this link to locate the hub of knowledge for your class. {{< fa school >}} {{< fa bell >}} {{< fa person-chalkboard >}} {{< fa comments >}} {{< fa square-poll-vertical >}} 
+
+__Section 03:__ MTWR 12:10 – 01:00 PM (186-C302)  
+__Section 04:__ MTWR 01:10 – 02:00 PM (186-C101)  
+__Section 01:__ MTWR 03:10 – 04:00 PM (186-C201)   
+__Section 02:__ MTWR 04:10 – 05:00 PM (186-C302) 
+
+
+## Course Description
+
+Life science is complicated. As your professor, I know you already know this, and it's not my intention to teach you that. However, I am committed to giving you a glimpse into some of these complexities by integrating statistical concepts into life science topics. By the end of this course, I hope to increase your awareness of the potential inaccuracies in any data you use which implies that there might not always be a single explanation or prediction for an event, but rather, a range of possible outcomes. In the best-case scenario, I will support you in making sense of uncertainty in the (1) behavior of chemicals, (2) relationships among living organisms & communities of living organisms, and (3) physical processes that sustain most of the living systems through the use of statistics.
+
+STAT 218 is tailored for life science students who will inevitably engage with statistics in their future professions. 
+
+In this course, we will cover the following concepts, illustrating real-world applications of statistics in the life sciences: descriptive statistics, confidence intervals, parametric and nonparametric one-and two-sample hypothesis tests, analysis of variance, correlation, simple linear regression, chi-square tests. 
+
+At times, we'll utilize the R programming language, a tool favored by _Homo sapiens_, to practically apply the techniques and theories learned. This includes making statistical inferences based on datasets. (I'm still in the dark about what <a href="https://www.sciencedirect.com/science/article/abs/pii/S0960982223007741?via=ihub" target="_blank"><i>Corvus corone</i></a>
+ are using for making statistical inferences; maybe you’ll tell me how they do it as a life science student!).
+ 
+
+### Prerequisite:
+
+Entrance to STAT 218 requires at least one of the following be met:
+
+- Grade of C- or better in MATH 115  
+- Grade of B or better in MATH 96 
+- Appropriate placement on the [Math Placement Exam](https://math.calpoly.edu/mape).
+
+You should have familiarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).
+
+{{< pagebreak >}}
+
+
+## Required Materials
+
+__Required Textbooks:__ We will use two textbooks. The former textbook covers fundamental theories, while the latter textbook delves into practical applications.
+
+- Samuels, M.L., Witmer, J.A., and Schaffner, A. A. (2016). Statistics for the Life Sciences, 5th ed., Pearson Education Limited.
+- Çetinkaya-Rundel, M., & Hardin, J. (2021). [Introduction to Modern Statistics](https://www.openintro.org/book/ims/) OpenIntro.  
+
+__Technology/Tools:__ Calculator, Laptop/Chromebook/iPad Device
+
+__Online Resources:__ We will use <a href="https://www.rossmanchance.com/applets/index2021.html"target="_blank">Rossman/Chance Applet Collection 2021</a> of our very own Professors at Cal Poly, [Allan Rossman](https://statistics.calpoly.edu/allan-rossman) & [Beth Chance](https://statistics.calpoly.edu/Beth-Chance)
+
+
+## Student Learning Outcomes
+
+Upon completion of this course, you will be able to:
+
+1. describe statistics as a discipline in your own words,
+2. explain the interactions between statistics and life sciences,
+3. design a data collection scheme based on simple random sampling or simple experimental designs,
+4. distinguish between observational studies and experiments and understand the limitations (practical and consequential) of each,
+5. summarize data using graphical techniques,
+6. summarize data using numerical techniques,
+7. construct and interpret confidence intervals for means and differences between means for independent samples,
+8. construct and interpret confidence intervals for means and differences between means for paired samples,
+9. conduct parametric two-sample hypothesis tests for means,
+10. conduct non-parametric two-sample hypothesis tests for means,
+11. construct and interpret a confidence interval for a single proportion,
+12. conduct Chi-square goodness-of-fit tests and tests for independence,
+13. distinguish between case-control and cohort studies and compute relative-risk and odds in the appropriate settings,
+14. perform analysis of variance tests and post-hoc comparisons for completely randomized designs,
+15. explain why correlation does not imply causation,
+16. use simple linear regression to describe relationships between variables.
+
+{{< pagebreak >}}
+
+## Sustainability Learning Objectives
+
+Given your majors in life sciences and my academic background in environmental and sustainability education, I'm enthusiastic about incorporating Cal Poly's Sustainability Learning Objectives into our course content. _While I won't be assigning grades_ specifically for this subject, I encourage you to explore and assess your progress in achieving these objectives. Additionally, you can learn more about sustainability topics by coming to my office or reaching out to ask. 
+
+Below, I've included Cal Poly's definition of sustainability and its associated learning objectives. I am planning to integrate 1^st^ and 4^th^ learning objectives specifically.
+
+Cal Poly defines sustainability as the ability of the natural and social systems to survive and thrive together to meet current and future needs. In order to consider sustainability when making reasoned decisions, all graduating students should be able to:
+
+1. Define and apply sustainability principles within their academic programs,
+2. Explain how natural, economic, and social systems interact to foster or prevent sustainability,
+3. Analyze and explain local, national, and global sustainability using a multidisciplinary approach,
+4. Consider sustainability principles while developing personal and professional values.
+
+## Course Schedule
+
+```{r}
+#| echo: false
+#| output: true
+#| warning: false
+
+# Ref: http://svmiller.com/blog/2020/08/a-ggplot-calendar-for-your-semester/
+
+quarter_dates <- c(ymd(20240316), ymd(20240319),
+  seq(ymd(20240108), ymd(20240314), by=1)
+)
+class_wdays <- c("Mon", "Tue", "Wed", "Thu")
+
+not_here_dates <- c(
+  ymd("20240115"),
+  ymd("20240219")
+  )
+
+exam_date <- c(ymd(20240205), ymd(20240316))
+
+project_dates <- c(ymd(20240222), ymd(20240319))
+
+finals_week <- seq(ymd(20240318), ymd(20240322), by = 1)
+
+# Create a data frame of dates, assign to Cal
+Cal <- tibble(date = seq(ymd(20240101), ymd(20240331), by=1))  |>
+  mutate(mon = lubridate::month(date, label = T, abbr = F),
+         wkdy = weekdays(date, abbreviate = T),
+         wkdy = fct_relevel(wkdy, "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
+         quarter = date %in% quarter_dates, 
+         project = date %in% project_dates,
+         exam = date %in% exam_date,
+         not_here = date %in% not_here_dates, # Academic Holidays at Cal Poly
+         exam_wk = date %in% finals_week,
+         day = lubridate::mday(date), 
+         week = wom(date)
+         ) |>
+  mutate(category = case_when(
+    project ~ "Projects Due",
+    exam ~ "Exam (In-Class)",
+    not_here ~ "Cal Poly Holiday",
+    quarter & wkdy %in% class_wdays & !not_here & !exam_wk | date == "2023-03-18" ~ "Class Day",
+    TRUE ~ "NA")
+  )
+
+class_cal <- Cal |> 
+  ggplot(aes(wkdy, week)) +
+  theme_bw() +
+  theme(aspect.ratio = 0.5, 
+        panel.grid.major.x = element_blank(),
+        legend.position = "bottom",
+        legend.title = element_blank(),
+        axis.title.y = element_blank(), 
+        axis.title.x = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.text.y = element_blank()) +
+  geom_tile(alpha= 1, aes(fill=category), color="black", linewidth=.45) +
+  facet_wrap(~mon, scales = "free", ncol=2) +
+  geom_text(aes(label = day, color = quarter & (!not_here))) +
+  scale_y_reverse(breaks=NULL) +
+  scale_color_manual(values = c("FALSE" = "#E4E3D3", "TRUE" = "black"), guide = "none") + 
+  scale_fill_manual(values=c("Class Day" = "#154734", 
+                             "Exam (In-Class)" = "#D0DF00",
+                             "Projects Due" = "#FF6A39",
+                             "Cal Poly Holiday" = "#BD8B13",
+                             "NA" = "white"),
+                    breaks=c("Class Day", "Cal Poly Holiday", "Exam (In-Class)", "Projects Due"))
+class_cal
+```
+
+
+## Prerequisite
+
+Entrance to STAT 218 requires at least one of the following be met:
+
+- Grade of C- or better in MATH 115  
+- Grade of B or better in MATH 96 
+- Appropriate placement on the <a href="https://math.calpoly.edu/mape"target="_blank">Math Placement Exam</a>.
+
+You should have familiarity with computers and technology (e.g., Internet browsing, word processing, opening/saving files, converting files to PDF format, sending and receiving e-mail, etc.).
+
+
+## Required Materials
+
+__Required Textbooks:__ We will use two textbooks. The former textbook covers fundamental theories, while the latter textbook delves into practical applications.
+
+- Samuels, M.L., Witmer, J.A., and Schaffner, A. A. (2016). Statistics for the Life Sciences, 5th ed., Pearson Education Limited.
+- Diez D. M., Çetinkaya-Rundel, M., & Barr, C. D. (2022). <a href="https://leanpub.com/os"target="_blank">OpenIntro Statistics </a>.  
+
+__Technology/Tools:__ Calculator, Laptop/Chromebook/iPad Device
+
+__Online Resources:__ We will use <a href="https://www.rossmanchance.com/applets/index2021.html"target="_blank">Rossman/Chance Applet Collection 2021</a> of our very own Professors at Cal Poly, <a href="https://statistics.calpoly.edu/allan-rossman"target="_blank"> Allan Rossman</a> & <a href="https://statistics.calpoly.edu/Beth-Chance"target="_blank"> Beth Chance</a>
+
+## Grading and Late Submission Policies
+
+![](grading.png){width=80%}
+
+
+### Letter Grades
+
+Your final grades will be determined based on the total points earned. It's essential to review the letter grades outlined below for a clear understanding of the grading criteria. __Please be aware that I will not "round up" grades at the end of the quarter.__
+
+
+| Letter grade  |Points|
+|-------------- |----- |
+| A             | $93 \le x$ |
+| A^-^          | $90 \le x < 93$  |
+| B^+^          | $87 \le x < 90$  |
+| B             | $83 \le x < 87$  |
+| B^-^          | $80 \le x < 83$  |
+| C^+^          | $77 \le x < 80$ |
+| C             | $73 \le x < 77$ |
+| C^-^          | $70 \le x < 73$  |
+| D^+^          | $67 \le x < 70$  |
+| D             | $63 \le x < 67$  |
+| D^-^          | $60 \le x < 63$ |
+| F             | $x < 60$ |
+
+### Assessment Types 
+
+Our weekly units/topics will follow a pattern and have been designed to give you practice with the concepts. Below you will find brief descriptions of the types of assignments in this course.
+
+
+#### Weekly Assignments 
+
+You will have assignments every week, typically consisting of 3-4 daily assignments per week. Please upload them collectively, using a format like 'Week X Assignment Name Surname'.
+
+These assignments are individual assignments to track your learning progress. You can do these assignments either using your PC/Laptop/iPad/Chromebook or solve them to your notebook. Either way, you should upload them to Canvas. All weekly assignments are due __Sundays at 11.59 pm__.
+
+{{< pagebreak >}}
+
+#### Lab Assignments
+
+We will have 7 lab sessions, each followed by a corresponding lab assignment. Lab sessions will be conducted in groups, and the lab assignments will also be group projects. This means that you will submit your lab assignments as a group. __Each group is composed of 3-5 students__ to work and complete the labs together both in the class and after the class.
+
+The due dates will be determined based on the day of the lab sessions, and I will provide advance notice of these deadlines.
+
+__Important:__ Please refrain from including the names of group members who did not participate. In the event of absent students, they must either complete the lab assignment individually or coordinate with their group members to complete it together as a group project. __Once the groups are determined, NO CHANGES ARE ALLOWED without prior notification to the instructor.__
+
+#### Exams
+
+Exams are to be taken without the use of textbooks or notes. It is expected that you will take exams as per the scheduled times. In cases of extraordinary circumstances like illness, a family loss, please inform me before the examination.
+
+You won't be required to computer for the exams, but you may see some questions that involve filling in missing information, interpreting provided R outputs, or selecting the appropriate code to complete a task.
+
+Here are the due dates of exams and projects:
+
+__Mon, Feb 5:__ Midterm Exam (Individual, In-class)
+
+__Thu, Feb 22:__ Midterm Project (Group submission on Canvas)
+
+__Sat, Mar 16:__ Common Final Exam (Individual) - TBD
+
+__Tue, Mar 19:__ Final Project (Group submission on Canvas)
+
+
+#### Projects
+
+The overarching goal of the projects in this course is to empower life science students by cultivating a profound <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5002400/" target="_blank"> sense of agency</a>. This involves actively engaging with the learning process, making informed decisions, and taking ownership of your academic journey. Through the selection of your unique data set, you will have the opportunity to construct a personalized case study, formulate research questions, employ diverse statistical procedures, and effectively communicate your findings. This hands-on approach not only enhances your understanding of the subject matter but also nurtures a proactive and self-directed approach to learning.
+
+__Midterm Project:__ In this midterm project, you will select your own dataset from <a href="https://www.openintro.org/data/" target="_blank"> OpenIntro Data Sets </a> or another suitable source. If your group members share the same major, it's recommended to choose a dataset related to your field of study.
+
+The project will involve applying various statistical procedures covered in our course. For detailed instructions, refer to the template (Template will be provided later on).
+
+__Final Project:__ In this final project, you will select your own dataset from <a href="https://www.openintro.org/data/" target="_blank"> OpenIntro Data Sets </a> or another suitable source. If your group members share the same major, it's recommended to choose a dataset related to your field of study.
+
+The project will involve applying various statistical procedures covered in our course. For detailed instructions, refer to the template(Template will be provided later on).
+
+::: {.callout-important}
+
+Your final project grade is composed of following components:
+
+- __Final Project:__ 75 points  
+- __Project Peer Evaluation:__ 20 points  
+- __Self-Reflection Paper:__ 5 points
+
+:::
+
+#### Attendance/Participation
+
+Regular attendance is expected from all students to maintain the quality and quantity of their work. In essence, your attendance plays a crucial role in your ability to succeed in every type of assessment conducted in our class, as consistent absences may interrupt your learning and indirectly impact your grades.
+
+I will record attendance during every lecture, not for grading purposes, but to track your learning progress in this class. In case of recurring absences, I will reach out to understand the reasons and work together to find solutions. __If you fail to attend over 50% of classes and neglect to submit more than 50% of weekly assignments and lab assignments without prior notification, you may receive a <a href="https://catalog.calpoly.edu/academicstandardsandpolicies/grading/" target="_blank"> WU </a>__
+
+In brief, you must be present in class (both physically and mentally) unless you have an <a href="https://academicprograms.calpoly.edu/content/academicpolicies/class-attendance" target="_blank"> "Excusable" Reason for Missing Class </a>. Please contact with me in advance if you are not coming and do your best to catch up what we have done in that day. You can also schedule a virtual appointment if you have questions about the missing class you had.
+
+{{< pagebreak >}}
+
+### Late Submission Policies
+
+I am using Dr Robinson's late work policy for this class. This quotation below was taken from her syllabus.
+
+"We are living through a challenging time with unique, unusual circumstances. I do not want class deadlines to cause you extreme stress or anxiety. I offer 3 “grace days” – days to turn in the assignment late without a penalty."
+
+These can be used __ONLY__ on homework assignments and lab assignments (a single group member must be willing to use one of their grace days for the entire group), but __NOT__ exams or group midterm/final projects. These “grace days” can be used all at once on a single assignment or used on separate assignments throughout the quarter. Simply add a comment on the assignment in Canvas and send me an email to let me know you how many “grace days” you want to use on the assignment.
+
+After the expiration of your 'grace days,' a 10% grade reduction will be applied for each day that the assignment is overdue. Late submissions will not be accepted after one week from the original due date. __Resubmitting assignments is not allowed.__ Please ensure timely completion to avoid any complications.
+
+#### Automatic Canvas Settings
+Canvas is set up to automatically input 0% for missing assignments (as an incentive to go complete the assignment) and apply the 10% grade deduction policy. I will need to manually adjust your grade when you use your grace days, so it is important for you to leave a note on your assignment and email me. You are responsible for double checking your grade.
+
+If you find yourself with extenuating circumstances beyond the defined late policy, please email me before the due date.
+
+
+## Accessibility, Diversity and Inclusion
+
+This course was designed to serve students from all diverse backgrounds, places, and perspectives, in order to meet your needs. I view the diversity that participants bring to this classroom as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of gender, sexuality, disability, age, socioeconomic status, ethnicity, race, religion, country of origin, and culture. I encourage and appreciate your feedback and suggestions. Please let me know if there are ways I can improve the effectiveness or experience of this class for you. In addition, if any of the assignment dates conflict with your religious events, please let me know so that we can make arrangements for you.
+
+I have taken numerous steps to ensure that all of the materials presented in this course are accessible to all participants, regardless of physical or learning disabilities. I know that everyone is unique, and I may have unintentionally overlooked something that limits access to some materials or activities. Please let me know if you cannot access any content. If you find you need additional accommodations to complete the required course work, please contact me via email (<a href = "mailto:sdemirci@calpoly.edu" target="_blank">sdemirci@calpoly.edu</a>) or come to my office! You can also contact the Disability Resource Center, Building 124, Room 119, at (805) 756-1395. 
+
+[SensusAccess](https://lib.calpoly.edu/study-spaces-and-tech/convert/) is a self-service, alternate media solution made available by Kennedy Library to automatically convert files into a range of alternate media including audio books (MP3 and DAISY), e-books (EPUB, EPUB3 and Mobi) and digital Braille. The service can also be used to convert inaccessible files such as image-only PDF files, JPG pictures and Microsoft PowerPoint presentations into more accessible and less tricky formats. This service is available at no charge for all Cal Poly students, faculty, staff and alumni. Also, starting Summer 2021, alternative formats within Canvas have been enabled with Ally. [Learn more about Ally's alternative formats.](https://canvassupport.calpoly.edu/ally-students)
+
+## Disability Accomodations
+
+This course was developed with accessibility in mind; however, if you require accommodations or assistance of any kind, or cannot access materials in the course, or complete an assignment due to a disability, please contact me via email (<a href = "mailto:sdemirci@calpoly.edu" target="_blank">sdemirci@calpoly.edu</a>) or come to my office as soon as you can, so I can assist you promptly. 
+
+I want to support your success. If you wish to request disability-related accommodations for this or any other course, please contact the <a href = "https://drc.calpoly.edu/content/drc-services" target="_blank">Disability Resource Center</a>. It's important to do this with as much advanced notice as possible, so you have full access to your course materials and activities in a timely manner.
+
+## Academic Honesty
+
+Learning thrives in an environment built on trust and respect. The subsequent actions undermine academic integrity, creating obstacles to effective learning:
+
+- Allocating less time than necessary for a satisfactory job.
+- Skipping readings or neglecting non-graded activities.
+- clicking through course information without thoroughly reviewing resources.
+
+While these behaviors can impact your grade and learning experience, they are personal choices. On the other hand, certain actions go beyond mere 'choices' and breach academic regulations and even legal boundaries. These include:
+
+- Plagiarizing text by directly copying from websites, blogs, other discussions, or published texts.
+- Recycling an essay or project previously submitted for another class.
+- Engaging in dishonest practices during a test or project.
+- Copying directly from another student or source without proper attribution.
+- Purchasing or replicating an essay or project from an online source.
+
+It's crucial to familiarize yourself with the Cal Poly definitions of <a href="https://academicprograms.calpoly.edu/content/academicpolicies/Cheating" target="_blank">Cheating and Plagiarism.</a> Take a moment to read this page and understand these concepts.
+
+If you're uncertain about citing a source, incorporating a quote, or acknowledging someone in your summaries, I'm here to assist. We can arrange a brief Zoom or in-person meeting, or I can provide feedback on a draft. Writing rules can be confusing; let's clarify them together!
+
+On the downside, the college doesn't differentiate between breaking rules intentionally or unintentionally—the consequences remain consistent. In my class, the first instance of misquoting, misrepresentation, or copy/pasting requires a redo of the work and a one-on-one meeting with me. Upon a second occurrence, we meet again, but you won't be allowed to redo the assignment, receiving a zero for that grade. For a third instance, you will not pass the class. Let's take a proactive approach! If you're unsure about citing, don't hesitate to ask!
