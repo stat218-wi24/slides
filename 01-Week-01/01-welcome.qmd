@@ -12,13 +12,13 @@ format:
 ---
 
 
-###
+### Hello!
 
 :::: {.columns}
 ::: {.column width="50%"}
 ::: {style="text-align: center"}
 
-**Instructor** 
+__Instructor__ 
 
 ```{=html}
 <img src="img/sinem.jpeg" alt="A headshot of a woman with curly, short, shoulder-length hair with green eyes."
@@ -27,7 +27,7 @@ format:
 
 ::: {style="text-align: left"}
 
-<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
 [{{< fa volume-high >}}](audio/how-to-pronounce-my-name.mp3) Dr. Sinem Demirci (she/they)
 </h1>
 
@@ -54,18 +54,29 @@ format:
 ::: {.column width="50%"}
 ::: {style="text-align: center"}
 
-**Grader**
 
-::: {style="text-align: left"}
-<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">
-Kristina Mee Benbrooks
-</h1>
+__Grader__
+
+::: {style="text-align: center"}
+<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">Kristina Mee Benbrooks</h1>
 
 <h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
 {{< fa envelope >}} <a href = "mailto:kbenbroo@calpoly.edu" style="font-size: 28px; line-height: 0.5;">kbenbroo@calpoly.edu</a>
 </h1>
 
 
+<br>
+<br>
+<br>
+
+::: {style="font-size: 30px; text-align: left"}
+
+__Instructor's office hours:__  
+__Tue:__ 08:30 – 09:20 am _(In-Office)_  
+__Wed:__ 10:40 – 11:30 pm _(Zoom)_ <a href = "https://calpoly.zoom.us/j/89392427908" target = blank>{{< fa link >}}</a>  
+__Thu:__ 09:30 – 11:10 am _(In-Office)_ 
+
+:::
 :::
 :::
 :::
@@ -171,7 +182,7 @@ Boston Cooking School (Boston, Mass.), No restrictions, via Wikimedia Commons" h
 ::: nonincremental
 ::: fragment
 
- <a href="https://www.calpoly.edu/major/statistics" target="_blank">**How Does Cal Poly Statistics Define Statistics?**</a>
+ <a href="https://www.calpoly.edu/major/statistics" target="_blank">__How Does Cal Poly Statistics Define Statistics?__</a>
  
  - Statistics is the science of collecting, organizing, analyzing and interpreting data using visualizations and models to help others make informed decisions. Statisticians find meaning in the data by looking at representative samples in order to make inferences about the whole. Statistics provides the foundation for data science and is important in many fields as different as retail sales, insurance and scientific research.
 
@@ -220,12 +231,12 @@ From *The Rise of Statistical Thinking, 1820 - 1900*
 - We will have 8 lab sessions, each followed by a corresponding lab assignment.  
   - Lab sessions will be conducted in groups, and the lab assignments will also be group projects.  
   - This means that you will submit your lab assignments as a group.  
-  - **Each group is composed of 3-5 students** to work and complete the labs together both in the class and after the class.
+  - __Each group is composed of 3-5 students__ to work and complete the labs together both in the class and after the class.
     - Once the groups are determined, __NO CHANGES ARE ALLOWED__ without prior notification to the instructor.
 
 - The due dates will be determined based on the day of the lab sessions, and I will provide advance notice of these deadlines.
 
-- **Important:** Please refrain from including the names of group members who did not participate. In the event of absent students, they must either complete the lab assignment individually or coordinate with their group members to complete it together as a group project.
+- __Important:__ Please refrain from including the names of group members who did not participate. In the event of absent students, they must either complete the lab assignment individually or coordinate with their group members to complete it together as a group project.
 
 :::
 

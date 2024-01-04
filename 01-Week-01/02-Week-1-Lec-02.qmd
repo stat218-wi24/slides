@@ -1,0 +1,101 @@
+---
+title: "Types of Evidence"
+subtitle: "STAT 218 - Week 1, Lecture 2"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## Today's Menu
+
+::: {style="font-size: 32px"}
+
+
+In this lecture, I will be briefly talking about
+
+1. FAQ From the Last Lecture
+2. How (not) to Design a Study/Research?
+3. Types of Evidence in Science
+
+
+
+:::
+
+## From the Last Lecture - I
+::: {style="font-size: 32px"}
+
+- __How can we call your name?__
+  - Dr. Demirci (deh-MEER-jee)
+- __Your office hours date and time?__
+__Instructor's office hours:__  
+__Tue:__ 08:30 – 09:20 am _(In-Office)_  
+__Wed:__ 10:40 – 11:30 pm _(Zoom)_ <a href = "https://calpoly.zoom.us/j/89392427908" target = blank>{{< fa link >}}</a>  
+__Thu:__ 09:30 – 11:10 am _(In-Office)_   
+  
+:::
+
+##
+### Install R and RStudio
+
+- __Install R:__ Yes, you do need to download and install R even if you have downloaded before. There is a newer version.
+
+  - <a href = "https://cran.rstudio.com/" target = blank>{{< fa link >}}</a> Link to install R.
+
+- __Install RStudio:__ Yes, you do need to download and install RStudio even if you have downloaded before. There is a newer version. Download the free Desktop version.
+
+  - <a href = "https://posit.co/download/rstudio-desktop/" target = blank>{{< fa link >}}</a> Link to install RStudio Desktop.
+
+- After installation, try the following test and come to my office hours if you need it.
+
+
+
+## Is my RStudio working?
+
+::: {style="font-size: 24px"}
+
+{{< video video/test-r.mp4 width="1000" height="500" >}}
+
+:::
+
+
+## Let's Move Forward Today's Topic
+
+::: {style="font-size: 32px"}
+
+- As a scientist specializing in environmental science, you were assigned a task which is __designing your own research study__. Your area of interest centers around examining the impact of climate change on local ecosystems. 
+  - What might be the steps?
+
+:::
+
+## Mind the Gap!
+::: {style="font-size: 32px"}
+
+Before jumping straight to the data analysis
+
+- __Explore Existing Data:__
+  - Examine the data closely.
+  - Pose questions about the data.
+
+- __Set the Stage for Data Collection:__
+  - Review the relevant literature.
+  - Select an appropriate research design.
+  - Implement an appropriate sampling method.
+  - Choose suitable data collection techniques.
+- <span style="font-size: 18px; line-height: 0.25;">*PS: I acknowledge that there is no one single way to do science, but I do also believe that to be able to analyze,understand and interpret data as a statistician/data scientist, research design and data collection procedures must meet rigorous standards and adhere to the principles of sound scientific inquiry.*</span>
+
+:::
+
+
+## Types of Evidence
+<br>   
+__Question of the Day:__  
+
+- Ever wondered what kinds of evidence scientists collect?
+
+
+
