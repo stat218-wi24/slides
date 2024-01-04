@@ -1,0 +1,252 @@
+---
+title: "Welcome to STAT 218!"
+author: "Sinem Demirci, PhD"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      incremental: true
+      chalkboard: true
+---
+
+
+###
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {style="text-align: center"}
+
+**Instructor** 
+
+```{=html}
+<img src="img/sinem.jpeg" alt="A headshot of a woman with curly, short, shoulder-length hair with green eyes."
+  style="width: 200px; height: 200px; border-radius: 100%; margin-top: 5px; border: 1px solid whitesmoke; padding: 5px;">
+```
+
+::: {style="text-align: left"}
+
+<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">
+[{{< fa volume-high >}}](audio/how-to-pronounce-my-name.mp3) Dr. Sinem Demirci (she/they)
+</h1>
+
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
+{{< fa building >}} <a href = "https://maps.app.goo.gl/7dTPXc1jELP4gs297" target="_blank" style="font-size: 28px; line-height: 0.5;"> 025-213</a>
+</h1>
+
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
+{{< fa link >}} <a href = "http://sinemdemirci.github.io" target="_blank" style="font-size: 28px; line-height: 0.5;"> Personal Website</a>
+</h1>
+
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
+{{< fa brands github >}} <a href = "http://github.com/sinemdemirci" target="_blank"  style="font-size: 28px; line-height: 0.5;">sinemdemirci</a>
+</h1>
+
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
+{{< fa envelope >}} <a href = "mailto:sdemirci@calpoly.edu" style="font-size: 28px; line-height: 0.5;">sdemirci@calpoly.edu</a>
+</h1>
+
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="text-align: center"}
+
+**Grader**
+
+::: {style="text-align: left"}
+<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">
+Kristina Mee Benbrooks
+</h1>
+
+<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
+{{< fa envelope >}} <a href = "mailto:kbenbroo@calpoly.edu" style="font-size: 28px; line-height: 0.5;">kbenbroo@calpoly.edu</a>
+</h1>
+
+
+:::
+:::
+:::
+::::
+
+
+## Today's Menu
+
+::: {style="font-size: 32px"}
+
+
+In this lecture, I will be briefly talking about
+
+1. Course Website and Syllabus
+2. What is Life Science?
+3. What is Statistics?
+4. Statistics and Life Science
+5. Sustainable Development Goals
+7. To-do list for this week
+
+
+
+:::
+
+## 
+### Course Website and Syllabus
+
+::: {style="font-size: 32px"}
+
+<br>
+
+__Course Website:__ We will use our <a href="https://sinemdemirci.github.io/stat218-wi24/" target="_blank">course website</a> as the main hub for accessing essential resources throughout the duration of the course.
+
+__Canvas:__ We will use Canvas as a supplementary platform for uploading assignments, delivering announcements, and facilitating collaborative discussions.
+
+__Syllabus:__ - I've created three versions for our syllabus   
+  - <a href="https://canvas.calpoly.edu/" target="_blank">Canvas</a> version  
+  - <a href="https://sinemdemirci.github.io/stat218-wi24/syllabus.pdf" target="_blank">PDF</a> version   
+  - <a href="https://sinemdemirci.github.io/stat218-wi24/" target="_blank">Course Website</a> 
+:::
+
+## What is Life Science?
+
+::: {.incremental}
+::: {layout-nrow=1}
+
+<a title="Plumb, Charles S. (Charles Sumner), 1860-1939, No restrictions, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Beginnings_in_animal_husbandry_(1912)_(20173946130).jpg"><img width="256" alt="Beginnings in animal husbandry (1912) (20173946130)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Beginnings_in_animal_husbandry_%281912%29_%2820173946130%29.jpg/128px-Beginnings_in_animal_husbandry_%281912%29_%2820173946130%29.jpg"></a>
+
+<a title="Bull; Cuvier, Georges; Gray, George Robert; Gray, John Edward; Griffith, Edward; Pidgeon, Edward.; Smith, Charles Hamilton; Westwood, J. O., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:The_animal_kingdom_(Plate)_(6217556094).jpg"><img width="256" alt="The animal kingdom (Plate) (6217556094)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/The_animal_kingdom_%28Plate%29_%286217556094%29.jpg/128px-The_animal_kingdom_%28Plate%29_%286217556094%29.jpg"></a>
+
+<a title="Hill, Janet McKenzie, 1852-1933, ed;
+
+Boston Cooking School (Boston, Mass.), No restrictions, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:The_Boston_Cooking_School_magazine_of_culinary_science_and_domestic_economics_(1905)_(14773284755).jpg"><img width="256" alt="The Boston Cooking School magazine of culinary science and domestic economics (1905) (14773284755)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/The_Boston_Cooking_School_magazine_of_culinary_science_and_domestic_economics_%281905%29_%2814773284755%29.jpg/128px-The_Boston_Cooking_School_magazine_of_culinary_science_and_domestic_economics_%281905%29_%2814773284755%29.jpg"></a>
+
+
+:::
+:::
+
+## What is Life Science?
+
+::: {layout-nrow=1}
+
+
+<a title="Thomas Rowlandson
+, CC0, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Chemical_Lectures_MET_DP884080.jpg"><img width="1028" alt="Chemical Lectures MET DP884080" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Chemical_Lectures_MET_DP884080.jpg/256px-Chemical_Lectures_MET_DP884080.jpg"></a>
+
+<a title="HarDNox, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Periodic_table_ru.svg"><img width="512" alt="Periodic table ru" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Periodic_table_ru.svg/512px-Periodic_table_ru.svg.png"></a>
+
+:::
+
+## What is Life Science?
+
+::: {layout-nrow=1}
+
+<a title="NASA Earth Observatory images by Joshua Stevens, using MODIS data from NASA EOSDIS/LANCE and GIBS/Worldview, Fire Information for Resource Management System (FIRMS) data from NASA EOSDIS, and data from the Global Fire Emissions Database (GFED), Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Amazon_fire_satellite_image.png"><img width="512" alt="Amazon fire satellite image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Amazon_fire_satellite_image.png/512px-Amazon_fire_satellite_image.png"></a>
+
+<a title="Fry72 Karel Frydrýšek, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Baletka,_En_pointe,_Biomechanika,_Silov%C3%BD_rozbor,_Metoda_%C5%99ezu.png"><img width="1028" alt="Baletka, En pointe, Biomechanika, Silový rozbor, Metoda řezu" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Baletka%2C_En_pointe%2C_Biomechanika%2C_Silov%C3%BD_rozbor%2C_Metoda_%C5%99ezu.png/256px-Baletka%2C_En_pointe%2C_Biomechanika%2C_Silov%C3%BD_rozbor%2C_Metoda_%C5%99ezu.png"></a>
+:::
+
+## What is Life Science?
+
+::: {layout-nrow=1}
+
+<a title="Taciara Zborowski Horst, CC0, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:An%C3%A1lise_f%C3%ADsica_do_solo.jpg"><img width="512" alt="Análise física do solo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/An%C3%A1lise_f%C3%ADsica_do_solo.jpg/512px-An%C3%A1lise_f%C3%ADsica_do_solo.jpg"></a>
+
+<a title="Earth Science and Remote Sensing Unit, Lyndon B. Johnson Space Center, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:ISS014-E-18726_-_View_of_Western_Australia.jpg"><img width="512" alt="ISS014-E-18726 - View of Western Australia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/ISS014-E-18726_-_View_of_Western_Australia.jpg/512px-ISS014-E-18726_-_View_of_Western_Australia.jpg"></a>
+:::
+
+## What is Life Science?
+::: {layout-nrow=1}
+
+<a title="The U.S. Food and Drug Administration, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:FDA_Center_for_Food_Safety_%26_Applied_Nutrition_(CFSAN)_6542_(8755982420).jpg"><img width="512" alt="FDA Center for Food Safety &amp; Applied Nutrition (CFSAN) 6542 (8755982420)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/FDA_Center_for_Food_Safety_%26_Applied_Nutrition_%28CFSAN%29_6542_%288755982420%29.jpg/512px-FDA_Center_for_Food_Safety_%26_Applied_Nutrition_%28CFSAN%29_6542_%288755982420%29.jpg"></a>
+
+<a title="The U.S. Food and Drug Administration, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:FDA_Center_for_Food_Safety_%26_Applied_Nutrition_(CFSAN)_6975_(8754348757).jpg"><img width="512" alt="FDA Center for Food Safety &amp; Applied Nutrition (CFSAN) 6975 (8754348757)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/FDA_Center_for_Food_Safety_%26_Applied_Nutrition_%28CFSAN%29_6975_%288754348757%29.jpg/512px-FDA_Center_for_Food_Safety_%26_Applied_Nutrition_%28CFSAN%29_6975_%288754348757%29.jpg"></a>
+:::
+- Remember, scientists don't always have to be in a lab conducting experiments. They can work from anywhere, at any time, and may come from all walks of life.
+
+
+## What is Statistics?
+::: columns
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+::: nonincremental
+::: fragment
+
+ <a href="https://www.calpoly.edu/major/statistics" target="_blank">**How Does Cal Poly Statistics Define Statistics?**</a>
+ 
+ - Statistics is the science of collecting, organizing, analyzing and interpreting data using visualizations and models to help others make informed decisions. Statisticians find meaning in the data by looking at representative samples in order to make inferences about the whole. Statistics provides the foundation for data science and is important in many fields as different as retail sales, insurance and scientific research.
+
+:::
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: nonincremental
+::: {style="font-size: 24px"}
+::: fragment
+Another Perspective for Statistics
+<a title="U3175780, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Uncertainty_venn_diagram.png"><img width="1028" alt="Uncertainty venn diagram" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Uncertainty_venn_diagram.png"></a>
+
+Uncertainty Venn Diagram
+
+:::
+:::
+:::
+:::
+:::
+
+
+## Statistics and Life Science
+::: {style="font-size: 28px"}
+::: {.incremental}
+
+From *The Rise of Statistical Thinking, 1820 - 1900*
+
+
+- "Only through their successful application to the refractory but rich problems of the social and biological sciences did the probabilistic techniques of error analysis grow into the powerful and flexible method of analysis that we know as mathematical statistics." (Porter, 2020, p.4) 
+
+- "The further development of statistical mathematics was, until the end of the nineteenth century, largely the result of work in other natural and social scientific disciplines." (p.7) 
+
+:::
+:::
+
+## Sustainable Development Goals
+
+<a title="United Nations, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Sustainable_Development_Goals.png"><img width="4096" alt="Sustainable Development Goals" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sustainable_Development_Goals.png/4096px-Sustainable_Development_Goals.png"></a>
+
+## Create Your Groups!
+::: {style="font-size: 24px"}
+
+- We will have 8 lab sessions, each followed by a corresponding lab assignment.  
+  - Lab sessions will be conducted in groups, and the lab assignments will also be group projects.  
+  - This means that you will submit your lab assignments as a group.  
+  - **Each group is composed of 3-5 students** to work and complete the labs together both in the class and after the class.
+    - Once the groups are determined, __NO CHANGES ARE ALLOWED__ without prior notification to the instructor.
+
+- The due dates will be determined based on the day of the lab sessions, and I will provide advance notice of these deadlines.
+
+- **Important:** Please refrain from including the names of group members who did not participate. In the event of absent students, they must either complete the lab assignment individually or coordinate with their group members to complete it together as a group project.
+
+:::
+
+## 
+### Don't Forget to Upload Your 1^st^ Week Assignment
+
+::: {style="font-size: 32px"}
+
+- Please write a short paragraph on the life science and statistics. 
+- And please do not ask ChatGPT, I just want to see your description.
+- Yes, it will be graded.
+
+
+:::
+
+## Have a Great Weekend!
+
+## References
+::: {style="font-size: 24px"}
+
+1. Visuals were taken from Wikimedia Common. By clicking the visuals, you can access the original versions!
+
+2. Porter, T. M. (2020). The Rise of Statistical Thinking, 1820–1900. Princeton University Press. https://doi.org/10.2307/j.ctvxcrz1v
+:::
