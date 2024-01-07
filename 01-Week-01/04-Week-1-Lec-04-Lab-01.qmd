@@ -1,0 +1,328 @@
+---
+title: "Hello Quarto, This Is Me!"
+subtitle: "STAT 218 - Week 1, Lab 1"
+date: "2023-09-28"
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## Today's Menu
+
+::: {style="font-size: 28px"}
+
+Today we will learn
+
+- What is R?  
+- What is RStudio?  
+- What is Quarto?  
+- Panes in RStudio  
+- First Coding Experience  
+  - Hello World!   
+  - Creating an Object   
+  - Running some functions   
+- How to Get Help  
+- How to Install a Package
+
+
+:::
+
+## R and RStudio
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="text-align: center; font-size: 10px"}
+
+
+
+<a title="Hadley Wickham and others at RStudio, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:R_logo.svg"><img width="256" alt="R logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/512px-R_logo.svg.png"></a>  
+
+
+<a href="https://commons.wikimedia.org/wiki/File:R_logo.svg">Hadley Wickham and others at RStudio</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
+
+<br/><br/>
+<br/><br/>
+
+
+<a title="RStudio, Inc., Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:RStudio_logo_flat.svg"><img width="300" alt="RStudio logo flat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/512px-RStudio_logo_flat.svg.png"></a>
+
+<a href="https://commons.wikimedia.org/wiki/File:RStudio_logo_flat.svg">RStudio, Inc.</a>, Public domain, via Wikimedia Commons
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="text-align: right; font-size: 24px"}
+
+- **R** is a computer language.
+
+- **R** is an environment for statistical computing and graphics.
+
+  - **R** provides a wide variety of statistical and graphical techniques.
+  
+- **R** is a free open source software
+
+<br/><br/>
+
+- **RStudio** is an *integrated development environment* (IDE) for **R**
+- **RStudio** has four (for this week, it is three) main panes each in a quadrant of your screen
+
+:::
+:::
+:::
+
+
+## What is Quarto Document?
+::: {style="font-size: 30px"}
+::: fragment
+Quarto is...
+
+- an open-source scientific and technical publishing system
+- a multi-language, next-generation version of R Markdown.
+- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of Word, Google Docs)_
+- To learn more about Quarto see <https://quarto.org>.
+:::
+::: fragment
+::: callout-tip
+- You can create your own Quarto document by clicking `File > New File > Quarto Document`
+
+- Let's try to create our first Quarto document!
+:::
+:::
+:::
+
+## Creating a Quarto Document
+
+::: {style="text-align: center; font-size: 23px"}
+
+<img src="img/new-quarto.png" alt="Pane Layout in RStudio" style="width: 2500px;">
+
+How to Create a New Quarto Document
+:::
+
+## 
+
+![](img/panes-in-R.png)
+
+
+## What Can We Do with RStudio?
+<br/><br/>
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="text-align: right; font-size: 10px"}
+
+<div style="padding-top:56.250%;position:relative;"><iframe src="https://gifer.com/embed/77OG" width="100%" height="100%" style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe></div><p><a href="https://gifer.com">via GIFER</a></p>
+  
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="text-align: right; font-size: 32px"}
+<br/><br/>
+
+  - Everything we need to do for this class and beyond!
+  
+:::
+:::
+:::
+  
+
+
+
+## Say, Hello World!
+::: {style="font-size: 28px"}
+
+- **hello world** is a phrase that most programmers use when they first begin programming in any language. 
+  - Let's write our first **"hello world!"** in the __Console Pane__ together.
+
+```{r}
+#| echo: true
+#| output: false
+print("hello world!")
+
+```
+
+::: fragment
+
+![](img/console.png)
+:::
+:::
+
+## Let's Create An Object
+
+::: {style="text-align: left; font-size: 36px"}
+
+<br/><br/>
+
+<span style="font-size: smaller;">We create an object by using "<-" called as "Object Assignment Operator"</span>
+
+  |               | Windows        | Mac              |
+  |---------------|----------------|------------------|
+  | Shortcut      | Alt + -        | Option + -       |
+
+
+<br/><br/>
+
+
+```{r}
+#| echo: true
+#| output: true
+
+wedding_year <- 2006
+wedding_year
+
+```
+
+:::
+
+## Let's Create An Object and Play
+
+::: {style="text-align: center; font-size: 28px"}
+<br/><br/>
+
+```{r}
+#| echo: true
+#| output: true
+
+wedding_year <- 2006
+wedding_year
+
+```
+
+
+```{r}
+#| echo: true
+#| output: true
+
+wedding_anniversary <- 2023 - wedding_year
+wedding_anniversary
+```
+
+<br/><br/>
+
+```{r}
+#| echo: true
+#| output: true
+#| error: true
+
+wedding_Anniversary
+```
+
+As you can see, R is case-sensitive!
+
+:::
+
+## Vocabulary Section
+
+
+```{r}
+#| eval: false
+#| echo: true
+
+do(something)
+
+```
+::: {style="text-align: center; font-size: 28px"}
+
+`do()` is a function;
+
+`something` is the argument of the function.
+:::
+
+
+```{r}
+#| eval: false
+#| echo: true
+do(something, colorful) # I can put here a comment by using hashtag
+```
+
+::: {style="text-align: center; font-size: 28px"}
+
+`do()` is a function;   
+`something` is the first argument of the function;   
+`colorful` is the second argument of the function.  
+
+R **ignores** comments if you put **#** like above
+:::
+
+<br/><br/>
+
+::: {style="text-align: left; font-size: 18px"}
+*I love {{< fa link >}} <a href="https://www.minedogucu.com/" target="_blank">**Dr. Dogucu's**</a>  teaching strategy to teach students the basics of coding. This is how she explains the idea of coding. I am using some of her strategies during this session.*
+:::
+
+## Let's try some functions!
+
+::: {.columns}
+::: {.column width="40%"}
+
+<div class="tenor-gif-embed" data-postid="15996460" data-share-method="host" data-aspect-ratio="1.33891" data-width="100%"><a href="https://tenor.com/view/roller-coaster-under-the-sea-we-spongebob-patrick-gif-15996460">Roller Coaster Under The Sea GIF</a>from <a href="https://tenor.com/search/roller+coaster-gifs">Roller Coaster GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+:::
+
+::: {.column width="60%"}
+::: {style="text-align: right; font-size: 24px"}
+
+```{r}
+#| echo: true
+#| output: true
+
+wedding_years <- c(2006, 2020, 1984)
+wedding_years
+  
+```
+```{r}
+#| echo: true
+#| output: true
+
+wedding_years <- c(wedding_year, 2020, 1984)
+wedding_years
+  
+```
+```{r}
+#| echo: true
+#| output: true
+
+names <- c("Me", "My Sister", "My Parents")
+names
+
+data.frame(name = names, wedding_year = wedding_years)
+  
+```
+
+:::
+:::
+:::
+
+##
+#### What if Dr. Demirci is not around & I need help?
+
+![](img/help-tab.png)
+
+
+## 
+### How Can I Install a Package and Use It?
+::: {style="text-align: left; font-size: 24px"}
+
+- R users can create/contribute packages, and they are for free! 
+
+- For this lab, and many others in the future, we will use the following:
+
+  - The `tidyverse` “umbrella” package which has many different R packages for data wrangling and data visualization
+  -   The `openintro` R package is our second textbook's package and we will use this for our lab sessions.
+  - Let's download them!
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("tidyverse")
+install.packages("openintro")
+  
+```
+:::
