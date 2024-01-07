@@ -1,0 +1,180 @@
+---
+title: "Random Sampling"
+subtitle: "STAT 218 - Week 1, Lecture 2"
+date: "2023-09-26"
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## Today's Menu
+
+::: {style="font-size: 32px"}
+
+
+In this lecture, I will be briefly talking about
+
+1. FAQ From the Last Lecture
+2. Incomplete Parts of Yesterday
+3. An Introduction to Random Sampling
+
+
+
+:::
+
+## From the Last Lecture - I
+
+::: {style="font-size: 28px"}
+
+- Where can I get a copy of this book?
+  - There are few options that I found
+    -  {{< fa link >}} <a href="http://lib.calpoly.edu/search-and-find/course-reserves/" target="_blank">**Course Reserves**</a>
+    - {{< fa link >}} <a href="https://www.pearson.com/en-us/subject-catalog/p/statistics-for-the-life-sciences/P200000006339/9780137515011" target="_blank">**Pearson**</a> - you can subscribe for 4 months
+    - **Cal Poly Textbook Facebook page:** Rumor is that there is such a Facebook page where students sell textbooks at low prices. 
+    
+:::
+
+  
+## Random Sampling
+::: {style="font-size: 32px"}
+
+- We have talked about the steps of how to design a study in the last lecture.
+  - Among these steps, we decided that there is a need to have a data-gathering methods to address our research question with data.
+  - We also agreed that there should be a representative sample to be able to make inference about our population of interest.
+- Let's dive into these terms.
+
+:::
+
+## Population and Sample
+:::: {.columns}
+::: {.column width="60%"}
+::: {style="text-align: center; font-size: 24px"}
+
+```{=html}
+<img src="img/population-sample.jpg" width="700px" style="max-height: 600px; margin-top: 5px; border: 1px solid whitesmoke; padding: 5px;">
+
+```
+- **population**: consists of all subjects/participants/observational unit of interest (e.g., all squirrels in Cal Poly)
+:::
+:::
+
+::: {.column width="40%"}
+::: {style="text-align: center; font-size: 24px"}
+
+- **sample**: a subset of a population with size *n*.
+- Generally, we would like to *estimate* something or *make inferences* about something that we want to know by selecting a sample from the population of interest.
+
+- **e.g.** Eighteen (*n* = 18) squirrels observed around Centennial Lawn.
+
+:::
+:::
+:::
+
+## Simple Random Sample
+::: {style="font-size: 32px"}
+
+If a sample is determined through simple random sampling, it means that 
+
+- Every item, subject, specimen, or observational unit in the population has an equal chance of being selected in that sample. 
+ - The selection of these members of the sample are chosen independently of each other.
+
+
+:::
+
+## How to Choose A Random Sample
+::: {style="font-size: 32px"}
+
+To be able to gain benefit from employing randomness, we generally use tools to eliminate bias.
+
+ Here are the steps for choosing a random sample of *n* observational units from a population of interest.
+ 
+ - Determine the **sampling frame**: Give a unique ID number for each member (e.g., from 01 to 50).
+ - Start reading numbers from a Random Digits Table or a computer.
+ - Ignore any number that is not present in your population (e.g., 72)
+ - Ignore any repeated occurrence of the same number.
+ - Continue until the intended sample size is reached.
+
+:::
+
+## Employing Randomness
+::: {style="font-size: 32px"}
+OR
+
+* Let's play with our {{< fa link >}} <a href="https://www.rossmanchance.com/applets/2021/randomnumbers/GenRandom01.htm" target="_blank">**applet**</a> 
+
+
+:::
+
+## Practical Concerns
+::: {style="font-size: 32px"}
+
+- In many cases, choosing and implementing simple random sample is either difficult or impossible
+  - What should we do, then?
+  - How can we label ALL the squirrels in Cal Poly?
+
+:::
+
+
+## 
+### Nonsimple Random Sampling Methods
+
+::: {style="font-size: 24px"}
+
+- Of course, there are other random sampling options that are not simple. Two of them are:
+
+  - **Random cluster sampling:** Remember that we gave a unique ID number for each member (e.g., from 01 to 50)
+    - In random cluster sampling, unique ID numbers are assigned to clusters or groups of observational units (e.g., from 01 to 50), and then all the observational units in those clusters are recruited for the study.
+
+  - **Stratified random sampling:** Our population of interest may consists of various **strata** (e.g., age groups, sex, geographical region, grade levels of students). 
+    - After determining the strata, multiple simple random samples are drawn from each stratum, and these multiple samples **collectively** represent a representative sample of the population of interest.
+
+:::
+
+
+## Stratified vs Cluster Sampling
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="text-align: center; font-size: 18px"}
+
+<a title="Dan Kernler, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG"><img width="512" alt="Stratified sampling" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Stratified_sampling.PNG"></a>
+
+<a href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG">Dan Kernler</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="text-align: center; font-size: 18px"}
+
+<a title="Dan Kernler, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG"><img width="512" alt="Cluster sampling" src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cluster_sampling.PNG"></a>
+
+<a href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG">Dan Kernler</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
+
+:::
+:::
+:::
+
+
+## 
+### Sampling Error vs Nonsampling Errors
+::: {style="font-size: 24px"}
+
+- **Sampling Error**: The discrepancy between the sample and the population of interest.
+  - It is crucial to quantify this because that makes statistics one of the backbones of scientific thinking.
+  - There will always be a sampling error BUT
+    - If we use some nonrandom sampling techniques, sampling error will become unpredictable **(sampling bias)**
+- **Nonsampling Error**: An error caused by other factors (e.g.,wording of the questions in a questionnaire)
+  - *nonresponse bias*: e.g., bias occurs because of participants who are not responding some of the questions or not returning a written survey.
+  - *missing data*: e.g., experimental living organisms may die during the experiment, human subjects fail to participate in some/all of the sessions of a treatment group.
+  - ...
+
+:::
+
+
+  
+
