@@ -97,5 +97,146 @@ __Question of the Day:__
 
 - Ever wondered what kinds of evidence scientists collect?
 
+## Discuss These Cases
+::: {style="font-size: 28px"}
+
+- On a chilly day, I didn't dress warmly, and soon after, I caught the flu.  
+- My friend’s dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work. _(from Diez et al., 2022)_  
+- I met two students who took STAT 218 more than once, so this course must be very difficult.
+
+__Possible questions to be considered:__
+
+1. Is there any compelling evidence? 
+2. Could those events be coincidences? 
+3. Are there any other explanations?
 
 
+:::
+
+## Anectodal Evidence
+::: {style="font-size: 28px"}
+
+- The evidences in those cases are labeled as anecdotal evidences.  
+- An __anecdote__ is a concise story or illustration of a captivating event, as illustrated in our cases.
+
+::: {.callout-important}
+
+- Be cautious when handling data collected in a haphazard manner.
+
+- While such evidence may be authentic and verifiable, it often represents exceptional cases rather than forming a reliable basis for general conclusions.
+
+:::
+:::
+
+## Discuss This Case
+
+![](img/observational.png)
+
+::: {style="font-size: 18px"}
+
+_(From Samuels et al. (2016, p.8))_
+:::
+
+## Observational Studies
+
+::: {style="font-size: 28px"}
+
+- Example 1.2.2 illustrates an __observational study__.
+
+  - In an observational study, the researcher systematically collects data from subjects as an observer, __without manipulating conditions.__
+
+- A systematic review of all data serves as a barrier to selectively observing and reporting information that aligns with a predetermined perspective.
+
+::: {.callout-important}
+
+
+- **The Presence Confounding Variables:** Observational studies may lead to misinterpretations due to the presence of confounding variables.
+
+- In this study, having AIDS may influence the size of the anterior commissure. The effect of AIDS is confounded with the effect of sexual orientation.
+
+- The context in which data collected is crucial in statistics. It alerts us to potential effects of other factors.
+
+- __Data analysis without reference to context is considered meaningless.__
+
+:::
+:::
+
+## Another Type of Evidence
+::: {style="font-size: 28px"}
+
+__Light and exam performance.__ A study is designed to test the effect of light level on exam performance of students. 
+The treatments are fluorescent overhead lighting, yellow overhead lighting, no overhead lighting (only desk lamps).
+The researchers randomly assigned students to each light level
+
+__Possible questions to be considered:__
+
+1. Is there any compelling evidence? 
+2. Could those events be coincidences? 
+3. Are there any other explanations?
+
+
+:::
+
+## Experimental Studies
+
+::: {style="font-size: 28px"}
+
+The design of this experiment allows for the investigation of the interaction between two factors:
+
+- light level and exam performance. 
+
+- In this scenario, researchers applied the conditions—specifically, different light levels to the subjects, which were _Homo sapiens_.
+
+- By randomly allocating treatments to the subjects, we can address the issue of confounding that complicates observational studies, thereby expanding the scope of conclusions we can draw from the research.
+
+- **Randomized Experiments as the Pinnacle in Scientific Inquiry:** Randomized experiments are often regarded as the pinnacle in scientific investigation due to their ability to overcome confounding.  
+  - However, it's crucial to acknowledge that they are not without their own set of challenges.
+:::
+
+## Experimental Studies
+
+::: {style="font-size: 28px"}
+
+Randomized experiments are generally built on four principles.
+
+1. Controlling  
+2. Randomization  
+3. Replication   
+4. Blocking
+
+:::
+
+
+## 
+### Reducing Bias in Experimental Studies
+
+We can reduce bias in experimental studies by employing:
+
+- Treatment/Control Group  
+  - Placebo Group   
+  - Blinding / Double Blinding
+
+## Placebo
+::: {style="font-size: 28px"}
+
+- Placebos are commonly administered to human subjects in experiments, often in the form of an inert substance like a sugar pill.
+  
+- The well-documented placebo response illustrates that individuals frequently exhibit positive reactions to any treatment, even when it lacks active ingredients.
+
+- In many cases, a placebo leads to a subtle yet genuine improvement in patients, a phenomenon known as the _placebo effect._
+
+  - However, when implementing a placebo control, it is crucial for subjects to remain unaware of their group assignment—whether they are receiving the active treatment or the inert placebo.
+  
+:::
+
+
+## Blinding/Double-Blinding
+
+::: {style="font-size: 28px"}
+
+- If researchers keep patients unaware of their treatment, the study is termed __blind__.
+
+- When both researchers and patients remain unaware of the individuals in the treatment groups, it is referred to as __double-blind__.
+
+- __Question:__ What could be potential reasons for implementing blinding?
+:::

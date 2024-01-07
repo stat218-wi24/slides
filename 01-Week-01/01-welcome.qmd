@@ -108,7 +108,7 @@ In this lecture, I will be briefly talking about
 
 <br>
 
-__Course Website:__ We will use our <a href="https://sinemdemirci.github.io/stat218-wi24/" target="_blank">course website</a> as the main hub for accessing essential resources throughout the duration of the course.
+__Course Website:__ We will use our <a href="https://stat218-wi24.github.io/website/" target="_blank">course website</a> as the main hub for accessing essential resources throughout the duration of the course.
 
 __Canvas:__ We will use Canvas as a supplementary platform for uploading assignments, delivering announcements, and facilitating collaborative discussions.
 
@@ -246,8 +246,9 @@ From *The Rise of Statistical Thinking, 1820 - 1900*
 ::: {style="font-size: 32px"}
 
 - Please write a short paragraph on the life science and statistics. 
-- And please do not ask ChatGPT, I just want to see your description.
-- Yes, it will be graded.
+  - And please do not ask ChatGPT, I just want to see your description.
+  - Yes, it will be graded.
+- You will have other assignments too. Check the course website!
 
 
 :::
