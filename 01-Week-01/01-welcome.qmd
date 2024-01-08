@@ -240,7 +240,7 @@ From *The Rise of Statistical Thinking, 1820 - 1900*
 ::: {style="font-size: 32px"}
 
 - Please write a short paragraph on the life science and statistics. 
-  - And please do not ask ChatGPT, I just want to see your description.
+  - And please do not use any reference or AI tools, I just want to see your description.
   - Yes, it will be graded.
 - You will have other assignments too. Check the course website!
 
