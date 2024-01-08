@@ -36,16 +36,17 @@ __Instructor__
 </h1>
 
 <h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
-{{< fa link >}} <a href = "http://sinemdemirci.github.io" target="_blank" style="font-size: 28px; line-height: 0.5;"> Personal Website</a>
-</h1>
-
-<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
-{{< fa brands github >}} <a href = "http://github.com/sinemdemirci" target="_blank"  style="font-size: 28px; line-height: 0.5;">sinemdemirci</a>
-</h1>
-
-<h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
 {{< fa envelope >}} <a href = "mailto:sdemirci@calpoly.edu" style="font-size: 28px; line-height: 0.5;">sdemirci@calpoly.edu</a>
 </h1>
+
+::: {style="font-size: 30px; text-align: left"}
+
+__Instructor's office hours:__  
+__Tue:__ 08:30 – 09:20 am _(In-Office)_  
+__Wed:__ 10:40 – 11:30 pm _(Zoom)_ <a href = "https://calpoly.zoom.us/j/89392427908" target = blank>{{< fa link >}}</a>  
+__Thu:__ 09:30 – 11:10 am _(In-Office)_ 
+
+:::
 
 :::
 :::
@@ -57,26 +58,19 @@ __Instructor__
 
 __Grader__
 
+```{=html}
+<img src="img/kristina.jpg" alt="Portrait of a woman with straight, long hair and brown eyes, framed by lush green leaves in the background."
+  style="width: 200px; height: 200px; border-radius: 100%; margin-top: 5px; border: 1px solid whitesmoke; padding: 5px;">
+
+```
+
 ::: {style="text-align: center"}
-<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">Kristina Mee Benbrooks</h1>
+<h1 style="font-size: 30px; margin-top: 20px;line-height: 0.5;">Kristina Mee Benbrooks (she/her)</h1>
 
 <h1 style="font-size: 28px; margin-top: 20px;line-height: 0.5;">
 {{< fa envelope >}} <a href = "mailto:kbenbroo@calpoly.edu" style="font-size: 28px; line-height: 0.5;">kbenbroo@calpoly.edu</a>
 </h1>
 
-
-<br>
-<br>
-<br>
-
-::: {style="font-size: 30px; text-align: left"}
-
-__Instructor's office hours:__  
-__Tue:__ 08:30 – 09:20 am _(In-Office)_  
-__Wed:__ 10:40 – 11:30 pm _(Zoom)_ <a href = "https://calpoly.zoom.us/j/89392427908" target = blank>{{< fa link >}}</a>  
-__Thu:__ 09:30 – 11:10 am _(In-Office)_ 
-
-:::
 :::
 :::
 :::
