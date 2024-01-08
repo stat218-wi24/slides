@@ -1,7 +1,7 @@
 ---
-title: "Hello Quarto, This Is Me!"
+title: "Hello R, This Is Me!"
 subtitle: "STAT 218 - Week 1, Lab 1"
-date: "2023-09-28"
+date: today
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
   revealjs:
@@ -69,45 +69,11 @@ Today we will learn
 <br/><br/>
 
 - **RStudio** is an *integrated development environment* (IDE) for **R**
-- **RStudio** has four (for this week, it is three) main panes each in a quadrant of your screen
+- **RStudio** has four main panes each in a quadrant of your screen
 
 :::
 :::
 :::
-
-
-## What is Quarto Document?
-::: {style="font-size: 30px"}
-::: fragment
-Quarto is...
-
-- an open-source scientific and technical publishing system
-- a multi-language, next-generation version of R Markdown.
-- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of Word, Google Docs)_
-- To learn more about Quarto see <https://quarto.org>.
-:::
-::: fragment
-::: callout-tip
-- You can create your own Quarto document by clicking `File > New File > Quarto Document`
-
-- Let's try to create our first Quarto document!
-:::
-:::
-:::
-
-## Creating a Quarto Document
-
-::: {style="text-align: center; font-size: 23px"}
-
-<img src="img/new-quarto.png" alt="Pane Layout in RStudio" style="width: 2500px;">
-
-How to Create a New Quarto Document
-:::
-
-## 
-
-![](img/panes-in-R.png)
-
 
 ## What Can We Do with RStudio?
 <br/><br/>
@@ -125,13 +91,66 @@ How to Create a New Quarto Document
 ::: {style="text-align: right; font-size: 32px"}
 <br/><br/>
 
-  - Everything we need to do for this class and beyond!
+Everything we need to do for this class and beyond!
   
 :::
 :::
 :::
   
+## What is Quarto Document?
+::: {style="font-size: 30px"}
 
+Quarto is...
+
+- an open-source scientific and technical publishing system
+- a multi-language, next-generation version of R Markdown.
+- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of Word, Google Docs)_   
+
+::: fragment
+::: callout-important
+
+- R is the programming language for statistical computing  
+- RStudio is the IDE that facilitates R programming  
+- Quarto is a document format that combines text and code
+
+:::
+:::
+
+:::
+
+## Creating a Quarto Document
+::: {style="font-size: 30px"}
+
+<br>
+
+- We will use Quarto to produce (render!) PDF documents for our lab assignments, take-home midterms, and final exams where we integrate both text and code.
+<br>
+
+::: callout-tip
+- You can create your own Quarto document by clicking `File > New File > Quarto Document`
+
+- Let's try to create our first Quarto document!
+
+:::
+:::
+
+## Creating a Quarto Document
+
+::: {style="text-align: center; font-size: 23px"}
+
+<img src="img/new-quarto.png" alt="Pane Layout in RStudio" style="width: 2500px;">
+
+How to Create a New Quarto Document
+:::
+
+## 
+
+![](img/panes-in-R.png)
+
+## Console Pane
+
+- This week, we will use __Console Pane__ to grasp the basics of coding.  
+  - Next week, we will use __Source Pane__ to delve into Quarto document features.
 
 
 ## Say, Hello World!
@@ -140,12 +159,14 @@ How to Create a New Quarto Document
 - **hello world** is a phrase that most programmers use when they first begin programming in any language. 
   - Let's write our first **"hello world!"** in the __Console Pane__ together.
 
+::: fragment
 ```{r}
 #| echo: true
 #| output: false
 print("hello world!")
 
 ```
+:::
 
 ::: fragment
 
@@ -155,11 +176,13 @@ print("hello world!")
 
 ## Let's Create An Object
 
-::: {style="text-align: left; font-size: 36px"}
+::: {style="text-align: left; font-size: 28px"}
 
-<br/><br/>
+<br/>
 
-<span style="font-size: smaller;">We create an object by using "<-" called as "Object Assignment Operator"</span>
+We create an object by using "<-" called as "Object Assignment Operator"
+
+<br>
 
   |               | Windows        | Mac              |
   |---------------|----------------|------------------|
@@ -183,8 +206,9 @@ wedding_year
 ## Let's Create An Object and Play
 
 ::: {style="text-align: center; font-size: 28px"}
-<br/><br/>
+<br/>
 
+::: fragment
 ```{r}
 #| echo: true
 #| output: true
@@ -193,7 +217,11 @@ wedding_year <- 2006
 wedding_year
 
 ```
+:::
 
+<br/>
+
+::: fragment
 
 ```{r}
 #| echo: true
@@ -202,8 +230,11 @@ wedding_year
 wedding_anniversary <- 2023 - wedding_year
 wedding_anniversary
 ```
+:::
 
-<br/><br/>
+<br/>
+
+::: fragment
 
 ```{r}
 #| echo: true
@@ -213,8 +244,13 @@ wedding_anniversary
 wedding_Anniversary
 ```
 
+:::
+
+::: fragment
+
 As you can see, R is case-sensitive!
 
+:::
 :::
 
 ## Vocabulary Section
@@ -256,17 +292,9 @@ R **ignores** comments if you put **#** like above
 *I love {{< fa link >}} <a href="https://www.minedogucu.com/" target="_blank">**Dr. Dogucu's**</a>  teaching strategy to teach students the basics of coding. This is how she explains the idea of coding. I am using some of her strategies during this session.*
 :::
 
-## Let's try some functions!
+## 
+### Let's try some functions!
 
-::: {.columns}
-::: {.column width="40%"}
-
-<div class="tenor-gif-embed" data-postid="15996460" data-share-method="host" data-aspect-ratio="1.33891" data-width="100%"><a href="https://tenor.com/view/roller-coaster-under-the-sea-we-spongebob-patrick-gif-15996460">Roller Coaster Under The Sea GIF</a>from <a href="https://tenor.com/search/roller+coaster-gifs">Roller Coaster GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-
-:::
-
-::: {.column width="60%"}
-::: {style="text-align: right; font-size: 24px"}
 
 ```{r}
 #| echo: true
@@ -276,6 +304,9 @@ wedding_years <- c(2006, 2020, 1984)
 wedding_years
   
 ```
+
+<br>
+
 ```{r}
 #| echo: true
 #| output: true
@@ -284,6 +315,10 @@ wedding_years <- c(wedding_year, 2020, 1984)
 wedding_years
   
 ```
+
+## 
+### Let's try some functions!
+
 ```{r}
 #| echo: true
 #| output: true
@@ -291,13 +326,18 @@ wedding_years
 names <- c("Me", "My Sister", "My Parents")
 names
 
-data.frame(name = names, wedding_year = wedding_years)
-  
 ```
 
-:::
-:::
-:::
+<br>
+
+```{r}
+#| echo: true
+#| output: true
+
+data.frame(name = names, wedding_year = wedding_years)
+
+```
+
 
 ##
 #### What if Dr. Demirci is not around & I need help?
@@ -317,6 +357,7 @@ data.frame(name = names, wedding_year = wedding_years)
   -   The `openintro` R package is our second textbook's package and we will use this for our lab sessions.
   - Let's download them!
 
+::: fragment
 ```{r}
 #| echo: true
 #| eval: false
@@ -325,4 +366,5 @@ install.packages("tidyverse")
 install.packages("openintro")
   
 ```
+:::
 :::
