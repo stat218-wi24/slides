@@ -58,13 +58,14 @@ In this lecture, I will be briefly talking about
 <img src="img/population-sample.jpg" width="700px" style="max-height: 600px; margin-top: 5px; border: 1px solid whitesmoke; padding: 5px;">
 
 ```
-- **population**: consists of all subjects/participants/observational unit of interest (e.g., all squirrels in Cal Poly)
+
 :::
 :::
 
 ::: {.column width="40%"}
 ::: {style="text-align: center; font-size: 24px"}
 
+- **population**: consists of all subjects/participants/observational unit of interest (e.g., all squirrels in Cal Poly)   
 - **sample**: a subset of a population with size *n*.
 - Generally, we would like to *estimate* something or *make inferences* about something that we want to know by selecting a sample from the population of interest.
 
@@ -129,7 +130,7 @@ OR
   - **Random cluster sampling:** Remember that we gave a unique ID number for each member (e.g., from 01 to 50)
     - In random cluster sampling, unique ID numbers are assigned to clusters or groups of observational units (e.g., from 01 to 50), and then all the observational units in those clusters are recruited for the study.
 
-  - **Stratified random sampling:** Our population of interest may consists of various **strata** (e.g., age groups, sex, geographical region, grade levels of students). 
+  - **Stratified random sampling:** Our population of interest may consists of various **strata** (e.g., age groups, biological sex, geographical region, grade levels of students). 
     - After determining the strata, multiple simple random samples are drawn from each stratum, and these multiple samples **collectively** represent a representative sample of the population of interest.
 
 :::
