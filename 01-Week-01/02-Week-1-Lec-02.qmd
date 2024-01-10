@@ -164,9 +164,7 @@ _(From Samuels et al. (2016, p.8))_
 ## Another Type of Evidence
 ::: {style="font-size: 28px"}
 
-__Light and exam performance.__ A study is designed to test the effect of light level on exam performance of students. 
-The treatments are fluorescent overhead lighting, yellow overhead lighting, no overhead lighting (only desk lamps).
-The researchers randomly assigned students to each light level
+__Light and exam performance.__ A study was designed to test the effect of light levels on the exam performance of students. The treatments included fluorescent overhead lighting, yellow overhead lighting, and no overhead lighting (only desk lamps). The researchers randomly assigned students to each light level and found a discernible difference in exam performance based on the varying light levels.
 
 __Possible questions to be considered:__
 
