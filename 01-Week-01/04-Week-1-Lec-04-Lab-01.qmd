@@ -111,7 +111,9 @@ Quarto is...
 
 - R is the programming language for statistical computing  
 - RStudio is the IDE that facilitates R programming  
-- Quarto is a document format that combines text and code
+- Quarto document is a document type that combines text and code  
+- In short, we will create Quarto documents in RStudio and we will use text and R codes in that Quarto document.
+
 
 :::
 :::
