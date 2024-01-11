@@ -104,7 +104,7 @@ Quarto is...
 
 - an open-source scientific and technical publishing system
 - a multi-language, next-generation version of R Markdown.
-- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of Word, Google Docs)_   
+- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of a word processing tool)_   
 
 ::: fragment
 ::: callout-important
@@ -123,7 +123,7 @@ Quarto is...
 
 <br>
 
-- We will use Quarto to produce (render!) PDF documents for our lab assignments, take-home midterms, and final exams where we integrate both text and code.
+- We will use Quarto to produce (render!) PDF documents for our lab assignments, take-home midterm, and final exams where we integrate both text and code.
 <br>
 
 ::: callout-tip
@@ -185,8 +185,8 @@ We create an object by using "<-" called as "Object Assignment Operator"
 <br>
 
   |               | Windows        | Mac              |
-  |---------------|----------------|------------------|
-  | Shortcut      | Alt + -        | Option + -       |
+  |---------------|:--------------:|:----------------:|
+  | Shortcut      | Alt _and_ -    | Option _and_ -   |
 
 
 <br/><br/>
