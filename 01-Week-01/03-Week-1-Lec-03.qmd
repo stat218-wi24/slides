@@ -69,7 +69,7 @@ In this lecture, I will be briefly talking about
 - **sample**: a subset of a population with size *n*.
 - Generally, we would like to *estimate* something or *make inferences* about something that we want to know by selecting a sample from the population of interest.
 
-- **e.g.** Eighteen (*n* = 18) squirrels observed around Centennial Lawn.
+- **e.g.** Eighteen (*n* = 18) squirrels lived in Cal Poly.
 
 :::
 :::
@@ -144,6 +144,8 @@ OR
 
 <a title="Dan Kernler, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG"><img width="512" alt="Stratified sampling" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Stratified_sampling.PNG"></a>
 
+__Stratified Random Sampling__ 
+
 <a href="https://commons.wikimedia.org/wiki/File:Stratified_sampling.PNG">Dan Kernler</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
 
 :::
@@ -153,6 +155,8 @@ OR
 ::: {style="text-align: center; font-size: 18px"}
 
 <a title="Dan Kernler, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG"><img width="512" alt="Cluster sampling" src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cluster_sampling.PNG"></a>
+
+__Random Cluster Sampling__  
 
 <a href="https://commons.wikimedia.org/wiki/File:Cluster_sampling.PNG">Dan Kernler</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
 
@@ -169,7 +173,8 @@ OR
   - It is crucial to quantify this because that makes statistics one of the backbones of scientific thinking.
   - There will always be a sampling error BUT
     - If we use some nonrandom sampling techniques, sampling error will become unpredictable **(sampling bias)**
-- **Nonsampling Error**: An error caused by other factors (e.g.,wording of the questions in a questionnaire)
+- **Nonsampling Error**: An error caused by other factors rather than sampling error.   
+  - wording of the questions in a questionnaire
   - *nonresponse bias*: e.g., bias occurs because of participants who are not responding some of the questions or not returning a written survey.
   - *missing data*: e.g., experimental living organisms may die during the experiment, human subjects fail to participate in some/all of the sessions of a treatment group.
   - ...
