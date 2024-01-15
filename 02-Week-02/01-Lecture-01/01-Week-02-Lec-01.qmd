@@ -1,0 +1,231 @@
+---
+title: "Chapter 2: Description of Samples and Populations"
+subtitle: "STAT 218 - Week 1, Lecture 4"
+date: "2024-01-16"
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## Today's Menu
+
+In this lecture, we have
+
+- Glossary 
+- Variables 
+- Frequency Distributions   
+  - Summarizing Categorical Data 
+    - Ungrouped Frequency Distribution Table 
+    - Bar Chart 
+  - Summarizing Numerical Data 
+    - Grouped Frequency Distributions
+    - Dotplot 
+    - Histogram 
+
+## 
+### Glossary - Check Your Understanding!
+
+::: {style="font-size: 19px"}
+
+<br/><br/>
+
+|                             |                           |                     |                                |
+|:----------------------------|:--------------------------|:--------------------|--------------------------------|
+| anectodal evidence          | environment pane          | observational study | sampling error                 |
+| climate change              | experimental study        | observational unit  | simple random sampling         |
+| clustered random sampling   | life                      | output pane         | squirrel                       |
+| coding                      | missing data              | population          | stratified random sampling     |
+| console pane                | nonresponse bias          | randomness          | sustainable development goals  |
+| data                        | nonsampling error         | RStudio             | uncertainty                    |
+| data frame                  | object assignment operator| sample              | variability                    |
+| histogram                   | bar chart                 | dotplot             | bar chart
+
+:::
+
+## What is a Variable?
+::: {style="font-size: 32px"}
+
+__Variable:__ It is a characteristics of an observational unit that can be assigned a number or a category.
+
+:::fragment
+![](img\types-of-variables.png)
+:::
+:::
+
+## 
+### Categorical Variables - Nominal & Ordinal
+::: {style="font-size: 30px"}
+
+- __Nominal Variables__ are those which categorized into distinct groups without *any order or hierarchy*
+  - e.g., blood type, color of a flower, sex of a squirrel...
+
+- __Ordinal Variables__ are those which can be ranked in a meaningful way. 
+  - e.g., The stages of a disease
+  - Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree
+  - no credit, partial credit, full credit.
+  - Freshman, Sophomore, Junior, Senior
+
+:::
+
+## Numeric Variables - Discrete
+
+:::{.nonincremental}
+
+- __Discrete Variables__ are those whose possible values can be listed. In other words, there are some spaces between those possible values
+  - Count of bacteria colonies in a petri dish
+  - Number of chromosomes in a cell
+
+:::
+
+## Numeric Variables - Continuous
+
+- __Continuous Variables__ are those that can be measured on a continuous scale.
+  - e.g., weight of a squirrel
+  - Alkaline phosphatase level (U/l) in a blood sample
+  - height of a tree
+
+::: fragment
+::: callout-warning
+The boundary between continuous and discrete variables is not fixed or inflexible.
+:::
+:::
+
+## 
+### Notations
+
+- We employ a symbolic convention to differentiate between a __variable__ and __an observed value of that variable__.
+  - $Y = weight$ (__Variable__)
+  - $y = 12.8$ lb (__Observed Value__)
+
+
+
+
+# Frequency Distributions
+
+## Introduction
+
+
+- A __frequency distribution__ is a representation of the frequency, indicating how often each value appears in a dataset. 
+- This information can be conveyed through tables or, more visually, using a graph.
+
+
+# Summarizing Categorical Data
+
+## A Frequency Distribution Table 
+
+In this section, you will see two examples for summarizing a single categorical variable.
+
+<br>
+
+::: fragment
+```{r}
+#| echo: false
+#| output: true
+#| warning: false
+library(openintro)
+library(tidyverse)
+library(knitr)
+data(babies)
+
+
+babies$smoke_logical <- as.logical(babies$smoke)
+
+frequency_distribution <- table(babies$smoke_logical)
+
+frequency_distribution_df <- as.data.frame(frequency_distribution)
+
+frequency_distribution_df <- rename(frequency_distribution_df, Smoking_Status = Var1, Frequency = Freq)
+
+total_row <- data.frame(Smoking_Status = "Total", Frequency = sum(frequency_distribution_df$Frequency))
+frequency_distribution_df <- rbind(frequency_distribution_df, total_row)
+
+kable(frequency_distribution_df, caption = "Frequency Distribution of Smoking Status")
+
+```
+
+:::
+
+
+## Bar Chart 
+
+A visual representation of categorical data that illustrates the quantity of observations within each category.
+
+```{r}
+#| echo: false
+#| output: true
+#| warning: false
+babies <- babies %>% 
+  mutate(smoke = as.logical(smoke))
+ggplot(data = na.omit(babies), 
+       aes(x = smoke)) +
+  geom_bar()
+```
+
+## Another Example
+
+```{r}
+set.seed(156464654)
+
+likert_data <- data.frame(
+  participant_id = 1:100,
+  likert_response = sample(1:5, 100, replace = TRUE)
+)
+
+likert_data$likert_response_text <- factor(likert_data$likert_response, levels = 1:5, labels = c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"))
+
+likert_frequency <- table(likert_data$likert_response_text)
+likert_frequency_df <- as.data.frame(likert_frequency)
+likert_frequency_df <- rename(likert_frequency_df, Likert_Response = Var1, Frequency = Freq)
+total_row <- data.frame(Likert_Response = "Total", Frequency = sum(likert_frequency_df$Frequency))
+likert_frequency_df <- rbind(likert_frequency_df, total_row)
+kable(likert_frequency_df, caption = "Climate change affects the quality of human life")
+
+```
+
+## 
+
+::: {.panel-tabset group="binwidth" style="font-size: 80%"}
+
+## Ordered (?)
+
+```{r}
+# Create a bar chart
+barplot(likert_frequency, main = "Climate change affects the quality of human life", xlab = "Likert Response", ylab = "Frequency", col = "maroon")
+```
+
+## Ordered
+
+```{r}
+barplot(likert_frequency[order(likert_frequency, decreasing = TRUE)], 
+        main = "Climate change affects the quality of human life", 
+        xlab = "Likert Response", 
+        ylab = "Frequency", 
+        col = "maroon")
+```
+
+
+:::
+
+# Summarizing Numerical Data 
+
+## Grouped Frequency Distributions
+
+![](img/grouped.png)
+
+
+## Histogram 
+
+- A visual representation of the distribution of a dataset.  
+  - The x-axis represents the range of values in the dataset, divided into bins, and the y-axis represents the frequency or count of data points within each bin.
+
+::: fragment
+
+**No Gaps between Bars:** Unlike a bar chart, there are no gaps between the bars in a histogram because the bins are contiguous.
+
+:::
+
+- Histograms provide insights into the underlying distribution of a dataset, helping to identify patterns, detect outliers, central tendency, and variability.
