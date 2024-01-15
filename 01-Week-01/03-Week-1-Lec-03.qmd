@@ -1,7 +1,7 @@
 ---
 title: "Random Sampling"
 subtitle: "STAT 218 - Week 1, Lecture 2"
-date: "2023-09-26"
+date: "2024-01-10"
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
   revealjs:
