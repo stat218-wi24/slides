@@ -1,8 +1,0 @@
----
-title: "Introduction to Quarto"
-format: revealjs
----
-
-## Let's Check Our Learning!
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdNR2cjrU3WQ6WztPpcrWSrjiN2HHeD1AFEbTZ2wRIaLUFmVA/viewform?embedded=true" width="640" height="768" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>

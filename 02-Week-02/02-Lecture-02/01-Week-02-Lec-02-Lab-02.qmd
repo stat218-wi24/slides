@@ -1,0 +1,143 @@
+---
+title: "Introduction to Quarto"
+subtitle: "STAT 218 - Week 2, Lecture 2, Lab 2"
+date: 2024-01-17
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+
+## From the Last Week's Lab
+::: {style="font-size: 30px"}
+
+In our first steps in R, we
+
+- said "Hello World" by using `print()`function
+- created an object by using _object assignment operator_ (<-)
+- created a data frame
+- installed `openintro`and `tidyverse` packages. 
+  - If you did not install those, please install them by using `install.packages()`function
+
+:::
+
+
+## What about This Week?
+::: {style="font-size: 30px"}
+
+This week we will be familiar with
+
+- Creating A STAT-218 Folder in Your Desktop 
+- Creating A New Quarto Document  
+  - Saving this document to your STAT-218 Folder  
+- Filling out the Document  
+  - My First Heading
+  - My Second Heading (Subheading)
+  - My Text
+  - My Code 
+- Rendering The First PDF
+- Your First Homework
+
+:::
+
+## 
+### Task 1: Create A Folder
+
+![](img/folder.png)
+
+## 
+### Task 2: Refresh Your Memory
+::: {style="font-size: 30px"}
+
+__What is Quarto?__ 
+
+Quarto is...
+
+- an open-source scientific and technical publishing system
+- a multi-language, next-generation version of R Markdown.
+- enabling you to combine code and text to create rich outputs, like reports and presentations. _(like an advanced version of a word processing tool)_   
+
+::: fragment
+::: callout-important
+
+- R is the programming language for statistical computing  
+- RStudio is the IDE that facilitates R programming  
+- Quarto document is a document type that combines text and code  
+- In short, we will create Quarto documents in RStudio and we will use text and R codes in that Quarto document.
+
+
+:::
+:::
+
+:::
+
+## Creating a Quarto Document
+::: {style="font-size: 30px"}
+
+<br>
+
+- We will use Quarto to produce (render!) PDF documents for our lab assignments, take-home midterm, and final project where we integrate both text and code.
+<br>
+
+::: callout-tip
+- You can create your own Quarto document by clicking `File > New File > Quarto Document`
+
+- Let's try to create our first Quarto document!
+
+:::
+:::
+
+## Creating a Quarto Document
+
+::: {style="text-align: center; font-size: 23px"}
+
+<img src="img/new-quarto.png" alt="Pane Layout in RStudio" style="width: 2500px;">
+
+How to Create a New Quarto Document
+:::
+
+## Panes in RStudio
+
+![](img/panes-in-R.png)
+
+##
+### A Closer Look into the Quarto Document
+
+![](img/quarto-basics.png)
+
+## 
+### Task 3: Play with Your First Quarto Document
+
+![](img/image-1.png)
+##
+
+![](img/image-2.png)
+
+##
+
+![](img/image-3.png)
+
+
+##
+
+![](img/image-4.png)
+
+
+##
+
+![](img/image-5.png)
+
+
+##
+
+![](img/image-6.png)
+
+
+##
+
+![](img/image-7.png)
