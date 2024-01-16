@@ -21,8 +21,8 @@ In our first steps in R, we
 - said "Hello World" by using `print()`function
 - created an object by using _object assignment operator_ (<-)
 - created a data frame
-- installed `openintro`and `tidyverse` packages. 
-  - If you did not install those, please install them by using `install.packages()`function
+- installed `openintro` and `tidyverse` packages. 
+  - If you did not install those, please install them by using `install.packages()` function.
 
 :::
 
@@ -30,7 +30,7 @@ In our first steps in R, we
 ## What about This Week?
 ::: {style="font-size: 30px"}
 
-This week we will be familiar with
+This week we will do the followings:
 
 - Creating A STAT-218 Folder in Your Desktop 
 - Creating A New Quarto Document  
@@ -111,33 +111,89 @@ How to Create a New Quarto Document
 ![](img/quarto-basics.png)
 
 ## 
-### Task 3: Play with Your First Quarto Document
+#### Task 3: Play with Your First Quarto Document
 
 ![](img/image-1.png)
-##
+
+## 
+#### Delete The Default Content
 
 ![](img/image-2.png)
 
 ##
+#### Add Headings and Text
 
 ![](img/image-3.png)
 
 
+## 
+#### Add A Code Chunk
+
+![](img/image-5.png)
+
+
+## 
+#### Add This Simple Code
+
+![](img/image-6.png)
+
+
 ##
+#### Run the Code Chunk
 
 ![](img/image-4.png)
 
 
 ##
 
-![](img/image-5.png)
-
-
-##
-
-![](img/image-6.png)
-
-
-##
+#### Check Your Document Before Rendering
 
 ![](img/image-7.png)
+
+
+## Rendering a PDF Document
+
+::: {style="font-size: 30px"}
+
+- The Quarto document that we created is a _source file_.
+
+- By rendering this, will have a different _output file_ (e.g., PDF)
+
+
+
+:::
+
+## Rendering a PDF Document
+
+::: {style="font-size: 30px"}
+
+Open your terminal pane and type the following:
+
+
+```{r}
+#| eval: false
+#| echo: true
+
+quarto install tinytex
+
+```
+
+<br>
+
+:::
+
+![](img/image-9.png){width=120%}
+
+## Rendering a PDF Document
+
+![](img/image-10.png)
+## Rendering a PDF Document
+
+![](img/image-8.png)
+
+
+## Lab Assignment 1
+
+- Please upload this PDF document to our Canvas page as __Lab Assignment 1 (Group)__  
+- This will be your first group assignment. 
+- One person from your group can upload this PDF file. 
