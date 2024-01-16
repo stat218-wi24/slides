@@ -24,8 +24,7 @@ In this lecture, we have
     - Ungrouped Frequency Distribution Table 
     - Bar Chart 
   - Summarizing Numerical Data 
-    - Grouped Frequency Distributions
-    - Dotplot 
+    - Grouped Frequency Distributions   
     - Histogram 
 
 :::
