@@ -1,6 +1,6 @@
 ---
 title: "Chapter 2: Description of Samples and Populations"
-subtitle: "STAT 218 - Week 1, Lecture 4"
+subtitle: "STAT 218 - Week 2, Lecture 1"
 date: "2024-01-16"
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
@@ -105,7 +105,29 @@ The boundary between continuous and discrete variables is not fixed or inflexibl
   - $Y = weight$ (__Variable__)
   - $y = 12.8$ lb (__Observed Value__)
 
+## Vocabulary Time!
 
+::: fragment
+__Parameter:__ A number represents the entire population (e.g., population mean). 
+:::
+
+::: fragment
+__Statistic:__ A number calculated from sample data (e.g., sample mean).
+:::
+
+::: fragment
+__Descriptive Statistics:__ Statistics used for describing and summarizing our data.
+:::
+
+::: fragment
+__Inferential Statistics:__ Statistics used for making predictions and draw conclusions.
+:::
+
+## Descriptive Statistics
+
+- Generally, we used descriptive statistics to understand the _shape_, _center_, and _dispersion_ in our data set.
+
+- Descriptive statistics might be reported either as in a __tabular__ or a __visual__ format.
 
 
 # Frequency Distributions
