@@ -194,6 +194,6 @@ quarto install tinytex
 
 ## Lab Assignment 1
 
-- Please upload this PDF document to our Canvas page as __Lab Assignment 1 (Group)__  
-- This will be your first group assignment. 
-- One person from your group can upload this PDF file. 
+- Please upload this PDF document to our Canvas page as __Week 2 LAB Assignment 1 (Individual)__  
+ 
+- Begining from the next week, we will start working in groups. 
