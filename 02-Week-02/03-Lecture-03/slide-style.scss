@@ -1,0 +1,107 @@
+/*-- scss:defaults --*/
+// fonts
+$font-family-sans-serif: "Book Antiqua" !default;
+
+// colors
+$body-bg: #f0f1eb !default;
+$body-color: #000 !default;
+$link-color: #51483d !default;
+$selection-bg: #26351c !default;
+
+// headings
+$presentation-heading-font: "Book Antiqua" !default;
+$presentation-heading-color: #383d3d !default;
+$presentation-h1-font-size: 2em;
+$presentation-block-margin: 10px;
+$presentation-heading-line-height: 1.3;
+
+/*-- scss:rules --*/
+
+.reveal .subtitle {
+  font-size: 1.3em;
+}
+.reveal .date {
+  font-style: italic;
+  font-size: 30px;
+}
+
+.reveal {
+  width: 100%;
+  height: 100%;
+}
+
+/*code*/
+
+pre {
+  border:3px solid #c6b089;
+  padding: 0.50em;
+  overflow-x: auto;
+}
+
+.remark-code, .remark-inline-code { 
+  font-family: monospace;
+  font-size: 30px;
+}
+
+.remark-inline-code{
+ color:#BA4A00;
+}
+
+.hljs-github .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    background: red;
+}
+
+.remark-code-has-line-highlighted .remark-code-line:not(.remark-code-line-highlighted) {
+  opacity: 0.4;
+}
+
+.remark-code-line-highlighted {
+  background-color: #c6b089;
+
+}
+
+/*end of code*/
+
+
+/*tables*/
+
+thead, tfoot, tr:nth-child(even){background: #BA4A00}
+
+table{
+  overflow-x: auto;
+  margin-left:auto;
+  margin-right: auto;
+}
+/*end of tables*/
+
+
+/* different types of notes*/
+
+blockquote{
+  background: #dcdcdc;
+  border-left: 5px solid #979797;
+  margin: 1.5em 10px;
+
+}
+
+.important {
+  padding-left: 10px;
+  position: relative;
+  background-color:  #fbebd0;
+  border-bottom: 2px solid #c5ac80;
+  border-top: 2px solid #c5ac80;
+
+} 
+
+
+/* end of different types of notes*/
+
+
+.inverse{
+  background-color: #5D6D7E;
+  color: #fefaf3;
+}
+

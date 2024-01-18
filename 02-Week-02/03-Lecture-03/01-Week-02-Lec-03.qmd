@@ -1,0 +1,317 @@
+---
+title: "Chapter 2: Description of Samples and Populations"
+subtitle: "STAT 218 - Week 2, Lecture 3"
+date: "2024-01-18"
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+## 
+### Let's Refresh Our Memory
+
+::: {style="font-size: 30px"}
+
+In the last 2 weeks, we  
+
+- discussed the differences among anectodal evidence, observational study, and experimental study 
+- defined the terms _population_ and _sample_
+- examined different types of random sampling   
+- had an introduction to descriptive statistics  
+  - saw some examples of frequency distributions enabling us to summarize __categorical data__ and/or __numeric data__ 
+    - either as a table or a graph
+
+::: fragment
+And OF COURSE
+:::
+
+- We took our first steps in R!
+
+:::
+
+
+## What about Today?
+
+Today we will see some examples to understand
+
+- the shape, center, and dispersion in a data set.
+
+
+## More on Histograms
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 26px"}
+
+- A histogram is like a visual story in two parts. 
+
+  - Look at the tops of the bars to understand the distribution's shape. 
+  - The area within each bar tells us two things:    
+    -  It is proportional to the corresponding frequency.
+    -  It represents the number of observations in that category.
+
+- Let's elaborate yesterday's example  
+  - The shaded area is 42% of the total area in all the bars. 
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 26px"}
+
+- 42% of the CK values fall into the corresponding classes 
+- 15 out of 36 values lie between 60 U/I and 100 U/l.
+
+::: fragment
+
+![](img/yesterday.png)
+:::
+:::
+:::
+:::
+
+## Shapes of Distributions
+
+The shape of a distribution can be represented by a smooth curve that provides an approximation of the histogram.
+
+::: fragment
+```{r}
+#| echo: false
+# Set seed for reproducibility
+set.seed(43)
+
+# 1. Population Distribution (e.g., Normal Distribution)
+population_1 <- rnorm(10000, mean = 0, sd = 1)
+
+# Smooth curve added to the histogram
+hist(population_1, main = "An example of a symmetric, bell shaped distribution", xlab = "Value", col = "lightblue", border = "black", probability = TRUE)
+lines(density(population_1), col = "red", lwd = 2)
+
+
+```
+
+:::
+
+## Shapes of Distributions
+
+![](img/shapes-of-distributions.png){fig-align="center"}
+
+
+
+# Central Tendency
+
+
+## Measures of Center
+
+To understand the __center__ or __typical value__ of a data set, we calculate
+
+- Mean
+- Median
+- Mode
+
+::: fragment
+We also call these as __"Central Tendency"__
+:::
+
+
+## Mean
+::: {style="font-size: 28px"}
+
+- You might be familiar with this term. It is also known as 
+  - arithmetic mean OR sample mean
+
+::: fragment
+::: callout-tip
+Remember we employed a symbolic convention to differentiate between a __variable__ and an __observed value__ of that variable.
+
+  - $Y = birthweight$ (__Variable__)
+  - $y = 12.8$ lb (__Observed Value__)
+
+We now denote
+
+- the observations in a sample by $y_1$, $y_2$, . . . , $y_n$
+- the mean of the sample by the symbol $\bar{y}$  (read “y-bar”).
+:::
+:::
+:::
+
+
+## Mean
+
+We calculate the mean by using this formula
+
+![](img/mean-formula.png){fig-align="center"}
+
+
+
+## Median
+
+::: {style="font-size: 28px"}
+
+- Imagine what would happen if Bill Gates was in our class and we calculated the average money in our bank account.
+  - It might not be the best idea to interpret this average.
+- Instead, we can calculate _median_ which is a value that splits the __ordered data__ into two equal parts. 
+
+:::
+::: fragment
+#### How to Find the Median
+:::
+
+::: {style="font-size: 28px"}
+
+- Arrange the observations in increasing order. 
+- In the array of ordered observations, the median is
+  -  the middle value __(if n is odd)__ or 
+  - midway between the two middle values __(if n is even)__. 
+- We denote the median of the sample by the symbol $\tilde{y}$ (read “y-tilde”).
+
+:::
+
+## Mode
+
+- The mode in a dataset is the number that occurs with the highest frequency. 
+- It serves as a measure of central tendency, indicating the most prevalent choice or the characteristic that appears most frequently in your sample.
+
+## Let's have another toy example
+
+- Assume that we have a following dataset:
+  - 22, 6, 6, 4, 2
+
+::: fragment
+
+| Measures of Center  | Data and Calculation| Result  |
+|:-------------------:|:-------------------:|:-------:|
+| Mean                | (2+4+6+6+22)/5      | 8       |
+| Median              | 2,4,__6__,6,22      | 6       |
+| Mode                | 2,4,__6__,__6__,22  | 6       |
+
+:::
+
+## Robustness 
+
+- A statistic is said to be __robust__ if the value of the statistic is relatively unaffected by changes in a small portion of the data, even if the changes are dramatic ones.
+- The __median__ is a __robust statistic__, but the mean is not robust because it can be greatly shifted by changes in even one observation.
+
+## 
+### Mean vs. Median
+::: {style="font-size: 28px"}
+
+- Both are useful measures!
+
+::: fragment
+:::callout-warning
+
+- Mean value is related to the sum which makes it sometimes very little sense. 
+  - In some situations in life science such as bioassay, survival, and toxicity studies, the mean value cannot be computed (until last patient has died, for instance) whereas the median can be calculated. 
+:::
+
+- Median is more robust than the mean.
+  - Remember Bill Gates example!
+
+- Mean can be sometimes more efficient than median.
+  - Mean takes full advantage of all the information available which makes it a rock star in _classical methods_ in statistics.
+
+:::
+
+::: fragment
+#### Visualizing Mean and Median
+
+- Let's see {{< fa link >}} <a href="https://www.rossmanchance.com/applets/2021/descstats/Dotplot.htm" target="_blank"> Rossman & Chance Applet </a> to visualize _mean_ and _median_. 
+:::
+:::
+
+## Spread of Distributions
+::: {style="font-size: 28px"}
+Let’s assume we managed to collect data from our squirrels on campus :) Our class was divided into three groups, and each group measured the weights (lbs) of 10 squirrels. Here are the results:
+
+__Group 1:__ 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25 
+
+__Group 2:__ 1.0, 1.0, 1.0, 1.0, 1.0, 1.5, 1.5, 1.5, 1.5, 1.5
+
+__Group 3:__ 1.0, 1.4, 1.2, 1.4, 1.1, 1.3, 1.6, 1.0, 1.2, 1.3
+
+Dr. Demirci mentioned that looking at these numbers is so confusing. Can you please calculate the sample mean for them to summarize this data?
+
+::: fragment
+All these groups calculated the same mean, which is 1.25 lbs. Dr. Demirci seemed not so happy with this number.
+:::
+::: fragment
+- Why? 
+:::
+
+:::
+
+
+## Spread of Distribution
+::: {style="font-size: 32px"}
+
+- So far, we've explored the shapes and central tendencies of distributions
+  - but an effective depiction of a distribution should also capture its dispersion
+      - whether the observations in the sample are mostly uniform or exhibit significant variation.
+- We can also report this by using
+  - Range
+  - Standard Deviation
+  - Interquartile Range
+  
+:::
+
+## Range
+::: {style="font-size: 28px"}
+
+- Range is one of the measures of dispersion indicating the difference between __largest__ and __smallest__ observations in a sample.
+
+- Let's calculate range 
+  - __Group 1:__ $1.25 - 1.25 = 0$
+  - __Group 2:__ $1.5 - 1.0 = 0.5$
+  - __Group 3:__ $1.6 - 1.0 = 0.6$
+
+
+::: fragment
+::: callout-warning
+
+- Range is easy to calculate, but very sensitive to extreme values
+  - It is __not__ robust.
+
+:::
+:::
+
+:::
+## Standard Deviation and Variance
+::: {style="font-size: 28px"}
+
+![](img/sd-calculation.png){fig-align="center"}
+
+- __Variance__ is denoted as $s^2$, which is the standard deviation squared 
+- Let's calculate standard deviation for each squirrel group!
+
+:::
+
+##
+### Quartile Range & Interquartile Range
+::: {style="font-size: 28px"}
+::: fragment
+
+![](img/iqr.png){fig-align="center"}
+:::
+
+:::
+
+##
+### Comparison of Measures of Dispersion
+
+::: {style="font-size: 28px"}
+
+- The range is simple to understand, but it can be a poor descriptive measure because it depends only on the extreme tails of the distribution. 
+  - highly nonrobust.
+- The interquartile range, by contrast, describes the spread in the central “body” of the distribution. 
+- The standard deviation takes account of all the observations and can roughly be interpreted in terms of the spread of the observations around their mean. 
+  - However, the SD can be inflated by observations in the extreme tails. 
+- The interquartile range is a robust measure, while the SD is not robust.
+
+
+:::
