@@ -1,0 +1,136 @@
+---
+title: "Chapter 4: The Normal Distribution"
+subtitle: "STAT 218 - Week 3, Lecture 2"
+date: "2024-01-23"
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+
+## Notations
+
+We will use some notations for important parameters and statistics as follows:
+
+::: fragment
+
+::: callout-important
+
+__Population Mean:__ $\mu$  
+__Sample Mean:__ $\bar{y}$  
+
+<br>
+
+__Population Standard Deviation:__ $\sigma$   
+__Sample Standard Deviation:__ $s$
+
+:::
+:::
+
+
+## Introduction to Normal Curves - I
+::: {style="text-align: left; font-size: 28px"}
+
+- We can think of normal curves as a smooth approximation to a histogram based on a sample of _$Y$_ values.
+- We can describe the population distribution of a quantitative variable _$Y$_ by
+  - calculating its mean $\mu$ and its standard deviation $\sigma$ AND
+  - using a _density curve_ 
+    - __density curve:__ relative frequencies as areas under the curve.
+
+- Let's have a look at __Example 4.1.2__ in our book.
+
+:::
+
+## Introduction to Normal Curves - II
+
+::: {style="text-align: left; font-size: 28px"}
+- There is no one single normal curve but many normal curves
+  - each normal curve has its own mean $\mu$ and its standard deviation $\sigma$
+
+::: fragment
+::: {style="fig-align: center; font-size: 28px"}
+
+```{r, echo=FALSE}
+# Generate data for three normal distributions
+x <- seq(-4, 4, length.out = 100)
+y1 <- dnorm(x, mean = 0, sd = 0.75)
+y2 <- dnorm(x, mean = 1, sd = 0.85)
+y3 <- dnorm(x, mean = -1, sd = 1.00)
+
+# Plotting the normal curves
+plot(x, y1, type = "l", col = "blue", lwd = 2, ylab = "Density", xlab = "Values", main = "Three Normal Curves")
+lines(x, y2, col = "red", lwd = 2)
+lines(x, y3, col = "green", lwd = 2)
+
+# Adding legend
+legend("topright", legend = c(expression(paste("Mean = ", mu, " = 0, ", sigma, " = 0.75")),
+                              expression(paste("Mean = ", mu, " = 1, ", sigma, " = 0.85")),
+                              expression(paste("Mean = ", mu, " = -1, ", sigma, " = 1.00"))), 
+       col = c("blue", "red", "green"), lwd = 2)
+```
+:::
+:::
+:::
+
+##
+### Normal Curves, Continuous Variables and Probability
+
+- If a numeric variable has a continuous distribution, we can find probabilities by using the __density curve__ for that variable.
+  - For that continuous variable, the probability would be equivalent to a specific area under the density curve.
+    - The area under a normal curve is always equals to 1.
+      - Why?
+
+##
+#### Let's Meet with Standard Normal Distribution
+
+```{r, echo=FALSE, out.width='600px', out.height='300px', fig.align='center'}
+
+# Generate data for standard normal distribution
+x <- seq(-3, 3, length.out = 100)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# Plotting the standard normal curve
+plot(x, y, type = "l", col = "maroon", lwd = 2, ylab = "Density", xlab = "Values", main = "Standard Normal Distribution")
+
+# Customizing x-axis intervals
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), labels = c(-3, -2, -1, 0, 1, 2, 3))
+
+```
+
+::: fragment
+:::{.callout-tip title="Standardization Formula"}
+::: {style="text-align: center; font-size: 24px"}
+
+$Z$ = ($Y$ - $\mu$) / $\sigma$
+
+:::
+:::
+:::
+
+
+##
+### Let's See Examples 
+
+- Please refer Example 4.1.2 and 4.3.1 from our course textbook.  
+
+::: fragment
+:::{.callout-tip title="Review 2 - Quiz"}
+::: {style="text-align: center; font-size: 24px"}
+
+See the ungraded Review 2 Quiz on Canvas (Module Week 3). 
+
+:::
+:::
+:::
+
+## References
+::: {style="text-align: left; font-size: 14px"}
+
+Samuels, M. L., Witmer, J. A., & Schaffner, A. A. (2003). Statistics for the life sciences (Vol. 4). Upper Saddle River, NJ: Prentice Hall.
+
+:::
