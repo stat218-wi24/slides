@@ -1,0 +1,86 @@
+---
+title: "STAT 218 Lab Assignment 2"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+## Lab Assignment 2
+
+In this assignment, we will work with the data available in the package of `palmerpenguins`. Let's install and use that package. And let's load our data into R by using `data()` function.
+
+Run the code chunk below. __DO NOT FORGET TO RENDER YOUR QUARTO DOCUMENT TO PDF!__
+
+```{r}
+#| include: false
+install.packages("palmerpenguins" , repos = "http://cran.us.r-project.org")
+library(palmerpenguins)
+data("penguins") 
+```
+
+__NOTE:__ Please ignore `penguins_raw` data for this class and USE `penguins` for this assignment.
+
+__Question 1: Please use `glimpse()`function and write 2-3 sentences to explain what you see.__
+
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+
+Type your answer (2-3 sentences) here.
+
+
+__Question 2: How many variables and cases do this dataset have?__
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+
+Type your answer here.
+
+
+__Question 3: What types of variables are there in this data set? Identify each variable below (nominal, ordinal, discrete, and continuous?__
+
+__species:__
+
+__island:__
+
+__bill_length_mm:__
+
+__bill_depth_mm:__
+
+__flipper_length_mm:__
+
+__sex:__
+
+__year:__
+
+
+__Question 4: Calculate the mean and median values for `bill_lenght_mm__.
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+__Question 5: Please create a bar chart by using `ggplot()` function for the variable `species`.__
+
+```{r}
+
+# Put your R Code Chunk here.
+
+```
