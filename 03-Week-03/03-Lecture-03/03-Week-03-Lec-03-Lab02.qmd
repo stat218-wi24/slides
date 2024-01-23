@@ -76,6 +76,12 @@ The `library()` function in R is like opening a toolbox. Imagine you have a tool
 
 When you use the `library()` function, you're telling R to open a specific toolbox (load a package) so that you can access and use the tools inside.
 
+<br>
+
+::: fragment
+
+Let's add a code chunk to our Quarto document and type the code below.
+
 ```{r}
 #| echo: true
 #| output: false
@@ -84,6 +90,7 @@ library(openintro)
 
 ```
 
+:::
 :::
 
 
@@ -94,10 +101,34 @@ We have two different ways to do that (within the scope of this class)
 - Using an available dataset stored in R (packages)
 - Importing a dataset from an outside source
 
+
+## 
+
+::: {style="font-size: 30px"}
+
+Let's use a dataset from `openintro` package.
+
+```{r}
+#| echo: true
+#| output: false
+
+data("births")
+
+```
+
+![](img/data.png){fig-align="center"}
+:::
+
 ## 
 ### Import Dataset from An Outside Source 
 
-We can import data from Text (.txt) or Excel (.csv OR .xls). Below, you see an example how to load data into R.
+::: {style="font-size: 28px"}
+
+We can import data from Text (.txt) or Excel (.csv OR .xls). 
+
+Please download the dataset available on Canvas page titled as `Data For Lab 3`.
+
+Below, you see an example how to load data into R.
 
 ```{r}
 #| echo: true
@@ -106,9 +137,12 @@ We can import data from Text (.txt) or Excel (.csv OR .xls). Below, you see an e
 haircolordata <- read_csv("lab3data.csv")
 
 ```
+:::
 
-## Getting to Know Your Data
-::: {style="font-size: 23px"}
+## 
+
+### Getting to Know Your Data
+::: {style="font-size: 28px"}
 
 After importing our data, it is important to familiarize with our data. We have some functions to do that. 
 
@@ -121,11 +155,20 @@ glimpse(haircolordata)
 
 ```
 
-`glimpse()` function gives us a brief information about out data set. We have  __7 variables__ and __180 cases__ or __observations__. Alternatively, we can ask R the number of columns (variables) and rows (cases) as following:
+`glimpse()` function gives us a brief information about out data set. We have  __`r ncol(haircolordata)` variables__ and __`r nrow(haircolordata)` cases__ or __observations__.
+
+:::
+
+## 
+
+### Getting to Know Your Data
+::: {style="font-size: 28px"}
+
+Alternatively, we can ask R the number of columns (variables) and rows (cases) as following:
 
 ```{r}
 #| echo: true
-#| output: false
+#| output: true
 ncol(haircolordata) ## gives us the number of columns (variables)
 nrow(haircolordata) ## gives us the number of rows (cases)
 
@@ -135,35 +178,41 @@ Assume that I would like to see just the names of the variables in my data set. 
 
 ```{r}
 #| echo: true
-#| output: false
+#| output: true
 names(haircolordata)
 ```
 
 :::
 
-## Frequency Distribution Table (An Ugly One!)
-
-Let's construct a frequency distribution table by using `count()`function. I will provide additional details to improve our frequency distribution tables.
+## 
+### Frequency Distribution Table (An Ugly One!)
+::: {style="font-size: 28px"}
+Let's construct a frequency distribution table by using `count()`function. 
 
 ```{r}
 #| echo: true
-#| output: false
+#| output: true
 count(haircolordata, Birth)
 
 ```
+:::
 
-## Measures of Central Tendency
+## 
+### Measures of Central Tendency
 
 We can calculate measures of central tendency by using these unsurprising functions.
 
 
 ```{r}
 #| echo: true
-#| output: false
+#| output: true
 
 mean(haircolordata$Height)
 median(haircolordata$Height)
 ```
+
+## 
+### Measures of Central Tendency
 
 Alternatively, you can use `summarize()` function for the same calculation.
 
@@ -232,3 +281,6 @@ ggplot(data = haircolordata,
        y = "Number of Participants"
        )
 ```
+
+
+# DO NOT FORGET TO SAVE THIS FILE IN YOUR STAT 218 FOLDER!

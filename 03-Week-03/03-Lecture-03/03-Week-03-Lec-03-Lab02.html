@@ -463,9 +463,13 @@
 <div style="font-size: 30px">
 <p>The <code>library()</code> function in R is like opening a toolbox. Imagine you have a toolbox filled with different tools, and each tool helps you do a specific job. Similarly, in R, a library is like a toolbox that contains specialized tools (packages) for specific tasks.</p>
 <p>When you use the <code>library()</code> function, you’re telling R to open a specific toolbox (load a package) so that you can access and use the tools inside.</p>
+<p><br></p>
+<div class="fragment">
+<p>Let’s add a code chunk to our Quarto document and type the code below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(openintro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -479,55 +483,121 @@
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<h3 id="import-dataset-from-an-outside-source">Import Dataset from An Outside Source</h3>
-<p>We can import data from Text (.txt) or Excel (.csv OR .xls). Below, you see an example how to load data into R.</p>
+<div style="font-size: 30px">
+<p>Let’s use a dataset from <code>openintro</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>haircolordata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"lab3data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">data</span>(<span class="st">"births"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/data.png"></p>
+</figure>
+</div>
 </div>
 </section>
-<section id="getting-to-know-your-data" class="slide level2">
-<h2>Getting to Know Your Data</h2>
-<div style="font-size: 23px">
+<section id="section-7" class="slide level2">
+<h2></h2>
+<h3 id="import-dataset-from-an-outside-source">Import Dataset from An Outside Source</h3>
+<div style="font-size: 28px">
+<p>We can import data from Text (.txt) or Excel (.csv OR .xls).</p>
+<p>Please download the dataset available on Canvas page titled as <code>Data For Lab 3</code>.</p>
+<p>Below, you see an example how to load data into R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>haircolordata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"lab3data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<h3 id="getting-to-know-your-data">Getting to Know Your Data</h3>
+<div style="font-size: 28px">
 <p>After importing our data, it is important to familiarize with our data. We have some functions to do that.</p>
 <p>Let’s start with <code>glimpse()</code> function. The name of this function is self-explanatory.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">glimpse</span>(haircolordata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">glimpse</span>(haircolordata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>glimpse()</code> function gives us a brief information about out data set. We have <strong>7 variables</strong> and <strong>180 cases</strong> or <strong>observations</strong>. Alternatively, we can ask R the number of columns (variables) and rows (cases) as following:</p>
+<p><code>glimpse()</code> function gives us a brief information about out data set. We have <strong>6 variables</strong> and <strong>180 cases</strong> or <strong>observations</strong>.</p>
+</div>
+</section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<h3 id="getting-to-know-your-data-1">Getting to Know Your Data</h3>
+<div style="font-size: 28px">
+<p>Alternatively, we can ask R the number of columns (variables) and rows (cases) as following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ncol</span>(haircolordata) <span class="do">## gives us the number of columns (variables)</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">nrow</span>(haircolordata) <span class="do">## gives us the number of rows (cases)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ncol</span>(haircolordata) <span class="do">## gives us the number of columns (variables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">nrow</span>(haircolordata) <span class="do">## gives us the number of rows (cases)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 180</code></pre>
+</div>
 </div>
 <p>Assume that I would like to see just the names of the variables in my data set. I can use <code>name()</code>function for this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">names</span>(haircolordata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">names</span>(haircolordata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hair"     "Birth"    "Handspan" "Siblings" "Shoes"    "Height"  </code></pre>
+</div>
 </div>
 </div>
 </section>
-<section id="frequency-distribution-table-an-ugly-one" class="slide level2">
-<h2>Frequency Distribution Table (An Ugly One!)</h2>
-<p>Let’s construct a frequency distribution table by using <code>count()</code>function. I will provide additional details to improve our frequency distribution tables.</p>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<h3 id="frequency-distribution-table-an-ugly-one">Frequency Distribution Table (An Ugly One!)</h3>
+<div style="font-size: 28px">
+<p>Let’s construct a frequency distribution table by using <code>count()</code>function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">count</span>(haircolordata, Birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">count</span>(haircolordata, Birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 2
+   Birth         n
+   &lt;chr&gt;     &lt;int&gt;
+ 1 April        14
+ 2 August       14
+ 3 December     19
+ 4 February      8
+ 5 January      15
+ 6 July         20
+ 7 June         11
+ 8 March        16
+ 9 May          11
+10 November     15
+11 October      18
+12 September    19</code></pre>
+</div>
+</div>
 </div>
 </section>
-<section id="measures-of-central-tendency" class="slide level2">
-<h2>Measures of Central Tendency</h2>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<h3 id="measures-of-central-tendency">Measures of Central Tendency</h3>
 <p>We can calculate measures of central tendency by using these unsurprising functions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">mean</span>(haircolordata<span class="sc">$</span>Height)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">median</span>(haircolordata<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">mean</span>(haircolordata<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.8333</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">median</span>(haircolordata<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 173</code></pre>
+</div>
+</div>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<h3 id="measures-of-central-tendency-1">Measures of Central Tendency</h3>
 <p>Alternatively, you can use <code>summarize()</code> function for the same calculation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">mean</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">mean</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `mean(Height)`
            &lt;dbl&gt;
 1           173.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">median</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">median</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `median(Height)`
@@ -539,19 +609,19 @@
 <section id="measures-of-dispersion" class="slide level2">
 <h2>Measures of Dispersion</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">sd</span>(haircolordata<span class="sc">$</span>Height) <span class="co"># sample standard deviation</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">var</span>(haircolordata<span class="sc">$</span>Height) <span class="co"># sample variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">sd</span>(haircolordata<span class="sc">$</span>Height) <span class="co"># sample standard deviation</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">var</span>(haircolordata<span class="sc">$</span>Height) <span class="co"># sample variance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively, you can use <code>summarize()</code> function for the same calculation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">sd</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">sd</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `sd(Height)`
          &lt;dbl&gt;
 1         8.96</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">var</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">summarize</span>(haircolordata, <span class="fu">var</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `var(Height)`
@@ -563,11 +633,11 @@
 <section id="or" class="slide level2">
 <h2>Or…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">summarize</span>(haircolordata,</span>
-<span id="cb17-2"><a href="#cb17-2"></a>          <span class="fu">mean</span>(Height),</span>
-<span id="cb17-3"><a href="#cb17-3"></a>          <span class="fu">median</span>(Height),</span>
-<span id="cb17-4"><a href="#cb17-4"></a>          <span class="fu">sd</span>(Height),</span>
-<span id="cb17-5"><a href="#cb17-5"></a>          <span class="fu">var</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">summarize</span>(haircolordata,</span>
+<span id="cb26-2"><a href="#cb26-2"></a>          <span class="fu">mean</span>(Height),</span>
+<span id="cb26-3"><a href="#cb26-3"></a>          <span class="fu">median</span>(Height),</span>
+<span id="cb26-4"><a href="#cb26-4"></a>          <span class="fu">sd</span>(Height),</span>
+<span id="cb26-5"><a href="#cb26-5"></a>          <span class="fu">var</span>(Height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   `mean(Height)` `median(Height)` `sd(Height)` `var(Height)`
@@ -580,15 +650,18 @@
 <h2>An Example for Bar Chart</h2>
 <p>Let’s plot a simple bar chart. Next session, we will explore other features for <code>ggplot()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> haircolordata,</span>
-<span id="cb19-2"><a href="#cb19-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Hair,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>           <span class="at">fill =</span> Hair)) <span class="sc">+</span> </span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Hair Color of Participants"</span>,</span>
-<span id="cb19-6"><a href="#cb19-6"></a>       <span class="at">x =</span> <span class="st">"Hair Color"</span>,</span>
-<span id="cb19-7"><a href="#cb19-7"></a>       <span class="at">y =</span> <span class="st">"Number of Participants"</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> haircolordata,</span>
+<span id="cb28-2"><a href="#cb28-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Hair,</span>
+<span id="cb28-3"><a href="#cb28-3"></a>           <span class="at">fill =</span> Hair)) <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Hair Color of Participants"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6"></a>       <span class="at">x =</span> <span class="st">"Hair Color"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7"></a>       <span class="at">y =</span> <span class="st">"Number of Participants"</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="do-not-forget-to-save-this-file-in-your-stat-218-folder" class="title-slide slide level1 center">
+<h1>DO NOT FORGET TO SAVE THIS FILE IN YOUR STAT 218 FOLDER!</h1>
 <div class="footer footer-default">
 
 </div>
