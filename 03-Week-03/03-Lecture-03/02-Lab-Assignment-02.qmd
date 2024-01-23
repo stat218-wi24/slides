@@ -54,7 +54,7 @@ __Question 2: How many variables and cases do this dataset have?__
 Type your answer here.
 
 
-__Question 3: What types of variables are there in this data set? Identify each variable below (nominal, ordinal, discrete, and continuous?__
+__Question 3: What types of variables are there in this data set? Identify each variable below (nominal, ordinal, discrete, and continuous?)__
 
 __species:__
 
@@ -71,7 +71,7 @@ __sex:__
 __year:__
 
 
-__Question 4: Calculate the mean and median values for `bill_lenght_mm__.
+__Question 4: Calculate the mean and median values for `bill_length_mm__.
 
 ```{r}
 
