@@ -227,7 +227,8 @@ summarize(haircolordata, median(Height))
 ```
 
 
-## Measures of Dispersion
+## 
+### Measures of Dispersion
 
 ```{r}
 #| echo: true
