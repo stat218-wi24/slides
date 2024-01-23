@@ -4,6 +4,8 @@ author:
   - "Team Member 1: NAME HERE"
   - "Team Member 2: NAME HERE"
   - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE"
+  - "Team Member 5: NAME HERE"
 date: today
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: pdf
