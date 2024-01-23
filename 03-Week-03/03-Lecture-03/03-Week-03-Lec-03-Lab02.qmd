@@ -238,7 +238,7 @@ sd(haircolordata$Height) # sample standard deviation
 var(haircolordata$Height) # sample variance
 ```
 
-Alternatively, you can use `summarize()` function for the same calculation.
+Alternatively, you can use `summarize()` function.
 
 
 ```{r}
