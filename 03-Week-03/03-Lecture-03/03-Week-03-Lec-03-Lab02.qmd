@@ -1,0 +1,234 @@
+---
+title: "Descriptive Statistics in R"
+subtitle: "STAT 218 - Week 3, Lecture 3, Lab 2"
+date: 2024-01-24
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## Today's Menu
+
+Today we will be familiar with
+
+- Data Frames
+- Loading Data into R
+- Summary Statistics
+- `ggplot()`
+
+
+## 
+### Last Week's Favourites - 1
+
+
+![No boundaries](img/image-01.png)
+
+
+## 
+### Last Week's Favourites - 2
+
+
+![Quarto Loves Secure Attachment ](img/image-02.png)
+
+## 
+#### How to Build A Healthy Relationship with Quarto
+
+
+![Quarto Document Parts](img/quarto-basics.png)
+
+
+
+##
+### Before Proceeding Further...
+
+![](img/step-1.png)
+
+
+##
+### Before Proceeding Further...
+
+![](img/step-2.png)
+
+##
+### Creating This Week's Quarto Document
+
+
+::: callout-tip
+
+- Let's create this week's Quarto document by clicking `File > New File > Quarto Document`
+- Give a title as "Week 3 Lab 3 Descriptive Statistics"  
+- Add your own notes and the given codes to this document  
+- DO NOT FORGET to save it to your STAT 218 Folder!
+
+:::
+
+
+
+## Library Function in R
+::: {style="font-size: 30px"}
+
+
+The `library()` function in R is like opening a toolbox. Imagine you have a toolbox filled with different tools, and each tool helps you do a specific job. Similarly, in R, a library is like a toolbox that contains specialized tools (packages) for specific tasks.
+
+When you use the `library()` function, you're telling R to open a specific toolbox (load a package) so that you can access and use the tools inside.
+
+```{r}
+#| echo: true
+#| output: false
+library(tidyverse)
+library(openintro)
+
+```
+
+:::
+
+
+## How to Load Data into R
+
+We have two different ways to do that (within the scope of this class)
+
+- Using an available dataset stored in R (packages)
+- Importing a dataset from an outside source
+
+## 
+### Import Dataset from An Outside Source 
+
+We can import data from Text (.txt) or Excel (.csv OR .xls). Below, you see an example how to load data into R.
+
+```{r}
+#| echo: true
+#| output: false
+
+haircolordata <- read_csv("lab3data.csv")
+
+```
+
+## Getting to Know Your Data
+::: {style="font-size: 23px"}
+
+After importing our data, it is important to familiarize with our data. We have some functions to do that. 
+
+Let's start with `glimpse()` function. The name of this function is self-explanatory. 
+
+```{r}
+#| echo: true
+#| output: false
+glimpse(haircolordata)
+
+```
+
+`glimpse()` function gives us a brief information about out data set. We have  __7 variables__ and __180 cases__ or __observations__. Alternatively, we can ask R the number of columns (variables) and rows (cases) as following:
+
+```{r}
+#| echo: true
+#| output: false
+ncol(haircolordata) ## gives us the number of columns (variables)
+nrow(haircolordata) ## gives us the number of rows (cases)
+
+```
+
+Assume that I would like to see just the names of the variables in my data set. I can use `name()`function for this.
+
+```{r}
+#| echo: true
+#| output: false
+names(haircolordata)
+```
+
+:::
+
+## Frequency Distribution Table (An Ugly One!)
+
+Let's construct a frequency distribution table by using `count()`function. I will provide additional details to improve our frequency distribution tables.
+
+```{r}
+#| echo: true
+#| output: false
+count(haircolordata, Birth)
+
+```
+
+## Measures of Central Tendency
+
+We can calculate measures of central tendency by using these unsurprising functions.
+
+
+```{r}
+#| echo: true
+#| output: false
+
+mean(haircolordata$Height)
+median(haircolordata$Height)
+```
+
+Alternatively, you can use `summarize()` function for the same calculation.
+
+
+```{r}
+#| echo: true
+#| output: true
+
+summarize(haircolordata, mean(Height))
+summarize(haircolordata, median(Height))
+
+```
+
+
+## Measures of Dispersion
+
+```{r}
+#| echo: true
+#| output: false
+
+sd(haircolordata$Height) # sample standard deviation
+var(haircolordata$Height) # sample variance
+```
+
+Alternatively, you can use `summarize()` function for the same calculation.
+
+
+```{r}
+#| echo: true
+#| output: true
+
+summarize(haircolordata, sd(Height))
+summarize(haircolordata, var(Height))
+
+```
+
+## Or...
+
+
+```{r}
+#| echo: true
+#| output: true
+
+summarize(haircolordata,
+          mean(Height),
+          median(Height),
+          sd(Height),
+          var(Height))
+```
+
+
+
+## An Example for Bar Chart
+
+Let's plot a simple bar chart. Next session, we will explore other features for `ggplot()`.
+
+```{r}
+#| echo: true
+#| output: false
+ggplot(data = haircolordata,
+       aes(x = Hair,
+           fill = Hair)) + 
+  geom_bar(stat = "count") +
+  labs(title = "Hair Color of Participants",
+       x = "Hair Color",
+       y = "Number of Participants"
+       )
+```
