@@ -124,11 +124,17 @@ data("births")
 
 ::: {style="font-size: 28px"}
 
-We can import data from Text (.txt) or Excel (.csv OR .xls). 
+- We can import data from Text (.txt) or Excel (.csv OR .xls). 
 
-Please download the dataset available on Canvas page titled as `Data For Lab 3`.
+- Please download the dataset available on Canvas page titled as `Data For Lab 3`.
 
-Below, you see an example how to load data into R.
+- SAVE THIS DATASET TO YOUR STAT218 FOLDER!
+
+<br>
+
+- Below, you see an example how to load data into R.
+
+::: fragment
 
 ```{r}
 #| echo: true
@@ -137,6 +143,7 @@ Below, you see an example how to load data into R.
 haircolordata <- read_csv("lab3data.csv")
 
 ```
+:::
 :::
 
 ## 
