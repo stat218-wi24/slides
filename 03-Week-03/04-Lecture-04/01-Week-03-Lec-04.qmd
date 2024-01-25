@@ -1,0 +1,291 @@
+---
+title: "Assessing Normality"
+subtitle: "STAT 218 - Week 3, Lecture 4"
+date: 2024-01-25
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+## Today's Agenda
+
+Today, we will wrap up the week as follows:
+
+- recognize some summary statistics function in R 
+- solve another probability exercise 
+
+- assess normality 
+
+- identify nonnormality and suggest some transformations
+
+
+# Standardization Formula
+
+##
+### Remember!
+::: {style="font-size: 28px"}
+
+- If a numeric variable has a continuous distribution, we can find probabilities by using the __density curve__ for that variable. 
+  - For that continuous variable, the probability would be equivalent to a specific area under the density curve.
+    - The area under a normal curve is always equals to 1. 
+    - The calculated values for the potential areas under the normal curve are provided in Table 3.
+
+:::
+
+##
+#### Standard Normal Distribution
+
+```{r, echo=FALSE, out.width='600px', out.height='300px', fig.align='center'}
+
+# Generate data for standard normal distribution
+x <- seq(-3, 3, length.out = 100)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# Plotting the standard normal curve
+plot(x, y, type = "l", col = "maroon", lwd = 2, ylab = "Density", xlab = "Values", main = "Standard Normal Distribution")
+
+# Customizing x-axis intervals
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), labels = c(-3, -2, -1, 0, 1, 2, 3))
+
+```
+
+::: fragment
+:::{.callout-tip title="Standardization Formula"}
+::: {style="text-align: center; font-size: 24px"}
+
+$Z$ = ($Y$ - $\mu$) / $\sigma$
+
+:::
+:::
+:::
+
+
+
+
+## Revisiting Tuesday's Example
+
+
+
+- Please refer 4.3.1 from our course textbook. 
+
+- Keep in mind that those are actually probability values.
+
+
+
+## 
+## Percentile
+
+::: {style="font-size: 28px"}
+
+- It is also possible to make an inverse reading of Table 3. 
+- Let’s say we want to find the value on the Z scale that cuts off the top 2.5% of the distribution. Can you spot the number?
+
+- We often need to determine corresponding z-values when we want to determine a percentile of a normal distribution. 
+
+- The percentiles of a distribution divide the distribution into 100 equal parts, just as the quartiles divide it into 4 equal parts.
+
+- __Another example:__ We want to find the 70th percentile of a standard normal distribution.
+
+:::
+
+# Assessing Normality
+
+## Introduction
+
+- We can assess normality by employing multiple strategies.   
+- __The 68/95/99.7 Rule:__ We can check how closely a variable of _Y_ conforms to a normal curve model.
+
+
+## 
+
+::: {style="font-size: 28px"}
+
+__The 68/95/99.7 Rule:__ We can check how closely a variable of _Y_ conforms to a normal curve model.
+
+![](img/68-95-99.png){width=70% fig-align="center"}
+
+- See Example 4.4.1 and Example 4.4.2 from our textbook.
+
+:::
+
+## 2 - Normal Quantile Plots
+
+::: {style="font-size: 28px"}
+
+
+- Assessing the bell-shaped nature of a histogram visually can be challenging.
+- The normal quantile plot was developed to overcome this challenge.
+- I won't go into theoretical plotting details, but the main idea is that a linear appearance in the plot suggests agreement between observed and theoretical values.
+- If the data deviate from the normal model, the plot may exhibit strong nonlinear patterns, such as curvature or S shapes.
+
+:::
+
+## Normal Quantile Plots
+
+```{r}
+#| echo: false
+#| output: true
+
+library(tidyverse)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Create a data frame with six samples from a N(0, 1) distribution
+data <- data.frame(
+  sample1 = rnorm(100),
+  sample2 = rnorm(100),
+  sample3 = rnorm(100),
+  sample4 = rnorm(100),
+  sample5 = rnorm(100),
+  sample6 = rnorm(100)
+)
+
+# Create normal quantile plots using ggplot2
+data_long <- gather(data, key = "Sample", value = "Values")
+
+ggplot(data_long, aes(sample = Values)) +
+  stat_qq() +
+  stat_qq_line() +
+  facet_wrap(~ Sample, scales = "free") +
+  ggtitle("Normal Quantile Plots for Samples from N(0, 1) Distribution")
+```
+## Right-Skewed
+
+```{r}
+#| echo: false
+#| output: true
+
+# Set seed for reproducibility
+set.seed(13)
+
+# Generate a right-skewed dataset
+right_skewed_data <- rgamma(500, shape = 1, rate = 0.5)
+
+# Create a histogram
+histogram_plot <- ggplot(data.frame(x = right_skewed_data), aes(x)) +
+  geom_histogram(binwidth = 1, fill = "lightblue", color = "black", alpha = 0.7) +
+  ggtitle("Right-Skewed Histogram") +
+  xlab("Values") +
+  ylab("Frequency")
+
+# Create a normal quantile plot
+qq_plot <- ggplot(data.frame(x = right_skewed_data), aes(sample = x)) +
+  stat_qq() +
+  ggtitle("Normal Quantile Plot for Right-Skewed Data") +
+  xlab("Theoretical Quantiles") +
+  ylab("Sample Quantiles")
+
+# Display the plots side by side
+gridExtra::grid.arrange(histogram_plot, qq_plot, ncol = 2)
+```
+
+## Left-Skewed
+
+```{r}
+# Set seed for reproducibility
+set.seed(425)
+
+# Generate left-skewed data using beta distribution
+data <- rbeta(10000, 10, 1)
+
+# Create left-skewed histogram
+left_skewed_hist <- ggplot(data = data.frame(x = data), aes(x)) +
+  geom_histogram(binwidth = 0.05, fill = "red", color = "black", alpha = 0.7) +
+  labs(title = "Left-Skewed Histogram")
+
+# Create normal quantile plot
+normal_qq_plot <- ggplot(data = data.frame(x = data), aes(sample = x)) +
+  stat_qq() +
+  labs(title = "Normal Quantile Plot")
+
+gridExtra::grid.arrange(left_skewed_hist, normal_qq_plot, ncol = 2)
+```
+
+## Heavy Tails
+
+```{r}
+# Set seed for reproducibility
+set.seed(6)
+
+# Generate data with heavy tails (skewness)
+data <- c(rnorm(500, mean = 0, sd = 1),
+          rnorm(500, mean = 0, sd = 1),
+          rnorm(2000, mean = 0, sd = 3),
+          rnorm(500, mean = 0, sd = 1),
+          rnorm(500, mean = 0, sd = 1))
+
+# Create left-skewed histogram
+heavy_tails_hist <- ggplot(data = data.frame(x = data), aes(x)) +
+  geom_histogram(binwidth = 0.5, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Histogram with Heavy Tails")
+
+# Create normal quantile plot
+heavy_tails_qq_plot <- ggplot(data = data.frame(x = data), aes(sample = x)) +
+  stat_qq() +
+  labs(title = "Normal Quantile Plot with Heavy Tails")
+
+# Display the plots side by side
+gridExtra::grid.arrange(heavy_tails_hist, heavy_tails_qq_plot, ncol = 2)
+```
+
+
+# Transformations
+
+
+##
+### A Brief Introduction
+
+::: {style="font-size: 28px"}
+
+- __Assessment with Normal Quantile Plot:__ Utilizing a normal quantile plot allows us to evaluate if the data originates from a normal distribution.
+
+- __Identification of Non-Normality:__ Occasionally, both a histogram and normal quantile plot indicate non-normality in the data.
+
+- __Transformation for Symmetry:__ Despite initial non-normality, transforming the data might yield a symmetric, bell-shaped curve.
+
+- __Analysis in Transformed Scale:__ In such cases, it could be beneficial to proceed with the analysis in the newly transformed scale to better understand the underlying distribution.
+
+:::
+
+## Some Tips
+
+::: {style="font-size: 28px"}
+
+- __Skewed Right Distribution:__
+  - Consider transformations like $(1/Y)$, $\log(Y)$, $(1/\sqrt{Y}$ or $\sqrt{Y}$.
+  - These transformations aim to mitigate the right-skewness, pulling in the long right-hand tail and extending the short left-hand tail for a more symmetric distribution.
+  - The choice of transformation depends on the severity of skewness, with more drastic transformations being considered for heavier skewness.
+
+- __Skewed Left Distribution:__
+  - If the distribution of a variable $Y$ is skewed to the left, raising $Y$ to a power greater than 1 can be beneficial in addressing the left-skewness.
+
+:::
+
+# Shapiro-Wilk Test
+
+## 
+### Introduction
+
+::: {style="font-size: 27px"}
+
+- While normal quantile plots are preferred over histograms for visually assessing departures from normality, our perception remains subjective.
+
+- __Shapiro–Wilk Test__ is a statistical method that provides a numerical assessment of evidence for certain types of nonnormality in data.  
+  - The procedure's mechanics are complex, but statistical software packages simplify the testing process.
+
+- __Output and Interpretation:__
+  - The output of the Shapiro–Wilk test includes a P-value.
+  - Interpretation:
+    - P-value < 0.001: Very strong evidence for nonnormality.
+    - P-value < 0.01: Strong evidence for nonnormality.
+    - P-value < 0.05: Moderate evidence for nonnormality.
+    - P-value < 0.10: Mild or weak evidence for nonnormality.
+    - P-value $\geq 0.10$: No compelling evidence for nonnormality.
+    
+:::
