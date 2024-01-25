@@ -139,10 +139,7 @@ set.seed(123)
 # Create a data frame with six samples from a N(0, 1) distribution
 data <- data.frame(
   sample1 = rnorm(100),
-  sample2 = rnorm(100),
-  sample3 = rnorm(100),
   sample4 = rnorm(100),
-  sample5 = rnorm(100),
   sample6 = rnorm(100)
 )
 
