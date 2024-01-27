@@ -1,0 +1,99 @@
+---
+title: "An Introduction to Sampling Distribution"
+subtitle: "STAT 218 - Week 1, Lecture 1"
+date: 2024-01-29
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+## 
+### Let's Refresh Our Memory
+
+Last week we...
+
+- examined the spread of distributions  
+- reviewed the basics of probability 
+- identified the relationship between probability and the life science 
+- had an introduction to normal curves 
+- learned several ways to assess Normality
+- performed some summary statistics functions in R
+
+
+
+## 
+### Last Week's Glossary - Check Your Understanding!
+
+::: {style="font-size: 19px"}
+
+<br/><br/>
+
+|                             |                           |                       |                             |
+|:----------------------------|:--------------------------|:----------------------|-----------------------------|
+| deviation from the mean     | sample standard deviation | sample variance       | palmer penguins             |
+| quartiles                   | interquartile range (IQR) | outlier               | range                       |
+| Normal curve                | probability               | Normality             | love bombing                |
+| discrete variable           | healthy boundaries        | density curve         | chance                      |
+| robustness                  | saber-toothed tigers      | YAML (what?)          | .csv                        |
+| exponential distribution    | bimodal                   | right-skewed          | left-skewed                 |
+| standard normal distribution| standardization formula   | percentile            | within $\pm$ 1 SD of the mean|
+| Normal Quantile Plot        | The Shapiro-Wilk test     | central limit theorem | The 68/95/99.7 rule         |
+
+
+:::
+
+
+## This Week
+
+
+- describe sampling distributions.  
+- identify the relationship between sample size and the accuracy of the sample mean.  
+- explain Central Limit Theorem (fingers crossed!) 
+- calculate Confidence Interval for µ 
+- review the Midterm 1 topics.
+
+
+# Revisiting Fish Length Example
+::: {style="font-size: 30px"}
+
+## 
+
+- Please remember the Example 4.3.1 from our course textbook. 
+
+::: fragment
+__Length of Fish:__ Here is what we know about the shape and population parameters:
+::: 
+
+- The lengths of the individual fish follow a normal distribution (a symmetric and bell-shaped)
+  - $\mu$ = 54.0 mm 
+  - $\sigma$ = 4.5 mm
+
+- We calculated several percentages of the fish are
+  - less than 60 mm long (90.82% of the fish)  
+  - more than 51 mm long (74.86% of the fish)
+  - between 51 and 60 mm long (65.68% of the fish)
+
+- Now, our job today is to guess what would happen if we select random samples with replacement from this fish POPULATION in different scenarios. 
+
+::: 
+
+## Share Your Expectations
+
+Scan this QR code and share your expectations for different sampling scenarios
+
+<br>
+
+![](img/qr-code.png){fig-align="center"}
+
+
+## Reese Pieces
+
+## Review Your Expectations
+
+## Theorem 5.2.1
+
+## An Example
