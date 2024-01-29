@@ -68,8 +68,7 @@ Last week we...
   - Today, we will explore the outcomes of selecting:   
     - a single random sample with the different sample sizes and
     - infinitely many random samples with replacement from the same population.
-  - Then, we will address the scenario where no information about population parameters is available.
-    - How can we, as life scientists, estimate population parameters (e.g., population mean, population proportion).
+  - Then, we will solve a problem which will be very similar with your homework
 
 :::
 
