@@ -327,7 +327,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">An Introduction to Sampling Distribution</h1>
-  <p class="subtitle">STAT 218 - Week 1, Lecture 1</p>
+  <p class="subtitle">STAT 218 - Week 4, Lecture 1</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -339,9 +339,9 @@
 <h3 id="lets-refresh-our-memory">Let’s Refresh Our Memory</h3>
 <p>Last week we…</p>
 <ul>
-<li class="fragment">examined the spread of distributions<br>
+<li class="fragment">explored the spread of distributions<br>
 </li>
-<li class="fragment">reviewed the basic concepts of probability</li>
+<li class="fragment">reviewed basic concepts of probability</li>
 <li class="fragment">identified the relationship between probability and the life science</li>
 <li class="fragment">had an introduction to normal probability distribution</li>
 <li class="fragment">learned several ways to assess Normality</li>
@@ -417,31 +417,31 @@
 <h2></h2>
 <h3 id="this-week-we-will">This week, we will…</h3>
 <ul>
-<li class="fragment">describe the term “sampling distribution”.<br>
+<li class="fragment">describe the concept of “sampling distribution”.<br>
 </li>
 <li class="fragment">identify the relationship between sample size and the accuracy of the sample mean.<br>
 </li>
-<li class="fragment">explain Central Limit Theorem (fingers crossed!)</li>
-<li class="fragment">calculate Confidence Interval for µ .</li>
-<li class="fragment">elaborate data visualization techniques in R.</li>
-<li class="fragment">review the Midterm 1 topics.</li>
+<li class="fragment">explain the Central Limit Theorem (fingers crossed!)</li>
+<li class="fragment">calculate Confidence Intervals for µ .</li>
+<li class="fragment">elaborate on data visualization techniques in R.</li>
+<li class="fragment">review the topics for Midterm 1.</li>
 </ul>
 </section>
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <div style="font-size: 30px">
 <ul>
-<li class="fragment"><p>In data analysis, the essential aim is to separate actual biological features from those that might be the result of random chance.</p></li>
-<li class="fragment"><p>Generally we obtain only a single random sample, which comes from a very large population.</p>
+<li class="fragment"><p>In data analysis, our primary goal as life scientists is to distinguish actual biological features from those that might be the result of random chance.</p></li>
+<li class="fragment"><p>Generally we obtain a single random sample, which comes from a very large population.</p>
 <ul>
-<li class="fragment">Today, we will see what would happen if we select
+<li class="fragment">Today, we will explore the outcomes of selecting:
 <ul>
-<li class="fragment">a single random sample with the different sample sizes or</li>
-<li class="fragment">infinitely many samples with replacement from the same population.</li>
+<li class="fragment">a single random sample with the different sample sizes and</li>
+<li class="fragment">infinitely many random samples with replacement from the same population.</li>
 </ul></li>
-<li class="fragment">Then, we will find out what we will do if we do not have any information regarding population parameters.
+<li class="fragment">Then, we will address the scenario where no information about population parameters is available.
 <ul>
-<li class="fragment">How can we estimate population parameters (e.g., population mean).</li>
+<li class="fragment">How can we, as life scientists, estimate population parameters (e.g., population mean, population proportion).</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -453,7 +453,7 @@
 <div class="column" style="width:50%;">
 <div style="font-size: 48px">
 <p><br> <br> <br></p>
-<p><strong>Revisiting Fish Length Example</strong></p>
+<p><strong>Revisiting the Fish Length Example</strong></p>
 </div>
 </div><div class="column" style="width:50%;">
 <p><br> <br> <br></p>
@@ -514,6 +514,13 @@
 <li class="fragment"><p>In the length of fish example, we predicted what would happen in two different scenarios.</p></li>
 <li class="fragment"><p>Let’s use our <a href="https://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm?candy=1">applet</a> to see another example regarding proportions.</p></li>
 </ul>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/rossman-chance.png" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
@@ -522,43 +529,45 @@
 </div>
 </div>
 </section>
-<section id="steps-to-be-followed" class="slide level2">
-<h2>Steps To Be Followed:</h2>
-<div style="font-size: 32px">
-<p>We will draw multiple samples of three different sizes and simulate data to see how it affects the variability of the sample proportions for different sample sizes.</p>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<h3 id="steps-to-be-followed">Steps To Be Followed:</h3>
+<div style="font-size: 28px">
+<p>We will draw multiple samples of three different sizes and simulate data to observe how it affects the variability of the sample proportions for different sample sizes.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div style="font-size: 28px">
+<div style="font-size: 27px">
 <p><strong>Your Turn:</strong></p>
 <ul>
 <li class="fragment">Number of Candies is 10
 <ul>
 <li class="fragment">Set the probability of orange is 0.5<br>
 </li>
-<li class="fragment">Fix the number of candies as 10<br>
+<li class="fragment">Fix the number of candies at 10<br>
 </li>
-<li class="fragment">Choose statistics as Number of Orange<br>
+<li class="fragment"><strong>Choose statistics</strong> as Number of Orange<br>
 </li>
-<li class="fragment">See first what will happen if you draw only 1 sample.<br>
+<li class="fragment">Observe what happens if you draw only 1 sample.<br>
 </li>
-<li class="fragment">Try this 4-5 times.</li>
-<li class="fragment">See what will happen if you increase the number of samples to 1,000.<br>
+<li class="fragment">Repeat this 4-5 times.</li>
+<li class="fragment">Observe what happens if you increase the number of samples to 1,000.<br>
 </li>
 <li class="fragment">Click on “Summary Statistics”</li>
 </ul></li>
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div style="font-size: 28px">
+<div style="font-size: 27px">
 <p><strong>My Turn:</strong></p>
 <ul>
 <li class="fragment">Number of Candies is 10, 25, 1000
 <ul>
 <li class="fragment">Set the probability of orange is 0.5</li>
-<li class="fragment">Fix the number of candies as 10</li>
-<li class="fragment"><strong>Choose statistics</strong> as proportion of orange</li>
-<li class="fragment">See first what will happen if you have only 1-3 samples.</li>
-<li class="fragment">See what will happen if you increase the number of samples to 1,000.</li>
+<li class="fragment">Fix the number of candies as 10, then 25, AND 1000</li>
+<li class="fragment"><strong>Choose statistics</strong> as the proportion of orange</li>
+<li class="fragment">Observe what happens if you have only 1-3 samples.</li>
+<li class="fragment">Observe what happens if you increase the number of samples to 1,000.</li>
+<li class="fragment">Use snipping tool to compare the shapes of the distributions.</li>
 </ul></li>
 </ul>
 </div>
@@ -566,28 +575,42 @@
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <h3 id="take-away-messages">Take Away Messages</h3>
 <div style="font-size: 28px">
 <p><br></p>
+<div class="fragment">
 <p><strong>1. In real life, it is impossible to take infinitely many random samples.</strong></p>
 <p>Life scientists often work with one single sample.</p>
+</div>
+<div class="fragment">
 <p><strong>2. Sample statistics vary from sample to sample.</strong></p>
 <p>We see different proportions in each trial.</p>
+</div>
+<div class="fragment">
 <p><strong>3. The mean of the all possible sample proportions converges to the population proportion.</strong></p>
 <p>We increased the number of samples to 1000 and we saw that the proportion distribution of the all sample proportions converges to the population proportion.</p>
+</div>
+<div class="fragment">
 <p><strong>4. Sample size is important.</strong></p>
 <p>We tested different sample sizes and we observed the as we increase sample size, the standard deviation tends to decrease.</p>
+</div>
 </div>
 </section>
 <section id="fish-length-example" class="slide level2">
 <h2>Fish Length Example</h2>
-<p>We can also use these take away messages to the fish length variable.</p>
+<p>We can apply these take away messages to the fish length variable.</p>
 <p><br></p>
+<div class="fragment">
+<!-- -->
 <h3 id="vocabulary-time">Vocabulary Time</h3>
 <p><strong>Sampling variability:</strong> The variability among random samples from the same population.</p>
 <p><strong>Sampling distribution:</strong> A probability distribution that describes sampling variability in <span class="math inline">\(\bar Y\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Let’s elaborate sampling distribution of <span class="math inline">\(\bar Y\)</span>.</p>
+</div>
 </section>
 <section id="theorem-5.2.1" class="slide level2">
 <h2>Theorem 5.2.1</h2>
