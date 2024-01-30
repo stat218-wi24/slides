@@ -14,6 +14,8 @@ format:
 ## Some Announcements
 
 ::: {style="font-size: 32px"}
+
+- Quiz answer keys are available on Canvas   
 - There is an opportunity if you are interested in.
   - [Funded summer program in biostatistics and data science](https://www.stat.uci.edu/isi-buds/)
   - Applications due - March 15   
