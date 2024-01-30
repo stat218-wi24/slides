@@ -37,8 +37,8 @@ format:
 
 - __How large__ a sample size is required?
 
-  - For a normal distribution, any $n$ suffices. In the case of m
-  - Fo moderately nonnormal distributions, a moderate $n$ is adequate. 
+  - For a normal distribution, any $n$ suffices. 
+  - For moderately nonnormal distributions, a moderate $n$ is adequate. 
   - For highly nonnormal distributions, a rather large $n$ becomes necessary.
 
 :::
