@@ -440,6 +440,23 @@ If we calculate confidence intervals for each of these 100 samples, we will find
 :::
 :::
 
+
+
+##
+### Confidence Interval - Verbal Explanation
+::: {style="font-size: 24px"}
+
+And...
+
+::: fragment
+
+- If we calculate confidence intervals for each of these 100 samples, we will find that around 95% of these intervals capture the true population mean difference between the two groups. 
+
+- We are 95% confident that the true population mean difference is in this confidence interval.
+
+:::
+:::
+
 ##
 ### Confidence Interval and Sampling Distribution
 
