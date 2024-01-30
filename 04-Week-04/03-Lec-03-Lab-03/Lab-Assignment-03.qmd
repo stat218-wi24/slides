@@ -1,0 +1,76 @@
+---
+title: "STAT 218 Lab Assignment 3"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE"
+  - "Team Member 5: NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+## Lab Assignment 1
+
+In this assignment, we will work with the data available in the package of `palmerpenguins`. Please install and use that package if did not do it so far. 
+
+And let's load our data into R by using `data()` function.
+
+```{r}
+#| include: false
+library(palmerpenguins)
+data("penguins") 
+```
+
+__NOTE:__ Please ignore `penguins_raw` data for this class and USE `penguins` for this assignment.
+
+__Question 1: Please use `glimpse()`function and write 2-3 sentences to explain what you see.__
+
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+
+Type your answer (2-3 sentences) here.
+
+
+__Question 2: Choose a numeric variable and create a histogram to visualize it. Provide an explanation of the observed distribution.__
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+
+Describe the patterns and insights you observe in the histogram.
+
+
+
+
+__Question 3: Create a boxplot by using the variables `species` and `bill_length_mm`. Describe the graph using your own words.__
+
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+
+__Question 4: Using the `geom_point()` function, plot a graph that shows the linear relationship between `bill_length_mm` and `bill_depth_mm`, coloring different `species` in that graph.__
+
+```{r}
+
+# Put your R Code Chunk here. 
+
+```
+
+

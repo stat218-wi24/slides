@@ -1,0 +1,622 @@
+---
+title: "More on Data Visualization"
+author: "Dr. Sinem Demirci"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+execute:
+  echo: true
+---
+
+
+```{r message = FALSE}
+#| echo: false
+library(palmerpenguins)
+library(tidyverse)
+library(openintro)
+data(babies)
+babies <- babies %>% 
+  mutate(smoke = as.logical(smoke),
+         parity = as.logical(parity))
+```
+
+
+## Data Visualizations
+::: {style="font-size: 36px"}
+
+- are graphical representations of data
+
+- use different colors, shapes, and the coordinate system to summarize data
+
+- can tell a story or can be useful for exploring data
+<br>
+
+::: {style="font-size: 14px"}
+_(A quick note: I used some of [Dr Dogucu's](minedogucu.com) materials to this class because I love them!)_
+:::
+:::
+
+## Today's Menu
+
+::: {style="font-size: 30px"}
+
+- Visualizing a Single Categorical Variable
+- Visualizing a Single Numeric Variable
+- Visualizing Two Categorical Variables 
+- Visualizing One Categorical and One Numeric Variable
+- Visualizing Two Numeric Variables 
+- Visualizing More than Two Variables 
+
+:::
+
+
+# Visualizing a Single Categorical Variable
+
+## If you...
+
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 30px"}
+
+<br>
+
+- If you could speak to R in English, how would you tell R to make this plot for you?
+
+OR
+
+- If you had the data and had to draw this bar plot by hand, what would you do?
+
+:::
+:::
+
+
+
+::: {.column width="50%"}
+
+<br>
+
+```{r}
+#| echo: false
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke)) + 
+  geom_bar()
+```
+:::
+:::
+
+
+## Maybe...
+
+<br>
+- We could tell R something like...
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+- Consider the data frame
+- Count number of mothers in each `smoke`
+- Put `smoke` on x-axis.
+- Put `count` on y-axis.
+- Draw the bars.
+:::
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke)) + 
+  geom_bar()
+```
+
+:::
+:::
+
+## 
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+<br>
+<br>
+
+These ideas are all correct but some are not necessary in R
+
+- Consider the data frame
+- ~~Count number of passengers in each `smoke`~~
+- Put `smoke` on x-axis.
+- ~~Put `count` on y-axis~~.
+- Draw the bars.
+
+R will do some of these steps by default.
+
+:::
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+```{r}
+#| echo: false
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke)) + 
+  geom_bar()
+```
+
+:::
+:::
+
+##
+### Let's Play with `Babies` Data
+
+::: {style="font-size: 30px"}
+
+Let's use our `library()`, `data()`, and `glimpse()`function to start.
+
+```{r}
+library(openintro)
+library(tidyverse)
+data(babies)
+```
+
+
+```{r}
+#| echo: false
+babies <- babies %>% 
+  mutate(smoke = as.logical(smoke),
+         parity = as.logical(parity))
+```
+
+
+```{r}
+#| output: false
+glimpse(babies)
+```
+
+:::
+
+##
+::: {style="font-size: 30px"}
+
+We need to learn the variables before proceeding.
+```{r}
+# ?babies
+```
+
+`case`: id number
+
+`bwt`: birth weight, in ounces
+
+`gestation`: length of gestation, in days
+
+`parity`: binary indicator for a first pregnancy (0 = first pregnancy)
+
+`age`: mother's age in years
+
+`height`: mother's height in inches
+
+`weight`: mother's weight in pounds
+
+`smoke`: binary indicator for whether the mother smokes
+
+:::
+
+##
+### 3 Steps of Making a Basic `ggplot()`
+
+<br>
+
+1. Pick data
+
+2. Map data onto aesthetics
+
+3. Add the geometric layer
+
+
+##
+### Bar plot - Step 1 - Pick Data
+
+Let's use `smoke` variable within `babies`dataset which is a categorical variable indicating whether the mother smokes or not.
+
+```{r}
+#| output-location: column
+ggplot(data = babies)
+```
+
+
+##
+### Bar plot - Step 2 - Map Data to Aesthetics
+
+Let's use `smoke` variable within `babies`dataset which is a categorical variable indicating whether the mother smokes or not.
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke)) 
+```
+
+
+##
+### Bar plot - Step 3 - Add the Geometric Layer
+
+Let's use `smoke` variable within `babies`dataset which is a categorical variable indicating whether the mother smokes or not.
+
+```{r}
+#| output-location: column
+ggplot(data = babies, 
+       aes(x = smoke)) +
+  geom_bar()
+```
+
+
+##
+::: {.panel-tabset group="binwidth" style="font-size: 80%"}
+
+
+## Bar plot
+
+```{r}
+#| echo: false
+
+ggplot(data = babies, 
+       aes(x = smoke)) +
+  geom_bar()
+```
+
+## English
+
+<br>
+<br>
+
+- Create a `ggplot` using the `babies` data frame.
+- Map the `smoke` to the x-axis.
+- Add a layer of a bar plot.
+
+
+## R
+
+<br>
+<br>
+
+```{r}
+#| output: false
+ggplot(data = babies, 
+       aes(x = smoke)) +
+  geom_bar()
+```
+
+```{css echo = FALSE}
+code.sourceCode {
+  font-size: large;
+}
+```
+
+:::
+
+# Visualizing a Single Numeric Variable
+
+## Histogram
+
+Let's use `bwt` variable which is a numeric variable indicating birth weight in ounces
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram()
+```
+
+## Histogram
+
+Let's use `bwt` variable which is a numeric variable indicating birth weight in ounces
+
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram(binwidth = 15)
+```
+
+
+
+## A Colorful Histogram
+
+Let's use `bwt` variable which is a numeric variable indicating birth weight in ounces
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram(binwidth = 15, 
+                 fill = "seagreen2")
+```
+
+
+## A Colorful Histogram
+
+Let's use `bwt` variable which is a numeric variable indicating birth weight in ounces
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram(binwidth = 15, 
+                 color = "white", 
+                 fill = "maroon")
+```
+Choose your own [color](https://www.stat.auckland.ac.nz/~ihaka/downloads/R-colours-a4.pdf)
+
+##
+
+::: {.panel-tabset group="binwidth" style="font-size: 80%"}
+
+## English
+
+- Create a ggplot using the babies data frame.
+- Map the `bwt` to the x-axis.
+- Add a layer of a histogram.
+- Change the binwidth to 15.
+- Color the borders of the bars (bins?) as white.
+- Fill it with a color code named maroon
+
+## R Code
+
+```{r}
+#| output: false
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram(binwidth = 15, 
+                 color = "white", 
+                 fill = "maroon")
+```
+
+## Plot
+
+```{r}
+#| echo: false
+ggplot(data = babies,
+       aes(x = bwt)) +
+  geom_histogram(binwidth = 15, 
+                 color = "white", 
+                 fill = "maroon")
+```
+
+:::
+
+
+## 
+
+::: {.panel-tabset group="binwidth" style="font-size: 80%"}
+
+## Binwidth = 0.5
+
+```{r}
+#| echo: false
+ggplot(babies, aes(x = bwt)) +
+  geom_histogram(binwidth = 0.5)
+```
+
+## Binwidth = 3
+
+```{r}
+#| echo: false
+ggplot(babies, aes(x = bwt)) +
+  geom_histogram(binwidth = 3)
+```
+
+## Binwidth = 10
+
+```{r}
+#| echo: false
+ggplot(babies, aes(x = bwt)) +
+  geom_histogram(binwidth = 10)
+```
+
+
+## Binwidth = 15
+
+```{r}
+#| echo: false
+ggplot(babies, aes(x = bwt)) +
+  geom_histogram(binwidth = 15)
+```
+
+:::
+
+# Visualizing Two Categorical Variables 
+
+
+## Stacked Bar-Plot
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke, 
+           fill = parity)) +
+  geom_bar()
+```
+
+We are using the variables of `parity`: binary indicator for a first pregnancy and `smoke`: binary indicator for whether the mother smokes.
+
+
+## Standardized Bar Plot
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke, 
+           fill = parity)) + 
+  geom_bar(position = "fill")
+```
+
+Now we will try to fill the y-axis as if it is something look like percentage which is called __Standardized Bar Plot__. Note that y-axis is no longer count but we will learn how to change that later.
+
+
+## Dodged Bar Plot
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = smoke, 
+           fill = parity)) + 
+  geom_bar(position = "dodge")
+```
+
+# Visualizing One Categorical and One Numeric Variable
+
+
+## Boxplot
+
+```{r}
+#| output-location: column
+ggplot(data = na.omit(babies),
+       aes(x = smoke,
+           y = bwt))  +
+  geom_boxplot()
+
+```
+
+We are visualizing a single numerical and single categorical variable by using `geom_boxplot`
+
+
+# Visualizing Two Numerical Variables 
+
+## Scatterplot
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation))  +
+  geom_point()
+```
+
+
+# Visualizing More Than Two Variables
+
+## Let's Try This
+
+```{r}
+#| output-location: column
+
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation,
+           color = smoke)) +
+  geom_point()
+```
+We colored continuous variables by `smoke`
+
+
+## And Then...
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation,
+           shape = smoke)) +
+  geom_point()
+```
+
+We put different shapes for continuous variables by `smoke`.
+
+
+## And Then...
+
+```{r}
+#| output-location: column
+
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation,
+           shape = smoke,
+           color = smoke)) +
+  geom_point()
+```
+
+Now, we apply both different shapes and different colors.
+
+
+## More on ggplot 
+
+```{r}
+#| output-location: column
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation,
+           shape = smoke,
+           color = smoke)) +
+  geom_point(size = 4) +
+  labs(x = "Birth Weight",
+       y = "Length of Gestation (days)",
+       title = "Babies")
+```
+
+Let's use ` r labs() ` function to increase its readability.
+
+
+## And then...
+
+```{r}
+#| output-location: column
+
+ggplot(data = babies,
+       aes(x = bwt,
+           y = gestation,
+           shape = smoke,
+           color = smoke)) +
+  geom_point(size = 4) +
+  labs(x = "Birth Weight",
+       y = "Length of Gestation (days)",
+       title = "Babies") +
+  theme_bw()
+```
+We added another layer called ` r theme_bw() `. This function is about the background, the size of the text etc.
+
+
+## And then...
+
+
+```{r}
+#| output-location: column
+
+ggplot(data = na.omit(babies),
+       aes(x = bwt,
+           y = gestation,
+           shape = smoke,
+           color = smoke)) +
+  geom_point(size = 4) +
+  labs(x = "Birth Weight",
+       y = "Length of Gestation (days)",
+       title = "Babies") +
+  theme_bw() +
+  theme(text = element_text(size=18))
+```
+Now, we elaborated this function a little bit more and omit the NA values.
+
+
+## Examples
+
+[How Common Is Your Birthday?](https://chart-studio.plotly.com/~Dreamshot/354/how-common-is-your-birthday/#plot)
+
+[One Dataset Visualized 25 Ways](https://flowingdata.com/2017/01/24/one-dataset-visualized-25-ways)
+
+[Mandatory Paid Vacation](https://www.instagram.com/p/CE1kpM5FhWR/?utm_source=ig_web_copy_link)
+
+[Why are K-pop groups so big?](https://pudding.cool/2020/10/kpop/)
+
+We will only touch the surface of data visualization in this class. It is a rich field.
