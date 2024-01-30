@@ -1,0 +1,215 @@
+---
+title: "Chapter 6: Confidence Interval for μ "
+subtitle: "STAT 218 - Week 4, Lecture 1"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+##
+### Last Week's Glossary - Check Your Understanding!
+
+::: {style="font-size: 19px"}
+
+<br/><br/>
+
+|                             |                             |                               |                             |
+|:----------------------------|:----------------------------|:------------------------------|-----------------------------|
+| statistical inference       | Normal curve                | yak titʸu titʸu yak tiłhini   | density curve               |
+| Normality                   | sampling distribution       | mode                          | probability                 |
+| saber-toothed tigers        | chance                      | standard normal distribution  | standardization formula     |
+| The 68/95/99.7 rule         | standard error              | within $\pm$ 1 SD of the mean | percentile                  |
+| Normal Quantile Plot        | The Shapiro-Wilk test       | central limit theorem         | sampling variability        |
+| meta-study                  | Monarch butterflies         | statistical estimation        | sampling error              |
+
+
+:::
+
+
+## What Did We Learn Last Week?
+
+  - normal curves
+  - calculating areas (probabilities) under a normal curve
+  - assessing Normality
+  - visualizing a sampling distribution
+  - estimated standard error
+  - determining __an estimate__ of some feature of the population
+  
+##
+### An Introduction to Confidence Interval - I
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+
+- Last week...
+  - we aimed to determine an estimate of $\mu$
+    - $\bar{y}$ was an estimate of $\mu$
+  - We also mentioned that the difference between $\bar{y}$ and $\mu$ is rarely more than a few standard errors.
+
+::: fragment
+:::{.callout-tip}
+
+If $Z$ is a standard normal random variable, then the probability that $Z$ is between $\pm$ 2 is about 0.95 (OR 95% if we remember The 68/95/99.7 rule)
+:::
+:::
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+::: fragment
+
+![](img/figure-435.png)
+:::
+:::
+:::
+:::
+
+##
+### An Introduction to Confidence Interval - II
+
+
+To understand how to calculate confidence intervals, we need to have
+
+- standardization formula
+- standard error
+- Z Score Table (Table 3 in our book) and 
+- solve an equation that composed of these 
+
+
+## 
+### An Introduction to Confidence Interval - III
+
+- Let's calculate confidence interval
+
+::: fragment
+:::{.callout-tip}
+
+If $Z$ is a standard normal random variable, then the probability that $Z$ is between $\pm$ 2 is about 95% (Remember The 68/95/99.7 rule)
+:::
+
+:::
+
+::: fragment
+
+![](img/fig-1.png){fig-align="center"}
+:::
+
+::: fragment
+::: {style="text-align: center; font-size: 28px"}
+
+
+$$
+95 \% \ CI = (\bar{Y} \pm 1.96 \sigma / \sqrt{n})
+$$
+
+:::
+:::
+
+##
+### An Further Example from Your Weekly Assignment
+::: {style="font-size: 28px"}
+
+__Exercise 5.2.8__ The heights of a certain population of corn plants follow a normal distribution with mean 145 cm and standard deviation 22 cm. We collected data from 16 plants and calculated the sample mean as 135 cm.
+
+If $\bar{Y}$ represents the mean height of a random sample of 16 plants from the population (which is 135), 95% confidence interval (CI) for $\mu$ can be calculated as following:
+
+
+::: fragment
+::: {style="text-align: center; font-size: 28px"}
+$$
+95 \% \ CI = (\bar{Y} \pm 1.96 \ X\ \sigma / \sqrt{n})
+$$
+:::
+:::fragment
+$$
+= (135\pm 1.96 \ X \ 22 / \sqrt{16})  
+$$
+:::
+::: fragment
+$$
+=(124.22,145.78)
+$$
+:::
+:::
+:::
+
+## 
+### Understanding Confidence Intervals
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center")
+options(scipen=0)
+library(tidyverse)
+library(fivethirtyeight)
+library(scales)
+```
+::: {style="font-size: 28px"}
+
+To help you visualize, imagine we have a population, and from that population, we randomly select a group of 20 observational unit
+
+```{r fig.height = 4, fig.align='center'}
+set.seed(7)
+
+bike_prop <- 0.15
+
+bike <- c(rep("yes", bike_prop*10000), rep("no", (1-bike_prop)*10000))
+
+```
+
+::: fragment
+95%CI = (-44.47, 20.13)
+:::
+
+::: fragment
+
+```{r fig.height = 4, fig.align='left'}
+
+tibble(p = bike_prop, n = 1, lower_bound = -44.47, upper_bound = 20.13) %>% 
+  ggplot() +
+  aes(x = p, y = n) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = lower_bound, xmax = upper_bound, height = .01)) +
+  labs(y = " ",
+       x = " ") +
+  theme(axis.text.y = element_blank()) 
+```
+:::
+:::
+
+##
+### Understanding Confidence Intervals
+
+::: {style="font-size: 28px"}
+
+ If we repeat this process 100 times, creating 100 different samples of 20 customers each, we would end up with 100 different samples drawn from the population.
+
+::: fragment
+![](img/fig-6.PNG){fig-align="center" width="100%"}
+:::
+:::
+
+##
+### Understanding Confidence Intervals
+
+::: {style="font-size: 24px"}
+If we calculate confidence intervals for each of these 100 samples, we will find that... 
+
+::: fragment
+
+![](img/fig-7.PNG){fig-align="center" width="100%"}
+:::
+
+::: fragment
+- Around 95% of these intervals capture the true population mean difference between the two groups
+- We are 95% confident that the true population mean difference is in this confidence interval.
+:::
+:::
