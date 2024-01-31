@@ -492,6 +492,10 @@ ggplot(data = na.omit(babies),
 We are visualizing a single numerical and single categorical variable by using `geom_boxplot`
 
 
+## Anatomy of A Boxplot
+
+![](img/boxplot.png)
+
 # Visualizing Two Numerical Variables 
 
 ## Scatterplot

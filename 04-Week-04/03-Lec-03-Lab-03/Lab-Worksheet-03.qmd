@@ -127,7 +127,9 @@ ggplot(data = babies,
 
 ## Visualizing Two Categorical Variables 
 
-Now we will try to fill the y-axis as if it is something look like percentage which is called __Standardized Bar Plot__. Note that y-axis is no longer count but we will learn how to change that later.
+Among those examples on visualizing two categorical variables, you can give it try to __Standardized Bar Plot__ here.
+
+In this type of bar plot, we will try to fill the y-axis as if it is something look like percentage. Note that y-axis is no longer count but we will learn how to change that later.
 
 ```{r}
 
