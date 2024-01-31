@@ -570,7 +570,7 @@ ggplot(data = babies,
        title = "Babies")
 ```
 
-Let's use ` r labs() ` function to increase its readability.
+Let's use `labs()` function to increase its readability.
 
 
 ## And then...
@@ -589,7 +589,7 @@ ggplot(data = babies,
        title = "Babies") +
   theme_bw()
 ```
-We added another layer called ` r theme_bw() `. This function is about the background, the size of the text etc.
+We added another layer called `theme_bw()`. This function is about the background, the size of the text etc.
 
 
 ## And then...
@@ -621,6 +621,6 @@ Now, we elaborated this function a little bit more and omit the NA values.
 
 [Mandatory Paid Vacation](https://www.instagram.com/p/CE1kpM5FhWR/?utm_source=ig_web_copy_link)
 
-[Why are K-pop groups so big?](https://pudding.cool/2020/10/kpop/)
+[Why are K-pop groups so big?](https://pudding.cool/2020/10/kpop/) (try Firefox)
 
 We will only touch the surface of data visualization in this class. It is a rich field.
