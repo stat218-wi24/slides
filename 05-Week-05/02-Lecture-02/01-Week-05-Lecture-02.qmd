@@ -12,6 +12,17 @@ format:
 ---
 
 
+## Survey Check-in Before Midterm
+
+- Weekly Assignments
+  - Answer Key
+  - Feedback
+  - Grades
+  
+- Having more practice problems together
+
+- RStudio/Coding
+
 ##
 ### Last Week's Glossary - Check Your Understanding!
 
@@ -51,7 +62,8 @@ format:
 We will learn...
 
 - Student's _t_ distribution
-- Planning a Study to Estimate μ
+- Planning a Study to Estimate μ  
+- Comparing two means
 - Hypothesis Testing and  
 - Independent samples _t_ test  
 
@@ -270,8 +282,8 @@ $$
 
 ::: fragment
 $$
-\\95 \% \ CI = (\bar{y} \pm t_{0.025} \ X \ SE_{\bar{y}})
-\\95 \% \ CI = (32.8143 \pm 2.160 \ X\ 2.4757 / \sqrt{14})
+\\95 \% \ CI = (\bar{y} \pm t_{0.025} \ \times \ SE_{\bar{y}})
+\\95 \% \ CI = (32.8143 \pm 2.160 \ \times \ 2.4757 / \sqrt{14})
 $$
 :::
 
@@ -279,6 +291,8 @@ $$
 $$
 \\= 32.81 \pm 1.43 
 \\ 31.43 \ cm^2 < \mu < 34.2 \ cm^2
+\\ OR
+\\ 95 \% \ CI = (31.43,34.2)
 $$
 :::
 :::
@@ -292,7 +306,10 @@ $$
 :::
 
 ::: fragment
+::: {style="font-size: 28px"}
+
 We are 95% confident that the true population mean is in this confidence interval.
+:::
 :::
 
 ##
@@ -310,7 +327,7 @@ We are 95% confident that the true population mean is in this confidence interva
 ::: fragment
 $$
 \\90 \% \ CI = (\bar{y} \pm t_{0.05} SE_{\bar{y}})
-\\90 \% \ CI = (32.8143 \pm 1.771 \ X\ 2.4757 / \sqrt{14})
+\\90 \% \ CI = (32.8143 \pm 1.771 \ \times \ 2.4757 / \sqrt{14})
 $$
 :::
 
@@ -331,7 +348,16 @@ $$
 :::
 
 ::: fragment
+::: {style="font-size: 28px"}
+
 We are 90% confident that the true population mean is in this confidence interval.
+:::
+:::
+
+::: fragment
+::: {style="font-size: 28px"}
+__Think-pair-share:__ What is the difference between 90% CI and 95% CI?
+:::
 :::
 
 # Planning a Study to Estimate μ
