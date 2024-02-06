@@ -1,0 +1,471 @@
+---
+title: "Student's _t_ Distribution"
+subtitle: "STAT 218 - Week 5, Lecture 2"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+##
+### Last Week's Glossary - Check Your Understanding!
+
+::: {style="font-size: 24px"}
+
+<br/><br/>
+
+|                             |                             |                               |                             |
+|:----------------------------|:----------------------------|:------------------------------|:----------------------------|
+| `ggplot()`                  | `babies` data set           | `geom_boxplot()`              | `geom_bar()`                |
+|  confidence interval        | aesthetics                  | geometric layer               | parity                      |
+| histogram                   | binwidth                    | stacked bar-plot              | standardized bar plot       |
+| dodged bar plot             | boxplot                     | gestation                     | Mandatory Paid Vacation     |
+| `labs()`                    | `theme_bw()`                | `element_text()`              | `geom_point()`              |
+
+
+:::
+
+
+## 
+### What Did We Learn Last Week?
+::: {style="font-size: 32px"}
+
+  - Confidence Interval for μ
+  - Data Visualization
+    - Visualizing a Single Categorical Variable
+    - Visualizing a Single Numeric Variable
+    - Visualizing Two Categorical Variables 
+    - Visualizing One Categorical and One Numeric Variable
+    - Visualizing Two Numeric Variables
+    - Visualizing More Than Two Categories
+
+:::
+
+## This week...
+
+We will learn...
+
+- Student's _t_ distribution
+- Planning a Study to Estimate μ
+- Hypothesis Testing and  
+- Independent samples _t_ test  
+
+
+# Student's _t_ distribution 
+
+## What is _t_ distribution?
+::: {style="font-size: 28px"}
+
+- $t$-distribution is another bell shape and symmetric distribution that can be useful if we do not know anything about population parameters.
+
+- The $t$-distribution is always centered at zero and has a single parameter: __degrees of freedom__.
+  - The shape of the distribution depends on the degrees of freedom.
+
+- Broadly speaking, we use $t$-distribution with $df = n − 1$
+  - to model the sample mean when the sample size is $n$.
+  - As the $df$ is increasing, the $t$-distribution will look more like __the standard normal distribution__ 
+    - when the $df$ is about 30 or more, the $t$
+-distribution is nearly indistinguishable from the normal distribution.
+
+:::
+
+## What is _t_ distribution?
+::: {style="font-size: 28px"}
+
+```{r}
+library(tidyverse)
+set.seed(123)
+
+# Generate data
+x <- seq(-4, 4, length.out = 1000)
+
+# Create data frame
+df <- data.frame(
+  x = rep(x, 5),
+  y = c(dnorm(x), dt(x, df = 1), dt(x, df = 2), dt(x, df = 4), dt(x, df = 8)),
+  Distribution = rep(c("Normal", "df=1", "df=2", "df=4", "df=8"), each = length(x))
+)
+
+# Plot using ggplot2
+ggplot(df, aes(x, y, color = Distribution, linetype = Distribution)) +
+  geom_line(size = 1) +
+  labs(title = "Some Examples of t-Distributions and the Standard Normal Distribution",
+       x = "Value",
+       y = "Density") +
+  theme_minimal() +
+  scale_color_manual(values = c("Medium Blue", "Magenta", "Dark Orange", "Forest Green", "Black")) +
+  scale_linetype_manual(values = c("dashed", "dashed", "dashed", "dashed", "solid"))
+
+
+```
+
+
+:::
+
+## 
+
+### Comparison of _t_ and the Standard Normal Distribution
+
+::: {style="font-size: 28px"}
+
+- Both are symmetric and bell-shaped but $t$-distribution has a larger standard deviation.
+
+- The $t$-distribution has a single parameter: __degrees of freedom__.
+- Standard Normal Distribution has two parameters: __$\mu$__ and __$\sigma$__.
+
+- The tails of $t$ distributions are thicker than the normal curves, 
+  - observations are more likely to fall beyond __two standard deviations__ from the mean than under the normal distribution.
+  
+:::
+
+
+
+# Calculating Confidence Interval for $t$
+
+##
+### But First, Let's Refresh Our Memory
+
+::: {style="font-size: 25px"}
+
+- For a sample of observations on a quantitative variable _Y_
+  - $\bar{y}$ is an estimate of __$\mu$__.
+  - _s_ is an estimate of __$\sigma$__.
+  
+::: fragment
+We learned that our estimates are subject to sampling error.
+:::
+
+::: fragment
+__Sampling Error:__ the amount of discrepancy between $\bar{y}$ and $\mu$ is described (in a probability sense) by the sampling distribution of $\bar{Y}$
+:::
+
+- As _s_ is an estimate of __$\sigma$__, a natural estimate of $\sigma / \sqrt{n}$ is $s/\sqrt{n}$
+
+::: fragment
+__The standard error of the mean__ is defined as follow:
+
+$$
+SE_\bar{Y} = \frac{s}{\sqrt{n}}
+$$
+:::
+:::
+
+## Standard Error
+
+::: {style="font-size: 28px"}
+
+- In real life, we don't know population mean __$\mu$__ and population standard deviation __$\sigma$__.
+  - which means that we cannot calculate the standard deviation of sampling distribution.
+- To overcome this, we can calculate standard error of the mean. 
+  - This strategy tends to work well when we have large data set and we can estimate __$\sigma$__ using $s$ accurately.
+  - However, the estimate is less precise with smaller samples.
+
+:::
+
+## 
+### How to Read Table 4
+::: {style="font-size: 28px"}
+<br>
+
+![](img/t-025.png){fig-align="center"}
+
+- Let's check Table 4 in our book and see how $t_{0.025}$ value decreases as the $df$ increases.
+  - for $df = \infty$, the value is $t_{0.025} = 1.960$ which means that it approached the same value in Table 3 ($Z$ Scale)
+:::
+
+## 
+### Confidence Interval for _t_
+::: {style="font-size: 28px"}
+::: fragment
+- Last week, we only learned how to calculate 95% CI when we know $\sigma$
+
+$$
+95 \% \ CI = (\bar{Y} \pm 1.96 \times \frac{\sigma}{\sqrt{n}})
+$$
+:::
+
+:::fragment
+- Now, we will convert this formula to be compatible with $t$-distribution
+$$
+95 \% \ CI = (\bar{y} \pm t_{0.025} \ \times \ SE_{\bar{y}})
+$$
+where 
+
+::: fragment
+$$
+SE_{\bar{y}} = \frac{s}{\sqrt{n}}
+$$
+:::
+:::
+
+:::fragment
+where the critical value $t_{0.025}$ is determined from Student's $t$-distribution with 
+:::
+
+::: fragment
+$$
+df = n - 1
+$$
+:::
+:::
+
+##
+### Same Example from Last Week - I
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+Let's have a look wing areas of 14 male Monarch butterflies at Oceano Dunes State Park in California
+
+
+- $\bar{y} = 32.8143 \ cm^2$  and $s= 2.4757 \ cm^2$
+
+::: fragment
+Suppose we consider these 14 observations as a random sample from a population. 
+:::
+
+::: fragment
+$$
+df = n - 1 
+\\ df = 14 - 1
+\\ df = 13
+$$
+:::
+
+::: fragment
+From the Table 4, we find 
+
+$$
+t_{0.025} = 2.160
+$$
+
+:::
+:::
+:::
+
+::: {.column width="50%"}
+<a title="© Derek Ramsey / derekramsey.com" href="https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Showy_Male_3000px.jpg"><img width="1024" alt="Monarch Butterfly Showy Male 3000px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Monarch_Butterfly_Showy_Male_3000px.jpg/1024px-Monarch_Butterfly_Showy_Male_3000px.jpg"></a>
+
+:::
+:::
+
+
+##
+### Same Example from Last Week - II
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+ 95% confidence interval (CI) for $\mu$ can be calculated as following:
+
+
+- $\bar{y} = 32.8143 \ cm^2$  and $s= 2.4757 \ cm^2$
+
+::: fragment
+$$
+\\95 \% \ CI = (\bar{y} \pm t_{0.025} \ X \ SE_{\bar{y}})
+\\95 \% \ CI = (32.8143 \pm 2.160 \ X\ 2.4757 / \sqrt{14})
+$$
+:::
+
+:::fragment
+$$
+\\= 32.81 \pm 1.43 
+\\ 31.43 \ cm^2 < \mu < 34.2 \ cm^2
+$$
+:::
+:::
+:::
+
+
+::: {.column width="50%"}
+<a title="© Derek Ramsey / derekramsey.com" href="https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Showy_Male_3000px.jpg"><img width="1024" alt="Monarch Butterfly Showy Male 3000px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Monarch_Butterfly_Showy_Male_3000px.jpg/1024px-Monarch_Butterfly_Showy_Male_3000px.jpg"></a>
+
+:::
+:::
+
+::: fragment
+We are 95% confident that the true population mean is in this confidence interval.
+:::
+
+##
+### Same Example from Last Week - III
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+ 90% confidence interval (CI) for $\mu$ can be calculated as following:
+
+
+- $\bar{y} = 32.8143 \ cm^2$  and $s= 2.4757 \ cm^2$
+
+::: fragment
+$$
+\\90 \% \ CI = (\bar{y} \pm t_{0.05} SE_{\bar{y}})
+\\90 \% \ CI = (32.8143 \pm 1.771 \ X\ 2.4757 / \sqrt{14})
+$$
+:::
+
+:::fragment
+$$
+\\= 32.81 \pm 1.17 
+\\ 31.64 \ cm^2 < \mu < 33.98 \ cm^2
+$$
+:::
+:::
+:::
+
+
+::: {.column width="50%"}
+<a title="© Derek Ramsey / derekramsey.com" href="https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Showy_Male_3000px.jpg"><img width="1024" alt="Monarch Butterfly Showy Male 3000px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Monarch_Butterfly_Showy_Male_3000px.jpg/1024px-Monarch_Butterfly_Showy_Male_3000px.jpg"></a>
+
+:::
+:::
+
+::: fragment
+We are 90% confident that the true population mean is in this confidence interval.
+:::
+
+# Planning a Study to Estimate μ
+
+## Planning a Study to Estimate μ
+::: {style="font-size: 28px"}
+
+- Before collecting data for a research study, it is wise to consider in advance whether
+the estimates generated from the data will be sufficiently precise. 
+  - It can be painful indeed to discover after a long and expensive study that the standard errors are so large that the primary questions addressed by the study cannot be answered.
+
+- The precision with which a population mean can be estimated is determined by
+two factors: 
+(1) the population variability of the observed variable Y, and 
+(2) the sample size.
+
+:::
+
+## Planning a Study to Estimate μ
+
+::: {style="font-size: 28px"}
+
+- In some situations the variability of Y cannot, and perhaps should not, be reduced. 
+  - For example, a wildlife ecologist may wish to conduct a field study of a natural population of fish; the heterogeneity of the population is not controllable and in fact is a proper subject of investigation.
+
+- On the other hand, it is often appropriate, especially in comparative studies, to
+reduce the variability of Y by holding extraneous conditions as constant as possible.
+  - For example, physiological measurements may be taken at a fixed time of day; tissue
+may be held at a controlled temperature; all animals used in an experiment may be
+the same age
+
+:::
+
+## What sample size will be needed?
+
+Recall that 
+
+::: fragment
+$$
+SE_{\bar{y}} = \frac{s}{\sqrt{n}}
+$$
+:::
+
+We can use this formula to determine our sample size as follows:
+
+:::fragment
+$$
+Desired \ SE = \frac{Guessed \ SD}{\sqrt{n}}
+$$
+:::
+## 
+### Same Example from Last Week - IV
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+
+Suppose the researcher is now planning a new study of butterflies Monarch butterflies at Oceano Dunes State Park in California and has decided that it would be desirable that the SE be no more than $0.4 \ cm^2$
+
+
+- $\bar{y} = 32.8143 \ cm^2$  and $s= 2.4757 \ cm^2$
+
+::: fragment
+$$
+SE_{\bar{y}} = s / \sqrt{n}
+$$
+:::
+
+:::fragment
+$$
+Desired \ SE = Guessed \ SD / \sqrt{n}
+$$
+:::
+
+:::fragment
+$$
+\\Desired \ SE = 2.48 / \sqrt{n} \ \le 0.4
+\\ n\ge 38.4 
+$$
+$$
+\\ at \ least \ 39 \ butterflies
+$$
+
+:::
+
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+<a title="© Derek Ramsey / derekramsey.com" href="https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Showy_Male_3000px.jpg"><img width="1024" alt="Monarch Butterfly Showy Male 3000px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Monarch_Butterfly_Showy_Male_3000px.jpg/1024px-Monarch_Butterfly_Showy_Male_3000px.jpg"></a>
+
+- You may wonder how a researcher would arrive at a value such as  $0.4 \ cm^2$ for the
+desired SE. Such a value is determined by considering how much error one is willing
+to tolerate in the estimate of μ.
+
+:::
+:::
+:::
+
+## 
+#### Conditions for Validity of Estimation Methods - I
+::: {style="font-size: 30px"}
+
+::: {.callout-note}
+__1. Conditions on the design of the study__
+
+__(a)__ It must be reasonable to regard the data as a random sample from a
+large population.
+
+__(b)__ The observations in the sample must be independent of each other.
+
+
+__2. Conditions on the form of the population distribution__
+
+__(a)__ If $n$ is small, the population distribution must be approximately normal.
+
+__(b)__ If $n$ is large, the population distribution need not be approximately normal.
+The requirement that the data are a random sample is the most important condition.
+:::
+:::
+
+## 
+#### Conditions for Validity of Estimation Methods - II
+
+::: {style="font-size: 30px"}
+- If the only source of information is the data at hand, then normality can be roughly checked by making a histogram and normal quantile plot of the data if your sample size is large.
+  - However, if $n$ is large, the requirement of normality is less important anyway.
+- Sometimes a histogram or normal quantile plot of the data indicates that the data
+did not come from a normal population. 
+  - If the sample size is small, then Student’s $t$-method will not give valid results.
+      - However, it may be possible to transform the data to achieve approximate normality and then analyze the data in the transformed scale.
+  
+:::
+
