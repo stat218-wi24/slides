@@ -380,7 +380,7 @@ library(scales)
 ```
 ::: {style="font-size: 28px"}
 
-To help you visualize, imagine we have a population, and from that population, we randomly select a group of 20 observational unit
+To help you visualize, imagine we have a population, and from that population, we randomly select a group of 20 observational units
 
 ```{r fig.height = 4, fig.align='center'}
 set.seed(7)
@@ -416,7 +416,7 @@ tibble(p = bike_prop, n = 1, lower_bound = -44.47, upper_bound = 20.13) %>%
 
 ::: {style="font-size: 28px"}
 
- If we repeat this process 100 times, creating 100 different samples of 20 customers each, we would end up with 100 different samples drawn from the population.
+ If we repeat this process 100 times, creating 100 different samples of 20 observational units each, we would end up with 100 different samples drawn from the population.
 
 ::: fragment
 ![](img/fig-6.PNG){fig-align="center" width="100%"}
@@ -435,8 +435,8 @@ If we calculate confidence intervals for each of these 100 samples, we will find
 :::
 
 ::: fragment
-- Around 95% of these intervals capture the true population mean difference between the two groups
-- We are 95% confident that the true population mean difference is in this confidence interval.
+- Around 95% of these intervals capture the true population mean
+- We are 95% confident that the true population mean is in this confidence interval.
 :::
 :::
 
@@ -450,9 +450,9 @@ And...
 
 ::: fragment
 
-- If we calculate confidence intervals for each of these 100 samples, we will find that around 95% of these intervals capture the true population mean difference between the two groups. 
+- If we calculate confidence intervals for each of these 100 samples, we will find that around 95% of these intervals capture the true population mean. 
 
-- We are 95% confident that the true population mean difference is in this confidence interval.
+- We are 95% confident that the true population mean is in this confidence interval.
 
 :::
 :::
