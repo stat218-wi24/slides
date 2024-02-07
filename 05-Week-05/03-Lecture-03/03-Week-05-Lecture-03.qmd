@@ -174,7 +174,7 @@ distributed.
 If $n_1$ and $n_2$ are large, condition (3) is less important.
 
 ## 
-## Some Questions
+### Food for Thought
 
 ::: {style="font-size: 28px"}
 
