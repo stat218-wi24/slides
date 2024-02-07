@@ -172,3 +172,30 @@ The confidence interval formula is valid if
 distributed. 
 
 If $n_1$ and $n_2$ are large, condition (3) is less important.
+
+## 
+## Some Questions
+
+::: {style="font-size: 28px"}
+
+
+__Contextual Questions:__
+
+- Is it reasonable to believe that the substance may affect the plant growth?
+
+- Did we find an evidence that the substance may affect the plant growth?
+
+- Are we attempting to prove or refute anything here?
+
+- What is our primary objective or purpose in this scenario, broadly speaking?
+
+- What factors could contribute to conflicting evidence in this example?
+
+__Big Questions:__
+
+- Once scientists establish a theory or law, is it subject to change over time?
+
+  - If so, how does this impact our trust in scientific knowledge?
+  - If not, what motivates ongoing scientific inquiry?
+
+:::
