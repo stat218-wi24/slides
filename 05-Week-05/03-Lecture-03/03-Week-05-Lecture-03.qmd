@@ -1,0 +1,174 @@
+---
+title: "Comparing Two Means"
+subtitle: "STAT 218 - Week 5, Lecture 3"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+
+## Introduction
+::: {style="font-size: 28px"}
+
+- So far, we have interested in the analysis of a single sample of a numeric variable.
+  - In practice, most of the scientific research involves the comparison of 2 or more samples from different populations.
+- If the observed variable is quantitative, the comparison of two samples can include
+  (1) comparison of means,
+  (2) comparison of standard deviations
+  (3) comparison of shapes.
+
+- In this week, we will be dealing with the comparison of 2 means
+
+:::
+
+## 
+### Notation
+::: {style="font-size: 26px"}
+
+- We employed a parallel notations but to be able to differentiate two samples from each other, we will use __subscript__.
+
+::: fragment
+![Figure 1. Naturally Occurring Populations](img/notation.png){fig-align="center"}
+:::
+
+
+- The two populations that we are interested in can be either
+  - naturally occurring populations (Figure 1) OR
+  - conceptual populations defined by certain experimental conditions.
+
+:::
+
+
+
+## 
+### Standard Error of ($\bar{Y}_1$ - $\bar{Y}_2$)
+
+::: {style="font-size: 24px"}
+
+- We have learned that the precision of a sample mean can be quantified by its standard error.
+
+::: fragment
+The formula that we have used so far is
+
+$$
+SE_{\bar{Y}} = \frac{s}{\sqrt{n}}
+$$
+:::
+
+- Naturally, we can say that taking the difference between two sample means is an estimate of the quantity ($\mu_1$ - $\mu_2$).
+
+- However, the formula for the standard error of the difference ($\bar{Y}_1$ - $\bar{Y}_2$) is a little different from what we initially thought.
+
+::: fragment
+
+$$
+SE_{\bar{Y}_1 - \bar{Y}_2} = \sqrt{SE_1^2 + SE_2^2}
+$$
+:::
+
+::: fragment
+
+$$
+SE_{\bar{Y}_1 - \bar{Y}_2} = \sqrt{ \frac {s_1^2}{n_1} + \frac {s_2^2}{n_2}}
+$$
+
+:::
+
+:::
+
+# CI for ($\mu_1$ - $\mu_2$)
+
+## Confidence Interval for ($\mu_1$ - $\mu_2$)
+::: {style="font-size: 28px"}
+
+$$
+\\95 \% \ CI = (\bar{y} \pm t_{0.025} \ \times \ SE_{\bar{y}})
+$$
+Let's revise our 95% confidence interval formula for comparing two means.
+
+::: fragment
+
+$$
+\\95 \% \ CI = (\bar{y_1}-\bar{y_2}) \pm t_{0.025} \times SE_{\bar{Y}_1 - \bar{Y}_2} 
+$$
+:::
+
+::: fragment
+::: {.callout-warning}
+ You are not responsible for calculating degrees of freedom for ($\mu_1$ - $\mu_2$). It has a complex formula in your book but we either calculate that $df$ by __using computer__ or I give you the $df$ value directly.
+:::
+:::
+
+:::
+
+## 
+### An Example of Calculating CI for ($\mu_1$ - $\mu_2$)
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+The Wisconsin Fast Plant, _Brassica campestris_, has a very rapid growth cycle that makes it particularly well suited for the study of factors that affect plant growth. 
+
+In one such study, 7 plants were treated with the substance Ancymidol (ancy) and were compared to 8 control plants that were given ordinary water. Heights of all of the plants were measured, in cm, after 14 days of growth.
+
+__($df$ for this question is calculated as 12).__ 
+
+Calculate 95% confidence interval for ($\mu_1$ - $\mu_2$)
+
+::: fragment
+95% CI for ($\mu_1$ - $\mu_2$) is (-0.46,10.26)
+:::
+
+::: fragment
+Is it reasonable to believe that the substance may affect plant growth? Discuss with your neighbor
+:::
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 20px"}
+
+![](img/fast-plant.png){fig-align="right"}
+
+
+
+:::
+:::
+:::
+
+
+## Example (cont.d)
+::: {style="font-size: 28px"}
+- Ancymidol is a plant growth regulator that reduces plant growth by inhibiting gibberellin biosynthesis. 
+
+- In our hypothetical example, we calculated 95% CI and
+
+  - We are 95% confident that the population average 14-day height of fast plants
+when water is used ($\mu_1$) is between 0.4 cm lower and 10.2 cm higher than the average
+14-day height of fast plants when [Ancymidol](https://www3.epa.gov/pesticides/chem_search/reg_actions/reregistration/fs_PC-108601_1-Jun-95.pdf) is used ($\mu_2$).
+
+- [A paper on Effects of Ancymidol from 1976](https://academic.oup.com/plphys/article/57/4/640/6074930)
+- [National Library of Medicine](https://pubchem.ncbi.nlm.nih.gov/compound/Ancymidol)
+:::
+
+
+
+## Assumptions and Validations
+
+The confidence interval formula is valid if  
+
+(1) the data can be regarded as coming from two independently chosen random samples, 
+
+(2) the observations are independent within each sample, and 
+
+(3) each of the populations is normally
+distributed. 
+
+If $n_1$ and $n_2$ are large, condition (3) is less important.
