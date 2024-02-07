@@ -101,7 +101,7 @@ $$
 
 ::: fragment
 ::: {.callout-warning}
- You are not responsible for calculating degrees of freedom for ($\mu_1$ - $\mu_2$). It has a complex formula in your book but we either calculate that $df$ by __using computer__ or I give you the $df$ value directly.
+ You are not responsible for calculating degrees of freedom for this chapter. It has a complex formula in your book but we either calculate that $df$ by __using computer__ or I give you the $df$ value directly.
 :::
 :::
 
