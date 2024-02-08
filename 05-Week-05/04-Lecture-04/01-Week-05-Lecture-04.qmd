@@ -246,7 +246,7 @@ t_test(x = mydata,
 
 ## Assumptions and Validations
 
-The confidence interval formula is valid if  
+Remember!
 
 (1) the data can be regarded as coming from two independently chosen random samples, 
 
