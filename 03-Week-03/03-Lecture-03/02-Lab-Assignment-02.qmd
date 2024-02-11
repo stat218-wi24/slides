@@ -64,6 +64,8 @@ __bill_length_mm:__
 
 __bill_depth_mm:__
 
+__body_mass_g:__
+
 __flipper_length_mm:__
 
 __sex:__
