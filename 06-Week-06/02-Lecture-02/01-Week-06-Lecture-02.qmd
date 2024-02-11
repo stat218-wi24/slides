@@ -1,0 +1,268 @@
+---
+title: "Introduction to Hypothesis Testing Worksheet"
+subtitle: "Week 5 Lecture 4"
+format: docx
+---
+
+# One Sample _t_ test
+
+__Name of the Test:__
+
+__When we need to use this test:__
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+__What type of variable(s) do we need to conduct this test:__
+\vspace{12pt}
+
+__Example of a Case:__ As part of a larger study of body composition, researchers captured 14 male Monarch butterflies at Oceano Dunes State Park in California and measured wing area (in $cm^2$). Suppose we regard the 14 observations as a random sample from a population.
+
+Use a one sample $t$-test to investigate whether the wing area of Monarch butterflies differs from the test value of 36 $cm^2$. Use the 5% significance level ($\alpha = 0.05$).
+
+_$\bar{y} = 32.8143 \ cm^2$ and $s = 2.4757 \ cm^2$_
+
+
+
+__Research Question of this study:__
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+### Step 1. Formulate Hypotheses
+
+_1.1. Write out the null & the alternative hypothesis in words, in the context of this study:_
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+_1.2. Write out the null and the alternative hypothesis in proper notation for this study:_
+\vspace{12pt}
+\vspace{12pt}
+
+### Step 2. Determine \($\alpha$) level (Find it within the case given above) and locate critical region.
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+### Step 3. Calculate t statistic and find the p-value
+
+$$
+t_s = \frac{\bar{y} - \mu}{s/ \sqrt{n} }
+$$
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+
+
+
+### Step 4. Draw conclusion
+
+
+:::{.callout-important}
+- If $p\leq\alpha$, then __reject $H_0$__.
+
+- If $p>\alpha$, then __fail to reject $H_0$__. 
+:::
+\vspace{12pt}
+\vspace{12pt}
+
+__Conclusion Statement:__
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+{{< pagebreak >}}
+
+# Independent Samples _t_ test
+
+__Name of the Test:__
+
+__Nonparametric alternative of this Test:__
+
+__When we need to use this test:__
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+__What type of variable(s) do we need to conduct this test:__
+\vspace{12pt}
+
+__Example of a Case:__ In a study of the development of the thymus gland, researchers weighed the glands of 10 chick embryos. Five of the embryos had been incubated 14 days, and five had been incubated 15 days. The thymus weights were as shown in the Table [Note: Formula (6.7.1) yields 7.7 df.]
+
+Use a $t$ test to compare the means at $\alpha = 0.10$.Use a nondirectional alternative.
+
+![](img\table-1.png){width=30%}
+
+__Research Question of this study:__
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+### Step 1. Formulate Hypotheses
+
+_1.1. Write out the null & the alternative hypothesis in words, in the context of this study:_
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+_1.2. Write out the null and the alternative hypothesis in proper notation for this study:_
+\vspace{12pt}
+\vspace{12pt}
+
+### Step 2. Determine \($\alpha$) level (Find it within the case given above) and locate critical region.
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+
+### Step 3. Calculate t statistic and find the p-
+
+__Standard Error of ($\bar{Y}_1$ - $\bar{Y}_2$)__
+
+$$
+SE_{\bar{Y}_1 - \bar{Y}_2} = \sqrt{\frac{s_1^2} {n_1}+ \frac{s_2^2} {n_2}}
+$$
+
+
+__$t$ test statistic__
+
+$$
+t_s = \frac{(\bar{y}_1 - \bar{y}_2) - (\mu_1 - \mu_2)}{SE(\bar{y}_1 - \bar{y}_2)}
+$$
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+
+
+### Step 4. Draw conclusion
+
+
+:::{.callout-important}
+- If $p\leq\alpha$, then __reject $H_0$__.
+
+- If $p>\alpha$, then __fail to reject $H_0$__. 
+:::
+
+__Conclusion Statement:__
+
+
+{{< pagebreak >}}
+
+
+
+# Paired Samples _t_ test
+
+__Name of the Test:__
+
+__Nonparametric alternative of this Test:__
+
+__When we need to use this test:__
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+__What type of variable(s) do we need to conduct this test:__
+\vspace{12pt}
+
+__Example of a Case:__ In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. 
+
+The following table shows the weight gains (lb) of the animals over a 140-day test period on diet 1 ($Y_1$) and on diet 2 ($Y_2$).
+Test for a difference between the diets using a paired $t$-test at $\alpha$ = 0.10. Use a nondirectional alternative.
+
+![](img\table-2.png){width=40%}
+
+
+__Research Question of this study:__
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+### Step 1. Formulate Hypotheses
+
+_1.1. Write out the null & the alternative hypothesis in words, in the context of this study:_
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+_1.2. Write out the null & the alternative hypothesis in proper notation for this study:_
+\vspace{12pt}
+\vspace{12pt}
+
+### Step 2. Determine \($\alpha$) level (Find it within the case given above) and locate critical region.
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+
+### Step 3. Calculate t statistic and find the p-value
+
+__Standard Error of $\bar(D)$__
+
+$$
+t_s = \frac{s_D}{\sqrt {n_D}}
+$$
+
+\vspace{12pt}
+\vspace{12pt}
+
+
+
+__Paired-Sample $t$-test statistic__
+
+
+
+$$
+t_s = \frac{\bar{d} - 0} {SE_{\bar{D}}}
+$$
+
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+
+
+
+### Step 4. Draw conclusion
+
+
+:::{.callout-important}
+- If $p\leq\alpha$, then __reject $H_0$__.
+
+- If $p>\alpha$, then __fail to reject $H_0$__. 
+:::
+
+__Conclusion Statement:__

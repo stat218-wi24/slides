@@ -1,0 +1,124 @@
+---
+title: "Midterm Project Workflow"
+subtitle: "STAT 218 - Week 6, Lecture 1"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+# Midterm Project Guideline
+
+## The aim of the project
+::: {style="font-size: 28px"}
+
+- The overarching goal of the projects in this course is to empower life science students by cultivating a profound <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5002400/" target="_blank"> sense of agency</a>. 
+- This involves 
+  - actively engaging with the learning process, 
+  - making informed decisions, and 
+  - taking ownership of your academic journey. 
+
+- Through the selection of your unique data set, you will have the opportunity to construct 
+  - a personalized case study, 
+  - formulate research questions, 
+  - employ diverse statistical procedures, and 
+  - effectively communicate your findings. 
+
+:::
+
+## Important Deadlines
+::: {style="font-size: 28px"}
+
+- Your midterm project deadline is postponed to __Feb 29__ but you can upload earlier if you'd like (refresh your course webpage)
+
+- Important Deadlines
+  - Choosing a Dataset __(due: Feb 18)__
+  - Determining Variables __(due: Feb 20)__
+  - Meeting with Dr. Demirci __at least one time__ (by appointment between __Feb 19- Feb 28)__
+  - Uploading the midterm project __(due: Feb 29)__
+
+:::
+
+
+# Workflow of Your Midterm Project
+
+
+##
+#### Choosing Your Data Set for the Midterm Project - I
+::: {style="font-size: 28px"}
+
+
+- In this midterm project, you will select your own dataset from <a href="https://www.openintro.org/data/" target="_blank"> OpenIntro Data Sets </a> or another suitable source. 
+
+- If your group members share the same major, it's recommended to choose a dataset related to your field of study.
+
+::: fragment
+:::{.callout-important}
+You should decide your data set this week and __upload it to Canvas__ by Feb 18.
+
+STEPS TO DECIDE YOUR DATA SET
+
+- Go ahead and select a data set from either
+  - [OpenIntro Data Sets](https://www.openintro.org/data/)
+OR
+  - anywhere else on the web (but it might require more data wrangling). Some examples
+    - [United States Environmental Protection Agency](https://www.epa.gov/data)
+    - [U.S. Government's Open Data](https://data.gov/)
+    - [Gapminder](https://www.gapminder.org/data/)
+
+:::
+:::
+:::
+
+##
+#### Choosing Your Data Set for the Midterm Project - II
+::: {style="font-size: 28px"}
+
+Follow these steps.
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+
+library(tidyverse)
+library(openintro)
+data(datasetname) # Put your data set name here
+glimpse(datasetname) # Put your data set name here
+```
+:::
+
+::: fragment
+If your data is coming from anywhere else on the web
+
+- Download your data as csv
+- Load your data as follows:
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+
+midtermdata <- read_csv("data-set-name.csv")
+
+```
+:::
+:::
+
+## 
+#### Choosing Your Variables
+::: {style="font-size: 28px"}
+
+<br>
+
+Consider the following criteria while selecting your data set:
+
+- Include __at least__ 2 Numeric Variables.
+- Have __at least__ 2 Categorical Variables with only 2 groups each.
+- Include __at least__ 1 Categorical Variable with more than 3 groups.
+:::
