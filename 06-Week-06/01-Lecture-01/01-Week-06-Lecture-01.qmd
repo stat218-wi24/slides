@@ -258,7 +258,7 @@ $H_A$: The average 10-mile run time for 2017 was different than that of 2006. $\
 
 :::
 
-## Example (Cont.d')
+## Example (Cont.d)
 
 ::: {style="font-size: 28px"}
 
