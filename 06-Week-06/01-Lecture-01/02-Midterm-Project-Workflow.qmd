@@ -1,7 +1,7 @@
 ---
 title: "Midterm Project Workflow"
 subtitle: "STAT 218 - Week 6, Lecture 1"
-date: today
+date: 2024-02-12
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
   revealjs:
@@ -51,6 +51,9 @@ format:
 #### Choosing Your Data Set for the Midterm Project - I
 
 ::: {style="font-size: 28px"}
+
+
+- Midterm template and necessary files are available on Canvas as a separate module. 
 
 - For the midterm project, you will select your own dataset from [OpenIntro Data Sets](https://www.openintro.org/data/) or another suitable source. 
 
