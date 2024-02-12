@@ -429,20 +429,20 @@
 <h2>Important Deadlines</h2>
 <div style="font-size: 28px">
 <ul>
-<li class="fragment"><p>Your midterm project deadline is postponed to <strong>Feb 29</strong> but you can upload earlier if you’d like (refresh your course webpage)</p></li>
-<li class="fragment"><p>Important Deadlines</p>
+<li class="fragment"><p>Your midterm project deadline is extended to <strong>Feb 29</strong>, but you can upload earlier if you’d like (please refresh your course webpage).</p></li>
+<li class="fragment"><p><strong>Important Deadlines:</strong></p>
 <ul>
 <li class="fragment">Choosing a Dataset <strong>(due: Feb 18)</strong></li>
 <li class="fragment">Determining Variables <strong>(due: Feb 20)</strong></li>
-<li class="fragment">Meeting with Dr.&nbsp;Demirci <strong>at least one time</strong> (by appointment between <strong>Feb 19- Feb 28)</strong></li>
+<li class="fragment">Meeting with Dr.&nbsp;Demirci <strong>at least once</strong>, preferably during office hours (by appointment between <strong>Feb 19- Feb 28)</strong></li>
 <li class="fragment">Uploading the midterm project <strong>(due: Feb 29)</strong></li>
 </ul></li>
 </ul>
 </div>
 </section></section>
 <section>
-<section id="workflow-of-your-midterm-project" class="title-slide slide level1 center">
-<h1>Workflow of Your Midterm Project</h1>
+<section id="workflow-of-this-week" class="title-slide slide level1 center">
+<h1>Workflow of This Week</h1>
 
 </section>
 <section id="section" class="slide level2">
@@ -450,7 +450,7 @@
 <h4 id="choosing-your-data-set-for-the-midterm-project---i">Choosing Your Data Set for the Midterm Project - I</h4>
 <div style="font-size: 28px">
 <ul>
-<li class="fragment"><p>In this midterm project, you will select your own dataset from <a href="https://www.openintro.org/data/" target="_blank"> OpenIntro Data Sets </a> or another suitable source.</p></li>
+<li class="fragment"><p>For the midterm project, you will select your own dataset from <a href="https://www.openintro.org/data/">OpenIntro Data Sets</a> or another suitable source.</p></li>
 <li class="fragment"><p>If your group members share the same major, it’s recommended to choose a dataset related to your field of study.</p></li>
 </ul>
 <div class="fragment">
@@ -463,13 +463,13 @@
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>You should decide your data set this week and <strong>upload it to Canvas</strong> by Feb 18.</p>
-<p>STEPS TO DECIDE YOUR DATA SET</p>
+<p>You should decide on your dataset this week and <strong>upload it to Canvas</strong> by Feb 18.</p>
+<h3 id="steps-to-decide-your-data-set">STEPS TO DECIDE YOUR DATA SET</h3>
 <ul>
-<li class="fragment">Go ahead and select a data set from either
+<li class="fragment">Select a data set from either:
 <ul>
-<li class="fragment"><a href="https://www.openintro.org/data/">OpenIntro Data Sets</a> OR</li>
-<li class="fragment">anywhere else on the web (but it might require more data wrangling). Some examples
+<li class="fragment"><a href="https://www.openintro.org/data/">OpenIntro Data Sets</a></li>
+<li class="fragment">Anywhere else on the web (but it might require more data wrangling). Some examples include:
 <ul>
 <li class="fragment"><a href="https://www.epa.gov/data">United States Environmental Protection Agency</a></li>
 <li class="fragment"><a href="https://data.gov/">U.S. Government’s Open Data</a></li>
@@ -486,33 +486,35 @@
 <section id="section-1" class="slide level2">
 <h2></h2>
 <h4 id="choosing-your-data-set-for-the-midterm-project---ii">Choosing Your Data Set for the Midterm Project - II</h4>
-<div style="font-size: 28px">
-<p>Follow these steps.</p>
+<div style="font-size: 27px">
+<p><strong>Follow these steps FOR THIS WEEK (DUE FEB 18)</strong>.</p>
 <div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(openintro)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">data</span>(datasetname) <span class="co"># Put your data set name here</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">glimpse</span>(datasetname) <span class="co"># Put your data set name here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">data</span>(datasetname) <span class="co"># Put your dataset name here</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">glimpse</span>(datasetname) <span class="co"># Put your dataset name here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<p>If your data is coming from anywhere else on the web</p>
+<p>If your data is coming from anywhere else on the web:</p>
 <ul>
-<li class="fragment">Download your data as csv</li>
+<li class="fragment">Download your data as a CSV file.</li>
 <li class="fragment">Load your data as follows:</li>
 </ul>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>midtermdata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-set-name.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>midtermdata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-set-name.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<p><strong>UPLOAD THIS PART OF YOUR PROJECT BY THE END OF THIS WEEK!</strong></p>
 </div>
 </section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<h4 id="choosing-your-variables">Choosing Your Variables</h4>
+<section id="choosing-your-variables" class="slide level2">
+<h2>Choosing Your Variables</h2>
 <div style="font-size: 28px">
 <p><br></p>
 <p>Consider the following criteria while selecting your data set:</p>

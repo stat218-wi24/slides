@@ -31,54 +31,53 @@ format:
 :::
 
 ## Important Deadlines
+
 ::: {style="font-size: 28px"}
 
-- Your midterm project deadline is postponed to __Feb 29__ but you can upload earlier if you'd like (refresh your course webpage)
+- Your midterm project deadline is extended to __Feb 29__, but you can upload earlier if you'd like (please refresh your course webpage).
 
-- Important Deadlines
+- **Important Deadlines:**
   - Choosing a Dataset __(due: Feb 18)__
   - Determining Variables __(due: Feb 20)__
-  - Meeting with Dr. Demirci __at least one time__ (by appointment between __Feb 19- Feb 28)__
+  - Meeting with Dr. Demirci __at least once__, preferably during office hours (by appointment between __Feb 19- Feb 28)__
   - Uploading the midterm project __(due: Feb 29)__
 
 :::
 
 
-# Workflow of Your Midterm Project
-
+# Workflow of This Week
 
 ##
 #### Choosing Your Data Set for the Midterm Project - I
+
 ::: {style="font-size: 28px"}
 
-
-- In this midterm project, you will select your own dataset from <a href="https://www.openintro.org/data/" target="_blank"> OpenIntro Data Sets </a> or another suitable source. 
+- For the midterm project, you will select your own dataset from [OpenIntro Data Sets](https://www.openintro.org/data/) or another suitable source. 
 
 - If your group members share the same major, it's recommended to choose a dataset related to your field of study.
 
 ::: fragment
 :::{.callout-important}
-You should decide your data set this week and __upload it to Canvas__ by Feb 18.
+You should decide on your dataset this week and **upload it to Canvas** by Feb 18.
 
-STEPS TO DECIDE YOUR DATA SET
+### STEPS TO DECIDE YOUR DATA SET
 
-- Go ahead and select a data set from either
+- Select a data set from either:
   - [OpenIntro Data Sets](https://www.openintro.org/data/)
-OR
-  - anywhere else on the web (but it might require more data wrangling). Some examples
+  - Anywhere else on the web (but it might require more data wrangling). Some examples include:
     - [United States Environmental Protection Agency](https://www.epa.gov/data)
     - [U.S. Government's Open Data](https://data.gov/)
     - [Gapminder](https://www.gapminder.org/data/)
-
 :::
 :::
 :::
 
-##
+## 
 #### Choosing Your Data Set for the Midterm Project - II
-::: {style="font-size: 28px"}
 
-Follow these steps.
+::: {style="font-size: 27px"}
+
+**Follow these steps FOR THIS WEEK (DUE FEB 18)**.
 
 ::: fragment
 ```{r}
@@ -87,15 +86,15 @@ Follow these steps.
 
 library(tidyverse)
 library(openintro)
-data(datasetname) # Put your data set name here
-glimpse(datasetname) # Put your data set name here
+data(datasetname) # Put your dataset name here
+glimpse(datasetname) # Put your dataset name here
 ```
 :::
 
 ::: fragment
-If your data is coming from anywhere else on the web
+If your data is coming from anywhere else on the web:
 
-- Download your data as csv
+- Download your data as a CSV file.
 - Load your data as follows:
 :::
 
@@ -104,21 +103,25 @@ If your data is coming from anywhere else on the web
 #| echo: true
 #| eval: false
 
+library(tidyverse)
+library(openintro)
 midtermdata <- read_csv("data-set-name.csv")
-
 ```
 :::
+
+
+**UPLOAD THIS PART OF YOUR PROJECT BY THE END OF THIS WEEK!**
 :::
 
-## 
-#### Choosing Your Variables
+## Choosing Your Variables
+
 ::: {style="font-size: 28px"}
 
 <br>
 
 Consider the following criteria while selecting your data set:
 
-- Include __at least__ 2 Numeric Variables.
-- Have __at least__ 2 Categorical Variables with only 2 groups each.
-- Include __at least__ 1 Categorical Variable with more than 3 groups.
+- Include **at least** 2 Numeric Variables.
+- Have **at least** 2 Categorical Variables with only 2 groups each.
+- Include **at least** 1 Categorical Variable with more than 3 groups.
 :::
