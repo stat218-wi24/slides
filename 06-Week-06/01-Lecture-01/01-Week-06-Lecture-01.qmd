@@ -54,10 +54,10 @@ In 2012, physicists suggested that they had discovered the existence of a subato
 :::
 
 
-## One-tailed vs Two tailed $t$ test
+## One-tailed vs Two tailed tests
 ::: {style="font-size: 24px"}
 ::: {.fragment}
-A two-tailed $t$ test is used to test the null hypothesis against the alternative hypothesis which is also known as nondirectional alternative.
+A two-tailed test is used to test the null hypothesis against the alternative hypothesis which is also known as nondirectional alternative.
 $$
 \\H_0: \mu_1 = \mu_2
 \\H_A: \mu_1 \neq \mu_2
@@ -67,8 +67,7 @@ $$
 ::: {.fragment}
 
 In some studies it is apparent from the beginning—before the data are collected—
-that there is only one reasonable direction of deviation from $H_0$. In such situations it
-is appropriate to formulate a directional alternative hypothesis.
+that there is only one reasonable direction of deviation from $H_0$. In such situations it is appropriate to formulate a directional alternative hypothesis.
 $$
 \\H_0: \mu_1 = \mu_2
 \\H_A: \mu_1 < \mu_2
@@ -105,6 +104,163 @@ We have 4 steps to do that
 :::
 
 
+
+# One Sample $t$-tests
+
+## Introduction
+
+- In one sample $t$ tests, data collected from one sample and compares the mean score with a __test value__.
+  - Test value can be   
+  (1) reported previously in the literature; or   
+  (2) found by calculating __level of chance__.
+
+
+## Example
+::: {style="font-size: 28px"}
+
+The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29
+minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
+
+The sample mean and sample standard deviation of the sample of 100
+runners from the 2017 Cherry Blossom Race are 97.32 and 16.98 minutes, respectively.($\alpha = 0.05$)
+
+::: fragment
+$H_0$: The average 10-mile run time was the same for 2006 and 2017.  
+$\mu$ = 93.29 minutes. 
+
+$H_A$: The average 10-mile run time for 2017 was different than that of 2006. $\mu \neq 93.29$ minutes.
+
+:::
+
+:::
+
+## Example (Cont.d)
+
+::: {style="font-size: 28px"}
+
+::: fragment
+
+$$
+SE = s/ \sqrt{n}
+\\ 16.98 \sqrt{100} = 1.70
+$$
+:::
+
+
+::: fragment
+
+$$
+t_s = \frac {{97.32 - 93.29}}{1.70} = 2.37
+$$
+:::
+
+::: fragment
+
+for $df = 100 - 1 = 99$, we can find the $P$-value by using computer as $P$-value = 0.02
+
+:::
+
+::: fragment
+
+__Conclusion:__ Because the $P$-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average.
+
+:::
+
+:::
+# Comparison of Paired Samples
+
+## Introduction
+::: {style="font-size: 28px"}
+
+__When do we need to use this test?__ 
+
+- 1 group, 2 different occasions or under 2 different conditions (pre-test/post-test)
+
+- Matched subjects 
+
+::: fragment
+
+__Notation__
+
+In this paired-sample $t$ test we analyze differences
+
+$$
+D = Y_1 - Y_2
+$$
+Then $\bar{D}$ can be considered as follows:
+
+$$ 
+\bar{D} = \bar{Y_1} - \bar{Y_2}
+$$
+
+which can be an estimate of 
+
+$$ 
+\mu_D = {\mu_1} - {\mu_2}
+$$
+
+:::
+
+:::
+## Example 8.1.1
+::: {.columns}
+::: {.column width="60%"}
+::: {style="font-size: 30px"}
+
+__Hunger Rating__ During a weight loss study, each of nine subjects was given (1) the active drug _m_-chlorophenylpiperazine (mCPP) for 2 weeks and then a placebo for another 2 weeks, or (2) the placebo for the first 2 weeks and then mCPP for the second 2 weeks. As part of the study, the subjects were asked to rate how hungry there were at the end of each 2-week period.
+
+Let us test $H_0$ against $H_A$ at significance level $\alpha$ = 0.05.
+
+::: fragment
+
+$H_0: \mu_{D} = 0$
+$H_A: \mu_{D} \neq 0$
+
+
+:::
+
+:::
+:::
+
+::: {.column width="40%"}
+
+![](img/table8.1.1.png)
+:::
+:::
+
+## Example 8.1.1.
+
+
+:::fragment
+::: {style="font-size: 28px"}
+
+$$
+SE_{\bar{D}} = \frac{s_D}{\sqrt{n_D}}
+$$
+
+$$
+t_s= \frac {\bar{d} - \mu_{D}}{SE_{\bar{D}}}
+$$
+:::
+:::
+
+:::fragment
+::: {style="font-size: 28px"}
+
+$$
+SE_{\bar{D}} = \frac{32.8}{\sqrt{9}} = 10.9
+$$
+
+$$
+t_s= \frac {-29.6 - 0}{10.9} = -2.71
+$$
+Using a computer gives the $P$-value as $P$= 0.027.
+
+Reject $H_0$ and find that there is sufficient evidence to conclude that hunger when taking mCPP is different from hunger when taking a placebo.
+
+
+:::
+:::
 
 # Decision Errors
 
@@ -230,159 +386,3 @@ on the conditions of
 
 :::
 :::
-
-
-# One Sample $t$-tests
-
-## Introduction
-
-- In one sample $t$-tests, data collected from one sample and compares the mean score with a __test value__.
-  - Test value can be (1) reported previously in the literature; or (2) found by calculating __level of chance__.
-
-
-## Example
-::: {style="font-size: 28px"}
-
-The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29
-minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
-
-The sample mean and sample standard deviation of the sample of 100
-runners from the 2017 Cherry Blossom Race are 97.32 and 16.98 minutes, respectively.
-
-::: fragment
-$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu$ = 93.29 minutes. 
-
-$H_A$: The average 10-mile run time for 2017 was different than that of 2006. $\mu \neq 93.29$ minutes.
-
-:::
-
-:::
-
-## Example (Cont.d)
-
-::: {style="font-size: 28px"}
-
-::: fragment
-
-$$
-SE = s/ \sqrt{n}
-\\ 16.98 \sqrt{100} = 1.70
-$$
-:::
-
-
-::: fragment
-
-$$
-t_s = \frac {{97.32 - 93.29}}{1.70} = 2.37
-$$
-:::
-
-::: fragment
-
-for $df = 100 - 1 = 99$, we can find the p-value by using computer as $P$-value = 0.02
-
-:::
-
-::: fragment
-
-__Conclusion:__ Because the $P$-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average.
-
-:::
-
-:::
-# Comparison of Paired Samples
-
-## Introduction
-::: {style="font-size: 28px"}
-
-__When we need to use this test?__ 
-
-- 1 group, 2 different occasions or under 2 different conditions (pre-test/post-test)
-
-- Matched subjects 
-
-::: fragment
-
-__Notation__
-
-In this paired-sample $t$ test we analyze differences
-
-$$
-D = Y_1 - Y_2
-$$
-Then $\bar{D}$ can be considered as follows:
-
-$$ 
-\bar{D} = \bar{Y_1} - \bar{Y_2}
-$$
-
-which can be an estimate of 
-
-$$ 
-\mu_D = {\mu_1} - {\mu_2}
-$$
-
-:::
-
-:::
-## Example 8.1.1
-::: {.columns}
-::: {.column width="60%"}
-::: {style="font-size: 30px"}
-
-__Hunger Rating__ During a weight loss study, each of nine subjects was given (1) the active drug _m_-chlorophenylpiperazine (mCPP) for 2 weeks and then a placebo for another 2 weeks, or (2) the placebo for the first 2 weeks and then mCPP for the second 2 weeks. As part of the study, the subjects were asked to rate how hungry there were at the end of each 2-week period.
-
-Let us test $H_0$ against $H_A$ at significance level a = 0.05.
-
-::: fragment
-
-$H_0: \mu_{D} = 0$
-$H_A: \mu_{D} \neq 0$
-
-
-:::
-
-:::
-:::
-
-::: {.column width="40%"}
-
-![](img/table8.1.1.png)
-:::
-:::
-
-## Example 8.1.1.
-
-
-:::fragment
-::: {style="font-size: 28px"}
-
-$$
-SE_{\bar{D}} = \frac{s_D}{\sqrt{n_D}}
-$$
-
-$$
-t_s= \frac {\bar{d} - \mu_{D}}{SE_{\bar{D}}}
-$$
-:::
-:::
-
-:::fragment
-::: {style="font-size: 28px"}
-
-$$
-SE_{\bar{D}} = \frac{32.8}{\sqrt{9}} = 10.9
-$$
-
-$$
-t_s= \frac {-29.6 - 0}{10.9} = -2.71
-$$
-Using a computer gives the $P$-value as $P$= 0.027.
-
-Reject $H_0$ and find that there is sufficient evidence to conclude that mean hunger rating is different than 0.
-
-
-:::
-:::
-
