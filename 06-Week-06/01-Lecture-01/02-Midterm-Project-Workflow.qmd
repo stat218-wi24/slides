@@ -82,6 +82,8 @@ You should decide on your dataset this week and **upload it to Canvas** by Feb 1
 
 **Follow these steps FOR THIS WEEK (DUE FEB 18)**.
 
+If your data is coming from [OpenIntro Data Sets](https://www.openintro.org/data/):
+
 ::: fragment
 ```{r}
 #| echo: true
