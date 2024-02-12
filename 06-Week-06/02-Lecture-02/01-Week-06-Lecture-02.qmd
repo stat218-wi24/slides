@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Hypothesis Testing Worksheet"
-subtitle: "Week 5 Lecture 4"
+subtitle: "Week 6 Lecture 2"
 format: docx
 ---
 
@@ -50,7 +50,7 @@ _1.2. Write out the null and the alternative hypothesis in proper notation for t
 \vspace{12pt}
 \vspace{12pt}
 
-### Step 3. Calculate t statistic and find the p-value
+### Step 3. Calculate t statistic and find the $P$-value
 
 $$
 t_s = \frac{\bar{y} - \mu}{s/ \sqrt{n} }
@@ -87,8 +87,6 @@ __Conclusion Statement:__
 # Independent Samples _t_ test
 
 __Name of the Test:__
-
-__Nonparametric alternative of this Test:__
 
 __When we need to use this test:__
 
@@ -133,7 +131,7 @@ _1.2. Write out the null and the alternative hypothesis in proper notation for t
 \vspace{12pt}
 
 
-### Step 3. Calculate t statistic and find the p-
+### Step 3. Calculate t statistic and find the $P$-value
 
 __Standard Error of ($\bar{Y}_1$ - $\bar{Y}_2$)__
 
@@ -173,11 +171,9 @@ __Conclusion Statement:__
 
 
 
-# Paired Samples _t_ test
+# Paired Sample _t_ test
 
 __Name of the Test:__
-
-__Nonparametric alternative of this Test:__
 
 __When we need to use this test:__
 
@@ -225,20 +221,17 @@ _1.2. Write out the null & the alternative hypothesis in proper notation for thi
 \vspace{12pt}
 
 
-### Step 3. Calculate t statistic and find the p-value
+### Step 3. Calculate t statistic and find the $P$-value
 
 __Standard Error of $\bar(D)$__
 
 $$
-t_s = \frac{s_D}{\sqrt {n_D}}
+SE_{\bar{D}} = \frac{s_D}{\sqrt{n_D}}
 $$
 
 \vspace{12pt}
 \vspace{12pt}
 
-
-
-__Paired-Sample $t$-test statistic__
 
 
 
