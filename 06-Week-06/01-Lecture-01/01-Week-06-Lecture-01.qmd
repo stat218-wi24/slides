@@ -273,7 +273,7 @@ $$
 ::: fragment
 
 $$
-t_s = \frac{{\bar{y} - \mu}}{s /\sqrt{n}}
+t_s = \frac{{\bar{y}-\mu}}{s /\sqrt{n}}
 $$
 
 :::

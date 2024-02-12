@@ -221,7 +221,7 @@ We calculate the mean by using this formula
 ::: fragment
 #### Visualizing Mean and Median
 
-- Let's see {{< fa link >}} <a href="https://www.rossmanchance.com/applets/2021/descstats/Dotplot.htm" target="_blank"> Rossman & Chance Applet </a> to visualize _mean_ and _median_. 
+- Let's see [Rossman & Chance Applet](https://www.rossmanchance.com/applets/2021/descstats/Dotplot.htm) to visualize _mean_ and _median_. 
 :::
 :::
 
