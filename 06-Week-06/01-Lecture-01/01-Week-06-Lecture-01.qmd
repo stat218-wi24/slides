@@ -270,13 +270,6 @@ SE = s/ \sqrt{n}
 $$
 :::
 
-::: fragment
-
-$$
-t_s = \frac{{\bar{y}-\mu}}{s /\sqrt{n}}
-$$
-
-:::
 
 ::: fragment
 
