@@ -359,7 +359,7 @@ $H_A: \mu_{D} \neq 0$
 :::
 :::
 
-## Example 8.1.1
+## Example 8.1.1.
 
 
 :::fragment
