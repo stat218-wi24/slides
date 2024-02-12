@@ -1,0 +1,402 @@
+---
+title: "STAT 218 Winter 2024 Midterm Project"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE"
+  - "Team Member 5: NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(openintro)
+library(infer)
+```
+
+
+
+__Directions:__ In this project, you will apply various statistical procedures covered in our course. Ensure to load the necessary R packages, including 'openintro' and 'tidyverse', render the `library()` function given above.
+
+This code chunk below indicates how to load your data. If you use an OpenIntro data set, simply use `data()` function to load your data. If your data set is coming from any website as a .csv file, use `read_csv()` function to load it. Keep in mind that I provide a data set for paired samples _t_-test. Do not forget to load that data set too.
+
+
+```{r}
+# Load your midterm data set here!
+```
+
+
+# Part 1: Getting to Know Your Data Set
+
+__Question 1: Use the `glimpse()` function to introduce your data set(s). Write a short paragraph explaining key aspects of your data set(s).__
+
+```{r}
+
+# Type your codes here.
+
+```
+
+Type your answer here.
+
+
+__Question 2: Determine the number of variables and cases in the data set(s).__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+__Question 3: Identify the types of variables in the data set(s) (nominal, ordinal, discrete, and continuous).__
+
+
+Type your answer here.
+
+
+__Question 4: Choose a numeric variable and visualize its distribution. Describe the graph.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+
+__Question 5: Choose a categorical variable and create a visualization. Describe the graph.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+__Question 6: Use the geom_boxplot() function to plot a graph showing the relationship between a single numerical and single categorical variable. Describe the graph and comment on IQRs, medians, and potential outliers.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+# Part 2: Statistical Inference
+
+
+In this section, you'll perform several inferential statistics tests using your data set(s).
+
+
+## One Sample $t$-test
+
+
+__In this section, you are expected to write a case study based on your data set. In other words, choose a numeric variable and conduct a One Sample $t$-test. Show your work.__
+
+__Question 7.1:Introduce your case here.__
+
+Type your case here.
+
+
+__Question 7.2: What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 7.3: What type of variable do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 7.4: List the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+- __Random Sampling:__ Explain here.
+
+- __Independence of Observation:__ Explain here.
+
+- __Normal Distribution:__ Explain here.
+
+
+```{r}
+# Type your codes here to check normality.
+
+```
+
+Interpret your outputs here.
+
+
+
+__Question 7.5. Use a one sample $t$-test to investigate your research hypothesis. Answer the questions given below. Show your work.__
+
+
+__Question 7.5.1 Write out the null and alternative hypotheses in words, in the context of this study.__
+
+Type your answer here.
+
+
+__Question 7.5.2. Determine the \($\alpha$) level.__
+
+Type your answer here.
+
+
+__Question 7.5.3. Calculate the t-statistic and explain what you see in the output.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+__Question 7.5.4. Draw a conclusion and write a conclusion statement.__
+
+
+Type your answer here.
+
+
+
+## Independent Samples _t_ test
+
+__In this section, you are expected to write a case study based on your data set. Choose a numeric variable and a categorical variable (with 2 CATEGORIES) conduct Independent Samples $t$-test. Use 90% Confidence Interval. Show your work.__
+
+
+
+__Question 8.1:Type your case here.__
+
+Type your case here
+
+__Question 8.2. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 8.3. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 8.4. List the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+_Random Sampling:_ Explain here.
+
+_Independence of Observation:_ Explain here.
+
+_Normal Distribution:_ Explain here.
+
+
+```{r}
+# Type your codes here to check normality
+```
+
+
+
+Interpret the assumptions and type your reasoning.
+
+
+__Question 8.5. Use an independent samples $t$-test to investigate your research hypothesis. Answer the questions given below. Show your work.____
+
+
+__Question 8.5.1 Write out the null and the alternative hypothesis in words, in the context of this study:__
+
+Type your answer here.
+
+
+__Question 8.5.2. Determine the \($\alpha$) level so that you can calculate 90% Confidence Interval.__
+
+Type your answer here.
+
+
+__Question 8.5.3. Calculate t statistic and explain what you see in the output.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+
+Type your answer here.
+
+
+__Question 8.5.4. Explain what each function does in this question.__
+
+`t_test`: Type your answer here.
+
+`formula`:Type your answer here.
+
+`order`: Type your answer here.
+
+`alternative`: Type your answer here.
+
+`conf.level`: Type your answer here.
+
+`var.equal`: Type your answer here.
+
+
+__Question 8.5.5. Draw a conclusion and write a conclusion statement. Include your comment on 95% Confidence Interval.__
+
+
+Type your answer here.
+
+
+## Paired Samples _t_ test
+
+__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as 
+water flows down the stream. In a study to monitor the accumulation and 
+attenuation of fecal contamination in a stream running through cattle rangeland, 
+monthly water specimens were collected at two locations along the stream over a 
+period of 21 months.
+
+The data set `stream` the total coliform count (MPN/100ml) for a water specimen.
+
+__Question 9.1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 9.2. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 9.3. Please list the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+
+_Random Sampling:_ Explain here.
+
+_Independence of Observation:_ Explain here.
+
+_Normal Distribution:_ Explain here.
+
+
+Type your overall reasoning here.
+
+
+__Question 9.4. Perform a paired samples $t$-test to assess whether the mean total coliform count is consistent across the two locations. Use the 5% significance level ($\alpha = 0.05$).__
+
+
+Type your answer here.
+
+
+
+__Question 9.5.1 Write out the null & the alternative hypothesis in words, in the context of this study:__
+
+Type your answer here.
+
+
+__Question 9.5.2. Determine \($\alpha$) level (Find it within the case given above).__
+
+Type your answer here.
+
+
+__Question 9.5.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+
+```{r}
+# load the data set given and perform the test.
+```
+
+
+Type your answer here.
+
+
+__Question 9.5.4: What is the difference between the two `t_test` functions in independent samples t test and paired samples t test?__
+
+
+Type your answer here.
+
+
+__Question 9.5.5: Draw conclusion and write a conclusion statement.__
+
+
+Type your answer here.
+
+
+## The Chi-Square for Goodness of Fit
+
+
+__In this section, you are expected to write a case study based on your data set. In other words, choose a categorical variable and conduct a The Chi-Square for Goodness of Fit test. Show your work.__
+
+__Question 10.1 Introduce your case study here.__
+
+Type your case here.
+
+__Question 10.2: What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 10.3: What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 10.4: List the assumptions required for this test and check all the assumptions required for this study. Interpret the assumptions overall.__
+
+List the assumptions here and explain them.
+
+
+```{r}
+
+# Type your codes here to check your assumptions.
+
+```
+
+Interpret the assumptions overall and type your reasoning.
+
+
+
+__Question 10.5. Use a The Chi-Square for Goodness of Fit to investigate your research hypothesis. Answer the questions given below. Show your work.__
+
+
+__Question 10.5.1 Write out the null and alternative hypotheses in words, in the context of this study.__
+
+Type your answer here.
+
+
+__Question 10.5.2. Determine the \($\alpha$) level.__
+
+Type your answer here.
+
+
+__Question 10.5.3. Conduct a chi square statistic and explain what you see in the output.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+Type your answer here.
+
+
+__Question 10.5.4. Draw a conclusion and write a conclusion statement.__
+
+
+Type your answer here.
+
