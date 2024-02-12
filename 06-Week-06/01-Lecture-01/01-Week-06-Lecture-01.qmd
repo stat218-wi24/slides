@@ -1,7 +1,7 @@
 ---
-title: "Introduction to Hypothesis Testing & Comparison of Independent Samples"
+title: "One Sample $t$-tests & Comparison of Paired Samples"
 subtitle: "STAT 218 - Week 6, Lecture 1"
-date: today
+date: 2024-02-12
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
   revealjs:
@@ -11,42 +11,12 @@ format:
       incremental: true
 ---
 
+# Hypothesis Testing
 
-# Introduction to Hypothesis Testing
-
-## Setting the Scene
-::: {style="font-size: 28px"}
-
-Suppose that we have 2 samples from two populations.  
-
-- If the two samples __look quite similar__ to each other, we might infer that the two populations are identical; 
-- If the samples __look quite different__, we would infer that the populations differ.
-
-- The question is, then...
-
-  - “How different do two samples have to be in order for us to infer that the populations that generated them are __actually different?__”
-  
-::: fragment
-__An approach:__ Compare the two sample means to be able to explore how much they differ in comparison to the amount of difference we would expect to see due to chance.
-:::
-
-- We can construct 2 competing ideas.
-
-:::
 
 ##
 ### What is Hypothesis Testing? 
 ::: {style="font-size: 24px"}
-
-:::fragment
-Let's consider this example. We're interested in understanding how much people know about world health and development. If we take a multiple choice world health question, then we might like to understand if
-:::
-  - $H_0$: People never learn these particular topics and their responses are simply equivalent to random guesses.
-  - $H_A$: People have knowledge that helps them do better than random guessing, or perhaps, they have false knowledge that leads them to actually do worse than random guessing.
-
-:::fragment
-These competing ideas are called hypotheses. We call $H_0$ the null hypothesis and $H_A$ the alternative hypothesis.
-:::
 
 :::fragment
 :::{.callout-important}
@@ -60,13 +30,65 @@ __NULL AND ALTERNATIVE HYPOTHESES__
 :::
 
 
-# Hypothesis Testing for the Difference of ($\mu_1$ - $\mu_2$)
+##
+#### A Hypothesis Testing Example From Physics
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 30px"}
+
+In 2012, physicists suggested that they had discovered the existence of a subatomic particle known as the Higgs boson, based on some data and a $P$-value of 0.0000003. What they meant was:
+
+::: {.fragment}
+- If the particle does not exist (the null hypothesis), then the probability of their data (or more extreme) was 0.0000003. That is a lot less than the arbitrary 0.05 and is pretty convincing.
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+<a title="Lucas Taylor / CERN, CC BY-SA 3.0 &lt;https://creativecommons.org/licenses/by-sa/3.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:CMS_Higgs-event.jpg"><img width="512" alt="CMS Higgs-event" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/CMS_Higgs-event.jpg/512px-CMS_Higgs-event.jpg"></a>
+
+:::
+:::
+:::
+
+
+## One-tailed vs Two tailed $t$ test
+::: {style="font-size: 24px"}
+::: {.fragment}
+A two-tailed $t$ test is used to test the null hypothesis against the alternative hypothesis which is also known as nondirectional alternative.
+$$
+\\H_0: \mu_1 = \mu_2
+\\H_A: \mu_1 \neq \mu_2
+$$
+:::
+
+::: {.fragment}
+
+In some studies it is apparent from the beginning—before the data are collected—
+that there is only one reasonable direction of deviation from $H_0$. In such situations it
+is appropriate to formulate a directional alternative hypothesis.
+$$
+\\H_0: \mu_1 = \mu_2
+\\H_A: \mu_1 < \mu_2
+$$
+OR
+
+$$
+\\H_0: \mu_1 = \mu_2
+\\H_A: \mu_1 > \mu_2
+$$
+:::
+:::
+
+# Hypothesis Testing Steps
 
 ## Introduction
 ::: {style="font-size: 28px"}
 
 :::fragment
-The general idea is to formulate as a hypothesis the statement that $\mu_1$ and $\mu_2$ differ and then to see whether the data provide sufficient evidence in support of that hypothesis.
+The general idea is to formulate as a hypothesis the statement and then to see whether the data provide sufficient evidence.
 :::
 
 ::: fragment
@@ -75,183 +97,299 @@ We have 4 steps to do that
 
 1. Construct the Hypotheses of $H_0$ and $H_A$
 2. Determine your $\alpha$ level
-3. Calculate test statistic and find the _P_-value
+3. Calculate test statistic and find the _p_-value
 4. Draw conclusion.
 
 :::
 :::
 :::
- 
+
+
+
+# Decision Errors
+
 ##
-### Step 1. The Null and Alternative Hypotheses
-::: {style="font-size: 28px"}
+#### An Introduction to Decision Errors
 
-The hypothesis that $\mu_1$ and $\mu_2$ are not equal is called an __alternative hypothesis__ (or a research hypothesis)
-
-$$
-H_A: \mu_1 \neq \mu_2
-$$
+![](img\probability-tree.png){width=70%}
 
 
-Its antithesis is the __null hypothesis__,
-$$
-H_0: \mu_1 = \mu_2
-$$
+##
+### Type I Error ($\alpha$)
+::: {style="font-size: 20px"}
 
-which asserts that $\mu_1$ and $\mu_2$ are equal. A researcher would usually express these
-hypotheses more informally and we can trace those hypotheses from the examples, problems and exercises in this course.
+:::{.callout-note title="Definition"}
+$\alpha$ = Pr{finding significant evidence for $H_A$} if $H_0$ is true
+
+OR
+
+rejecting the null hypothesis when $H_0$ is actually true.
+:::
 
 ::: fragment
-Alternatively we can express these hypotheses as following:
+::: {.incremental}
+- Claiming that data provide evidence that significantly supports $H_A$ when $H_0$ is true
+is called a Type I error. 
+- In choosing ($\alpha$), we are choosing our level of protection against Type I error. 
+  - Many researchers regard 5% as an acceptably small risk. 
+    - If we do not regard 5% as small enough, we might choose to use a more conservative value of a
+such as a = 0.01; in this case the percentage of true null hypotheses that we reject would be not 5% but 1%.
+- In practice, the choice of a may depend on the context of the particular experiment.
+  - A regulatory agency might demand more exacting proof of efficacy for a toxic drug than for a relatively innocuous one. 
+- Also, a person’s choice of ($\alpha$) may be influenced by his or her prior opinion about the phenomenon under study.
+  - Suppose an agronomist is skeptical of claims for a certain soil treatment; in evaluating a new study of the treatment, he might express his skepticism by choosing a very conservative significance level (say, ($\alpha$) = 0.001), thus indicating that it would take a lot of evidence to convince him that the treatment is effective. 
+  - For this reason, written reports of an investigation should include a $P$-value so that each
+reader is free to choose his or her own value of a in evaluating the reported results.
 
-$$
-\\H_0: \mu_1 - \mu_2 = 0
-\\H_A: \mu_1 - \mu_2 \neq 0
-$$
+:::
+:::
+:::
+
+##
+### Type II Error ($\beta$)
+::: {style="font-size: 20px"}
+
+:::{.callout-note title="Definition"}
+
+$\beta$ = Pr{lack of significant evidence for $H_A$} if $H_A$ is true
+
+OR
+
+failing to reject the null hypothesis when the alternative is actually true.
+
+:::
+
+- If $H_A$ is true, but we do not observe sufficient evidence to support $H_A$, then we
+have made a Type II error.
+- Table 7.3.2 displays the situations in which Type I and Type II errors can occur. 
+
+![](img/type-1-2-table.png){width=50% fig-align="center"}
+ 
+  - For example, if we find significant evidence for $H_A$, then we eliminate the possibility of a Type II error, but by rejecting $H_0$ we may have made a Type I error.
+
+:::
+
+## Type I Error vs Type II Error
+![](img\type-1-2-caps.png){width=300 fig-align="center"}
+
+::: fragment
+::: {style="font-size: 14px"}
+From [Essential Guide to Effect Sizes](https://www.amazon.com/gp/product/0521142466/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0521142466&linkCode=as2&tag=allaboutforen-20&linkId=7ad02ab63fa078ea0f478f4505fd6417) by Paul D. Ellis (2010)
+:::
+:::
+
+## Power
+::: {style="font-size: 24px"}
+
+The chance of not making a Type II error when $H_A$ is true —that is, the chance of
+having significant evidence for $H_A$ when $H_A$ is true— is called the __power__ of a statistical
+test:
+
+:::{.callout-note title="Definition"}
+
+Power = 1 - $\beta$ = Pr{significant evidence for $H_A$} if HA is true
+
+:::
+
+::: {.incremental}
+- Thus, the power of a $t$ test is a measure of the sensitivity of the test, or the ability of the test procedure to detect a difference between $\mu_1$ and $\mu_2$ when such a difference __really does exist__. 
+
+- In this way the power is analogous to the resolving power of a microscope.
+
+- The power of a statistical test depends on many factors in an investigationincluding 
+  - the sample sizes, 
+  - the inherent variability of the observations, and 
+  - the magnitude of the difference between $\mu_1$ and $\mu_2$. 
+
+- All other things being equal, using larger samples gives more information and thereby increases power. 
 :::
 :::
 
 ## 
-### Step 2. Determine your $\alpha$ level
-::: {style="font-size: 32px"}
+#### Consequences of Inappropriate Use of Student’s t
 
-- Making a decision requires drawing a definite line between sufficient and insufficient
-evidence. 
-- The threshold value, on the P-value scale, is called the __significance level__ of the test and is denoted by the Greek letter $\alpha$ (alpha). 
-- The value of a is chosen by whoever is making the decision. 
-  - Common choices are $alpha$ = 0.10, 0.05, and 0.01.
-- Usually, we will find this information within our example questions.
+::: {style="font-size: 24px"}
+:::{.incremental}
+Our discussion of the t test and confidence interval (in Sections 7.3–7.8) was based
+on the conditions of
+
+1. the data can be regarded as coming from two independently chosen random samples,
+
+2. the observations are independent within each sample, and
+
+3. each of the populations is normally distributed (If n1  and n2  are large, this condition is less important). 
+
+- Violation of the conditions may render the methods inappropriate.
+- If the conditions are not satisfied, then the $t$ test may be inappropriate in two possible ways:
+
+1. It may be invalid in the sense that the actual risk of Type I error is larger than the nominal significance level a. (To put this another way, the $P$-value yielded by the $t$ test procedure may be inappropriately small.)
+
+2. The $t$ test may be valid, but less powerful than a more appropriate test.
+
+- If the design includes hierarchical structures that are ignored in the analysis, the $t$ test may be seriously invalid. If the samples are not independent of each other, the usual consequence is a loss of power.
+
+:::
 :::
 
-##
-#### Step 3. Calculate test statistic and find the _P_-value
+
+# One Sample $t$-tests
+
+## Introduction
+
+- In one sample $t$-tests, data collected from one sample and compares the mean score with a __test value__.
+  - Test value can be (1) reported previously in the literature; or (2) found by calculating __level of chance__.
+
+
+## Example
 ::: {style="font-size: 28px"}
 
-- The _$t$ test_ is a standard method of choosing between these two hypotheses. To carry out the $t$ test, the first step is to compute the __test statistic__.
+The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29
+minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
-- It is a measure of how far the difference between the sample means ($\bar{y}$’s) is from the difference we would expect to see if $H_0$ were true (zero difference), expressed in relation to the SE of the difference — __the amount of variation we expect to see__ in differences of means from random samples. 
+The sample mean and sample standard deviation of the sample of 100
+runners from the 2017 Cherry Blossom Race are 97.32 and 16.98 minutes, respectively.
 
-- The subscript “s” on $t_s$ serves as a reminder that this value is calculated from the data (“s” for “sample”).
+::: fragment
+$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu$ = 93.29 minutes. 
 
-- The quantity $t_s$ is the test statistic for the $t$ test; that is, ts provides the data summary that is the basis for the test procedure.
+$H_A$: The average 10-mile run time for 2017 was different than that of 2006. $\mu \neq 93.29$ minutes.
+
+:::
+
+:::
+
+## Example (Cont.d')
+
+::: {style="font-size: 28px"}
+
+::: fragment
+
+$$
+SE = s/ \sqrt{n}
+\\ 16.98 \sqrt{100} = 1.70
+$$
+:::
+
+::: fragment
+
+$$
+t_s = \frac{{\bar{y} - \mu}}{s /\sqrt{n}}
+$$
+
+:::
+
+::: fragment
+
+$$
+t_s = \frac {{97.32 - 93.29}}{1.70} = 2.37
+$$
+:::
+
+::: fragment
+
+for $df = 100 - 1 = 99$, we can find the p-value by using computer as $P$-value = 0.02
+
+:::
+
+::: fragment
+
+__Conclusion:__ Because the $P$-value is smaller than 0.05, we reject the null hypothesis. That is, the data provide strong evidence that the average run time for the Cherry Blossom Run in 2017 is different than the 2006 average.
+
+:::
+
+:::
+# Comparison of Paired Samples
+
+## Introduction
+::: {style="font-size: 28px"}
+
+__When we need to use this test?__ 
+
+- 1 group, 2 different occasions or under 2 different conditions (pre-test/post-test)
+
+- Matched subjects 
+
+::: fragment
+
+__Notation__
+
+In this paired-sample $t$ test we analyze differences
+
+$$
+D = Y_1 - Y_2
+$$
+Then $\bar{D}$ can be considered as follows:
+
+$$ 
+\bar{D} = \bar{Y_1} - \bar{Y_2}
+$$
+
+which can be an estimate of 
+
+$$ 
+\mu_D = {\mu_1} - {\mu_2}
+$$
+
+:::
+
+:::
+## Example 8.1.1
+::: {.columns}
+::: {.column width="60%"}
+::: {style="font-size: 30px"}
+
+__Hunger Rating__ During a weight loss study, each of nine subjects was given (1) the active drug _m_-chlorophenylpiperazine (mCPP) for 2 weeks and then a placebo for another 2 weeks, or (2) the placebo for the first 2 weeks and then mCPP for the second 2 weeks. As part of the study, the subjects were asked to rate how hungry there were at the end of each 2-week period.
+
+Let us test $H_0$ against $H_A$ at significance level a = 0.05.
+
+::: fragment
+
+$H_0: \mu_{D} = 0$
+$H_A: \mu_{D} \neq 0$
+
+
+:::
+
+:::
+:::
+
+::: {.column width="40%"}
+
+![](img/table8.1.1.png)
+:::
+:::
+
+## Example 8.1.1
+
 
 :::fragment
+::: {style="font-size: 28px"}
 
 $$
-t_s = \frac{(\bar{y}_1 - \bar{y}_2) - (\mu_1 - \mu_2)}{SE(\bar{y}_1 - \bar{y}_2)}
+SE_{\bar{D}} = \frac{s_D}{\sqrt{n_D}}
+$$
+
+$$
+t_s= \frac {\bar{d} - \mu_{D}}{SE_{\bar{D}}}
 $$
 :::
 :::
 
-##
-#### Step 3. Calculate test statistic and find the _P_-value (cont.d)
+:::fragment
+::: {style="font-size: 28px"}
 
-![](img/p-value.png){fig-align="center"}
+$$
+SE_{\bar{D}} = \frac{32.8}{\sqrt{9}} = 10.9
+$$
 
+$$
+t_s= \frac {-29.6 - 0}{10.9} = -2.71
+$$
+Using a computer gives the $P$-value as $P$= 0.027.
 
-##
-### Step 4. Draw Conclusion
-::: {style="font-size: 24px"}
+Reject $H_0$ and find that there is sufficient evidence to conclude that mean hunger rating is different than 0.
 
-- Not an easy task. Where does one draw the line in determining how much evidence is sufficient? Most people would agree that 
-  - _P_-value = 0.0001 indicates very strong evidence 
-  - _P_-value = 0.80 indicates a lack of evidence 
-  - but what about intermediate values? 
-
-- For example, should _P_-value = 0.10 be regarded as sufficient evidence for $H_A$? 
-  - The answer is not intuitively obvious.
-  
-- In much scientific research, it is not necessary to draw a sharp line. However, in many situations a decision must be reached. 
-  - The Food and Drug Administration (FDA) must decide whether the data submitted by a pharmaceutical manufacturer are sufficient to justify approval of a medication. 
-  - Fertilizer manufacturer must decide whether the evidence favoring a new fertilizer is
-sufficient to justify the expense of further research.
-
-:::
-
-##
-### Step 4. Draw Conclusion (cont.d)
-
-::: {.columns}
-::: {.column width="50%"}
-::: {style="font-size: 26px"}
-::: fragment
-:::{.callout-important}
-We can think of a as a preset threshold of statistical significance (OR the risk of false positive finding).
-
-- If the _P_-value of the data is less than or equal to $\alpha$, 
-  - the data are judged to provide statistically significant (some like to express this as 'statistically discernible') evidence in favor of $H_A$; we also may say that __$H_0$ is rejected.__
-  
-- If the _P_-value of the data is greater than $\alpha$, 
-  - we can say that the data provide __insufficient evidence__ against the $H_0$, and thus we __fail to reject $H_0$__. 
-:::
-:::
-:::
-:::
-
-::: {.column width="50%"}
-::: fragment
-![](img/ho-ha-caps.png)
-:::
-:::
-:::
-
-##
-### The Same Example for ($\mu_1$ - $\mu_2$)
-
-::: {.columns}
-::: {.column width="50%"}
-::: {style="font-size: 24px"}
-The Wisconsin Fast Plant, _Brassica campestris_, has a very rapid growth cycle that makes it particularly well suited for the study of factors that affect plant growth. 
-
-In one such study, 7 plants were treated with the substance Ancymidol (ancy) and were compared to 8 control plants that were given ordinary water. Heights of all of the plants were measured, in cm, after 14 days of growth.
-
-__($df$ for this question is calculated as 12).__ 
-
-
-Let's see an example for hypothesis testing by using $\alpha = 0.05$
 
 :::
 :::
 
-::: {.column width="50%"}
-::: {style="font-size: 20px"}
-
-![](img/fast-plant.png){fig-align="right"}
-
-:::
-:::
-:::
-
-
-
-
-## R Output
-
-```{r}
-#| echo: false
-#| output: true
-library(tidyverse)
-library(infer)
-mydata <- read_csv("Example 6.7.1.csv")
-t_test(x = mydata, 
-       formula = Height ~ Treatment, 
-       order = c("Control", "Ancy"),
-       alternative = "two-sided",
-       var.equal = FALSE)
-```
-
-## Interpretation of R Output
-
-![](img/r-output.png){fig-align="center"}
-
-## Assumptions and Validations
-
-Remember!
-
-(1) the data can be regarded as coming from two independently chosen random samples, 
-
-(2) the observations are independent within each sample, and 
-
-(3) each of the populations is normally distributed. 
-
-If $n_1$ and $n_2$ are large, condition (3) is less important.
