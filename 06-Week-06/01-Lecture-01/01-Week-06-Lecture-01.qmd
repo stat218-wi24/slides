@@ -169,8 +169,9 @@ __Conclusion:__ Because the $P$-value is smaller than 0.05, we reject the null h
 :::
 # Comparison of Paired Samples
 
-## Introduction
-::: {style="font-size: 28px"}
+## 
+### Introduction
+::: {style="font-size: 27px"}
 
 __When do we need to use this test?__ 
 
@@ -193,11 +194,12 @@ $$
 \bar{D} = \bar{Y_1} - \bar{Y_2}
 $$
 
-which can be an estimate of 
+which can be an analogous of
 
 $$ 
 \mu_D = {\mu_1} - {\mu_2}
 $$
+We may say that _the mean of the difference_ is equal to _the difference of the means._
 
 :::
 
