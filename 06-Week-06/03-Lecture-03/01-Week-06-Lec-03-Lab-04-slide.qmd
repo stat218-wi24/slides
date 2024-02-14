@@ -1,0 +1,269 @@
+---
+title: "Ch. 7 & Ch. 8: Applications of $t$-tests"
+subtitle: "STAT 218 - Week 6, Lecture 3 Lab 4"
+date: 2024-02-14
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+# What Have We Learned So Far?
+
+## 
+### A Snapshot
+::: {style="font-size: 28px"}
+- **Descriptive Statistics**: 
+  - Describes and summarizes data.
+  - Includes understanding 
+    - distribution shape (skewed, normal, etc.), 
+    - central tendency (mean, median, mode), and 
+    - spread (variance, standard deviation, range).
+
+- **Inferential Statistics** makes predictions and draws conclusions about populations based on sample data.
+  - We saw different types of t-tests:
+    - __One sample t-test:__ compares a sample mean to a known or hypothesized population mean.
+    - __Independent samples t-test:__ compares means of two independent groups.
+    - __Paired samples t-test:__ compares means of two related groups or one group with two different measurements/occasions.
+
+:::
+
+##
+### Estimation and Hypothesis Testing 
+::: {style="font-size: 28px"}
+
+We learned that we can estimate the unknown parameters in two ways:
+
+- Point estimation: A single value calculated from the sample (e.g., $\bar{y}$)
+
+- Confidence Intervals = A range of values within which the parameter is expected to fall, with a certain degree of confidence.(e.g., 95% CI, 90% CI)
+
+We also learned that we can use hypothesis testing to test for a specific value(s) of the parameter.
+
+- e.g., $H_0: \mu = 76$ cm & $H_A: \mu \neq 76$ cm (Two-tailed test)
+- $H_0: \mu_1 - \mu_2 = 0$ cm  $H_A: \mu_1 > \mu_2$ (One-tailed test)
+:::
+
+# Hypothesis Testing Steps
+
+## 
+#### Revising the Steps of Hypothesis Testing and $p$-values
+
+:::{.callout-important}
+Last lecture, we had 4 steps
+
+1. Construct the Hypotheses of $H_0$ and $H_A$
+2. Determine your $\alpha$ level
+3. Calculate test statistic and find the _P_-value
+4. Draw conclusion.
+
+:::
+
+
+## 
+#### Revising the Steps of Hypothesis Testing and $p$-values
+
+:::{.callout-important}
+Today, we will add one more step
+
+1. Construct the Hypotheses of $H_0$ and $H_A$
+2. Determine your $\alpha$ level
+3. Check the assumptions
+4. Calculate test statistic and find the _P_-value
+5. Draw conclusion.
+
+:::
+
+## 
+### Assumptions - Verification of Conditions
+::: {style="font-size: 28px"}
+
+- It is always important to check first whether the conditions are reasonable in a given case.
+- Here is the list of assumptions that we should be aware of for $t$-tests.
+
+::: fragment
+__1) Random Sampling:__ the data can be regarded as coming from independently chosen random sample(s),
+
+__2) Independence of Observations:__ the observations should be independent within each sample, and
+
+__3) Normal Distribution:__ Many of the methods depend on the data being from a population that has a normal distribution.
+
+  - __REMEMBER!__ If sample size is large, then condition (3) is less important (Central Limit Theorem).
+
+:::
+:::
+
+## 
+### Normality Assumption - I
+::: {style="font-size: 28px"}
+::: {.incremental}
+
+- If the only source of information is the data at hand, then normality can be roughly checked by making a histogram and normal quantile plot of the data.
+  
+  - Unfortunately, for a small or moderate sample size, this check is fairly rudimentary .
+  - If the sample is large, then the sample histogram gives us good information about the population shape; 
+    - However, if $n$ is large, the requirement of normality is less important anyway due to the Central Limit Theorem.
+- In any case, a rudimentary check is better than none, and every data analysis should begin with inspection of a graph of the data, with special attention to any observations that lie very far from the center of the distribution.
+
+:::
+:::
+
+## Normality Assumption - II
+
+::: {style="font-size: 28px"}
+
+We check assumptions before conducting any statistical analysis. To check normality assumption, we need to first check sample size.
+
+- $1^{st}$ option - small samples: Check the $p$-value of Shapiro Wilk test. It is best used with a sample size less than 50 (Shapiro & Wilk 1965; Uttley,2019). 
+
+- $2^{nd}$ option - large samples: Check the visual plots (e.g., histogram, normal quantile plot) if your sample size is more than 50.
+
+:::
+
+# One Sample $t$-test
+
+## Introduction
+::: {style="font-size: 28px"}
+
+- In one sample $t$ tests, data collected from one sample and compares the mean score with a __test value__.
+  - Test value can be   
+  (1) reported previously in the literature; or   
+  (2) found by calculating __level of chance__.
+
+- In this example, we will work with the several data sets. To begin with, we need `infer` package to conduct _t_ tests. Let's load that package by using `install.packages()` function.
+
+::: fragment
+```{r}
+#| eval: false
+#| echo: true
+#| output: false
+install.packages("infer")
+```
+:::
+:::
+
+## Introduction
+::: {style="font-size: 28px"}
+
+After loading that package, let's use `library` function and load the data sets that we will use today.
+
+```{r}
+#| output: false
+#| echo: true
+library(tidyverse)
+library(infer)
+library(palmerpenguins)
+data("penguins") 
+stream_data <- read_csv("Example 8.3.4.csv")
+```
+
+:::
+
+## 
+
+__Example of a Case:__ Imagine that you are a biologist studying penguins, particularly their bill lengths. You hypothesize that the average bill length of penguins is 40 mm and you collect a random sample of 344 penguins, measure and record their bill length in mm.
+
+Perform a one sample $t$-test to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level ($\alpha = 0.05$).
+
+## Quantile Plot 
+
+```{r}
+#| echo: true
+#| output: true
+ggplot(data = na.omit(penguins),
+       aes(sample = bill_length_mm)) +
+  geom_qq()
+```
+
+## 
+### Interpreting the Output
+
+
+```{r}
+#| echo: true
+#| output: true
+t_test(penguins, response = bill_length_mm, mu = 40)
+```
+
+::: fragment
+::: {style="font-size: 28px"}
+
+__Conclusion:__ As $P$-value is very small, we can reject $H_0$ and conclude that our data provided sufficient evidence to support the claim that the bill length of the penguins differs from 40 mm.
+
+__Confidence Interval:__ We are 95% confident that the mean bill length will be between 43.3 and 44.5 mm.
+:::
+:::
+
+# Paired Samples $t$-test
+
+## Introduction
+::: {style="font-size: 28px"}
+
+- Paired samples $t$ test compares means of two related groups or one group with two different measurements/occasions. 
+- 1 DV (numeric) + 1 IV(categorical)
+
+:::
+
+
+## 
+__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as water flows down the stream. In a study to monitor the accumulation and attenuation of fecal contamination in a stream running through cattle rangeland, monthly water specimens were collected at two locations along the stream over a period of 21 months.
+
+The data set `stream` the total coliform count (MPN/100ml) for a water specimen.
+
+Perform an independent samples $t$-test to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level ($\alpha = 0.10$).__
+
+## Checking Normality Assumption 
+
+- _This output is from a calculation of Shapiro-Wilk test. We generally use Shapiro-Wilk test for relatively smaller sample size because visuals can be misleading in smaller sample sizes. Please interpret Shapiro-Wilk $p$-value._
+
+
+	Shapiro-Wilk normality test
+
+data:  stream$Difference
+W = 0.9641, p-value = 0.6022
+
+## 
+### Interpreting the Output
+
+
+```{r}
+t_test(x = penguins, 
+       formula = body_mass_g ~ sex, 
+       order = c("male", "female"),
+       alternative = "two-sided",
+       conf_level = 0.90)
+```
+
+::: fragment
+::: {style="font-size: 28px"}
+
+__Conclusion:__ As $P$-value is very small, we can reject $H_0$ and conclude that our data provided sufficient evidence to support the claim that the body mass of penguins differs between different sexes.
+
+__Confidence Interval:__ We are 90% confident that difference in means will be between 551.63 and 815.19 mm.
+:::
+:::
+
+
+### Interpreting the Output
+
+
+```{r}
+t_test(x = stream_data, 
+       formula = coliform_count ~ location, 
+       order = c("upstream", "downstream"),
+       alternative = "two-sided",
+       paired = TRUE)
+```
+
+::: fragment
+::: {style="font-size: 28px"}
+
+__Conclusion:__ As $P$-value is very small, we can reject $H_0$ and conclude that our data provided sufficient evidence to support the claim that...
+
+__Confidence Interval:__ We are 95% confident that...
+:::
+:::

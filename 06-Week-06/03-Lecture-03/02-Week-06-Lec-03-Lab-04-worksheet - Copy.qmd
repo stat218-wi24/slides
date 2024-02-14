@@ -1,0 +1,314 @@
+---
+title: "STAT 218 Lab Assignment 4"
+subtitle: "Week 6 Lecture 3 Lab 4"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE "
+  - "Team Member 5: NAME HERE "
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+## Lab Assignment 4
+
+In this assignment, we will work with the several data sets. To begin with, we need `infer`package to conduct _t_ tests. Let's load that package by using `install.packages()` function.
+
+
+```{r}
+
+# Type your code here
+
+```
+
+After loading that package, let's use `library` function and load the data sets that we will use today.
+
+```{r}
+#| output: false
+library(tidyverse)
+library(infer)
+library(palmerpenguins)
+data("penguins") 
+stream <- read_csv("Example 8.3.4.csv")
+```
+
+__NOTE:__ Please ignore `penguins_raw` data for this class and USE `penguins` for this assignment.
+
+
+
+
+# One Sample _t_ test
+
+In this case, we will use `penguins` data set.
+  
+__Example of a Case:__ Imagine that you are a biologist studying penguins, particularly their bill lengths. You hypothesize that the average bill length of penguins is 40 mm and you collect a random sample of 344 penguins, measure and record their bill length in mm.
+
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variable do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. Please list the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+
+_Random Sampling:_ Explain here.
+
+
+_Independence of Observation:_ Explain here.
+
+
+_Normal Distribution:_ Explain here.
+
+
+
+```{r}
+# Type your codes here to check normality by using histogram.
+```
+
+Interpret you histogram here.
+
+- _This code is for normal quantile plot._
+```{r}
+ggplot(data = na.omit(penguins),
+       aes(sample = bill_length_mm)) +
+  geom_qq()
+```
+
+
+
+Interpret the assumptions overall and type your reasoning.
+
+
+__Question 4. Use a one sample $t$-test to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level ($\alpha = 0.05$).__
+
+
+__Question 4.1 Write out the null & the alternative hypotheses within the context of this study:__
+
+Type your answer here.
+
+
+__Question 4.2. Determine \($\alpha$) level (Find it within the case given above).__
+
+Type your answer here.
+
+
+__Question 4.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+
+```{r}
+t_test(penguins, response = bill_length_mm, mu = 40)
+
+```
+
+Type your answer here.
+
+
+__Question 4.4. Draw conclusion and write a conclusion statement__
+
+
+Type your answer here.
+
+
+
+# Independent Samples _t_ test
+
+In this case, we will use `penguins` data set.
+  
+__Example of a Case:__ Now, you're curious about the difference in the body mass of penguins based on their sex. You hypothesize that body mass varies between different sexes. To test your hypothesis, you collect a random sample of 344 penguins, measure their body mass, and record their sex.
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variable do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. Please list the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+_Random Sampling:_ Explain here.
+
+_Independence of Observation:_ Explain here.
+
+_Normal Distribution:_ Explain here.
+
+
+```{r}
+# Type your codes here to check normality by using histogram.
+```
+
+
+- _This code is for normal quantile plot for both sexes._
+
+```{r}
+ggplot(data = na.omit(penguins),
+       aes(sample = body_mass_g)) +
+  geom_qq() +
+  facet_wrap(~sex)
+
+```
+
+
+
+Interpret the assumptions and type your reasoning.
+
+
+
+
+__Question 4. Use an independent samples $t$-test to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level ($\alpha = 0.10$).__
+
+
+__Question 4.1 Write out the null & the alternative hypothesis in words, in the context of this study:__
+
+Type your answer here.
+
+
+__Question 4.2. Determine \($\alpha$) level (Find it within the case given above).__
+
+Type your answer here.
+
+
+__Question 4.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+
+```{r}
+t_test(x = penguins, 
+       formula = body_mass_g ~ sex, 
+       order = c("male", "female"),
+       alternative = "two-sided",
+       conf_level = 0.90)
+```
+
+
+
+Type your answer here.
+
+
+__Question 4.4. Explain what each function does in this question.__
+
+`t_test`: Type your answer here.
+
+`formula`:Type your answer here.
+
+`order`: Type your answer here.
+
+`alternative`: Type your answer here.
+
+`conf.level`: Type your answer here.
+
+
+__Question 4.5. Draw conclusion and write a conclusion statement__
+
+
+Type your answer here.
+
+
+
+# Paired Samples _t_ test
+
+__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as 
+water flows down the stream. In a study to monitor the accumulation and 
+attenuation of fecal contamination in a stream running through cattle rangeland, 
+monthly water specimens were collected at two locations along the stream over a 
+period of 21 months.
+
+The data set `stream` the total coliform count (MPN/100ml) for a water specimen.
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variable do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. Please list the assumptions required for this test and check the assumption of normality for this study. Interpret the assumptions overall.__
+
+
+_Random Sampling:_ Explain here.
+
+_Independence of Observation:_ Explain here.
+
+_Normal Distribution:_ Explain here.
+
+
+- _This output is from a calculation of Shapiro-Wilk test. We generally use Shapiro-Wilk test for relatively smaller sample size because visuals can be misleading in smaller sample sizes. Please interpret Shapiro-Wilk $p$-value._
+
+
+	Shapiro-Wilk normality test
+
+data:  stream$Difference
+W = 0.9641, p-value = 0.6022
+
+
+
+Type your answer here.
+
+
+__Question 4. Perform a paired samples $t$-test to assess whether the mean total coliform count is consistent across the two locations. Use the 5% significance level ($\alpha = 0.05$).__
+
+
+Type your answer here.
+
+
+
+__Question 4.1 Write out the null & the alternative hypothesis in words, in the context of this study:__
+
+Type your answer here.
+
+
+__Question 4.2. Determine \($\alpha$) level (Find it within the case given above).__
+
+Type your answer here.
+
+
+__Question 4.3. Calculate test statistic by running the code chuck below and explain what you see in the output.__
+
+```{r}
+t_test(x = stream, 
+       formula = coliform_count ~ location, 
+       order = c("upstream", "downstream"),
+       alternative = "two-sided",
+       paired = TRUE)
+```
+
+
+Type your answer here.
+
+
+__Question 4.4: What is the difference between the two `t_test` functions in independent samples t test and paired samples t test?__
+
+
+Type your answer here.
+
+
+__Question 4.5. Draw conclusion and write a conclusion statement__
+
+
+Type your answer here.
+
+
+
+
+
+
