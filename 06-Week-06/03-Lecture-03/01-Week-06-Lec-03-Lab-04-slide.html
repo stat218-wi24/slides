@@ -409,9 +409,8 @@
 <h3 id="a-snapshot">A Snapshot</h3>
 <div style="font-size: 28px">
 <ul>
-<li class="fragment"><strong>Descriptive Statistics</strong>:
+<li class="fragment"><strong>Descriptive Statistics</strong> describes and summarizes data.
 <ul>
-<li class="fragment">Describes and summarizes data.</li>
 <li class="fragment">Includes understanding
 <ul>
 <li class="fragment">distribution shape (skewed, normal, etc.),</li>
@@ -437,8 +436,8 @@
 <div style="font-size: 28px">
 <p>We learned that we can estimate the unknown parameters in two ways:</p>
 <ul>
-<li class="fragment"><p>Point estimation: A single value calculated from the sample (e.g., <span class="math inline">\(\bar{y}\)</span>)</p></li>
-<li class="fragment"><p>Confidence Intervals = A range of values within which the parameter is expected to fall, with a certain degree of confidence.(e.g., 95% CI, 90% CI)</p></li>
+<li class="fragment"><p><strong>Point estimation:</strong> A single value calculated from the sample (e.g., <span class="math inline">\(\bar{y}\)</span>)</p></li>
+<li class="fragment"><p><strong>Confidence Intervals:</strong> A range of values within which the parameter is expected to fall, with a certain degree of confidence.(e.g., 95% CI, 90% CI)</p></li>
 </ul>
 <p>We also learned that we can use hypothesis testing to test for a specific value(s) of the parameter.</p>
 <ul>
@@ -487,12 +486,13 @@
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Today, we will add one more step</p>
+<p>Today, we will add one more step to these lab sessions</p>
 <ol type="1">
 <li class="fragment">Construct the Hypotheses of <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span></li>
-<li class="fragment">Determine your <span class="math inline">\(\alpha\)</span> level</li>
-<li class="fragment">Check the assumptions</li>
-<li class="fragment">Calculate test statistic and find the <em>P</em>-value</li>
+<li class="fragment">Determine your <span class="math inline">\(\alpha\)</span> level<br>
+</li>
+<li class="fragment"><strong>Check the assumptions</strong></li>
+<li class="fragment">Compute test statistic and find the <em>P</em>-value (Interpreting R Output)</li>
 <li class="fragment">Draw conclusion.</li>
 </ol>
 </div>
@@ -525,8 +525,8 @@
 <ul>
 <li class="fragment"><p>If the only source of information is the data at hand, then normality can be roughly checked by making a histogram and normal quantile plot of the data.</p>
 <ul>
-<li class="fragment">Unfortunately, for a small or moderate sample size, this check is fairly rudimentary .</li>
-<li class="fragment">If the sample is large, then the sample histogram gives us good information about the population shape;
+<li class="fragment">Unfortunately, for a small or moderate sample size, this check is fairly rudimentary.</li>
+<li class="fragment">If the sample is large, then the visual plots give us good information about the population shape;
 <ul>
 <li class="fragment">However, if <span class="math inline">\(n\)</span> is large, the requirement of normality is less important anyway due to the Central Limit Theorem.</li>
 </ul></li>
@@ -551,6 +551,14 @@
 <h1>One Sample <span class="math inline">\(t\)</span>-test</h1>
 
 </section>
+<section id="to-do-list" class="slide level2">
+<h2>To-Do List</h2>
+<ul>
+<li class="fragment">Download the worksheet and dataset from the course website.<br>
+</li>
+<li class="fragment">Save them to your STAT 218 folder (VERY IMPORTANT).</li>
+</ul>
+</section>
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <div style="font-size: 28px">
@@ -565,7 +573,8 @@
 </li>
 <li class="fragment">found by calculating <strong>level of chance</strong>.</li>
 </ol></li>
-<li class="fragment">In this example, we will work with the several data sets. To begin with, we need <code>infer</code> package to conduct <em>t</em> tests. Let’s load that package by using <code>install.packages()</code> function.</li>
+<li class="fragment">In this example, we will work with the several data sets. To begin with, we need <code>infer</code> package to conduct <em>t</em> tests.</li>
+<li class="fragment">Let’s load that package by using <code>install.packages()</code> function.</li>
 </ul>
 <div class="fragment">
 <div class="cell">
@@ -589,19 +598,34 @@
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<p><strong>Example of a Case:</strong> Imagine that you are a biologist studying penguins, particularly their bill lengths. You hypothesize that the average bill length of penguins is 40 mm and you collect a random sample of 344 penguins, measure and record their bill length in mm.</p>
-<p>Perform a one sample <span class="math inline">\(t\)</span>-test to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level (<span class="math inline">\(\alpha = 0.05\)</span>).</p>
+<p><strong>Example of a Case:</strong></p>
+<p>Imagine that you are a biologist studying penguins, particularly their bill lengths. You hypothesize that the average bill length of penguins is 40 mm and you collect a random sample of 344 penguins, measure and record their bill length in mm.</p>
+<p>Perform a <strong>one sample <span class="math inline">\(t\)</span>-test</strong> to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level (<span class="math inline">\(\alpha = 0.05\)</span>).</p>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<h4 id="checking-the-normality-assumption">Checking the Normality Assumption</h4>
+<ul>
+<li class="fragment">Check your sample size first!
+<ul>
+<li class="fragment"><span class="math inline">\(n\)</span> &gt; 50, so we can check visual plots.</li>
+</ul></li>
+</ul>
 </section>
 <section id="quantile-plot" class="slide level2">
 <h2>Quantile Plot</h2>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">na.omit</span>(penguins),</span>
 <span id="cb3-2"><a href="#cb3-2"></a>       <span class="fu">aes</span>(<span class="at">sample =</span> bill_length_mm)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_qq</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="cell-output-display">
+<p><img data-src="01-Week-06-Lec-03-Lab-04-slide_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
-<img data-src="01-Week-06-Lec-03-Lab-04-slide_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="section-7" class="slide level2">
+</div>
+</div>
+</section>
+<section id="section-8" class="slide level2">
 <h2></h2>
 <h3 id="interpreting-the-output">Interpreting the Output</h3>
 <div class="cell">
@@ -616,42 +640,63 @@
 <div class="fragment">
 <div style="font-size: 28px">
 <p><strong>Conclusion:</strong> As <span class="math inline">\(P\)</span>-value is very small, we can reject <span class="math inline">\(H_0\)</span> and conclude that our data provided sufficient evidence to support the claim that the bill length of the penguins differs from 40 mm.</p>
-<p><strong>Confidence Interval:</strong> We are 95% confident that the mean bill length will be between 43.3 and 44.5 mm.</p>
+<p><strong>Confidence Interval:</strong> <em>Type your confidence interval statement to your worksheet!</em></p>
 </div>
 </div>
 </section></section>
 <section>
-<section id="paired-samples-t-test" class="title-slide slide level1 center">
-<h1>Paired Samples <span class="math inline">\(t\)</span>-test</h1>
+<section id="independent-samples-t-test" class="title-slide slide level1 center">
+<h1>Independent Samples <span class="math inline">\(t\)</span>-test</h1>
 
 </section>
 <section id="introduction-2" class="slide level2">
 <h2>Introduction</h2>
 <div style="font-size: 28px">
 <ul>
-<li class="fragment">Paired samples <span class="math inline">\(t\)</span> test compares means of two related groups or one group with two different measurements/occasions.</li>
-<li class="fragment">1 DV (numeric) + 1 IV(categorical)</li>
+<li class="fragment">Independent samples <span class="math inline">\(t\)</span> test compares means of two independent groups.<br>
+</li>
+<li class="fragment">1 DV (numeric) + 1 IV(categorical)
+<ul>
+<li class="fragment">Your IV should have 2 groups (e.g., male, female)</li>
+</ul></li>
 </ul>
 </div>
 </section>
-<section id="section-8" class="slide level2">
-<h2></h2>
-<p><strong>Example of a Case:</strong> Pollutants in a stream may accumulate or attenuate as water flows down the stream. In a study to monitor the accumulation and attenuation of fecal contamination in a stream running through cattle rangeland, monthly water specimens were collected at two locations along the stream over a period of 21 months.</p>
-<p>The data set <code>stream</code> the total coliform count (MPN/100ml) for a water specimen.</p>
-<p>Perform an independent samples <span class="math inline">\(t\)</span>-test to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level (<span class="math inline">\(\alpha = 0.10\)</span>).__</p>
-</section>
-<section id="checking-normality-assumption" class="slide level2">
-<h2>Checking Normality Assumption</h2>
-<ul>
-<li class="fragment"><p><em>This output is from a calculation of Shapiro-Wilk test. We generally use Shapiro-Wilk test for relatively smaller sample size because visuals can be misleading in smaller sample sizes. Please interpret Shapiro-Wilk <span class="math inline">\(p\)</span>-value.</em></p>
-<p>Shapiro-Wilk normality test</p></li>
-</ul>
-<p>data: stream$Difference W = 0.9641, p-value = 0.6022</p>
-</section>
 <section id="section-9" class="slide level2">
+<h2></h2>
+<p><strong>Example of a Case:</strong></p>
+<p>Now, you’re curious about the difference in the body mass of penguins based on their sex. You hypothesize that body mass varies between different sexes. To test your hypothesis, you collect a random sample of 344 penguins, measure their body mass, and record their sex.</p>
+<p>Perform an <strong>independent samples <span class="math inline">\(t\)</span>-test</strong> to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level (<span class="math inline">\(\alpha = 0.10\)</span>).</p>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<h4 id="checking-the-normality-assumption-1">Checking the Normality Assumption</h4>
+<ul>
+<li class="fragment">Check your sample size first!
+<ul>
+<li class="fragment"><span class="math inline">\(n\)</span> &gt; 50, so we can check visual plots.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quantile-plots" class="slide level2">
+<h2>Quantile Plots</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">na.omit</span>(penguins),</span>
+<span id="cb6-2"><a href="#cb6-2"></a>       <span class="fu">aes</span>(<span class="at">sample =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="01-Week-06-Lec-03-Lab-04-slide_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="section-11" class="slide level2">
 <h2></h2>
 <h3 id="interpreting-the-output-1">Interpreting the Output</h3>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">t_test</span>(<span class="at">x =</span> penguins, </span>
+<span id="cb7-2"><a href="#cb7-2"></a>       <span class="at">formula =</span> body_mass_g <span class="sc">~</span> sex, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>       <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4"></a>       <span class="at">alternative =</span> <span class="st">"two-sided"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>       <span class="at">conf_level =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 7
   statistic  t_df  p_value alternative estimate lower_ci upper_ci
@@ -661,10 +706,52 @@
 </div>
 <div class="fragment">
 <div style="font-size: 28px">
-<p><strong>Conclusion:</strong> As <span class="math inline">\(P\)</span>-value is very small, we can reject <span class="math inline">\(H_0\)</span> and conclude that our data provided sufficient evidence to support the claim that the body mass of penguins differs between different sexes.</p>
-<p><strong>Confidence Interval:</strong> We are 90% confident that difference in means will be between 551.63 and 815.19 mm.</p>
+<p><strong>Conclusion:</strong> <em>Type your conclusion statement to your worksheet!</em></p>
+<p><strong>Confidence Interval:</strong> <em>Type your confidence interval statement to your worksheet!</em></p>
 </div>
 </div>
+</section></section>
+<section>
+<section id="paired-samples-t-test" class="title-slide slide level1 center">
+<h1>Paired Samples <span class="math inline">\(t\)</span>-test</h1>
+
+</section>
+<section id="introduction-3" class="slide level2">
+<h2>Introduction</h2>
+<div style="font-size: 28px">
+<ul>
+<li class="fragment">Paired samples <span class="math inline">\(t\)</span> test compares means of two related groups or one group with two different measurements/occasions.</li>
+<li class="fragment">1 DV (numeric) + 1 IV(categorical)
+<ul>
+<li class="fragment">Your IV should be two related groups or one group with two different measurements/occasions.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<p><strong>Example of a Case:</strong> Pollutants in a stream may accumulate or attenuate as water flows down the stream. In a study to monitor the accumulation and attenuation of fecal contamination in a stream running through cattle rangeland, monthly water specimens were collected at two locations along the stream over a period of 21 months.</p>
+<p>The data set <code>stream</code> the total coliform count (MPN/100ml) for a water specimen.</p>
+<p>Perform a <strong>paired samples <span class="math inline">\(t\)</span>-test</strong> to assess whether the mean total coliform count is consistent across the two locations. Use the 5% significance level (<span class="math inline">\(\alpha = 0.05\)</span>).</p>
+</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<h4 id="checking-the-normality-assumption-2">Checking the Normality Assumption</h4>
+<ul>
+<li class="fragment">Check your sample size first!
+<ul>
+<li class="fragment"><span class="math inline">\(n\)</span> &lt; 50, so we should check Shapiro-Wilk test.<br>
+</li>
+</ul></li>
+<li class="fragment"><em>This output is from a calculation of Shapiro-Wilk test. We generally use Shapiro-Wilk test for relatively smaller sample size because visuals can be misleading in smaller sample sizes. Please interpret Shapiro-Wilk <span class="math inline">\(p\)</span>-value.</em></li>
+</ul>
+<div class="fragment">
+<p>Shapiro-Wilk normality test</p>
+<p>data: stream$Difference W = 0.9641, p-value = 0.6022</p>
+</div>
+</section>
+<section id="section-14" class="slide level2">
+<h2></h2>
 <h3 id="interpreting-the-output-2">Interpreting the Output</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -676,8 +763,8 @@
 </div>
 <div class="fragment">
 <div style="font-size: 28px">
-<p><strong>Conclusion:</strong> As <span class="math inline">\(P\)</span>-value is very small, we can reject <span class="math inline">\(H_0\)</span> and conclude that our data provided sufficient evidence to support the claim that…</p>
-<p><strong>Confidence Interval:</strong> We are 95% confident that…</p>
+<p><strong>Conclusion:</strong> <em>Type your conclusion statement to your worksheet!</em></p>
+<p><strong>Confidence Interval:</strong> <em>Type your confidence interval statement to your worksheet!</em></p>
 </div>
 </div>
 <div class="footer footer-default">
