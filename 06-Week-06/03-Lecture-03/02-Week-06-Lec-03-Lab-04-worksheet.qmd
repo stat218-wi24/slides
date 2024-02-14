@@ -92,7 +92,7 @@ ggplot(data = na.omit(penguins),
 Interpret the assumptions overall and type your reasoning.
 
 
-__Question 4. Use a one sample $t$-test to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level ($\alpha = 0.05$).__
+__Question 4. Conduct a one sample $t$-test to investigate whether the bill length of the penguins differs from the test value of 40 mm. Use the 5% significance level ($\alpha = 0.05$).__
 
 
 __Question 4.1 Write out the null & the alternative hypotheses within the context of this study:__
@@ -105,7 +105,7 @@ __Question 4.2. Determine \($\alpha$) level (Find it within the case given above
 Type your answer here.
 
 
-__Question 4.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+__Question 4.3. Compute test statistic by running the code chuck below and explain what you see in the output.__
 
 ```{r}
 t_test(penguins, response = bill_length_mm, mu = 40)
@@ -115,7 +115,7 @@ t_test(penguins, response = bill_length_mm, mu = 40)
 Type your answer here.
 
 
-__Question 4.4. Draw conclusion and write a conclusion statement__
+__Question 4.4. Draw conclusion and write a conclusion statement.__
 
 
 Type your answer here.
@@ -135,7 +135,7 @@ __Question 1. What is the research question of this study?__
 Type your answer here.
 
 
-__Question 2. What type of variable do we have in this study?__
+__Question 2. What type of variables do we have in this study?__
 
 
 Type your answer here.
@@ -172,10 +172,10 @@ Interpret the assumptions and type your reasoning.
 
 
 
-__Question 4. Use an independent samples $t$-test to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level ($\alpha = 0.10$).__
+__Question 4. Conduct an independent samples $t$-test to investigate whether the body mass of penguins differs between different sexes. Use the 10% significance level ($\alpha = 0.10$).__
 
 
-__Question 4.1 Write out the null & the alternative hypothesis in words, in the context of this study:__
+__Question 4.1 Write out the null & the alternative hypotheses within the context of this study:__
 
 Type your answer here.
 
@@ -185,7 +185,7 @@ __Question 4.2. Determine \($\alpha$) level (Find it within the case given above
 Type your answer here.
 
 
-__Question 4.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+__Question 4.3. Compute test statistic by running the code chuck below and explain what you see in the output.__
 
 ```{r}
 t_test(x = penguins, 
@@ -222,11 +222,7 @@ Type your answer here.
 
 # Paired Samples _t_ test
 
-__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as 
-water flows down the stream. In a study to monitor the accumulation and 
-attenuation of fecal contamination in a stream running through cattle rangeland, 
-monthly water specimens were collected at two locations along the stream over a 
-period of 21 months.
+__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as water flows down the stream. In a study to monitor the accumulation and attenuation of fecal contamination in a stream running through cattle rangeland, monthly water specimens were collected at two locations along the stream over a period of 21 months.
 
 The data set `stream` the total coliform count (MPN/100ml) for a water specimen.
 
@@ -236,7 +232,7 @@ __Question 1. What is the research question of this study?__
 Type your answer here.
 
 
-__Question 2. What type of variable do we have in this study?__
+__Question 2. What type of variables do we have in this study?__
 
 
 Type your answer here.
@@ -272,7 +268,7 @@ Type your answer here.
 
 
 
-__Question 4.1 Write out the null & the alternative hypothesis in words, in the context of this study:__
+__Question 4.1 Write out the null & the alternative hypotheses within the context of this study:__
 
 Type your answer here.
 
@@ -282,7 +278,7 @@ __Question 4.2. Determine \($\alpha$) level (Find it within the case given above
 Type your answer here.
 
 
-__Question 4.3. Calculate test statistic by running the code chuck below and explain what you see in the output.__
+__Question 4.3. Compute test statistic by running the code chuck below and explain what you see in the output.__
 
 ```{r}
 t_test(x = stream, 
