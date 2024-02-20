@@ -18,11 +18,22 @@ format:
 
 ::: {style="font-size: 30px"}
 
+
 - Grace days
   - Leave a comment on Canvas instead of emailing
 
+- Determining your data set
+  - Check the instructions, please!
+
 - Determining Variables
   - Deadline is today!
+
+- Rendering issue
+  - You should see me during my office hours. You will not be able to upload just .qmd file beginning from this week
+
+- Final Exam Date and Time
+  - Sat, Mar 16 at 10:15 AM (2 hours) at BLDG 008-0123
+
 
 :::
 
