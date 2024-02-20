@@ -1,0 +1,313 @@
+---
+title: "Inference for a Single Proportion"
+subtitle: "STAT 218 - Week 7, Lecture 1"
+date: 2024-02-20
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+
+
+## Announcements
+
+::: {style="font-size: 30px"}
+
+- Grace days
+  - Leave a comment on Canvas instead of emailing
+
+- Determining Variables
+  - Deadline is today!
+
+:::
+
+
+##
+### Last Week's Glossary - Check Your Understanding!
+
+::: {style="font-size: 19px"}
+
+<br/><br/>
+
+|                             |                                 |                                     |                             |
+|:----------------------------|:--------------------------------|:------------------------------------|:----------------------------|
+| `na.omit()`                 | `infer` package                 | `t_test()`                          |`facet_wrap(~group)`         |
+| Ancymidol                   | Student’s t distribution        | Independent samples t test          | Hypothesis Testing          |
+| Paired sample t test        | degrees of freedom              | Oceano Dunes State Park             | false positive              |
+| false negative              | Type I Error`                   | Type II Error                       | Power                       |
+| Null Hypothesis             | Alternative Hypothesis          | Higgs boson                         | One-tailed test             |
+| Two-tailed test             | Decision Error                  | Checking Assumptions                | One sample t test           |
+
+
+:::
+
+##
+### Today's Menu
+::: {style="font-size: 28px"}
+
+- The goals of this weeks are
+  - to introduce the logic of inference for a categorical variable (Tue)
+    - to state the null and alternative hypotheses in words and in terms of the symbol π, the long-run proportion. 
+    - to explain how to conduct a simulation using a null hypotheses probability that is not 50-50. 
+    - to calculate confidence interval 
+  - to apply confidence intervals and hypothesis tests to differences in population proportions (Wed)
+  - to introduce testing for goodness of fit using chi-square (Thu) 
+  - to introduce testing for independence in two-way tables (Thu)
+
+:::
+::: fragment
+::: {style="font-size: 19px"}
+<br>
+Today's activity will be based on one of the resources of [STUB – Statistical Thinking in Undergraduate Biology](https://www.causeweb.org/stub/statistical-explorations-with-biological-content/) 
+:::
+:::
+
+
+## 
+### Let's Refresh Our Memory
+::: {style="font-size: 28px"}
+
+We will scaffold today's content with those previous knowledge   
+
+- __Probability:__ the long-run frequency/proportion of times an outcome occurs in repeated trials under identical conditions
+- __Key terminology:__ observational unit, variable, statistic, sample, parameter, population
+- __Data Summarization:__ shape, center, spread  
+- __68/95/99.8 rule:__ With bell-shaped distributions, approximately 95% of observations fall within 2 Standard Deviation of mean
+:::
+
+## 
+### Motivating Example
+
+:::{.columns}
+::: {.column width="60%"}
+::: {style="font-size: 24px"}
+
+Dogs have a keen sense of smell. They are used for search and rescue, explosive detection, sniffing out illegal drugs in luggage at airports, and locating game while hunting. 
+
+- Can they also tell whether someone has COVID-19 by sniffing a specimen of sweat from a person? 
+
+::: fragment
+We will be looking at a study that used several dogs to test this question. 
+:::
+
+- We will focus on one dog, Maika, a 3-year-old female Belgian Malinois whose specialty is search and rescue. 
+  - Maika completed 57 trials where she would sniff __four different sweat specimens, one of which was from a COVID positive person__, and then sit in front of the specimen she determined to be the positive specimen. 
+:::
+:::
+
+::: {.column width="40%"}
+::: {style="font-size: 24px"}
+
+<a title="Tomás de la Maza, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Belgian_Malinois_Male_Puppy.jpg"><img width="256" alt="Belgian Malinois Male Puppy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Belgian_Malinois_Male_Puppy.jpg/256px-Belgian_Malinois_Male_Puppy.jpg"></a>
+
+- The researchers found that in 47 of the 57 trials Maika chose the COVID positive specimen.
+:::
+:::
+:::
+
+::: fragment
+::: {style="font-size: 24px"}
+
+Let's identify the observational unit, type of variable, statistic, sample, parameter, and population.
+:::
+:::
+
+
+## 
+### Motivating Example
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+
+- Let's produce a bar graph representing the observed results.
+
+::: fragment
+![](img/bar-chart.png){width=60%}
+
+- Do these results convince you that dogs can detect COVID-19? 
+
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+- How many would Maika need to get correct to convince you? 
+  - Does it need to be all 57? 
+- If Maika does not have some ability to identify the COVID specimen from the sweat of a person, what is another explanation for her getting so many correct?
+- __Research Question?__
+  - Does Maika tend to correctly identify the COVID specimen?
+:::
+:::
+:::
+
+
+## 
+### Motivating Example
+::: {style="font-size: 30px"}
+
+- There are two possible explanations for this tendency:   
+  - In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen   
+  - In the long run, Maika does not have a genuine tendency and is simply guessing among the specimen each time (she got lucky)   
+- Suppose a friend thinks Maika just got lucky (Is that null hypothesis or alternative hypothesis?). 
+  - How could you convince your friend otherwise?  OR 
+  - How likely do you think it is that Maika was able to identify so many correctly if she was simply guessing each time.
+
+- Let's suggest a method and map it! 
+:::
+
+
+## 
+### One Proportion Using A Spinner
+
+::: columns
+::: {.column width="60%"}
+::: {style="font-size: 32px"}
+
+- Let's use our [applet](https://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm?language=0) to generate "null distribution".
+
+::: fragment
+![](img/rossman-chance.png){fig-align="center" width=60%}
+:::
+
+:::
+:::
+
+::: {.column width="40%"}
+
+<br>
+
+::: fragment
+![](img/spinner.png)
+:::
+:::
+:::
+
+## 
+#### Steps To Be Followed:
+
+::: {style="font-size: 26px"}
+
+
+We will draw multiple samples and simulate data to observe the number of successes. 
+
+::: columns
+::: {.column width="50%"}
+::: {style="font-size: 27px"}
+__Your Turn:__  
+
+- Set the probability of success as 0.25  
+- Set the sample size as 5
+- Observe what happens if you draw only 1 sample.  
+- Record the number of success   
+- Did everyone in class obtained the same result for their guessing dog?
+  - Let's compile those results in a dotplot
+    - What are the observational units in this graph? 
+    - What is the variable in this graph?
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 27px"}
+__My Turn:__
+
+- Set the probability of success as 0.25  
+- Set the sample size as 57
+- Observe what happens if you draw 100 samples.  
+- Keep pressin Draw Samples until the distribution stops changing much   
+- Interpret the graph.
+    
+:::
+:::
+:::
+
+:::
+
+## 
+### Formulate Conclusions
+::: columns
+::: {.column width="40%"}
+::: {style="font-size: 24px"}
+
+<a title="Tomás de la Maza, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Belgian_Malinois_Male_Puppy.jpg"><img width="256" alt="Belgian Malinois Male Puppy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Belgian_Malinois_Male_Puppy.jpg/256px-Belgian_Malinois_Male_Puppy.jpg"></a>
+
+- Based on these simulation results, would you consider it surprising for Maika to correctly identify the COVID specimen 4 times? 
+
+:::
+:::
+
+::: {.column width="60%"}
+::: {style="font-size: 24px"}
+
+- Now consider the actual study results – 47 out of 57 attempts. Which explanation appears more plausible to you? 
+  - In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen
+- In the long run, Maika does not have a genuine tendency and is simply guessing among the specimens each time (she got lucky)
+
+
+- In this case, the observed statistic is far out in the tail of the distribution and it is not hard to see that Maika’s proportion of successful identifications is unlikely to happen by random chance. 
+
+:::
+:::
+:::
+
+## 
+### Some questions before you go...
+
+- Do you consider the observed sample result to be statistically significant? 
+  - Recall that this means that the observed result is unlikely to have occurred by chance alone.
+
+
+- How broadly are you willing to generalize your conclusions? 
+  - Would you be willing to generalize your conclusions to all dogs? Explain your reasoning.
+
+
+## Notations
+
+$p$ = Population proportion 
+
+$\hat{p}$ = Sample proportion
+
+##
+### Central Limit Theorem for proportions
+
+::: {style="font-size: 28px"}
+
+Sample proportions will be nearly normally distributed with mean equal to the population mean' $p$ and standard error equal to
+
+
+$$
+SE = \sqrt{\frac{p(1-p)}{n}}
+$$
+
+:::
+
+## 
+### Confidence Intervals for a proportion
+
+A confidence interval provides a range of plausible values for the parameter $p$, and when $\hat{p}$ can be modeled using a normal distribution, the confidence interval for $p$ takes the form
+
+$$
+\hat{p} \pm z^{\ast} \times SE_{\hat{p}}
+$$
+Let's calculate 95% CI for today's motivating example.
+
+## Hypothesis Testing
+
+::: {style="font-size: 28px"}
+
+Attempt to estimate the interval for the p-value in today's motivating example.
+
+- A p-value above .10 (little or no evidence against the null hypothesis.)  
+
+- A p-value below .10 but above .05 (moderate evidence against the null hypothesis.)
+
+- A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convicing.) 
+
+- A p-value below .01 (very strong evidence against the null hypothesis.)
+:::

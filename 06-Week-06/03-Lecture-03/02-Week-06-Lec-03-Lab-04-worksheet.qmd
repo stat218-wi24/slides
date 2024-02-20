@@ -200,7 +200,7 @@ t_test(x = penguins,
 Type your answer here.
 
 
-__Question 4.4. Explain what each function does in this question.__
+__Question 4.4. Explain what each function/argument does in this question.__
 
 `t_test`: Type your answer here.
 
