@@ -256,9 +256,9 @@ __My Turn:__
 ::: {.column width="60%"}
 ::: {style="font-size: 24px"}
 
-- Now consider the actual study results – 47 out of 57 attempts. Which explanation appears more plausible to you? 
+- Now consider the actual study results – 47 out of 57 attempts. Which explanation appears more plausible to you?  
   - In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen
-- In the long run, Maika does not have a genuine tendency and is simply guessing among the specimens each time (she got lucky)
+  - In the long run, Maika does not have a genuine tendency and is simply guessing among the specimens each time (she got lucky)
 
 
 - In this case, the observed statistic is far out in the tail of the distribution and it is not hard to see that Maika’s proportion of successful identifications is unlikely to happen by random chance. 
