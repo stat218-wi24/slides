@@ -63,7 +63,7 @@ format:
 
 - The goals of this weeks are
   - to introduce the logic of inference for a categorical variable (Tue)
-    - to state the null and alternative hypotheses in words and in terms of the symbol π, the long-run proportion. 
+    - to state the null and alternative hypotheses in words and in terms of the symbols. 
     - to explain how to conduct a simulation using a null hypotheses probability that is not 50-50. 
     - to calculate confidence interval 
   - to apply confidence intervals and hypothesis tests to differences in population proportions (Wed)
