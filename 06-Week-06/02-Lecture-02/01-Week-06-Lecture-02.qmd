@@ -143,7 +143,7 @@ $$
 __$t$ test statistic__
 
 $$
-t_s = \frac{(\bar{y}_1 - \bar{y}_2) - (\mu_1 - \mu_2)}{SE(\bar{y}_1 - \bar{y}_2)}
+t_s = \frac{(\bar{y}_1 - \bar{y}_2) - (\mu_1 - \mu_2)}{SE_{(\bar{y}_1 - \bar{y}_2)}}
 $$
 \vspace{12pt}
 \vspace{12pt}
