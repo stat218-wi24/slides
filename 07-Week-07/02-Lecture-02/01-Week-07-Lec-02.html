@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01-Week-07-Lec-01_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01-Week-07-Lec-01_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01-Week-07-Lec-01_files/libs/quarto-html/popper.min.js"></script>
-<script src="01-Week-07-Lec-01_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01-Week-07-Lec-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01-Week-07-Lec-01_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01-Week-07-Lec-01_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="01-Week-07-Lec-01_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="01-Week-07-Lec-02_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01-Week-07-Lec-02_files/libs/quarto-html/tabby.min.js"></script>
+<script src="01-Week-07-Lec-02_files/libs/quarto-html/popper.min.js"></script>
+<script src="01-Week-07-Lec-02_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="01-Week-07-Lec-02_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01-Week-07-Lec-02_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="01-Week-07-Lec-02_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="01-Week-07-Lec-02_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <title>Inference for a Single Proportion</title>
+  <title>Inference for Categorical Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01-Week-07-Lec-01_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01-Week-07-Lec-01_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="01-Week-07-Lec-02_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="01-Week-07-Lec-02_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,13 +29,13 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01-Week-07-Lec-01_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="01-Week-07-Lec-01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="01-Week-07-Lec-02_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="01-Week-07-Lec-02_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -326,364 +326,308 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Inference for a Single Proportion</h1>
-  <p class="subtitle">STAT 218 - Week 7, Lecture 1</p>
+  <h1 class="title">Inference for Categorical Data</h1>
+  <p class="subtitle">STAT 218 - Week 7, Lecture 2</p>
 
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">February 20<sup style="font-size:65%;">th</sup>, 2024</p>
+  <p class="date">February 21<sup style="font-size:65%;">th</sup>, 2024</p>
 </section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<div style="font-size: 30px">
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<div style="font-size: 28px">
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sampling Distribution of <span class="math inline">\(\hat{p}\)</span></strong></p>
+</div>
+<div class="callout-content">
+<div>
+<p>The sampling proportion for <span class="math inline">\(\hat{p}\)</span> based on a sample size <span class="math inline">\(n\)</span> from a population with a true proportion <span class="math inline">\(p\)</span> is nearly normal when</p>
 <ul>
-<li class="fragment">Grace days
+<li>the observations are independent e.g., are from a simple random sample</li>
+<li>at least 10 successes and 10 failures in the sample, i.e.&nbsp;<span class="math inline">\(np \geq 10\)</span> and <span class="math inline">\(n(1-p) \geq 10\)</span>. We call this <strong>success-failure condition.</strong></li>
+</ul>
+<p>When these conditions/assumptions are met, then the sampling distribution of <span class="math inline">\(\hat{p}\)</span> is nearly normal with mean <span class="math inline">\(p\)</span> and the standard error equal to</p>
+<p><span class="math display">\[
+SE = \sqrt{\frac{p(1-p)}{n}}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(p\)</span> = Population proportion</p>
+<p><span class="math inline">\(\hat{p}\)</span> = Sample proportion</p>
+</div>
+</div>
+</section>
+<section id="be-careful" class="slide level2">
+<h2>Be Careful!</h2>
+<div style="font-size: 28px">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li class="fragment">Leave a comment on Canvas instead of emailing</li>
-</ul></li>
-<li class="fragment">Determining your data set
+<li class="fragment"><p>In general, we don’t know the true proportion <span class="math inline">\(p\)</span>, so we substitute some value to check conditions and estimate the standard error.</p>
 <ul>
-<li class="fragment">Check the instructions, please!</li>
-</ul></li>
-<li class="fragment">Determining Variables
-<ul>
-<li class="fragment">Deadline is today!</li>
-</ul></li>
-<li class="fragment">Rendering issue
-<ul>
-<li class="fragment">You should see me during my office hours. You will not be able to upload just .qmd file beginning from this week</li>
-</ul></li>
-<li class="fragment">Final Exam Date and Time
-<ul>
-<li class="fragment">Sat, Mar 16 at 10:15 AM (2 hours) at BLDG 008-0123</li>
+<li class="fragment"><strong>For confidence intervals</strong>, the sample proportion <span class="math inline">\(\hat{p}\)</span> is used to check the success-failure condition and compute the standard error.</li>
+<li class="fragment"><strong>For hypothesis tests</strong>, typically the null value - that is, the proportion claimed in the null hypothesis - is used in place of <span class="math inline">\(p\)</span>.</li>
 </ul></li>
 </ul>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<h3 id="last-weeks-glossary---check-your-understanding">Last Week’s Glossary - Check Your Understanding!</h3>
-<div style="font-size: 19px">
-<p><br><br></p>
-<table>
-<colgroup>
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 28%">
-<col style="width: 22%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>na.omit()</code></td>
-<td style="text-align: left;"><code>infer</code> package</td>
-<td style="text-align: left;"><code>t_test()</code></td>
-<td style="text-align: left;"><code>facet_wrap(~group)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Ancymidol</td>
-<td style="text-align: left;">Student’s t distribution</td>
-<td style="text-align: left;">Independent samples t test</td>
-<td style="text-align: left;">Hypothesis Testing</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paired sample t test</td>
-<td style="text-align: left;">degrees of freedom</td>
-<td style="text-align: left;">Oceano Dunes State Park</td>
-<td style="text-align: left;">false positive</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">false negative</td>
-<td style="text-align: left;">Type I Error`</td>
-<td style="text-align: left;">Type II Error</td>
-<td style="text-align: left;">Power</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Null Hypothesis</td>
-<td style="text-align: left;">Alternative Hypothesis</td>
-<td style="text-align: left;">Higgs boson</td>
-<td style="text-align: left;">One-tailed test</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Two-tailed test</td>
-<td style="text-align: left;">Decision Error</td>
-<td style="text-align: left;">Checking Assumptions</td>
-<td style="text-align: left;">One sample t test</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h3 id="confidence-intervals-for-a-proportion">Confidence Intervals for a Proportion</h3>
+<p>A confidence interval provides a range of plausible values for the parameter <span class="math inline">\(p\)</span>, and when <span class="math inline">\(\hat{p}\)</span> can be modeled using a normal distribution, the confidence interval for <span class="math inline">\(p\)</span> takes the form</p>
+<p><span class="math display">\[
+\hat{p} \pm z^{\ast} \times SE_{\hat{p}}
+\]</span></p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<h3 id="todays-menu">Today’s Menu</h3>
+<h3 id="motivating-example---i">Motivating Example - I</h3>
 <div style="font-size: 28px">
+<p>Two scientists want to know if a certain drug is effective against high blood pressure.</p>
 <ul>
-<li class="fragment">The goals of this weeks are
-<ul>
-<li class="fragment">to introduce the logic of inference for a categorical variable (Tue)
-<ul>
-<li class="fragment">to state the null and alternative hypotheses in words and in terms of the symbols.</li>
-<li class="fragment">to explain how to conduct a simulation using a null hypotheses probability that is not 50-50.</li>
-<li class="fragment">to calculate confidence interval</li>
-</ul></li>
-<li class="fragment">to apply confidence intervals and hypothesis tests to differences in population proportions (Wed)</li>
-<li class="fragment">to introduce testing for goodness of fit using chi-square (Thu)</li>
-<li class="fragment">to introduce testing for independence in two-way tables (Thu)</li>
-</ul></li>
+<li class="fragment"><p>The first scientist wants to give the drug to 1000 people with high blood pressure and see how many of them experience lower blood pressure levels.</p></li>
+<li class="fragment"><p>The second scientist wants to give the drug to 500 people with high blood pressure, and not give the drug to another 500 people with high blood pressure, and see how many in both groups experience lower blood pressure levels.</p></li>
 </ul>
-</div>
 <div class="fragment">
-<div style="font-size: 19px">
-<p><br> Today’s activity will be based on one of the resources of <a href="https://www.causeweb.org/stub/statistical-explorations-with-biological-content/">STUB – Statistical Thinking in Undergraduate Biology</a></p>
+<p>Which is the better way to test this drug?</p>
+<ol type="a">
+<li class="fragment">All 1000 get the drug<br>
+</li>
+<li class="fragment">500 get the drug, 500 don’t</li>
+</ol>
 </div>
 </div>
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
-<h3 id="lets-refresh-our-memory">Let’s Refresh Our Memory</h3>
+<h3 id="motivating-example---ii">Motivating Example - II</h3>
 <div style="font-size: 28px">
-<p>We will scaffold today’s content with those previous knowledge</p>
+<p>We would like to estimate the proportion of all Americans who have good intuition about experimental design, i.e.&nbsp;would answer “500 get the drug 500 don’t”?</p>
+<p>In the 2010 survey, it is found that 571 out of 670 (85%) of Americans answered the question on experimental design correctly (the sample was randomly chosen).</p>
 <ul>
-<li class="fragment"><strong>Probability:</strong> the long-run frequency/proportion of times an outcome occurs in repeated trials under identical conditions</li>
-<li class="fragment"><strong>Key terminology:</strong> observational unit, variable, statistic, sample, parameter, population</li>
-<li class="fragment"><strong>Data Summarization:</strong> shape, center, spread<br>
-</li>
-<li class="fragment"><strong>68/95/99.8 rule:</strong> With bell-shaped distributions, approximately 95% of observations fall within 2 Standard Deviation of mean</li>
+<li class="fragment">What are the parameter of interest and the point estimate?</li>
 </ul>
+<div class="fragment">
+<ul>
+<li class="fragment"><p><strong>Parameter of interest:</strong> proportion of <strong>all</strong> Americans <span class="math inline">\(p\)</span> who have good intuition about experimental design.</p></li>
+<li class="fragment"><p><strong>Point estimate:</strong> proportion of <strong>sampled</strong> Americans (<span class="math inline">\(\hat{p}\)</span>) who have good intuition about experimental design.</p></li>
+</ul>
+</div>
 </div>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
-<h3 id="motivating-example">Motivating Example</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div style="font-size: 24px">
-<p>Dogs have a keen sense of smell. They are used for search and rescue, explosive detection, sniffing out illegal drugs in luggage at airports, and locating game while hunting.</p>
+<h3 id="motivating-example---ci">Motivating Example - CI</h3>
+<p>Estimate (using a 95% confidence interval) the proportion of all Americans who have good intuition about experimental design.</p>
 <ul>
-<li class="fragment">Can they also tell whether someone has COVID-19 by sniffing a specimen of sweat from a person?</li>
-</ul>
-<div class="fragment">
-<p>We will be looking at a study that used several dogs to test this question.</p>
-</div>
+<li class="fragment">Check Conditions/Assumptions</li>
+<li class="fragment">Calculate the Standard Error of a sample proportion</li>
+<li class="fragment">Calculate 95% Confidence Interval
 <ul>
-<li class="fragment">We will focus on one dog, Maika, a 3-year-old female Belgian Malinois whose specialty is search and rescue.
-<ul>
-<li class="fragment">Maika completed 57 trials where she would sniff <strong>four different sweat specimens, one of which was from a COVID positive person</strong>, and then sit in front of the specimen she determined to be the positive specimen.</li>
+<li class="fragment">(0.82, 0.88)</li>
 </ul></li>
 </ul>
-</div>
-</div><div class="column" style="width:40%;">
-<div style="font-size: 24px">
-<p><a title="Tomás de la Maza, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Belgian_Malinois_Male_Puppy.jpg"><img width="256" alt="Belgian Malinois Male Puppy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Belgian_Malinois_Male_Puppy.jpg/256px-Belgian_Malinois_Male_Puppy.jpg"></a></p>
-<ul>
-<li class="fragment">The researchers found that in 47 of the 57 trials Maika chose the COVID positive specimen.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div style="font-size: 24px">
-<p>Let’s identify the observational unit, type of variable, statistic, sample, parameter, and population.</p>
-</div>
-</div>
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
-<h3 id="motivating-example-1">Motivating Example</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<h3 id="hypothesis-testing-for-a-proportion">Hypothesis Testing for a Proportion</h3>
 <div style="font-size: 28px">
 <ul>
-<li class="fragment">Let’s produce a bar graph representing the observed results.</li>
+<li class="fragment">Let’s use the same example.
+<ul>
+<li class="fragment">The 2010 survey found that 571 out of 670 (85%) of Americans answered the question on experimental design correctly.</li>
+<li class="fragment">Do these data provide convincing evidence that more than 80% of Americans have a good intuition about experimental design?</li>
+</ul></li>
 </ul>
 <div class="fragment">
-<p><img data-src="img/bar-chart.png" style="width:60.0%"></p>
-<ul>
-<li class="fragment">Do these results convince you that dogs can detect COVID-19?</li>
-</ul>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div style="font-size: 28px">
-<ul>
-<li class="fragment">How many would Maika need to get correct to convince you?
-<ul>
-<li class="fragment">Does it need to be all 57?</li>
-</ul></li>
-<li class="fragment">If Maika does not have some ability to identify the COVID specimen from the sweat of a person, what is another explanation for her getting so many correct?</li>
-<li class="fragment"><strong>Research Question?</strong>
-<ul>
-<li class="fragment">Does Maika tend to correctly identify the COVID specimen?</li>
-</ul></li>
-</ul>
-</div>
+<p><span class="math inline">\(H_0: p = 0.80\)</span><br>
+<span class="math inline">\(H_A: p &gt;0.80\)</span> (one tailed)</p>
 </div>
 </div>
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-<h3 id="motivating-example-2">Motivating Example</h3>
-<div style="font-size: 30px">
-<ul>
-<li class="fragment">There are two possible explanations for this tendency:
-<ul>
-<li class="fragment">In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen<br>
-</li>
-<li class="fragment">In the long run, Maika does not have a genuine tendency and is simply guessing among the specimen each time (she got lucky)<br>
-</li>
-</ul></li>
-<li class="fragment">Suppose a friend thinks Maika just got lucky (Is that null hypothesis or alternative hypothesis?).
-<ul>
-<li class="fragment">How could you convince your friend otherwise? OR</li>
-<li class="fragment">How likely do you think it is that Maika was able to identify so many correctly if she was simply guessing each time.</li>
-</ul></li>
-<li class="fragment">Let’s suggest a method and map it!</li>
-</ul>
+<h3 id="hypothesis-testing-for-a-proportion-1">Hypothesis Testing for a Proportion</h3>
+<div style="font-size: 28px">
+<p><strong>Remember!</strong></p>
+<p><span class="math display">\[
+SE = \sqrt{\frac{p_0 (1-p_0)}{n}}
+\]</span> <span class="math display">\[
+SE = \sqrt{\frac{0.80 \times 0.20}{679}} = 0.0154
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+Z = {\frac{0.85 - 0.80}{0.0154}} = 3.25
+\]</span> Let’s check the Table 4.</p>
+<p><span class="math inline">\(p\)</span> value = 1-0.9994 = 0.0006.</p>
+</div>
+<div class="fragment">
+<p>What would be our decision?</p>
+</div>
 </div>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<h3 id="one-proportion-using-a-spinner">One Proportion Using A Spinner</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div style="font-size: 32px">
+<h3 id="when-one-or-more-conditions-arent-met">When one or more conditions aren’t met</h3>
+<div style="font-size: 28px">
 <ul>
-<li class="fragment">Let’s use our <a href="https://www.rossmanchance.com/applets/2021/oneprop/OneProp.htm?language=0">applet</a> to generate “null distribution”.</li>
+<li class="fragment"><p>What happens when the success-failure condition fails? What about when the independence condition fails?</p>
+<ul>
+<li class="fragment">In either case, the general ideas of confidence intervals and hypothesis tests remain the same, but the strategy or technique used to generate the interval or p-value change.</li>
+</ul></li>
+<li class="fragment"><p>When the success-failure condition isn’t met for a hypothesis test,</p>
+<ul>
+<li class="fragment">we can simulate the null distribution of <span class="math inline">\(\hat{p}\)</span> using the null value, <span class="math inline">\(p_0\)</span>.</li>
+</ul></li>
+<li class="fragment"><p>For a confidence interval when the success-failure condition isn’t met,</p>
+<ul>
+<li class="fragment">we can use what’s called the Clopper-Pearson interval. The details are beyond the scope of this course.</li>
+</ul></li>
+<li class="fragment"><p>The independence condition is a more nuanced requirement. When it isn’t met, it is important to understand how and why it isn’t met.</p></li>
 </ul>
+</div>
+</section>
+<section>
+<section id="difference-of-two-proportions" class="title-slide slide level1 center">
+<h1>Difference of Two Proportions</h1>
+
+</section>
+<section id="introduction-1" class="slide level2">
+<h2>Introduction</h2>
+<div style="font-size: 28px">
 <div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/rossman-chance.png" style="width:60.0%"></p>
-</figure>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Sampling Distribution of <span class="math inline">\(\hat{p}\)</span></strong></p>
+</div>
+<div class="callout-content">
+<div>
+<p>We can extend what we have learned.</p>
+<p>The differences in population proportions for <span class="math inline">\(\hat{p_1} - \hat{p_2}\)</span> can be modeled using a normal distribution when</p>
+<ul>
+<li>The data are independent <strong>within and between the two groups.</strong>
+<ul>
+<li>Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.</li>
+</ul></li>
+<li>The success-failure condition holds for both groups, where we check successes and failures in each group separately.</li>
+</ul>
+<p>When these conditions/assumptions are met, then the standard error of <span class="math inline">\(\hat{p_1} - \hat{p_2}\)</span> is equal to</p>
+<p><span class="math display">\[
+SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+\]</span> where <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> represent the population proportions, and <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> represent the sample sizes.</p>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:40%;">
-<p><br></p>
-<div class="fragment">
-<p><img data-src="img/spinner.png"></p>
 </div>
 </div>
 </div>
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<h4 id="steps-to-be-followed">Steps To Be Followed:</h4>
-<div style="font-size: 26px">
-<p>We will draw multiple samples and simulate data to observe the number of successes.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div style="font-size: 27px">
-<p><strong>Your Turn:</strong></p>
-<ul>
-<li class="fragment">Set the probability of success as 0.25<br>
-</li>
-<li class="fragment">Set the sample size as 5</li>
-<li class="fragment">Observe what happens if you draw only 1 sample.<br>
-</li>
-<li class="fragment">Record the number of success<br>
-</li>
-<li class="fragment">Did everyone in class obtained the same result for their guessing dog?
-<ul>
-<li class="fragment">Let’s compile those results in a dotplot
-<ul>
-<li class="fragment">What are the observational units in this graph?</li>
-<li class="fragment">What is the variable in this graph?</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</div><div class="column" style="width:50%;">
-<div style="font-size: 27px">
-<p><strong>My Turn:</strong></p>
-<ul>
-<li class="fragment">Set the probability of success as 0.25<br>
-</li>
-<li class="fragment">Set the sample size as 57</li>
-<li class="fragment">Observe what happens if you draw 100 samples.<br>
-</li>
-<li class="fragment">Keep pressin Draw Samples until the distribution stops changing much<br>
-</li>
-<li class="fragment">Interpret the graph.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+<h3 id="confidence-intervals-for-a-p_1---p_2">Confidence Intervals for a <span class="math inline">\(p_1\)</span> - <span class="math inline">\(p_2\)</span></h3>
+<p>We can apply the generic confidence interval formula for a difference of two proportions</p>
+<p><span class="math display">\[
+\hat{p_1} - \hat{p_2} \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+\]</span></p>
 </section>
 <section id="section-8" class="slide level2">
 <h2></h2>
-<h3 id="formulate-conclusions">Formulate Conclusions</h3>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div style="font-size: 24px">
-<p><a title="Tomás de la Maza, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Belgian_Malinois_Male_Puppy.jpg"><img width="256" alt="Belgian Malinois Male Puppy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Belgian_Malinois_Male_Puppy.jpg/256px-Belgian_Malinois_Male_Puppy.jpg"></a></p>
-<ul>
-<li class="fragment">Based on these simulation results, would you consider it surprising for Maika to correctly identify the COVID specimen 4 times?</li>
-</ul>
-</div>
-</div><div class="column" style="width:60%;">
-<div style="font-size: 24px">
-<ul>
-<li class="fragment">Now consider the actual study results – 47 out of 57 attempts. Which explanation appears more plausible to you?
-<ul>
-<li class="fragment">In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen</li>
-<li class="fragment">In the long run, Maika does not have a genuine tendency and is simply guessing among the specimens each time (she got lucky)</li>
-</ul></li>
-<li class="fragment">In this case, the observed statistic is far out in the tail of the distribution and it is not hard to see that Maika’s proportion of successful identifications is unlikely to happen by random chance.</li>
-</ul>
-</div>
+<h3 id="an-example---i">An Example - I</h3>
+<div style="font-size: 28px">
+<p>Scientists predict that global warming may have big effects on the polar regions within the next 100 years. One of the possible effects is that the northern ice cap may completely melt.</p>
+<div class="fragment">
+<p>Would this bother you a great deal, some, a little, or not at all if it actually happened?</p>
+<ol type="a">
+<li class="fragment">A great deal<br>
+</li>
+<li class="fragment">Some</li>
+<li class="fragment">A little</li>
+<li class="fragment">Not at all</li>
+</ol>
 </div>
 </div>
 </section>
 <section id="section-9" class="slide level2">
 <h2></h2>
-<h3 id="some-questions-before-you-go">Some questions before you go…</h3>
-<ul>
-<li class="fragment">Do you consider the observed sample result to be statistically significant?
-<ul>
-<li class="fragment">Recall that this means that the observed result is unlikely to have occurred by chance alone.</li>
-</ul></li>
-<li class="fragment">How broadly are you willing to generalize your conclusions?
-<ul>
-<li class="fragment">Would you be willing to generalize your conclusions to all dogs? Explain your reasoning.</li>
-</ul></li>
-</ul>
-</section>
-<section id="hypothesis-testing" class="slide level2">
-<h2>Hypothesis Testing</h2>
+<h3 id="motivating-example---ii-1">Motivating Example - II</h3>
 <div style="font-size: 28px">
-<p>Attempt to estimate the interval for the p-value in today’s motivating example.</p>
+<p>The GSS asks the same question, below are the distributions of responses from the 2010 GSS as well as from a group of introductory statistics students at Duke University:</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/table-ss.png"></p>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 24px">
+<div class="fragment">
 <ul>
-<li class="fragment"><p>A p-value above .10 (little or no evidence against the null hypothesis.)</p></li>
-<li class="fragment"><p>A p-value below .10 but above .05 (moderate evidence against the null hypothesis.)</p></li>
-<li class="fragment"><p>A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convincing.)</p></li>
-<li class="fragment"><p>A p-value below .01 (very strong evidence against the null hypothesis.)</p></li>
+<li class="fragment"><p><strong>Parameter of interest:</strong> Difference between the proportions of <strong>all</strong> Duke students and <strong>all</strong> Americans who would be bothered a great deal by the northern ice cap completely melting.</p></li>
+<li class="fragment"><p><strong>Point estimate:</strong> Difference between the proportions of <strong>sampled</strong> Duke students and <strong>sampled</strong> Americans who would be bothered a great deal by the northern ice cap completely melting.</p></li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<h3 id="an-example---ci">An Example - CI</h3>
+<p>Construct a 95% confidence interval for the difference between the proportions of Duke students and Americans who would be bothered a great deal by the melting of the northern ice cap (<span class="math inline">\(p_{Duke}\)</span> - <span class="math inline">\(p_{US}\)</span>).</p>
+<ul>
+<li class="fragment">Check Conditions/Assumptions</li>
+<li class="fragment">Calculate the Standard Error of a sample proportion</li>
+<li class="fragment">Calculate 95% Confidence Interval
+<ul>
+<li class="fragment">95% CI = (-0.108, 0.086)</li>
+</ul></li>
+<li class="fragment">I’ll leave this as an exercise.</li>
+</ul>
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-Week-07-Lec-01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="01-Week-07-Lec-02_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

@@ -278,35 +278,6 @@ __My Turn:__
   - Would you be willing to generalize your conclusions to all dogs? Explain your reasoning.
 
 
-## Notations
-
-$p$ = Population proportion 
-
-$\hat{p}$ = Sample proportion
-
-##
-### Central Limit Theorem for proportions
-
-::: {style="font-size: 28px"}
-
-Sample proportions will be nearly normally distributed with mean equal to the population mean' $p$ and standard error equal to
-
-
-$$
-SE = \sqrt{\frac{p(1-p)}{n}}
-$$
-
-:::
-
-## 
-### Confidence Intervals for a proportion
-
-A confidence interval provides a range of plausible values for the parameter $p$, and when $\hat{p}$ can be modeled using a normal distribution, the confidence interval for $p$ takes the form
-
-$$
-\hat{p} \pm z^{\ast} \times SE_{\hat{p}}
-$$
-Let's calculate 95% CI for today's motivating example.
 
 ## Hypothesis Testing
 
@@ -318,7 +289,7 @@ Attempt to estimate the interval for the p-value in today's motivating example.
 
 - A p-value below .10 but above .05 (moderate evidence against the null hypothesis.)
 
-- A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convicing.) 
+- A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convincing.) 
 
 - A p-value below .01 (very strong evidence against the null hypothesis.)
 :::
