@@ -59,7 +59,7 @@ the success-failure condition and compute the standard error.
 ::: fragment
 
 $$
-SE = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+SE=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 $$
 
 :::
@@ -69,7 +69,7 @@ $$
 ::: fragment
 
 $$
-SE = \sqrt{\frac{{p_0}(1 - {p_0})}{n}}
+SE = \sqrt{\frac{{p_0}(1-{p_0})}{n}}
 $$
 
 :::
