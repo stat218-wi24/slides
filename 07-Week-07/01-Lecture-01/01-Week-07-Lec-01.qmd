@@ -231,7 +231,7 @@ __My Turn:__
 - Set the probability of success as 0.25  
 - Set the sample size as 57
 - Observe what happens if you draw 100 samples.  
-- Keep pressin Draw Samples until the distribution stops changing much   
+- Keep pressing "Draw Samples" until the distribution stops changing much   
 - Interpret the graph.
     
 :::
@@ -248,7 +248,7 @@ __My Turn:__
 
 <a title="Tomás de la Maza, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Belgian_Malinois_Male_Puppy.jpg"><img width="256" alt="Belgian Malinois Male Puppy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Belgian_Malinois_Male_Puppy.jpg/256px-Belgian_Malinois_Male_Puppy.jpg"></a>
 
-- Based on these simulation results, would you consider it surprising for Maika to correctly identify the COVID specimen 4 times? 
+- Based on these simulation results, would you consider it surprising for Maika to correctly identify the COVID specimen 47 times? 
 
 :::
 :::
@@ -256,7 +256,7 @@ __My Turn:__
 ::: {.column width="60%"}
 ::: {style="font-size: 24px"}
 
-- Now consider the actual study results – 47 out of 57 attempts. Which explanation appears more plausible to you?  
+- Let's reconsider those two competing explanations. Which one appears more plausible to you?  
   - In the long-run, Maika has a genuine tendency to correctly identify the COVID specimen
   - In the long run, Maika does not have a genuine tendency and is simply guessing among the specimens each time (she got lucky)
 
@@ -279,11 +279,12 @@ __My Turn:__
 
 
 
-## Hypothesis Testing
+## 
+#### Hypothesis Testing - Strength of Evidence against the null hypothesis
 
 ::: {style="font-size: 28px"}
 
-Attempt to estimate the interval for the p-value in today's motivating example.
+Attempt to estimate the interval for the p-value in today's motivating example with a different approach.
 
 - A p-value above .10 (little or no evidence against the null hypothesis.)  
 
@@ -292,4 +293,14 @@ Attempt to estimate the interval for the p-value in today's motivating example.
 - A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convincing.) 
 
 - A p-value below .01 (very strong evidence against the null hypothesis.)
+
+::: fragment
+::: {.callout-note}
+
+Remember our binary decision that we did last week! (if $p \leq \alpha$, then reject $H_0$)
+
+- Which option appears more comprehensive?
+
+:::
+:::
 :::
