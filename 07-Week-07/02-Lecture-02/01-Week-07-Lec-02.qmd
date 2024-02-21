@@ -48,34 +48,9 @@ $\hat{p}$ = Sample proportion
 
 
 ## Be Careful!
-::: {style="font-size: 28px"}
-::: {.callout-warning}
 
-- In general, we don't know the true proportion $p$, so we substitute some value to check conditions and estimate the standard error. 
+![](img\latex-1.png)
 
-  - __For confidence intervals__, the sample proportion $\hat{p}$ is used to check
-the success-failure condition and compute the standard error. 
-
-::: fragment
-
-$$
-SE=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
-$$
-
-:::
-
-  - __For hypothesis tests__, typically the null value - that is, the proportion claimed in the null hypothesis -  is used in place of $p$.
-
-::: fragment
-
-$$
-SE = \sqrt{\frac{{p_0}(1-{p_0})}{n}}
-$$
-
-:::
-
-:::
-:::
 
 ## 
 ### Confidence Intervals for a Proportion
@@ -231,9 +206,7 @@ where $p_1$ and $p_2$ represent the population proportions, and $n_1$ and $n_2$ 
 
 We can apply the generic confidence interval formula for a difference of two proportions
 
-$$
-\hat{p}_1 - \hat{p}_2 \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
-$$
+![](img/latex-2.png)
 
 
 ## 
