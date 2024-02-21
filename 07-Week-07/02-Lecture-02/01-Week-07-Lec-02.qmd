@@ -11,8 +11,10 @@ format:
       incremental: true
 ---
 
+# Inference For A Single Proportion
 
-## Introduction
+## 
+### Sampling Distribution and Conditions
 
 ::: {style="font-size: 28px"}
 
@@ -53,7 +55,24 @@ $\hat{p}$ = Sample proportion
 
   - __For confidence intervals__, the sample proportion $\hat{p}$ is used to check
 the success-failure condition and compute the standard error. 
+
+::: fragment
+
+$$
+SE = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+$$
+
+:::
+
   - __For hypothesis tests__, typically the null value - that is, the proportion claimed in the null hypothesis -  is used in place of $p$.
+
+::: fragment
+
+$$
+SE = \sqrt{\frac{{p_0}(1 - {p_0})}{n}}
+$$
+
+:::
 
 :::
 :::
@@ -213,7 +232,7 @@ where $p_1$ and $p_2$ represent the population proportions, and $n_1$ and $n_2$ 
 We can apply the generic confidence interval formula for a difference of two proportions
 
 $$
-\hat{p_1} - \hat{p_2} \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+\hat{p}_1 - \hat{p}_2 \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 $$
 
 

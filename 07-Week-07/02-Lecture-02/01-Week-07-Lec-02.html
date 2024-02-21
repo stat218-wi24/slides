@@ -334,8 +334,14 @@
 
   <p class="date">February 21<sup style="font-size:65%;">th</sup>, 2024</p>
 </section>
-<section id="introduction" class="slide level2">
-<h2>Introduction</h2>
+<section>
+<section id="inference-for-a-single-proportion" class="title-slide slide level1 center">
+<h1>Inference For A Single Proportion</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<h3 id="sampling-distribution-and-conditions">Sampling Distribution and Conditions</h3>
 <div style="font-size: 28px">
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -384,15 +390,27 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 <li class="fragment"><p>In general, we don’t know the true proportion <span class="math inline">\(p\)</span>, so we substitute some value to check conditions and estimate the standard error.</p>
 <ul>
 <li class="fragment"><strong>For confidence intervals</strong>, the sample proportion <span class="math inline">\(\hat{p}\)</span> is used to check the success-failure condition and compute the standard error.</li>
-<li class="fragment"><strong>For hypothesis tests</strong>, typically the null value - that is, the proportion claimed in the null hypothesis - is used in place of <span class="math inline">\(p\)</span>.</li>
 </ul></li>
 </ul>
+<div class="fragment">
+<p><span class="math display">\[
+SE = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+\]</span></p>
+</div>
+<ul>
+<li class="fragment"><strong>For hypothesis tests</strong>, typically the null value - that is, the proportion claimed in the null hypothesis - is used in place of <span class="math inline">\(p\)</span>.</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+SE = \sqrt{\frac{{p_0}(1 - {p_0})}{n}}
+\]</span></p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <h3 id="confidence-intervals-for-a-proportion">Confidence Intervals for a Proportion</h3>
 <p>A confidence interval provides a range of plausible values for the parameter <span class="math inline">\(p\)</span>, and when <span class="math inline">\(\hat{p}\)</span> can be modeled using a normal distribution, the confidence interval for <span class="math inline">\(p\)</span> takes the form</p>
@@ -400,7 +418,7 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 \hat{p} \pm z^{\ast} \times SE_{\hat{p}}
 \]</span></p>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 <h3 id="motivating-example---i">Motivating Example - I</h3>
 <div style="font-size: 28px">
@@ -419,7 +437,7 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <h3 id="motivating-example---ii">Motivating Example - II</h3>
 <div style="font-size: 28px">
@@ -436,7 +454,7 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 </div>
 </div>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <h3 id="motivating-example---ci">Motivating Example - CI</h3>
 <p>Estimate (using a 95% confidence interval) the proportion of all Americans who have good intuition about experimental design.</p>
@@ -449,7 +467,7 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 </ul></li>
 </ul>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 <h3 id="hypothesis-testing-for-a-proportion">Hypothesis Testing for a Proportion</h3>
 <div style="font-size: 28px">
@@ -466,7 +484,7 @@ SE = \sqrt{\frac{p(1-p)}{n}}
 </div>
 </div>
 </section>
-<section id="section-5" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <h3 id="hypothesis-testing-for-a-proportion-1">Hypothesis Testing for a Proportion</h3>
 <div style="font-size: 28px">
@@ -487,7 +505,7 @@ Z = {\frac{0.85 - 0.80}{0.0154}} = 3.25
 </div>
 </div>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 <h3 id="when-one-or-more-conditions-arent-met">When one or more conditions aren’t met</h3>
 <div style="font-size: 28px">
@@ -507,13 +525,13 @@ Z = {\frac{0.85 - 0.80}{0.0154}} = 3.25
 <li class="fragment"><p>The independence condition is a more nuanced requirement. When it isn’t met, it is important to understand how and why it isn’t met.</p></li>
 </ul>
 </div>
-</section>
+</section></section>
 <section>
 <section id="difference-of-two-proportions" class="title-slide slide level1 center">
 <h1>Difference of Two Proportions</h1>
 
 </section>
-<section id="introduction-1" class="slide level2">
+<section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <div style="font-size: 28px">
 <div class="fragment">
@@ -547,15 +565,15 @@ SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 </div>
 </div>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <h3 id="confidence-intervals-for-a-p_1---p_2">Confidence Intervals for a <span class="math inline">\(p_1\)</span> - <span class="math inline">\(p_2\)</span></h3>
 <p>We can apply the generic confidence interval formula for a difference of two proportions</p>
 <p><span class="math display">\[
-\hat{p_1} - \hat{p_2} \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+\hat{p}_1 - \hat{p}_2 \pm z^{\ast} \times \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 \]</span></p>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <h3 id="an-example---i">An Example - I</h3>
 <div style="font-size: 28px">
@@ -572,7 +590,7 @@ SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 </div>
 </div>
 </section>
-<section id="section-9" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 <h3 id="motivating-example---ii-1">Motivating Example - II</h3>
 <div style="font-size: 28px">
@@ -593,7 +611,7 @@ SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
 </div>
 </div>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <h3 id="an-example---ci">An Example - CI</h3>
 <p>Construct a 95% confidence interval for the difference between the proportions of Duke students and Americans who would be bothered a great deal by the melting of the northern ice cap (<span class="math inline">\(p_{Duke}\)</span> - <span class="math inline">\(p_{US}\)</span>).</p>
