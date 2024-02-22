@@ -175,7 +175,8 @@ independence condition fails?
 ::: {style="font-size: 28px"}
 
 ::: fragment
-::: {.callout-note title="Sampling Distribution of $\hat{p}$"}
+::: {.callout-note title="Sampling Distribution of $\hat{p_1}$ - $\hat{p_2}$"}
+
 ::: {.nonincremental}
 
 We can extend what we have learned.
