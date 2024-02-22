@@ -431,6 +431,6 @@ __Fail to Reject the null hypothesis__
 Since the p-value is very close to 1 ($p$-value = 0.9193), we fail to reject $H_0$. 
 <br>
 <br>
-The data provide does not provide a convincing evidence to support the that the proportion of Duke students who concerned about global warming is not the same as the proportion of US residents.
+The data does not provide a convincing evidence to support the that the proportion of Duke students who concerned about global warming is not the same as the proportion of US residents.
 :::
 :::
