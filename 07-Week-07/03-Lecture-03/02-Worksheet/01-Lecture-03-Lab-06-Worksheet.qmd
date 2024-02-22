@@ -1,0 +1,194 @@
+---
+title: "Chi-Square Worksheet"
+subtitle: "Week 7 Lecture 1 Lab 06"
+format: pdf
+---
+
+
+# What is Chi-Square Test?
+
+
+Type your lecture notes here.
+
+
+
+# Chi-Square for Goodness of Fit
+
+
+__When do we need to use this test:__ Type your lecture notes here.
+
+
+
+
+__What type of variable(s) do we need to conduct this test:__ Type your lecture notes here.
+
+
+
+
+__Research Question of this study:__ Type your lecture notes here.
+
+
+__Table of the Case__
+
+```{r}
+#| echo: true
+#| output: true
+gss <- data.frame(
+  Category = c("All 1000 get the drug", 
+               "500 get the drug 500 don't"),
+  n = c(99, 571)
+)
+print(gss)
+```
+
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+
+### Step 1. Formulate Hypotheses
+
+_Write out the null & the alternative hypothesis:_
+
+Type your lecture notes here.
+
+
+### Step 2. Checking Conditions/Assumptions:
+
+Type your lecture notes here.
+
+
+### Step 3. Calculate Chi-square statistic and interpret the output
+
+
+
+```{r}
+gss_observed <- c(99, 571)
+expected_proportions <- c(0.2, 0.8)
+chisquare_gof <- chisq.test(gss_observed, p = expected_proportions)
+chisquare_gof
+```
+
+Type your lecture notes here.
+
+
+### Go back to Step 2. Checking Conditions/Assumptions:
+
+Check expected counts for each cell.
+
+```{r}
+#| echo: true
+#| output: true
+chisquare_gof$observed
+```
+
+```{r}
+#| echo: true
+#| output: true
+chisquare_gof$expected
+```
+
+Type your lecture notes here.
+
+
+### Step 4. Draw conclusion
+
+
+
+__Conclusion Statement:__
+
+
+Type your lecture notes here.
+
+
+
+
+# Chi Square Test for Independence 
+
+
+
+__When do we need to use this test:__ Type your lecture notes here.
+
+
+
+
+__What type of variable(s) do we need to conduct this test:__ Type your lecture notes here.
+
+
+
+
+__Research Question of this study:__ Type your lecture notes here.
+
+
+__Table of the Case__
+
+```{r}
+#| echo: true
+#| output: true
+
+# We create a 2 by 2 table
+table_data <- matrix(c(69, 36, 454, 226), nrow = 2)
+
+# We convert it to a data frame
+concern_gw <- as.data.frame(table_data)
+
+# We add meaningful column and row names
+colnames(concern_gw) <- c("Duke", "US")
+rownames(concern_gw) <- c("A Great Deal", "Not A Great Deal")
+
+print(concern_gw)
+
+```
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+### Step 1. Formulate Hypotheses
+
+_Write out the null & the alternative hypothesis:_
+
+Type your lecture notes here.
+
+
+### Step 2. Checking Conditions/Assumptions:
+
+Type your lecture notes here.
+
+
+### Step 3. Calculate Chi-square statistic and interpret the output
+
+
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result <- chisq.test(concern_gw)
+print(chi_square_result)
+
+```
+
+Type your lecture notes here.
+
+
+
+### Go back to Step 2. Checking Conditions/Assumptions:
+
+Check expected counts for each cell.
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result$observed
+```
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result$expected
+```
+
+Type your lecture notes here.
+
+
+##
+### Step 4. Draw a Conclusion!
+
+__Conclusion Statement:__ Type your lecture notes here.

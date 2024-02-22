@@ -1,0 +1,436 @@
+---
+title: "The Chi-Square for Goodness of Fit & The Chi-Square Test for Independence  "
+subtitle: "STAT 218 - Week 7, Lecture 3 Lab 6"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+
+## What is Chi-Square Test?
+
+::: {style="font-size: 28px"}
+
+- The chi-square distribution is sometimes used to characterize data sets and 
+statistics that are always positive and typically right skewed. 
+- The chi- square distribution has just __one parameter__ called degrees of freedom ($df$),
+just like in the $t$-test which influences the shape, center, and spread of the distribution.
+  - Recall a normal distribution had two parameters - mean ($\mu$) and standard deviation ($\sigma$)
+:::
+
+##
+### Example of Some Chi-Square Disributions 
+
+<br>
+
+::: {.columns}
+::: {.column width="70%"}
+
+```{r}
+library(tidyverse)
+
+# Function to generate Chi-Square distribution
+generate_chi_square <- function(df) {
+  data.frame(x = seq(0, 20, by = 0.1),
+             y = dchisq(seq(0, 20, by = 0.1), df))
+}
+
+# Create data frames for different degrees of freedom
+df_2 <- generate_chi_square(2)
+df_4 <- generate_chi_square(4)
+df_9 <- generate_chi_square(9)
+
+# Combine data frames
+combined_data <- bind_rows(
+  mutate(df_2, df = "df = 2"),
+  mutate(df_4, df = "df = 4"),
+  mutate(df_9, df = "df = 9")
+)
+
+# Plot
+ggplot(combined_data, aes(x, y, color = df)) +
+  geom_line(size = 1, aes(linetype = df)) +
+  labs(title = "Chi-Square Distributions with Different Degrees of Freedom",
+       x = "Chi-Square Value",
+       y = "Probability Density") +
+  theme_minimal() +
+  scale_color_manual(values = c("MediumBlue", "Magenta", "ForestGreen")) +
+  scale_linetype_manual(values = c("solid", "dashed", "dotted"))
+
+```
+:::
+
+::: {.column width="30%"}
+::: {style="font-size: 26px"}
+
+As the degrees of freedom increases:   
+
+- The distribution becomes more symmetric,  
+
+- The center moves to the right, and  
+
+- The variability inflates
+
+:::
+:::
+:::
+
+## When do we need to use this test?
+::: {style="font-size: 28px"}
+
+This is commonly used in these circumstances:
+
+- Given a sample of cases that can be classified into several groups, determine if the sample is
+representative of the general population.
+
+- Evaluate whether data resemble a particular distribution, such as a normal distribution.
+
+- It compares the frequency of cases found in the various categories of one 
+variable across the different categories of another variable. 
+  - In other words, it explores the relationship between categorical variables.
+
+
+:::
+
+##
+#### What type of variable(s) do we need to conduct this test?
+<br>
+<br>
+![](img/types-of-chi-square.png)
+
+
+# Chi-Square for Goodness of Fit
+
+
+## Introduction
+::: {style="font-size: 28px"}
+
+This technique is commonly used in two circumstances:
+
+- Given a sample of cases that can be classified into several groups, determine if the sample is
+representative of the general population.
+
+- Evaluate whether data resemble a particular distribution, such as a normal distribution.
+
+:::
+
+## What You Need is...
+
+- One categorical variable, with two or more categories: 
+  - options (a) and (b) in GSS survey
+
+- A hypothesized proportion 
+  - 0.20 selecting (a); 0.80 selecting (b) 
+  
+##
+### Research Question and Data Set
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+__Research Question:__ Do these data provide convincing evidence that more than 80% of Americans have a good intuition about experimental design?
+
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| output: true
+gss <- data.frame(
+  Category = c("All 1000 get the drug", 
+               "500 get the drug 500 don't"),
+  n = c(99, 571)
+)
+print(gss)
+```
+
+:::
+:::
+
+##
+#### Step 1. Formulate Hypotheses
+::: {style="font-size: 30px"}
+
+<br>
+
+::: fragment
+Null Hypothesis ($H_0$): The proportion of Americans with a good intuition about experimental design does not differ significantly from 0.80.
+:::
+
+<br>
+
+::: fragment
+
+Alternative Hypothesis ($H_A$): The proportion of Americans with a good intuition about experimental design differs significantly from 0.80.
+
+:::
+
+:::
+
+##
+### Step 2. Checking Conditions/Assumptions:
+::: {style="font-size: 28px"}
+
+::: {.callout-tip title="Assumptions"}
+There are two conditions that must be checked before performing a chi-square test:
+
+- __Independence.__ Each case that contributes a count to the table must be independent of all
+the other cases in the table.
+
+- __Sample size / distribution.__ Each particular scenario (i.e. cell count) must have at least
+5 expected cases.
+  - __IMPORTANT!:__ We will check this assumption after computing Chi-square statistic
+
+
+- __df > 1:__ Degrees of freedom must be greater than 1.
+
+<br>
+
+Failing to check conditions may affect the test's error rates.
+
+:::
+:::
+
+## 
+### Step 3. Calculate Chi-square statistic and interpret the output.
+
+
+
+```{r}
+#| echo: true
+#| output: true
+gss_observed <- c(99, 571)
+expected_proportions <- c(0.2, 0.8)
+chisquare_gof <- chisq.test(gss_observed, p = expected_proportions)
+chisquare_gof
+```
+##
+#### Go back to Step 2. Checking Conditions/Assumptions:
+
+::: {style="font-size: 28px"}
+Check expected counts for each cell.
+
+```{r}
+#| echo: true
+#| output: true
+chisquare_gof$observed
+```
+
+```{r}
+#| echo: true
+#| output: true
+chisquare_gof$expected
+```
+
+::: 
+
+
+##
+### Step 4. Draw a Conclusion!
+
+::: {style="font-size: 28px"}
+
+::: {.callout-tip}
+- A p-value above .10 (little or no evidence against the null hypothesis.)  
+
+- A p-value below .10 but above .05 (moderate evidence against the null hypothesis.)
+
+- A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convincing.) 
+
+- A p-value below .01 (very strong evidence against the null hypothesis.)
+:::
+
+::: fragment
+
+__Reject the null hypothesis__
+
+Since the p-value is low ($p$-value = 0.0007), we have a very strong evidence against the null hypothesis. 
+<br>
+<br>
+The data provide convincing evidence that the proportion of Americans with 
+a good intuition about experimental design is different than 0.80.
+:::
+:::
+
+# Chi Square Test for Independence 
+
+## Introduction
+
+::: {style="font-size: 28px"}
+
+It compares the frequency of cases found in the various categories of one 
+variable across the different categories of another variable. 
+
+<br>
+
+In other words, it explores the relationship between categorical variables.
+
+- Is the proportion of smokers to non-smokers the same for males and females? 
+- Are males more likely than females to be smokers?
+:::
+
+::: {.callout-warning}
+
+A one-way table describes counts for each outcome in a single variable. A two-way table
+describes counts for combinations of outcomes for two variables. When we consider a two-way
+table, we often would like to know, are these variables related in any way? That is, are they
+dependent (versus independent)?
+
+:::
+
+
+
+## What You Need is...
+
+
+- 2 categorical variables, each with at least two categories.
+  - Level of concern: "A great deal " vs. "Not a great deal"
+  - Groups: "Duke Students" vs. "US Residents"
+
+##
+### Research Question and Data Set
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 28px"}
+
+__Research Question:__ Do these data suggest that the proportion of all Duke students who would be
+concerned a great deal by the melting of the northern ice cap differs from the
+proportion of all Americans who do?
+
+:::
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| output: true
+
+# We create a 2 by 2 table
+table_data <- matrix(c(69, 36, 454, 226), nrow = 2)
+
+# We convert it to a data frame
+concern_gw <- as.data.frame(table_data)
+
+# We add meaningful column and row names
+colnames(concern_gw) <- c("Duke", "US")
+rownames(concern_gw) <- c("A Great Deal", "Not A Great Deal")
+
+print(concern_gw)
+
+```
+:::
+:::
+
+##
+#### Step 1 Formulate Hypotheses
+::: {style="font-size: 30px"}
+
+<br>
+
+::: fragment
+$H_0$ = The proportion of Duke students who concerned about global warming is the same as the proportion of US residents.
+:::
+
+<br>
+
+::: fragment
+$H_A$ = The proportion of Duke students who concerned about global warming is not the same as the proportion of US residents.
+:::
+
+<br>
+<br>
+<br>
+
+:::
+
+##
+### Step 2. Checking Conditions/Assumptions:
+::: {style="font-size: 28px"}
+
+::: {.callout-tip title="Assumptions"}
+There are two conditions that must be checked before performing a chi-square test:
+
+- __Independence.__ Each case that contributes a count to the table must be independent of all
+the other cases in the table.
+
+- __Sample size / distribution.__ Each particular scenario (i.e. cell count) must have at least
+5 expected cases.
+  - __IMPORTANT!:__ We will check this assumption after computing Chi-square statistic
+
+- __df > 1:__ Degrees of freedom must be greater than 1.
+
+<br>
+
+Failing to check conditions may affect the test's error rates.
+
+:::
+:::
+
+## 
+### Step 3. Calculate Chi-square statistic and find the p-value
+
+
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result <- chisq.test(concern_gw)
+print(chi_square_result)
+
+```
+
+
+
+##
+#### Go back to Step 2. Checking Conditions/Assumptions:
+
+::: {style="font-size: 28px"}
+Check expected counts for each cell.
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result$observed
+```
+
+```{r}
+#| echo: true
+#| output: true
+chi_square_result$expected
+```
+
+::: 
+
+##
+### Step 4. Draw a Conclusion!
+
+::: {style="font-size: 30px"}
+
+::: {.callout-tip}
+- A p-value above .10 (little or no evidence against the null hypothesis.)  
+
+- A p-value below .10 but above .05 (moderate evidence against the null hypothesis.)
+
+- A p-value between .01 and .05 (strong evidence against the null hypothesis - most people consider this convincing.) 
+
+- A p-value below .01 (very strong evidence against the null hypothesis.)
+:::
+
+::: fragment
+__Fail to Reject the null hypothesis__
+
+Since the p-value is very close to 1 ($p$-value = 0.9193), we fail to reject $H_0$. 
+<br>
+<br>
+The data provide does not provide a convincing evidence to support the that the proportion of Duke students who concerned about global warming is not the same as the proportion of US residents.
+:::
+:::

@@ -1,0 +1,176 @@
+---
+title: "STAT 218 Lab Assignment 5"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE "
+  - "Team Member 5: NAME HERE "
+
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+## Lab Assignment 5
+
+
+__Directions:__ As usual, let's use `library` function and load the data set that we will use today.
+
+```{r}
+#| output: false
+library(tidyverse)
+library(infer)
+library(palmerpenguins)
+data("penguins")
+```
+
+__NOTE:__ Please ignore `penguins_raw` data for this class and USE `penguins` for this assignment.
+
+
+
+
+# Chi-Square for Goodness of Fit
+
+  
+__Example of a Case:__ Imagine that you are a biologist studying penguins, particularly interested in whether the proportion of female penguins differs significantly from 50%?. Assume that you collect a random sample of 344 penguins.
+
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variable do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. Please list the assumptions required for this test.__
+
+
+Type your answer here.
+
+
+
+__Question 4.1 Write out the null & the alternative hypotheses:__
+
+Type your answer here.
+
+
+__Question 4.2. Calculate Chi-square statistic and find the p-value and explain what you see in the output.__
+
+```{r}
+
+# Type your R Code here.
+
+```
+
+Type your answer here.
+
+
+__Question 4.3. Compute expected counts for each cell. Interpret the assumptions overall that you listed in Question 3.__
+
+
+```{r}
+
+# Type your R Code here.
+
+```
+
+Type your answer here.  Interpret the assumptions overall and type your reasoning.
+
+__Question 4.4. Draw conclusion and write a conclusion statement.__
+
+
+Type your answer here.
+
+
+
+# Chi Square Test for Independence 
+
+  
+__Example of a Case:__ Now, you're curious about whether the proportion of species differ in different islands.
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. Please list the assumptions required for this test.__
+
+
+Type your answer here.
+
+
+
+__Question 4.1 Write out the null & the alternative hypothesis:__
+
+Type your answer here.
+
+
+
+
+__Question 4.2. Calculate Chi-square statistic and find the p-value and explain what you see in the output.__
+
+
+You need a package to run this code. Don't forget to remove # and then add it back. Otherwise, you cannot render your PDF document.
+
+```{r}
+# install.packages("janitor")
+```
+
+```{r}
+#| warning: false
+library(janitor)
+
+# Create a contingency table for your analysis
+contin_table <- penguins %>%
+  tabyl(island, species)
+
+contin_table
+
+```
+Now conduct your chi-square test
+
+```{r}
+# Conduct the chi-square test by using `contingency_table`
+```
+
+
+
+Type your answer here.
+
+
+
+__Question 4.3. Compute expected counts for each cell. Interpret the assumptions overall that you listed in Question 3.__
+
+
+```{r}
+
+# Type your R Code here.
+
+```
+
+Type your answer here. Interpret the assumptions overall and type your reasoning.
+
+
+__Question 4.4. Draw conclusion and write a conclusion statement__
+
+
+Type your answer here.
+
+
