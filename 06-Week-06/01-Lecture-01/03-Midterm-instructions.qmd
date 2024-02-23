@@ -6,8 +6,6 @@ author:
   - "Team Member 3: NAME HERE"
   - "Team Member 4: NAME HERE"
   - "Team Member 5: NAME HERE"
-date: today
-date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: pdf
 execute:
   echo: true
@@ -136,6 +134,7 @@ __Question 7.4: List the assumptions required for this test and check the assump
 
 
 ```{r}
+
 # Type your codes here to check normality.
 
 ```
@@ -240,7 +239,7 @@ __Question 8.5.3. Calculate t statistic and explain what you see in the output._
 Type your answer here.
 
 
-__Question 8.5.4. Explain what each function does in this question.__
+__Question 8.5.4. Explain what each function/argument does in this question.__
 
 `t_test`: Type your answer here.
 
@@ -255,7 +254,7 @@ __Question 8.5.4. Explain what each function does in this question.__
 `var.equal`: Type your answer here.
 
 
-__Question 8.5.5. Draw a conclusion and write a conclusion statement. Include your comment on 95% Confidence Interval.__
+__Question 8.5.5. Draw a conclusion and write a conclusion statement. Include your comment on 90% Confidence Interval.__
 
 
 Type your answer here.
@@ -263,11 +262,7 @@ Type your answer here.
 
 ## Paired Samples _t_ test
 
-__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as 
-water flows down the stream. In a study to monitor the accumulation and 
-attenuation of fecal contamination in a stream running through cattle rangeland, 
-monthly water specimens were collected at two locations along the stream over a 
-period of 21 months.
+__Example of a Case:__ Pollutants in a stream may accumulate or attenuate as water flows down the stream. In a study to monitor the accumulation and attenuation of fecal contamination in a stream running through cattle rangeland, monthly water specimens were collected at two locations along the stream over a period of 21 months.
 
 The data set `stream` the total coliform count (MPN/100ml) for a water specimen.
 
@@ -313,7 +308,7 @@ __Question 9.5.2. Determine \($\alpha$) level (Find it within the case given abo
 Type your answer here.
 
 
-__Question 9.5.3. Calculate t statistic by running the code chuck below and explain what you see in the output.__
+__Question 9.5.3. Calculate t statistic and explain what you see in the output.__
 
 ```{r}
 # load the data set given and perform the test.
@@ -344,37 +339,26 @@ __Question 10.1 Introduce your case study here.__
 
 Type your case here.
 
-__Question 10.2: What is the research question of this study?__
+__Question 10.2. What is the research question of this study?__
 
 
 Type your answer here.
 
 
-__Question 10.3: What type of variables do we have in this study?__
+__Question 10.3. What type of variable do we have in this study?__
 
 
 Type your answer here.
 
 
-__Question 10.4: List the assumptions required for this test and check all the assumptions required for this study. Interpret the assumptions overall.__
-
-List the assumptions here and explain them.
+__Question 10.4. Please list the assumptions required for this test.__
 
 
-```{r}
-
-# Type your codes here to check your assumptions.
-
-```
-
-Interpret the assumptions overall and type your reasoning.
+Type your answer here.
 
 
 
-__Question 10.5. Use a The Chi-Square for Goodness of Fit to investigate your research hypothesis. Answer the questions given below. Show your work.__
-
-
-__Question 10.5.1 Write out the null and alternative hypotheses in words, in the context of this study.__
+__Question 10.5.1 Write out the null & the alternative hypotheses:__
 
 Type your answer here.
 
@@ -383,19 +367,29 @@ __Question 10.5.2. Determine the \($\alpha$) level.__
 
 Type your answer here.
 
-
-__Question 10.5.3. Conduct a chi square statistic and explain what you see in the output.__
+__Question 10.5.3. Calculate Chi-square statistic and find the p-value and explain what you see in the output.__
 
 ```{r}
 
-# Type your codes here
+# Type your R Code here.
 
 ```
 
 Type your answer here.
 
 
-__Question 10.5.4. Draw a conclusion and write a conclusion statement.__
+__Question 10.5.4. Compute expected counts for each cell. Interpret the assumptions overall that you listed in Question 10.4.__
+
+
+```{r}
+
+# Type your R Code here.
+
+```
+
+Type your answer here.  Interpret the assumptions overall and type your reasoning.
+
+__Question 10.5.5. Draw conclusion and write a conclusion statement.__
 
 
 Type your answer here.
