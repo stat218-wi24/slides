@@ -78,18 +78,6 @@ You should have familiarity with computers and technology (e.g., Internet browsi
 {{< pagebreak >}}
 
 
-## Required Materials
-
-__Required Textbooks:__ We will use two textbooks. The former textbook covers fundamental theories, while the latter textbook delves into practical applications.
-
-- Samuels, M.L., Witmer, J.A., and Schaffner, A. A. (2016). Statistics for the Life Sciences, 5th ed., Pearson Education Limited.
-- Çetinkaya-Rundel, M., & Hardin, J. (2021). [Introduction to Modern Statistics](https://www.openintro.org/book/ims/) OpenIntro.  
-
-__Technology/Tools:__ Calculator, Laptop/Chromebook/iPad Device
-
-__Online Resources:__ We will use <a href="https://www.rossmanchance.com/applets/index2021.html"target="_blank">Rossman/Chance Applet Collection 2021</a> of our very own Professors at Cal Poly, [Allan Rossman](https://statistics.calpoly.edu/allan-rossman) & [Beth Chance](https://statistics.calpoly.edu/Beth-Chance)
-
-
 ## Student Learning Outcomes
 
 Upon completion of this course, you will be able to:
@@ -278,7 +266,7 @@ __Mon, Feb 5:__ Midterm Exam (Individual, In-class)
 
 __Thu, Feb 29:__ Midterm Project (Group submission on Canvas)
 
-__Sat, Mar 16:__ Common Final Exam (Individual) - TBD
+__Sat, Mar 16:__ Common Final Exam (Individual) - 10:15 AM at BLDG 008-0123
 
 __Tue, Mar 19:__ Final Project (Group submission on Canvas)
 
