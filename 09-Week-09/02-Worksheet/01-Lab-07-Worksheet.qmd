@@ -1,0 +1,186 @@
+---
+title: " Correlation and Bivariate Regression Worksheet"
+subtitle: "Week 9 Lecture 2 Lab 07"
+author: " YOUR NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+# Correlation
+
+
+__Direction:__ Please run the code chunk below and load your data set as well as utilizing `library()` functions that you need.
+
+```{r}
+#| echo: true
+#| output: true
+
+library(openintro)
+library(tidyverse)
+data("babies")
+
+```
+
+
+## Calculate Correlation Coefficient
+
+
+
+__Question 1: Please run the code chunk below and comment on correlation coefficient.__
+
+
+```{r}
+#| echo: true
+#| output: true
+
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+
+```
+
+
+## Outliers
+
+Let’s see the scatterplot to look for potential outliers.
+
+```{r}
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(title = "Scatterplot with Best-Fit Line",
+       x = "Gestation",
+       y = "Birth Weight")
+```
+__Question 2: Do we have potential outliers in this scatterplot?__ 
+
+
+## Scatterplot
+
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your R code here.
+
+```
+
+Type your lecture notes here.
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your R code here.
+
+```
+
+
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your R code here.
+
+```
+
+
+Type your lecture notes here.
+
+
+
+{{< pagebreak >}}
+
+
+# Bivariate Regression
+
+## Case of this Lab
+
+In the realm of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might influence the weight of a newborn. To explore this, we turn to statistical analysis, specifically bivariate regression.
+
+Imagine we have a dataset, such as the "babies" dataset, where each observation includes information about gestation period and birth weight. We want to investigate if there's a linear relationship between these two variables. 
+
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+### Step 1. Formulate Hypotheses
+
+__Write out the null & the alternative hypothesis in words, in the context of this study:__
+
+Type here.
+
+
+### Step 2. Generate Your Model
+
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your code here to generate your model
+
+```
+
+
+
+### Step 3.1 Checking Conditions/Assumptions - Linearity
+
+
+
+```{r}
+#| echo: true
+#| output: true
+ 
+# Type your code here 
+
+```
+
+
+Type your interpretation here.
+
+
+### Step 3.2. Checking Conditions/Assumptions - Normality
+
+
+```{r}
+#| echo: true
+#| output: true
+ 
+# Type your code here 
+
+```
+
+
+Type your interpretation here.
+
+
+### Step 3.3. Checking Conditions/Assumptions - Homoscedasticity
+
+
+```{r}
+#| echo: true
+#| output: true
+ 
+# Type your code here 
+
+```
+
+
+Type your interpretation here.
+
+
+
+### Draw conclusion
+
+
+
+Type your lecture notes here.
+
+
+__Conclusion Statement:__
+
+
+Type your lecture notes here.

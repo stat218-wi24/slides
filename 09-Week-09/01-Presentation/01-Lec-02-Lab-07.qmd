@@ -1,0 +1,484 @@
+---
+title: "Correlation & Bivariate Regression"
+subtitle: "STAT 218 - Week 9, Lecture 2 Lab 7"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+# Correlation
+
+
+## 
+### Let's Load This Week's Data Set
+
+```{r}
+#| echo: true
+#| output: true
+
+library(openintro)
+library(tidyverse)
+data("babies")
+```
+
+
+## Correlation Coefficient
+
+
+The correlation coefficient is rarely computed by hand so we will use the `cor()` function to obtain our observed sample correlation coefficient.
+
+<br>
+
+```{r}
+#| echo: true
+#| output: true
+
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+
+```
+<br>
+
+__Direction of the relationship:__ Positive Relationship
+
+
+
+## 
+### Outliers
+
+::: {.columns}
+::: {.column width="35%"}
+::: {style="font-size: 28px"}
+
+Data points that are unusually far from the linear trend formed by the data. Outliers can distort regression analysis in two ways:
+
+(1) by inflating $s_e$ and reducing correlation; and 
+(2) by unduly influencing the regression line.
+
+:::
+:::
+
+::: {.column width="65%"}
+::: fragment
+![](img/outliers.png){fig-align="center"}
+:::
+:::
+:::
+
+## Outliers
+
+::: {style="font-size: 24px"}
+
+
+- __Leverage points__ are points that have the potential to greatly influence the slope of the fitted regression model. 
+  - The further a point’s X value is from the center of the X distribution, the more leverage that point has on the overall regression model.
+
+- Plots (c) and (d) display examples of leverage points. 
+  - In plot (c) the leverage point is shown to actually exert its leverage on the line, tipping the regression from the bulk
+of the data. 
+
+- A point that has a large effect on the regression model is called an
+influential point. 
+  - Plot (d) shows a leverage point (because of the extreme X value)
+that is not influential because the regression line does not get pulled away from the trend in the bulk of the data. 
+
+- Note that the outlier in plot (b) is not considered a leverage point—its ability to affect the slope of the line is weak as its X value is near the center of the X distribution.
+
+:::
+
+## Scatterplot
+
+Let's see the scatterplot to look for potential outliers.
+
+```{r}
+#| echo: true
+#| output: false
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+
+## Scatterplot
+
+Let's see the scatterplot to look for potential outliers.
+
+```{r}
+#| echo: false
+#| output: true
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+
+## Let's clean the data set
+
+We see two outliers on the left-hand side of the scatterplot. Let's remove those outliers.
+
+```{r}
+#| echo: true
+#| output: true
+babies <- babies %>%
+  filter(case != 261 & case != 870 & case !=979) 
+# this removes three outliers whose case numbers are 261, 870 & 979
+
+```
+
+
+Check your environment pane and notice that the number of observations is decreased.
+
+## Let's see the changes
+
+Let's check the correlation coefficient and scatterplot again.
+
+
+```{r}
+#| echo: true
+#| output: true
+
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+
+```
+
+
+
+```{r}
+#| echo: true
+#| output: false
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+## Let's see the changes
+
+```{r}
+#| echo: false
+#| output: true
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+
+We see some outliers on the right-hand side of the scatterplot. Let's remove those outliers.
+
+## Let's clean the data set one more time
+
+```{r}
+#| echo: true
+#| output: true
+
+babies <- babies %>%
+  filter(case != 1173 & case != 11 & case != 1200 & case != 153 & case != 762 & case != 970 & case != 241 & case != 254  & case != 1003 & case != 461  & case != 1045 & case != 1220)
+```
+
+
+## Let's see the changes
+
+Let's check one last time and decide if we really need to remove outliers.
+
+```{r}
+#| echo: true
+#| output: true
+
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+
+```
+
+
+```{r}
+#| echo: true
+#| output: false
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+
+```
+
+
+## Let's see the changes
+
+```{r}
+#| echo: false
+#| output: true
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(title = "Scatterplot with Best-Fit Line",
+       x = "Gestation",
+       y = "Birth Weight")
+
+```
+
+
+## Let's Brainstorm Together!
+
+- Leverage points vs influential point
+- Compare those correlation coefficients that we calculated
+- Do we need to delete those outliers?
+
+
+# Bivariate Regression
+
+
+##
+### Research Question and Data Set
+
+::: {style="font-size: 28px"}
+
+__Understanding Birth Weight and Gestation: A Bivariate Regression Analysis__
+
+
+In the area of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might be related with the weight of a newborn. 
+
+In the `babies` dataset, each observation includes information about gestation period and birth weight. We want to investigate if there's a linear relationship between these two variables.
+
+:::
+
+
+## Hypothesis Testing
+
+We will test the null hypothesis
+
+$$
+H_0: \beta_1 = 0
+$$
+against the non-directional alternative
+
+$$
+H_A: \beta_1 \neq 0
+$$
+Verbal Hypotheses are as follows:
+
+$H_0$: Birth weight is not linearly related to gestation
+
+$H_A$: Birth weight is linearly related to gestation
+
+
+##
+### Checking Conditions/Assumptions:
+::: {style="font-size: 25px"}
+::: {.callout-tip title="Assumptions/Conditions"}
+:::{.nonincremental}
+
+__1. The observations should be independent__ 
+
+__2. Linearity__
+
+- The relationship between the explanatory and the response variable should be linear.
+  - Check either using (1) a scatterplot of the data, or (2) a residuals plot.
+
+__3. The residuals should be nearly normal.__
+
+- This condition may not be satisfied when there are unusual observations that don't follow the trend of the rest of the data.
+
+- Check using (1) a histogram or (2) normal probability plot of residuals.
+
+__4. Constant Variability - Homoscedasticity__
+
+- The variability of points around the least squares line should be roughly constant.
+
+- This implies that the variability of residuals around the 0 line should be roughly constant as well.
+
+- Check using (1) a histogram or (2) normal probability plot of residuals.
+
+:::
+:::
+:::
+
+## 
+### Before Checking the Conditions
+
+::: {.columns}
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+- In bivariate regression, we need to first model the relationship and check the conditions after because we need residuals.
+
+::: fragment
+```{r}
+#| echo: true
+#| output: true
+fit <- lm(babies$bwt ~ babies$gestation)
+summary(fit)
+```
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 24px"}
+
+- We employ the `lm` function in R to perform a bivariate regression analysis.
+
+- The formula `lm(babies$bwt ~ babies$gestation)` indicates that we are modeling birth weight (`bwt`) as a linear function of gestation period (`gestation`). The subsequent `summary(fit)` provides detailed statistics about the regression model.
+
+:::
+:::
+:::
+
+##
+#### Checking Conditions- Linearity with Scatterplot
+
+```{r}
+#| echo: true
+#| output: true
+
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Scatterplot with Best-Fit Line",
+       x = "Gestation",
+       y = "Birth Weight")
+
+```
+
+##
+#### Checking Conditions - Linearity with Residuals Plot
+
+```{r}
+#| echo: true
+#| output: false
+
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
+
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals") +
+  theme_minimal()
+
+```
+
+##
+#### Checking Conditions - Linearity with Residuals Plot
+
+```{r}
+#| echo: false
+#| output: true
+
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
+
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals") +
+  theme_minimal()
+
+```
+
+##
+#### Checking Conditions - Normality
+
+
+```{r}
+#| echo: true
+#| output: true
+
+# create Q-Q plot for residuals 
+qqnorm(res.stdres) # by using standardized residuals
+  
+# add a straight diagonal line to the plot 
+qqline(res.stdres)
+```
+
+
+
+
+##
+#### Checking Conditions - Homoscedasticity
+
+```{r}
+#| echo: true
+#| output: false
+
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
+
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +  # Add a horizontal line at 0
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals")
+
+```
+##
+#### Checking Conditions - Homoscedasticity
+
+```{r}
+#| echo: false
+#| output: true
+
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
+
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +  # Add a horizontal line at 0
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals")
+
+```
+
+
+## 
+### Draw Conclusion
+
+
+![](img/lm-output.png)
+
+
+
+## 
+### Draw a Conclusion
+::: {style="font-size: 24px"}
+
+```{r}
+#| echo: false
+#| output: true
+fit <- lm(babies$bwt ~ babies$gestation)
+summary(fit)
+```
+
+The regression equation is
+
+
+$$
+\hat{y} = b_0 + b_1X
+\\
+\hat{y} = -36.43 + 0.56 X_{gestation}
+$$
+
+
+__Interpretation:__ For each additional day in gestation, we would expect the birthweight to be higher on average by 0.56 ounces.
+
+:::
+
