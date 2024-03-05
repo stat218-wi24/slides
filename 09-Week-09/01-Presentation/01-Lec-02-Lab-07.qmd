@@ -487,7 +487,7 @@ $$
 $$
 
 
-__Interpretation:__ For each additional day in gestation, we would expect the birthweight to be higher on average by 0.56 ounces.
+__Interpretation:__ For each additional day in gestation, we would expect the birthweight to be higher on average by 0.46 ounces.
 
 :::
 
