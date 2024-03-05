@@ -10,7 +10,7 @@
 <link href="01-Lec-02-Lab-07_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
-  <title>Correlation &amp; Bivariate Regression</title>
+  <title>Correlation &amp; Least Squares Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,8 +391,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Correlation &amp; Bivariate Regression</h1>
-  <p class="subtitle">STAT 218 - Week 9, Lecture 2 Lab 7</p>
+  <h1 class="title">Correlation &amp; Least Squares Regression</h1>
+  <p class="subtitle">Week 9, Lecture 2 Lab 7</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -410,7 +410,20 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(openintro)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">data</span>(<span class="st">"babies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">data</span>(<span class="st">"babies"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">glimpse</span>(babies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,236
+Columns: 8
+$ case      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+$ bwt       &lt;int&gt; 120, 113, 128, 123, 108, 136, 138, 132, 120, 143, 140, 144, …
+$ gestation &lt;int&gt; 284, 282, 279, NA, 282, 286, 244, 245, 289, 299, 351, 282, 2…
+$ parity    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ age       &lt;int&gt; 27, 33, 28, 36, 23, 25, 33, 23, 25, 30, 27, 32, 23, 36, 30, …
+$ height    &lt;int&gt; 62, 64, 64, 69, 67, 62, 62, 65, 62, 66, 68, 64, 63, 61, 63, …
+$ weight    &lt;int&gt; 100, 135, 115, 190, 125, 93, 178, 140, 125, 136, 120, 124, 1…
+$ smoke     &lt;int&gt; 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, …</code></pre>
+</div>
 </div>
 </section>
 <section id="correlation-coefficient" class="slide level2">
@@ -418,7 +431,7 @@
 <p>The correlation coefficient is rarely computed by hand so we will use the <code>cor()</code> function to obtain our observed sample correlation coefficient.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.407854</code></pre>
 </div>
@@ -461,7 +474,7 @@
 <ul>
 <li class="fragment">In plot (c) the leverage point is shown to actually exert its leverage on the line, tipping the regression from the bulk of the data.</li>
 </ul></li>
-<li class="fragment">A point that has a large effect on the regression model is called an influential point.
+<li class="fragment">A point that has a large effect on the regression model is called an <strong>influential point.</strong>
 <ul>
 <li class="fragment">Plot (d) shows a leverage point (because of the extreme X value) that is not influential because the regression line does not get pulled away from the trend in the bulk of the data.</li>
 </ul></li>
@@ -473,9 +486,9 @@
 <h2>Scatterplot</h2>
 <p>Let’s see the scatterplot to look for potential outliers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="scatterplot-1" class="slide level2">
@@ -487,9 +500,9 @@
 <h2>Let’s clean the data set</h2>
 <p>We see two outliers on the left-hand side of the scatterplot. Let’s remove those outliers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>babies <span class="ot">&lt;-</span> babies <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(case <span class="sc">!=</span> <span class="dv">261</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">870</span> <span class="sc">&amp;</span> case <span class="sc">!=</span><span class="dv">979</span>) </span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># this removes three outliers whose case numbers are 261, 870 &amp; 979</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>babies <span class="ot">&lt;-</span> babies <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">filter</span>(case <span class="sc">!=</span> <span class="dv">261</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">870</span> <span class="sc">&amp;</span> case <span class="sc">!=</span><span class="dv">979</span>) </span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># this removes three outliers whose case numbers are 261, 870 &amp; 979</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check your environment pane and notice that the number of observations is decreased.</p>
 </section>
@@ -497,15 +510,15 @@
 <h2>Let’s see the changes</h2>
 <p>Let’s check the correlation coefficient and scatterplot again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4144271</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-see-the-changes-1" class="slide level2">
@@ -516,23 +529,23 @@
 <section id="lets-clean-the-data-set-one-more-time" class="slide level2">
 <h2>Let’s clean the data set one more time</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>babies <span class="ot">&lt;-</span> babies <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(case <span class="sc">!=</span> <span class="dv">1173</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">11</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1200</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">153</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">762</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">970</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">241</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">254</span>  <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1003</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">461</span>  <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1045</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1220</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>babies <span class="ot">&lt;-</span> babies <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(case <span class="sc">!=</span> <span class="dv">1173</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">11</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1200</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">153</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">762</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">970</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">241</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">254</span>  <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1003</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">461</span>  <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1045</span> <span class="sc">&amp;</span> case <span class="sc">!=</span> <span class="dv">1220</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-see-the-changes-2" class="slide level2">
 <h2>Let’s see the changes</h2>
 <p>Let’s check one last time and decide if we really need to remove outliers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">cor</span>(babies<span class="sc">$</span>gestation, babies<span class="sc">$</span>bwt, <span class="at">use =</span> <span class="st">"na.or.complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4387897</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gestation"</span>, <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-see-the-changes-3" class="slide level2">
@@ -542,7 +555,7 @@
 <section id="lets-brainstorm-together" class="slide level2">
 <h2>Let’s Brainstorm Together!</h2>
 <ul>
-<li class="fragment">Leverage points vs influential point</li>
+<li class="fragment">Leverage points vs influential points</li>
 <li class="fragment">Compare those correlation coefficients that we calculated</li>
 <li class="fragment">Do we need to delete those outliers?</li>
 </ul>
@@ -556,13 +569,14 @@
 <h2></h2>
 <h3 id="research-question-and-data-set">Research Question and Data Set</h3>
 <div style="font-size: 28px">
-<p><strong>Understanding Birth Weight and Gestation: A Bivariate Regression Analysis</strong></p>
+<p><strong>Understanding Birth Weight and Gestation: A Least Squares Regression Analysis</strong></p>
 <p>In the area of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might be related with the weight of a newborn.</p>
 <p>In the <code>babies</code> dataset, each observation includes information about gestation period and birth weight. We want to investigate if there’s a linear relationship between these two variables.</p>
 </div>
 </section>
 <section id="hypothesis-testing" class="slide level2">
 <h2>Hypothesis Testing</h2>
+<div style="font-size: 28px">
 <p>We will test the null hypothesis</p>
 <p><span class="math display">\[
 H_0: \beta_1 = 0
@@ -572,6 +586,20 @@ H_A: \beta_1 \neq 0
 \]</span> Verbal Hypotheses are as follows:</p>
 <p><span class="math inline">\(H_0\)</span>: Birth weight is not linearly related to gestation</p>
 <p><span class="math inline">\(H_A\)</span>: Birth weight is linearly related to gestation</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that the test on <span class="math inline">\(\beta_1\)</span> asks whether, assuming that the linear model holds, we can conclude that the slope is nonzero.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
@@ -623,8 +651,9 @@ H_A: \beta_1 \neq 0
 </ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(babies<span class="sc">$</span>bwt <span class="sc">~</span> babies<span class="sc">$</span>gestation)</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">data</span>(<span class="st">"babies"</span>) <span class="co"># I am reloading the data because I decided not to delete outliers</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(babies<span class="sc">$</span>bwt <span class="sc">~</span> babies<span class="sc">$</span>gestation)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -632,19 +661,19 @@ lm(formula = babies$bwt ~ babies$gestation)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--49.751 -11.047   0.046   9.902  53.249 
+-49.394 -11.125   0.071  10.106  57.353 
 
 Coefficients:
                   Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)      -36.43018    9.21722  -3.952 8.19e-05 ***
-babies$gestation   0.55936    0.03299  16.958  &lt; 2e-16 ***
+(Intercept)      -10.06418    8.32220  -1.209    0.227    
+babies$gestation   0.46426    0.02974  15.609   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 16.38 on 1206 degrees of freedom
+Residual standard error: 16.66 on 1221 degrees of freedom
   (13 observations deleted due to missingness)
-Multiple R-squared:  0.1925,    Adjusted R-squared:  0.1919 
-F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
+Multiple R-squared:  0.1663,    Adjusted R-squared:  0.1657 
+F-statistic: 243.6 on 1 and 1221 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
@@ -653,7 +682,10 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div style="font-size: 24px">
 <ul>
 <li class="fragment"><p>We employ the <code>lm</code> function in R to perform a bivariate regression analysis.</p></li>
-<li class="fragment"><p>The formula <code>lm(babies$bwt ~ babies$gestation)</code> indicates that we are modeling birth weight (<code>bwt</code>) as a linear function of gestation period (<code>gestation</code>). The subsequent <code>summary(fit)</code> provides detailed statistics about the regression model.</p></li>
+<li class="fragment"><p>The formula <code>lm(babies$bwt ~ babies$gestation)</code> indicates that we are modeling birth weight (<code>bwt</code>) as a linear function of gestation period (<code>gestation</code>).</p>
+<ul>
+<li class="fragment">The subsequent <code>summary(fit)</code> provides detailed statistics about the regression model.</li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -663,12 +695,12 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2></h2>
 <h4 id="checking-conditions--linearity-with-scatterplot">Checking Conditions- Linearity with Scatterplot</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatterplot with Best-Fit Line"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5"></a>       <span class="at">x =</span> <span class="st">"Gestation"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6"></a>       <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(babies), <span class="fu">aes</span>(<span class="at">x =</span> gestation, <span class="at">y =</span> bwt)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scatterplot with Best-Fit Line"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>       <span class="at">x =</span> <span class="st">"Gestation"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6"></a>       <span class="at">y =</span> <span class="st">"Birth Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="01-Lec-02-Lab-07_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
@@ -676,19 +708,19 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2></h2>
 <h4 id="checking-conditions---linearity-with-residuals-plot">Checking Conditions - Linearity with Residuals Plot</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># get list of residuals  </span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>res <span class="ot">&lt;-</span> <span class="fu">resid</span>(fit) </span>
-<span id="cb16-3"><a href="#cb16-3"></a>res.stdres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(fit) <span class="co"># standardized residuals</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># produce residual vs. fitted plot </span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">fitted =</span> <span class="fu">fitted</span>(fit), <span class="at">stdres =</span> res.stdres), </span>
-<span id="cb16-7"><a href="#cb16-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> stdres)) <span class="sc">+</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fitted Values vs. Standardized Residuals"</span>,</span>
-<span id="cb16-11"><a href="#cb16-11"></a>       <span class="at">x =</span> <span class="st">"Fitted Values"</span>,</span>
-<span id="cb16-12"><a href="#cb16-12"></a>       <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>) <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># get list of residuals  </span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>res <span class="ot">&lt;-</span> <span class="fu">resid</span>(fit) </span>
+<span id="cb17-3"><a href="#cb17-3"></a>res.stdres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(fit) <span class="co"># standardized residuals</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co"># produce residual vs. fitted plot </span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">fitted =</span> <span class="fu">fitted</span>(fit), <span class="at">stdres =</span> res.stdres), </span>
+<span id="cb17-7"><a href="#cb17-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> stdres)) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fitted Values vs. Standardized Residuals"</span>,</span>
+<span id="cb17-11"><a href="#cb17-11"></a>       <span class="at">x =</span> <span class="st">"Fitted Values"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12"></a>       <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-7" class="slide level2">
@@ -700,11 +732,11 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2></h2>
 <h4 id="checking-conditions---normality">Checking Conditions - Normality</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># create Q-Q plot for residuals </span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">qqnorm</span>(res.stdres) <span class="co"># by using standardized residuals</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  </span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># add a straight diagonal line to the plot </span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">qqline</span>(res.stdres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># create Q-Q plot for residuals </span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">qqnorm</span>(res.stdres) <span class="co"># by using standardized residuals</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  </span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># add a straight diagonal line to the plot </span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="fu">qqline</span>(res.stdres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="01-Lec-02-Lab-07_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
@@ -712,18 +744,18 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2></h2>
 <h4 id="checking-conditions---homoscedasticity">Checking Conditions - Homoscedasticity</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># get list of residuals  </span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>res <span class="ot">&lt;-</span> <span class="fu">resid</span>(fit) </span>
-<span id="cb18-3"><a href="#cb18-3"></a>res.stdres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(fit) <span class="co"># standardized residuals</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co"># produce residual vs. fitted plot </span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">fitted =</span> <span class="fu">fitted</span>(fit), <span class="at">stdres =</span> res.stdres), </span>
-<span id="cb18-7"><a href="#cb18-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> stdres)) <span class="sc">+</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span>  <span class="co"># Add a horizontal line at 0</span></span>
-<span id="cb18-10"><a href="#cb18-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fitted Values vs. Standardized Residuals"</span>,</span>
-<span id="cb18-11"><a href="#cb18-11"></a>       <span class="at">x =</span> <span class="st">"Fitted Values"</span>,</span>
-<span id="cb18-12"><a href="#cb18-12"></a>       <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># get list of residuals  </span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>res <span class="ot">&lt;-</span> <span class="fu">resid</span>(fit) </span>
+<span id="cb19-3"><a href="#cb19-3"></a>res.stdres <span class="ot">&lt;-</span> <span class="fu">rstandard</span>(fit) <span class="co"># standardized residuals</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># produce residual vs. fitted plot </span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">fitted =</span> <span class="fu">fitted</span>(fit), <span class="at">stdres =</span> res.stdres), </span>
+<span id="cb19-7"><a href="#cb19-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> stdres)) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span>  <span class="co"># Add a horizontal line at 0</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Fitted Values vs. Standardized Residuals"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11"></a>       <span class="at">x =</span> <span class="st">"Fitted Values"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12"></a>       <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-10" class="slide level2">
@@ -732,6 +764,11 @@ F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <img data-src="01-Lec-02-Lab-07_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
 <section id="section-11" class="slide level2">
+<h2></h2>
+<h3 id="draw-conclusion">Draw Conclusion</h3>
+
+<img data-src="img/lm-output.png" class="r-stretch"></section>
+<section id="section-12" class="slide level2">
 <h2></h2>
 <h3 id="draw-a-conclusion">Draw a Conclusion</h3>
 <div style="font-size: 24px">
@@ -743,28 +780,21 @@ lm(formula = babies$bwt ~ babies$gestation)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--49.751 -11.047   0.046   9.902  53.249 
+-49.394 -11.125   0.071  10.106  57.353 
 
 Coefficients:
                   Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)      -36.43018    9.21722  -3.952 8.19e-05 ***
-babies$gestation   0.55936    0.03299  16.958  &lt; 2e-16 ***
+(Intercept)      -10.06418    8.32220  -1.209    0.227    
+babies$gestation   0.46426    0.02974  15.609   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 16.38 on 1206 degrees of freedom
+Residual standard error: 16.66 on 1221 degrees of freedom
   (13 observations deleted due to missingness)
-Multiple R-squared:  0.1925,    Adjusted R-squared:  0.1919 
-F-statistic: 287.6 on 1 and 1206 DF,  p-value: &lt; 2.2e-16</code></pre>
+Multiple R-squared:  0.1663,    Adjusted R-squared:  0.1657 
+F-statistic: 243.6 on 1 and 1221 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="section-12" class="slide level2">
-<h2></h2>
-<h3 id="draw-conclusion">Draw Conclusion</h3>
-<div style="font-size: 24px">
-<p><img data-src="img/lm-output.png"></p>
 <p>The regression equation is</p>
 <p><span class="math display">\[
 \hat{y} = b_0 + b_1X

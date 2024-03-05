@@ -1,6 +1,6 @@
 ---
-title: "Correlation & Bivariate Regression"
-subtitle: "STAT 218 - Week 9, Lecture 2 Lab 7"
+title: "Correlation & Least Squares Regression"
+subtitle: "Week 9, Lecture 2 Lab 7"
 date: today
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
 format: 
@@ -25,6 +25,7 @@ format:
 library(openintro)
 library(tidyverse)
 data("babies")
+glimpse(babies)
 ```
 
 
@@ -79,11 +80,9 @@ Data points that are unusually far from the linear trend formed by the data. Out
   - The further a point’s X value is from the center of the X distribution, the more leverage that point has on the overall regression model.
 
 - Plots (c) and (d) display examples of leverage points. 
-  - In plot (c) the leverage point is shown to actually exert its leverage on the line, tipping the regression from the bulk
-of the data. 
+  - In plot (c) the leverage point is shown to actually exert its leverage on the line, tipping the regression from the bulk of the data. 
 
-- A point that has a large effect on the regression model is called an
-influential point. 
+- A point that has a large effect on the regression model is called an __influential point.__ 
   - Plot (d) shows a leverage point (because of the extreme X value)
 that is not influential because the regression line does not get pulled away from the trend in the bulk of the data. 
 
@@ -221,7 +220,7 @@ ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
 
 ## Let's Brainstorm Together!
 
-- Leverage points vs influential point
+- Leverage points vs influential points
 - Compare those correlation coefficients that we calculated
 - Do we need to delete those outliers?
 
@@ -234,7 +233,7 @@ ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
 
 ::: {style="font-size: 28px"}
 
-__Understanding Birth Weight and Gestation: A Bivariate Regression Analysis__
+__Understanding Birth Weight and Gestation: A Least Squares Regression Analysis__
 
 
 In the area of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might be related with the weight of a newborn. 
@@ -245,6 +244,8 @@ In the `babies` dataset, each observation includes information about gestation p
 
 
 ## Hypothesis Testing
+
+::: {style="font-size: 28px"}
 
 We will test the null hypothesis
 
@@ -262,6 +263,10 @@ $H_0$: Birth weight is not linearly related to gestation
 
 $H_A$: Birth weight is linearly related to gestation
 
+::: {.callout-important}
+Note that the test on $\beta_1$  asks whether, assuming that the linear model holds, we can conclude that the slope is nonzero.
+:::
+:::
 
 ##
 ### Checking Conditions/Assumptions:
@@ -307,6 +312,8 @@ __4. Constant Variability - Homoscedasticity__
 ```{r}
 #| echo: true
 #| output: true
+
+data("babies") # I am reloading the data because I decided not to delete outliers
 fit <- lm(babies$bwt ~ babies$gestation)
 summary(fit)
 ```
@@ -319,7 +326,9 @@ summary(fit)
 
 - We employ the `lm` function in R to perform a bivariate regression analysis.
 
-- The formula `lm(babies$bwt ~ babies$gestation)` indicates that we are modeling birth weight (`bwt`) as a linear function of gestation period (`gestation`). The subsequent `summary(fit)` provides detailed statistics about the regression model.
+- The formula `lm(babies$bwt ~ babies$gestation)` indicates that we are modeling birth weight (`bwt`) as a linear function of gestation period (`gestation`). 
+
+  - The subsequent `summary(fit)` provides detailed statistics about the regression model.
 
 :::
 :::

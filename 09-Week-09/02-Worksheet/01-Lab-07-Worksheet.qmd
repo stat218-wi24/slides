@@ -1,5 +1,5 @@
 ---
-title: " Correlation and Bivariate Regression Worksheet"
+title: " Correlation and Least Squares Regression Worksheet"
 subtitle: "Week 9 Lecture 2 Lab 07"
 author: " YOUR NAME HERE"
 date: today
@@ -13,102 +13,142 @@ execute:
 # Correlation
 
 
-__Direction:__ Please run the code chunk below and load your data set as well as utilizing `library()` functions that you need.
+__Direction:__ This is your worksheet. PLEASE DO NOT SUBMIT THIS AS A LAB ASSIGNMENT!
+
+
+Please run the code chunk below and load your data set as well as utilizing `library()` functions that you need.
+
 
 ```{r}
-#| echo: true
-#| output: true
-
+#| warning: false
 library(openintro)
 library(tidyverse)
 data("babies")
+glimpse(babies)
 
 ```
+
+
+__Question 1: Please explain what you see in this dataset.__
+
 
 
 ## Calculate Correlation Coefficient
 
 
 
-__Question 1: Please run the code chunk below and comment on correlation coefficient.__
+__Question 2: Please run the code chunk below and comment on the correlation coefficient.__
 
 
 ```{r}
-#| echo: true
-#| output: true
-
 cor(babies$gestation, babies$bwt, use = "na.or.complete")
-
 ```
 
 
 ## Outliers
 
-Let’s see the scatterplot to look for potential outliers.
+Explain briefly here what an outlier is.
+
+
+
+
+
+__Question 3: Let’s examine scatterplot to look for potential outliers. Do we have potential outliers in this scatterplot?__ 
+
 
 ```{r}
 ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
   geom_point() +
-  labs(title = "Scatterplot with Best-Fit Line",
-       x = "Gestation",
-       y = "Birth Weight")
+  labs(x = "Gestation", y = "Birth Weight")
 ```
-__Question 2: Do we have potential outliers in this scatterplot?__ 
 
 
-## Scatterplot
+
+
+
+## Scatterplot - 1
+
+We see two outliers on the left-hand side of the scatterplot. Let’s find them and remove these outliers. (Run the code chunk below.)
 
 
 ```{r}
-#| echo: true
-#| output: true
-
-# Type your R code here.
-
+babies <- babies %>%
+  filter(case != 261 & case != 870 & case !=979) # this removes three outliers whose case numbers are 261, 870 & 979
 ```
-
-Type your lecture notes here.
-
-```{r}
-#| echo: true
-#| output: true
-
-# Type your R code here.
-
-```
-
-
-
-```{r}
-#| echo: true
-#| output: true
-
-# Type your R code here.
-
-```
-
 
 Type your lecture notes here.
 
 
 
-{{< pagebreak >}}
+__Question 4: Let’s check the correlation coefficient and scatterplot again. Interpret the outputs.__
 
+
+```{r}
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+```
+
+
+
+```{r}
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+
+__Question 5: Do we have potential outliers in this scatterplot given above?__ 
+
+
+
+
+
+## Scatterplot - 2
+
+
+We see some outliers on the right-hand side of the scatterplot. Let’s remove those outliers.
+
+```{r}
+babies <- babies %>%
+  filter(case != 1173 & case != 11 & case != 1200 & case != 153 & case != 762 & case != 970 & case != 241 & case != 254  & case != 1003 & case != 461  & case != 1045 & case != 1220)
+```
+
+
+__Question 6: Let’s check the correlation coefficient and scatterplot again. Interpret the outputs.__
+
+
+```{r}
+cor(babies$gestation, babies$bwt, use = "na.or.complete")
+```
+
+```{r}
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  labs(x = "Gestation", y = "Birth Weight")
+```
+
+
+__Question 7. Compare 3 correlation coefficients and 3 scatterplots. Interpret the potential outliers in terms of being leverage points / influential points.__
+
+Type your answer here.
+
+
+__Question 8. What is your final conclusion? Do you delete those outliers or not? Explain your reasoning.__
 
 # Bivariate Regression
 
 ## Case of this Lab
 
-In the realm of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might influence the weight of a newborn. To explore this, we turn to statistical analysis, specifically bivariate regression.
+__Understanding Birth Weight and Gestation: A Least Squares Regression Analysis__
 
-Imagine we have a dataset, such as the "babies" dataset, where each observation includes information about gestation period and birth weight. We want to investigate if there's a linear relationship between these two variables. 
+In the area of prenatal care and childbirth, understanding the relationship between gestation period and birth weight is crucial. We often speculate about how the duration of pregnancy might be related with the weight of a newborn.
+
+In the `babies` dataset, each observation includes information about gestation period and birth weight. We want to investigate if there’s a linear relationship between these two variables.
 
 
 ## Steps for Conducting Hypothesis Testing for This Test
 
 ### Step 1. Formulate Hypotheses
 
-__Write out the null & the alternative hypothesis in words, in the context of this study:__
+__Question 9. Write out the null & the alternative hypothesis in words, in the context of this study:__
 
 Type here.
 
@@ -116,27 +156,52 @@ Type here.
 ### Step 2. Generate Your Model
 
 
+__Question 10. Run the code chunk below and explain what each argument does in this function.__
+
 ```{r}
-#| echo: true
-#| output: true
+# data(babies) # if you decided to keep the outliers, reload the dataset again. 
+fit <- lm(babies$bwt ~ babies$gestation)
+summary(fit)
+```
 
-# Type your code here to generate your model
+__Question 11. Check the conditions/assumptions for this study and interpret these assumptions overall.__
 
+
+### Step 3.1 Checking Conditions/Assumptions 
+
+
+__Linearity with Scatterplot__
+
+
+```{r}
+ggplot(na.omit(babies), aes(x = gestation, y = bwt)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Scatterplot with Best-Fit Line",
+       x = "Gestation",
+       y = "Birth Weight")
 ```
 
 
-
-### Step 3.1 Checking Conditions/Assumptions - Linearity
-
+__Linearity with Residuals Plot__
 
 
 ```{r}
-#| echo: true
-#| output: true
- 
-# Type your code here 
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
 
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals") +
+  theme_minimal()
 ```
+
 
 
 Type your interpretation here.
@@ -146,11 +211,11 @@ Type your interpretation here.
 
 
 ```{r}
-#| echo: true
-#| output: true
- 
-# Type your code here 
-
+# create Q-Q plot for residuals 
+qqnorm(res.stdres) # by using standardized residuals
+  
+# add a straight diagonal line to the plot 
+qqline(res.stdres)
 ```
 
 
@@ -161,11 +226,18 @@ Type your interpretation here.
 
 
 ```{r}
-#| echo: true
-#| output: true
- 
-# Type your code here 
+# get list of residuals  
+res <- resid(fit) 
+res.stdres <- rstandard(fit) # standardized residuals
 
+# produce residual vs. fitted plot 
+ggplot(data.frame(fitted = fitted(fit), stdres = res.stdres), 
+       aes(x = fitted, y = stdres)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "solid", color = "red") +  # Add a horizontal line at 0
+  labs(title = "Fitted Values vs. Standardized Residuals",
+       x = "Fitted Values",
+       y = "Standardized Residuals")
 ```
 
 
@@ -175,12 +247,17 @@ Type your interpretation here.
 
 ### Draw conclusion
 
+__Question 12. Re-run the code chunk below. Interpret Estimate, p-value of the slope, and Adjusted R-Squared.__
 
 
-Type your lecture notes here.
+```{r}
+fit <- lm(babies$bwt ~ babies$gestation)
+summary(fit)
+```
+
 
 
 __Conclusion Statement:__
 
 
-Type your lecture notes here.
+__Question 13. Type the regression equation and interpret the slope.__
