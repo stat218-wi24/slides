@@ -22,10 +22,11 @@ __When do we need to use this test, in general ?__
  Type your lecture notes here.
 
  
-__What type of variable(s) do we need to conduct this test?__
+__What type of variables do we need to conduct this test?__
 
 
 Type your lecture notes here.
+
 
 # Case of this Lab
 
@@ -34,7 +35,7 @@ The Wolf River in Tennessee flows past an abandoned site once used by the pestic
 Now we are collecting a total of 30 random samples from this river to test if there is a difference between the mean aldrin concentrations among the three levels (surface, middepth, bottom)? (Set the alpha value as 0.05 for this study.)  
 
 
-__Research Question of this study:__ Type your research question here. The information is available in your last week's lecture notes.
+__Research Question of this study:__ Type your research question here. The information is available in your previous lecture notes.
 
 
 ## Steps for Conducting Hypothesis Testing for This Test
@@ -52,12 +53,12 @@ Use the Code Chunk below to load your data set as well as utilizing `library()` 
 
 ### Step 1. Formulate Hypotheses
 
-__Write out the null & the alternative hypothesis in words, in the context of this study:__
+__Write out the null & the alternative hypothesis within the context of this study:__
 
 Type here.
 
 
-### Step 2. Determine \($\alpha$) level.
+### Step 2. Determine your \($\alpha$) level.
 
 Type here.
 
@@ -75,7 +76,7 @@ Type here.
 
 
 
-### Step 4.1 Conduct a One-Way ANOVA test and find the p-value
+### Step 4.1 Conduct a One-Way ANOVA test and interpret the output
 
 
 
@@ -90,7 +91,8 @@ Type here.
 
 Type your interpretation here.
 
-### Step 4.2 Conduct a Post Hoc Analysis to Determine which Group(s) Differ 
+
+### Step 4.2 Conduct a Post Hoc analysis to determine which group(s) differ 
 
 
 
@@ -109,17 +111,8 @@ Type your interpretation here.
 ### Step 5. Draw conclusion
 
 
-:::{.callout-important}
-- If $p\leq\alpha$, then __reject $H_0$__.
-
-- If $p>\alpha$, then __fail to reject $H_0$__. 
-:::
-
-
-Type your lecture notes here.
-
 
 __Conclusion Statement:__
 
 
-Type your lecture notes here.
+Type your conclusion statement here.
