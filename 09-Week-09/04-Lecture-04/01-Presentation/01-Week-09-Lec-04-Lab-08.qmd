@@ -153,7 +153,7 @@ Failing to check conditions may affect the test's error rates.
 
 aldrin |>
   group_by(depth) |>
-  summarise(statistic = shapiro.test(concentration)$statistic,
+  summarize(statistic = shapiro.test(concentration)$statistic,
             p.value = shapiro.test(concentration)$p.value)
 ```
 
@@ -166,15 +166,14 @@ aldrin |>
 #| echo: true
 #| output: true
 
-library(dplyr)
 aldrin |>
   group_by(depth) |>
-  summarise(mean = mean(concentration), sd = sd(concentration))
+  summarize(mean = mean(concentration), sd = sd(concentration))
 
 ```
 
 Let's check if the __largest sample SD divided by the smallest sample SD to
-be less than 2
+be less than 2__
 
 ```{r}
 #| echo: true
@@ -182,8 +181,8 @@ be less than 2
 
 aldrin |>
   group_by(depth) |>
-  summarise(sd_concentration = sd(concentration)) |>
-  summarise(ratio_max_min_sd = max(sd_concentration) / min(sd_concentration))
+  summarize(sd_concentration = sd(concentration)) |>
+  summarize(ratio_max_min_sd = max(sd_concentration) / min(sd_concentration))
 ```
 
 :::

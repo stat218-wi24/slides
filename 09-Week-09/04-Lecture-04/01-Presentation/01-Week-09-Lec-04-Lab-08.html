@@ -525,7 +525,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>aldrin <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(depth) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">summarise</span>(<span class="at">statistic =</span> <span class="fu">shapiro.test</span>(concentration)<span class="sc">$</span>statistic,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">summarize</span>(<span class="at">statistic =</span> <span class="fu">shapiro.test</span>(concentration)<span class="sc">$</span>statistic,</span>
 <span id="cb4-4"><a href="#cb4-4"></a>            <span class="at">p.value =</span> <span class="fu">shapiro.test</span>(concentration)<span class="sc">$</span>p.value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
@@ -542,10 +542,9 @@
 <h4 id="step-3.-checking-conditionsassumptions---homogeneity-of-variance">Step 3. Checking Conditions/Assumptions - Homogeneity of Variance</h4>
 <div style="font-size: 25px">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>aldrin <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">group_by</span>(depth) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(concentration), <span class="at">sd =</span> <span class="fu">sd</span>(concentration))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>aldrin <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">group_by</span>(depth) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(concentration), <span class="at">sd =</span> <span class="fu">sd</span>(concentration))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   depth     mean    sd
@@ -555,12 +554,12 @@
 3 surface   4.2  0.660</code></pre>
 </div>
 </div>
-<p>Let’s check if the __largest sample SD divided by the smallest sample SD to be less than 2</p>
+<p>Let’s check if the <strong>largest sample SD divided by the smallest sample SD to be less than 2</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>aldrin <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">group_by</span>(depth) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">summarise</span>(<span class="at">sd_concentration =</span> <span class="fu">sd</span>(concentration)) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">summarise</span>(<span class="at">ratio_max_min_sd =</span> <span class="fu">max</span>(sd_concentration) <span class="sc">/</span> <span class="fu">min</span>(sd_concentration))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">summarize</span>(<span class="at">sd_concentration =</span> <span class="fu">sd</span>(concentration)) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">summarize</span>(<span class="at">ratio_max_min_sd =</span> <span class="fu">max</span>(sd_concentration) <span class="sc">/</span> <span class="fu">min</span>(sd_concentration))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   ratio_max_min_sd
