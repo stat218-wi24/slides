@@ -1,6 +1,6 @@
 ---
 title: "One Way ANOVA Worksheet"
-subtitle: "Week 7 Lecture 1 Lab 06"
+subtitle: "Week 9 Lecture 4 Lab 08"
 author: " YOUR NAME HERE"
 date: today
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
