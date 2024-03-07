@@ -1,0 +1,125 @@
+---
+title: "One Way ANOVA Worksheet"
+subtitle: "Week 7 Lecture 1 Lab 06"
+author: " YOUR NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+# What is One-Way ANOVA test?
+
+
+Type your lecture notes here.
+
+
+__When do we need to use this test, in general ?__
+
+ 
+ Type your lecture notes here.
+
+ 
+__What type of variable(s) do we need to conduct this test?__
+
+
+Type your lecture notes here.
+
+# Case of this Lab
+
+The Wolf River in Tennessee flows past an abandoned site once used by the pesticide industry for dumping wastes, including chlordane (pesticide), aldrin, and dieldrin (both insecticides). These highly toxic organic compounds can cause various cancers and birth defects. As these compounds are denser than water and their molecules tend to stick to particles of sediment, they are more likely to be found in higher concentrations near the bottom.
+
+Now we are collecting a total of 30 random samples from this river to test if there is a difference between the mean aldrin concentrations among the three levels (surface, middepth, bottom)? (Set the alpha value as 0.05 for this study.)  
+
+
+__Research Question of this study:__ Type your research question here. The information is available in your last week's lecture notes.
+
+
+## Steps for Conducting Hypothesis Testing for This Test
+
+Use the Code Chunk below to load your data set as well as utilizing `library()` functions that you need.
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your R code here.
+
+```
+
+
+### Step 1. Formulate Hypotheses
+
+__Write out the null & the alternative hypothesis in words, in the context of this study:__
+
+Type here.
+
+
+### Step 2. Determine \($\alpha$) level.
+
+Type here.
+
+### Step 3. Checking Conditions/Assumptions:
+
+Type here.
+
+```{r}
+#| echo: true
+#| output: true
+
+# Type your code here to check normality for each group in your categorical variable.
+
+```
+
+
+
+### Step 4.1 Conduct a One-Way ANOVA test and find the p-value
+
+
+
+```{r}
+#| echo: true
+#| output: true
+ 
+# Type your code here 
+
+```
+
+
+Type your interpretation here.
+
+### Step 4.2 Conduct a Post Hoc Analysis to Determine which Group(s) Differ 
+
+
+
+```{r}
+#| echo: true
+#| output: true
+ 
+# Type your code here 
+
+```
+
+
+Type your interpretation here.
+
+
+### Step 5. Draw conclusion
+
+
+:::{.callout-important}
+- If $p\leq\alpha$, then __reject $H_0$__.
+
+- If $p>\alpha$, then __fail to reject $H_0$__. 
+:::
+
+
+Type your lecture notes here.
+
+
+__Conclusion Statement:__
+
+
+Type your lecture notes here.

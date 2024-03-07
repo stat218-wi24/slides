@@ -1,0 +1,224 @@
+---
+title: "One Way ANOVA"
+subtitle: "Week 9, Lecture 4 Lab 8"
+date: 2024-03-07
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: 
+  revealjs:
+      theme: slide-style.scss
+      slide-number: true
+      chalkboard: true
+      incremental: true
+---
+
+
+## 
+### Announcements
+
+::: {style="font-size: 30px"}
+
+- **Final Exam Date**
+  - __Sat, Mar 16:__ Common Final Exam (Individual) - 10:15 AM (2 hours) at BLDG 008-0123
+- **Final Project**
+  - Final Project Module will be available on Canvas by the end of today.
+- **Group Changes**
+  - __Due Date:__ March 10.
+  - No group changes will be made after this deadline.
+
+:::
+
+
+##
+### Before Proceeding Further...
+
+![](img/step-1.png)
+
+##
+### Before Proceeding Further...
+
+![](img/step-2.png)
+
+
+
+##
+### Before Proceeding Further...
+
+::: {style="font-size: 28px"}
+
+Let me introduce you the pipe operator ( |> )
+
+Shortcut: Ctrl (Command) + Shift + M
+
+:::
+
+<br>
+
+::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| output: true
+
+c(35, 30, 45) |> 
+  mean() |> 
+  round()
+```
+
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 20px"}
+
+Combine 35, 30, and 45 __and then__
+
+Take the mean __and then__
+
+Round the output
+
+:::
+:::
+:::
+
+<br>
+
+::: {style="font-size: 28px"}
+Like a composite function such as ($f\circ g\circ h(x)$)
+:::
+
+
+# One Way ANOVA
+
+
+##
+### Research Question and Data Set
+
+
+::: {style="font-size: 28px"}
+
+The Wolf River in Tennessee flows past an abandoned site once used by the pesticide industry for dumping wastes, including chlordane (pesticide), aldrin, and dieldrin (both insecticides). These highly toxic organic compounds can cause various cancers and birth defects. As these compounds are denser than water and their molecules tend to stick to particles of sediment, they are more likely to be found in higher concentrations near the bottom.
+
+Now we are collecting a total of 30 random samples from this river to test if there is a difference between the mean aldrin concentrations among the three levels (surface, middepth, bottom)? (Set the alpha value as 0.05 for this study.)  
+
+```{r}
+#| echo: true
+#| output: true
+
+library(tidyverse)
+aldrin <- read_csv("aldrin.csv")
+```
+
+:::
+
+
+
+##
+### Step 3. Checking Conditions/Assumptions:
+::: {style="font-size: 25px"}
+::: {.callout-tip title="Assumptions/Conditions"}
+:::{.nonincremental}
+
+__1. The observations should be independent within and between groups__ 
+
+  - If the data are a simple random sample from less than 10% of the population, this condition is satisfied
+  - Carefully consider whether the data may be independent (e.g. no pairing)
+  - Always important, but sometimes difficult to check
+
+
+__2. The observations within each group should be nearly normal__
+
+  - Normality can be roughly checked by making a histogram and normal quantile plot of the data if your sample size is __large__.
+  - If your sample size is __small__, you should use `shapiro.test()` for each group in your categorical variable.
+  
+
+__3. The variability across the groups should be about equal__
+
+  - Especially important when the sample sizes differ between groups.
+  - The condition of normal populations with equal standard deviations is less
+crucial if the sample sizes ($n_i$) are large and approximately equal.
+  - As a rule of thumb, we would like the __largest sample SD divided by the smallest sample SD to
+be less than 2 or so__.  
+    - If this ratio is much larger than 2, then we cannot be confident in the P-value from the ANOVA, particularly if the sample sizes are small and unequal.
+
+Failing to check conditions may affect the test's error rates.
+:::
+:::
+:::
+
+##
+#### Step 3. Checking Conditions/Assumptions - Normality
+
+```{r}
+#| echo: true
+#| output: true
+
+aldrin |>
+  group_by(depth) |>
+  summarise(statistic = shapiro.test(concentration)$statistic,
+            p.value = shapiro.test(concentration)$p.value)
+```
+
+
+
+##
+#### Step 3. Checking Conditions/Assumptions - Homogeneity of Variance
+::: {style="font-size: 25px"}
+```{r}
+#| echo: true
+#| output: true
+
+library(dplyr)
+aldrin |>
+  group_by(depth) |>
+  summarise(mean = mean(concentration), sd = sd(concentration))
+
+```
+
+Let's check if the __largest sample SD divided by the smallest sample SD to
+be less than 2
+
+```{r}
+#| echo: true
+#| output: true
+
+aldrin |>
+  group_by(depth) |>
+  summarise(sd_concentration = sd(concentration)) |>
+  summarise(ratio_max_min_sd = max(sd_concentration) / min(sd_concentration))
+```
+
+:::
+
+
+## 
+#### Step 4. Calculate _F_ statistic and find the p-value
+
+
+
+```{r}
+#| echo: true
+#| output: true
+
+one.way <- aov(concentration ~ depth, data = aldrin)
+summary(one.way)
+```
+
+
+
+## Post Hoc
+
+::: {style="font-size: 28px"}
+A significant F-test indicates that we can reject null hypothesis, which states that population means are equal.
+
+- However, it does not tell us which of the groups differ. 
+  - We need to conduct post-hoc tests. Post-hoc tests are designed to help protect against the likelihood of Type-I error. 
+
+::: fragment
+```{r}
+#| echo: true
+#| output: true
+
+pairwise.t.test(aldrin$concentration, aldrin$depth, p.adj = "bonf")
+```
+
+:::
+:::
