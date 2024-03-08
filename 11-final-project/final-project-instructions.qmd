@@ -8,7 +8,7 @@ author:
   - "Team Member 5: NAME HERE"
 date: today
 date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
-format: pdf
+format: html
 execute:
   echo: true
 ---
