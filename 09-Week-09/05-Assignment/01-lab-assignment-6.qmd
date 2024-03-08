@@ -1,0 +1,158 @@
+---
+title: "STAT 218 Lab Assignment 6"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE"
+  - "Team Member 5: NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+
+## Least Squares Regression
+
+```{r}
+#| output: false
+library(tidyverse)
+library(openintro)
+data("hsb2")
+```
+
+
+In this lab assignment, we explore the relationship between students' science and math scores using data from the High School and Beyond (HSB2) survey. The HSB2 dataset, a comprehensive survey conducted to understand various factors influencing academic achievement and well-being, serves as the foundation for our analysis. Our main goal is to investigate whether students' scores in science can be predicted based on their performance in math. By employing a least squares regression analysis, we aim to model the linear relationship between these two variables and uncover the influence of math proficiency on science performance. 
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. List the assumptions required for this test.__
+
+List the assumptions here and explain them.
+
+
+
+__Directions for Question 4: Conduct a Least Square Regression to investigate your research hypothesis. Answer the questions given below. Show your work.____
+
+
+__Question 4.1 Write out the null and alternative hypotheses, in the context of this study.__
+
+Type your answer here.
+
+
+
+__Question 4.2. Fit a least squares regression model and explain what you see in the output.__
+
+
+```{r}
+
+# Type your codes here
+
+```
+
+
+Type your answer here.
+
+
+
+__Question 4.3. Go back to the assumptions. Check the assumptions for this study and interpret the assumptions overall.__
+
+```{r}
+# Type your codes here to check assumptions
+```
+
+
+Interpret the assumptions and type your reasoning.
+
+
+
+__Question 4.4. Based on your analysis, draw a conclusion. Summarize your findings by providing a conclusion statement that succinctly communicates the key results of your study.__
+
+
+Type your answer here.
+
+
+
+
+## One-Way ANOVA
+
+```{r}
+#| output: false
+optimism <- read_csv("anova-data.csv")
+optimism <- optimism %>% 
+  mutate(agegp3 = as.factor(agegp3))
+```
+
+
+
+
+
+The data stem from a survey conducted to explore factors influencing respondents’ psychological adjustment, health, and well-being. The researchers seek to examine whether there exists a statistically significant difference in optimism scores among young, middle-aged, and elderly subjects. (Note: Age is categorized into three groups for analysis.)
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. List the assumptions required for this test and check the assumptions for this study. Interpret the assumptions overall.__
+
+List the assumptions here and explain them.
+
+
+```{r}
+# Type your codes here to check assumptions
+```
+
+
+Interpret the assumptions and type your reasoning.
+
+
+
+__Directions for Question 4: Conduct a One Way ANOVA to investigate your research hypothesis. Answer the questions given below. Show your work.____
+
+
+__Question 4.1 Write out the null and alternative hypotheses, in the context of this study.__
+
+Type your answer here.
+
+
+
+__Question 4.2. Generate an ANOVA Table and explain what you see in the output.__
+
+
+```{r}
+
+# Type your codes here
+
+```
+
+
+Type your answer here.
+
+
+__Question 4.3.Based on your analysis, draw a conclusion regarding the observed patterns or effects. Summarize your findings by providing a conclusion statement that succinctly communicates the key results of your study. Additionally, use the `summarize()` function to create a table that presents the mean values and standard deviation values for each group involved in your analysis.__
+
+
+Type your answer here.
