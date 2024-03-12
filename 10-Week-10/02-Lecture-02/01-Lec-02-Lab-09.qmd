@@ -28,6 +28,20 @@ data(penguins)
 glimpse(penguins)
 ```
 
+## 
+### A Note for Assumption Checking
+
+```{r}
+#| echo: true
+#| output: true
+
+na.omit(penguins) |> 
+ggplot(aes(x = bill_length_mm, fill = factor(sex))) +
+geom_histogram(binwidth = 1) +
+facet_grid(sex ~ species, scales = "free") +
+theme_minimal()
+```
+
 ## Two-Way ANOVA Function
 
 ```{r}
