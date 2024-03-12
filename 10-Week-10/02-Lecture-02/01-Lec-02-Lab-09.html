@@ -437,11 +437,47 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 
 </div>
 <img data-src="01-Lec-02-Lab-09_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<h3 id="a-note-for-assumption-checking-1">A Note for Assumption Checking</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">na.omit</span>(penguins) <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(sex<span class="sc">:</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">summarize</span>(<span class="at">mean_bill_length =</span> <span class="fu">mean</span>(bill_length_mm), <span class="at">sd_bill_length =</span> <span class="fu">sd</span>(bill_length_mm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  `sex:species`    mean_bill_length sd_bill_length
+  &lt;fct&gt;                       &lt;dbl&gt;          &lt;dbl&gt;
+1 female:Adelie                37.3           2.03
+2 female:Chinstrap             46.6           3.11
+3 female:Gentoo                45.6           2.05
+4 male:Adelie                  40.4           2.28
+5 male:Chinstrap               51.1           1.56
+6 male:Gentoo                  49.5           2.72</code></pre>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<h3 id="a-note-for-assumption-checking-2">A Note for Assumption Checking</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">na.omit</span>(penguins) <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">group_by</span>(sex<span class="sc">:</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">summarize</span>(<span class="at">sd_bill_length =</span> <span class="fu">sd</span>(bill_length_mm)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">summarize</span>(<span class="at">ratio_max_min_sd =</span> <span class="fu">max</span>(sd_bill_length) <span class="sc">/</span> <span class="fu">min</span>(sd_bill_length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  ratio_max_min_sd
+             &lt;dbl&gt;
+1             1.99</code></pre>
+</div>
+</div>
+</section>
 <section id="two-way-anova-function" class="slide level2">
 <h2>Two-Way ANOVA Function</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>two.way <span class="ot">&lt;-</span> <span class="fu">aov</span>(bill_length_mm <span class="sc">~</span> sex <span class="sc">+</span> species <span class="sc">+</span> sex<span class="sc">*</span>species, <span class="at">data =</span> penguins)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">summary</span>(two.way)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>two.way <span class="ot">&lt;-</span> <span class="fu">aov</span>(bill_length_mm <span class="sc">~</span> sex <span class="sc">+</span> species <span class="sc">+</span> sex<span class="sc">*</span>species, <span class="at">data =</span> penguins)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">summary</span>(two.way)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 sex           1   1175    1175 219.228 &lt;2e-16 ***
@@ -457,7 +493,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="main-effect-1" class="slide level2">
 <h2>Main Effect 1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">pairwise.t.test</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>species, <span class="at">p.adj =</span> <span class="st">"bonf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">pairwise.t.test</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>species, <span class="at">p.adj =</span> <span class="st">"bonf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
@@ -475,7 +511,7 @@ P value adjustment method: bonferroni </code></pre>
 <section id="main-effect-2" class="slide level2">
 <h2>Main Effect 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">pairwise.t.test</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>sex, <span class="at">p.adj =</span> <span class="st">"bonf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">pairwise.t.test</span>(penguins<span class="sc">$</span>bill_length_mm, penguins<span class="sc">$</span>sex, <span class="at">p.adj =</span> <span class="st">"bonf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
@@ -492,7 +528,7 @@ P value adjustment method: bonferroni </code></pre>
 <section id="interaction-effect" class="slide level2">
 <h2>Interaction Effect</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">TukeyHSD</span>(two.way, <span class="at">which =</span> <span class="st">"sex:species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">TukeyHSD</span>(two.way, <span class="at">which =</span> <span class="st">"sex:species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level

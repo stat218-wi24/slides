@@ -42,6 +42,30 @@ facet_grid(sex ~ species, scales = "free") +
 theme_minimal()
 ```
 
+## 
+### A Note for Assumption Checking
+
+```{r}
+#| echo: true
+#| output: true
+na.omit(penguins) |> 
+  group_by(sex:species) |> 
+summarize(mean_bill_length = mean(bill_length_mm), sd_bill_length = sd(bill_length_mm))
+```
+
+## 
+### A Note for Assumption Checking
+
+```{r}
+#| echo: true
+#| output: true
+na.omit(penguins) |> 
+group_by(sex:species) |> 
+summarize(sd_bill_length = sd(bill_length_mm)) |> 
+summarize(ratio_max_min_sd = max(sd_bill_length) / min(sd_bill_length))
+```
+
+
 ## Two-Way ANOVA Function
 
 ```{r}
