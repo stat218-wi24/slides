@@ -1,0 +1,93 @@
+---
+title: "Two Way ANOVA Lab"
+author: 
+  - "Team Member 1: NAME HERE"
+  - "Team Member 2: NAME HERE"
+  - "Team Member 3: NAME HERE"
+  - "Team Member 4: NAME HERE"
+  - "Team Member 5: NAME HERE"
+date: today
+date-format: "MMMM D[<sup style='font-size:65%;'>th</sup>], YYYY"
+format: pdf
+execute:
+  echo: true
+---
+
+
+
+## Two Way ANOVA
+
+__Motivating Example:__ Imagine that you are a biologist studying penguins, particularly their bill lengths. This week, you're curious about (1) the possible impact of species and sex on their bill length and (2) whether the species moderate the relationship between sex and bill length. To investigate this, you collect a random sample of 344 penguins, measure their body mass, and record their sex.
+
+
+__Question 1. What is the research question of this study?__
+
+
+Type your answer here.
+
+
+__Question 2. What type of variables do we have in this study?__
+
+
+Type your answer here.
+
+
+__Question 3. List the assumptions required for this test and check the assumptions for this study. Interpret the assumptions overall.__
+
+List the assumptions here and explain them.
+
+
+```{r}
+# Type your codes here to check assumptions
+```
+
+
+Interpret the assumptions and type your reasoning.
+
+
+
+__Directions for Question 4:__ Conduct a Two Way ANOVA to investigate your research hypothesis. Answer the questions given below. Show your work.
+
+
+__Question 4.1 Write out the null and alternative hypotheses in words, in the context of this study.__
+
+Type your answer here.
+
+
+__Question 4.2. Determine the \($\alpha$) level.__
+
+Type your answer here.
+
+
+__Question 4.3. Generate an ANOVA Table and explain what you see in the output.__
+
+
+```{r}
+
+# Type your codes here
+
+```
+
+
+Type your answer here.
+
+
+__Question 4.4. Analyzing Interaction and Main Effects: In your statistical analysis, evaluate the presence of interaction effects. If an interaction effect is observed, proceed to conduct a post-hoc analysis. On the other hand, if no interaction effect is identified, shift the focus to the main effects. If any of the main effects are statistically significant, perform a post-hoc analysis for those effects. Provide a comprehensive explanation of the outputs obtained during these analyses.__
+
+```{r}
+
+# Type your codes here
+
+```
+
+
+Type your answer here.
+
+
+__Question 9.5.5.Based on your analysis, draw a conclusion regarding the observed patterns or effects. Summarize your findings by providing a conclusion statement that succinctly communicates the key results of your study. Additionally, use the `summarize()` function to create a table that presents the mean values and standard deviation values for each group involved in your analysis.__
+
+
+Type your answer here.
+
+
+
